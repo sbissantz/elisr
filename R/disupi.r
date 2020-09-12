@@ -1,17 +1,23 @@
+
 # Disjoint Scaling Process Using Positive Items ---------------------------
+
+# disupi takes a data.frame and a lower bound in form of a rit_min value and
+# generates a (list of) multiple scaled data.frame(s). Ellipsis is set for any
+# na.action(), Hint: One could also set the 'method' argument from cor() but
+# this is not tested yet.
 
 disupi <- function(df, rit_min = .3, ...) {
 
 # helpful feedback --------------------------------------------------------
 
-  if(isFALSE(is.data.frame(df)))
-    stop("'df' is not a data frame. Please create one.", call. = FALSE)
+  if (isFALSE(is.data.frame(df)))
+    stop("'df' is not a data frame. Please use one.", call. = FALSE)
   if (is.null(names(df)))
     stop("No colnames found. Please specify them.", call. = FALSE)
 
 # lodis & attrbitues ------------------------------------------------------
-# List of disjoint scales with attributes
 
+  # List of disjoint scales with attributes
   lodis <- structure(list(), class = "muscldf", rit_min = rit_min,
                      df = match.call()$df, colnames = !is.null(colnames))
 

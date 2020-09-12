@@ -1,20 +1,30 @@
+
 # Overlapping Scaling Process Using Positive Items ------------------------
 
-ovlupi <- function(muscldf, overlap_with = NULL, rit_min = NULL, ...) {
+# ovlupi takes a multiple sclaed data.frame and a lower bound in form of a
+# rit_min. By choosing the items used in the overlapping process (using only the
+# highest correlating pair of each scale, i.e. the core, or trying to overlap
+# or expand the 'full_scale'). No matter But whatever which one one chooses it
+# returns again a (list of) multiple scaled data.frame(s). Ellipsis is set to
+# allow for any na.action(), Hint: One could also set the 'method' argument from
+# cor() but this is not tested yet.
+
+ovlupi <- function(muscldf, rit_min, overlap_with = NULL, ...) {
 
 # checks ------------------------------------------------------------------
 
-  stopifnot(attr(muscldf,"colnames"))
-  if(isFALSE(inherits(muscldf, "muscldf")))
-    stop("This is not a multiple scaled data frame. Please build on")
+  if (isFALSE(inherits(muscldf, "muscldf")))
+    stop("This is not a muscldf. Please build on", call. = FALSE)
+  if (isFALSE(attr(muscldf, "colnames")))
+    stop("Colnames seemd to be lost. Please search for them.", call. = FALSE)
   if (is.null(overlap_with))
-    stop("No method to 'overlap_with'. Please specify one.")
+    stop("No method to 'overlap_with'. Please specify one.", call. = FALSE)
 
 # functions ---------------------------------------------------------------
 
   scl_ovlp <- function(ovls, wfls) {
     while (ncol(wfls) >= 1) {
-      cormat <- cor(rowSums(ovls), wfls)
+      cormat <- cor(rowSums(ovls), wfls, ...)
       maxcor <- max(cormat[cormat < 1])
       if (maxcor < rit_min) break
       fstmaxp <- which(cormat == maxcor)
@@ -27,7 +37,7 @@ ovlupi <- function(muscldf, overlap_with = NULL, rit_min = NULL, ...) {
 # pre-defined values -----------------------------------------------------
 
   df <- eval(attr(muscldf, "df"))
-  if (is.null(rit_min)){
+  if (is.null(rit_min)) {
     rit_min <- attr(muscldf, "rit_min")
   }
   scl_nms <- lapply(muscldf, names)
@@ -47,11 +57,12 @@ ovlupi <- function(muscldf, overlap_with = NULL, rit_min = NULL, ...) {
   }
 
 # lovls -------------------------------------------------------------------
-# List of overlapping scales
 
+  # List of overlapping scales
   lovls <- Map(scl_ovlp, ovls, wfls)
 
 # attributes --------------------------------------------------------------
 
-  structure(lovls, class = "muscldf", rit_min = rit_min, df = match.call()$df)
+  structure(lovls, class = "muscldf", scl_method = "overlap",
+            rit_min = rit_min, df = match.call()$df)
 }

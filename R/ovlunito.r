@@ -1,21 +1,33 @@
+
 # Overlapping Scaling Process Using Negative Items Too --------------------
 
-ovlunito <- function(muscldf, overlap_with = NULL, rit_min = NULL,
+# ovlunito takes a multiple sclaed data.frame, a lower bound in form of a
+# rit_min, and a fullscale value. By choosing the items used in the overlapping
+# process (only the highest correlating pair of each scale, i.e. the core or
+# trying to overlap or expand the 'full_scale'). No matter But whatever which
+# one one chooses it returns again a (list of) multiple scaled data.frame(s).
+# Ellipsis is set  to allow for any na.action(), Hint: One could also set the
+# 'method' argument from cor() but this is not tested yet.
+
+ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL,
                      fullscl_val = NULL, ...) {
 
 # checks ------------------------------------------------------------------
 
-  stopifnot(attr(muscldf,"colnames"))
-  if(isFALSE(inherits(muscldf, "muscldf")))
-    stop("This is not a multiple scaled data frame. Please build on")
+  if (isFALSE(inherits(muscldf, "muscldf")))
+    stop("This is not a muscldf. Please build one.", call. = FALSE)
   if (is.null(overlap_with))
-    stop("No method to 'overlap_with'. Please specify one.")
+    stop("No method to 'overlap_with'. Please specify one.", call. = FALSE)
+  if (is.null(fullscl_val))
+    stop("No full scale value found. Please specify one.", call. = FALSE)
+
+  stopifnot(attr(muscldf, "colnames"))
 
 # functions ---------------------------------------------------------------
 
   scl_ovlp <- function(ovls, wfls) {
-    while (ncol(df) >= 1) {
-      cormat <- cor(rowSums(ovls, wfls))
+    while (ncol(wfls) >= 1) {
+      cormat <- cor(rowSums(ovls), wfls, ...)
       maxcor <- max(abs(cormat[cormat < 1]))
       if (maxcor < rit_min) break
       fstmaxp <- which(abs(cormat) == maxcor)
@@ -23,18 +35,18 @@ ovlunito <- function(muscldf, overlap_with = NULL, rit_min = NULL,
       if (corsign >= 0) {
         ovls <- cbind(ovls, wfls[fstmaxp])
         }else{
-          var_rev <- (fullscl_val + 1) - wfls[fstmaxp]
-          ovls <- cbind(ovls, var_rev)
-          }
-      df <- df[-fstmaxp]
-    }
+          var_rev <- (fullscl_val + 1) - ovls[fstmaxp]
+          ovls <- cbind(wfls, var_rev)
+        }
+      wfls <- wfls[-fstmaxp]
+      }
     return(ovls)
-  }
+    }
 
 # pre-defined values -----------------------------------------------------
 
   df <- eval(attr(muscldf, "df"))
-  if (is.null(rit_min)){
+  if (is.null(rit_min)) {
     rit_min <- attr(muscldf, "rit_min")
   }
   scl_nms <- lapply(muscldf, names)
@@ -54,11 +66,12 @@ ovlunito <- function(muscldf, overlap_with = NULL, rit_min = NULL,
   }
 
 # lovls -------------------------------------------------------------------
-# List of overlapping scales
 
+  # List of overlapping scales
   lovls <- Map(scl_ovlp, ovls, wfls)
 
 # attributes --------------------------------------------------------------
 
-  structure(lovls, class = "muscldf", rit_min = rit_min, df = match.call()$df)
+  structure(lovls, class = "muscldf", scl_method = "overlap",
+            rit_min = rit_min, df = match.call()$df)
 }

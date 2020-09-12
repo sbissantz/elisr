@@ -1,19 +1,31 @@
-# Multiple Disjoint Scaling Using Negative Items Too ----------------------
+
+# Disjoint Scaling Using Negative Items Too -------------------------------
+
+# disunito takes a data.frame and a lower bound in form of a rit_min value as
+# well as a 'fullscale value' to allow to reverse the items. It gives back a
+# a (list of) multiple scaled data.frame(s). Ellipsis is set for any na.action()
+# Hint: One could also set the 'method' argument from cor() but this is not
+# tested yet.
 
 disunito <- function(df, rit_min = .3, fullscl_val = NULL, ...) {
-  stopifnot(is.data.frame(df))
+
+# checks ------------------------------------------------------------------
+
+  if (isFALSE(is.data.frame(df)))
+    stop("'df' is not a data frame. Please use one.", call. = FALSE)
   if (is.null(names(df)))
     stop("No colnames found. Please specify them.", call. = FALSE)
   if (is.null(fullscl_val))
     stop("No full scale value found. Please specify one.", call. = FALSE)
 
-# Object class ------------------------------------------------------------
+# object class ------------------------------------------------------------
 
+  # list of disjoint scales & attributes
   lodis <- structure(list(), class = "muscldf", rit_min = rit_min,
                      fullscl_val = fullscl_val, df = match.call()$df,
                      colnames = !is.null(colnames))
 
-# Build scales ------------------------------------------------------------
+# build scales ------------------------------------------------------------
 
   while (ncol(df) >= 2) {
     uni_len <- length(lodis)
@@ -27,7 +39,7 @@ disunito <- function(df, rit_min = .3, fullscl_val = NULL, ...) {
     df <- df[-fstmaxp]
     while (ncol(df) >= 1) {
       uni_len <- length(lodis)
-      cormat <- cor(rowSums(lodis[[uni_len]]), df)
+      cormat <- cor(rowSums(lodis[[uni_len]]), df, ...)
       maxcor <- max(abs(cormat[cormat < 1]))
       if (maxcor < rit_min) break
       fstmaxp <- which(abs(cormat) == maxcor)

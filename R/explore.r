@@ -1,10 +1,16 @@
+
 # explore() ---------------------------------------------------------------
+
 # takes a scaled data frame (scldf), reconstructs how it was build, and
 # returns Cronbach's Alpha, Corrected Item-Total Correlation, and the average
 # correlation between items at each stage of the development process.
+
 explore <- function(scldf) {
+
 # calcalpha ---------------------------------------------------------------
+
 # calculate Cronbach's Alpha | given: wfls.
+
   calcpha <- function(wfls) {
     cormat <- cor(wfls)
     # Calculate: rbar | lower trimat : diag is set FALSE
@@ -14,14 +20,20 @@ explore <- function(scldf) {
     m <- length(wfls)
     return((m * rbar) / (1 + rbar * (m - 1)))
   }
+
 # Calcrit -----------------------------------------------------------------
+
 # calculates r_it (Corrected Item-Total Correlation) | given: wfls
+
   calcrit <- function(wfls) {
     wf_len <- length(wfls)
     grpseed <- rowSums(wfls[-wf_len])
     addtnl <- wfls[wf_len]
     return(cor(grpseed, addtnl))
   }
+
+# Exploring procedure -----------------------------------------------------
+
   scl_len <- length(scldf)
   # Trick: retraces the sequential "emergence" of scldf
   seqls <- lapply(2:scl_len, seq)
