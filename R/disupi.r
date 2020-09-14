@@ -10,6 +10,8 @@ disupi <- function(df, rit_min = .3, ...) {
 
 # helpful feedback --------------------------------------------------------
 
+#  if(isFALSE(requireNamespace("stats", quietly = TRUE)))
+#    stop("The 'stats' is required. Please install and load it.", call. = FALSE)
   if (isFALSE(is.data.frame(df)))
     stop("'df' is not a data frame. Please use one.", call. = FALSE)
   if (is.null(names(df)))
