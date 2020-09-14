@@ -9,8 +9,7 @@
 # Ellipsis is set  to allow for any na.action(), Hint: One could also set the
 # 'method' argument from cor() but this is not tested yet.
 
-ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL,
-                     fullscl_val = NULL, ...) {
+ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 
 # checks ------------------------------------------------------------------
 
@@ -18,13 +17,14 @@ ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL,
     stop("This is not a muscldf. Please build one.", call. = FALSE)
   if (is.null(overlap_with))
     stop("No method to 'overlap_with'. Please specify one.", call. = FALSE)
-  if (is.null(fullscl_val))
-    stop("No full scale value found. Please specify one.", call. = FALSE)
+#  if (is.null(sclvals))
+#    stop("No full scale value found. Please specify one.", call. = FALSE)
+# TODO: if overlap with is different from core, full_scale, error
+# units <- match.arg(units, c("secs", "mins", "hours", "days", "weeks"))
 
   stopifnot(attr(muscldf, "colnames"))
 
 # functions ---------------------------------------------------------------
-
   scl_ovlp <- function(ovls, wfls) {
     while (ncol(wfls) >= 1) {
       cormat <- cor(rowSums(ovls), wfls, ...)
@@ -35,8 +35,8 @@ ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL,
       if (corsign >= 0) {
         ovls <- cbind(ovls, wfls[fstmaxp])
         }else{
-          var_rev <- (fullscl_val + 1) - ovls[fstmaxp]
-          ovls <- cbind(wfls, var_rev)
+          var_rev <- rvrs_var(var = wfls[fstmaxp], sclvals)
+          ovls <- cbind(ovls, var_rev)
         }
       wfls <- wfls[-fstmaxp]
       }
@@ -49,6 +49,7 @@ ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL,
   if (is.null(rit_min)) {
     rit_min <- attr(muscldf, "rit_min")
   }
+  sclvals <- attr(muscldf, "sclvals")
   scl_nms <- lapply(muscldf, names)
   nuc_nms <- lapply(scl_nms, function(scl_nms) scl_nms[c(1, 2)])
 
@@ -60,9 +61,9 @@ ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL,
     wfls <- lapply(scl_nms, nme_scl)
     }
   if (overlap_with == "core") {
-    ovls <- lapply(nuc_nms, function(nuc_nms) df[, nuc_nms])
+    (ovls <- lapply(nuc_nms, function(nuc_nms) df[, nuc_nms]))
     nme_nuc <- function(nuc_nms) df[, -which(names(df) %in% nuc_nms)]
-    wfls <- lapply(nuc_nms, nme_nuc)
+    (wfls <- lapply(nuc_nms, nme_nuc))
   }
 
 # lovls -------------------------------------------------------------------
