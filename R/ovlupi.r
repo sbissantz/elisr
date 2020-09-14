@@ -9,7 +9,7 @@
 # allow for any na.action(), Hint: One could also set the 'method' argument from
 # cor() but this is not tested yet.
 
-ovlupi <- function(muscldf, rit_min, overlap_with = NULL, ...) {
+ovlupi <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 
 # checks ------------------------------------------------------------------
 
@@ -19,6 +19,8 @@ ovlupi <- function(muscldf, rit_min, overlap_with = NULL, ...) {
     stop("Colnames seemd to be lost. Please search for them.", call. = FALSE)
   if (is.null(overlap_with))
     stop("No method to 'overlap_with'. Please specify one.", call. = FALSE)
+  # TODO: if overlap with is different from core, full_scale, error
+  #units <- match.arg(units, c("secs", "mins", "hours", "days", "weeks"))
 
 # functions ---------------------------------------------------------------
 
