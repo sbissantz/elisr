@@ -7,7 +7,7 @@
 # Hint: One could also set the 'method' argument from cor() but this is not
 # tested yet.
 
-disunito <- function(df, rit_min = .3, fullscl_val = NULL, ...) {
+disunito <- function(df, rit_min = .3, sclvals = NULL, ...) {
 
 # checks ------------------------------------------------------------------
 
@@ -15,14 +15,17 @@ disunito <- function(df, rit_min = .3, fullscl_val = NULL, ...) {
     stop("'df' is not a data frame. Please use one.", call. = FALSE)
   if (is.null(names(df)))
     stop("No colnames found. Please specify them.", call. = FALSE)
-  if (is.null(fullscl_val))
-    stop("No full scale value found. Please specify one.", call. = FALSE)
+  if (is.null(sclvals))
+    stop("No 'sclvals' found. Please specify one.", call. = FALSE)
+  # if (sclvals <= 0)
+  #  stop("disunito() can only deal with 'values > 0'. Please recode the scale",
+  #       call. = FALSE)
 
 # object class ------------------------------------------------------------
 
   # list of disjoint scales & attributes
   lodis <- structure(list(), class = "muscldf", rit_min = rit_min,
-                     fullscl_val = fullscl_val, df = match.call()$df,
+                     sclvals = sclvals, df = match.call()$df,
                      colnames = !is.null(colnames))
 
 # build scales ------------------------------------------------------------
@@ -47,7 +50,7 @@ disunito <- function(df, rit_min = .3, fullscl_val = NULL, ...) {
       if (corsign >= 0) {
         lodis[[uni_len]] <- cbind(lodis[[uni_len]], df[fstmaxp])
         }else{
-          var_rev <- (fullscl_val + 1) - df[fstmaxp]
+          var_rev <- rvrs_var(var = df[fstmaxp], sclvals)
           lodis[[uni_len]] <- cbind(lodis[[uni_len]], var_rev)
           }
       df <- df[-fstmaxp]
