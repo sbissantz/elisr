@@ -25,6 +25,7 @@ ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
   stopifnot(attr(muscldf, "colnames"))
 
 # functions ---------------------------------------------------------------
+
   scl_ovlp <- function(ovls, wfls) {
     while (ncol(wfls) >= 1) {
       cormat <- cor(rowSums(ovls), wfls, ...)
@@ -55,16 +56,16 @@ ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 
 # options -----------------------------------------------------------------
 
-  if (overlap_with == "full_scale") {
+    if (overlap_with == "full_scale") {
     ovls <- lapply(scl_nms, function(scl_nms) df[, scl_nms])
     nme_scl <- function(scl_nms) df[, -which(names(df) %in% scl_nms)]
     wfls <- lapply(scl_nms, nme_scl)
     }
-  if (overlap_with == "core") {
+    if (overlap_with == "core") {
     (ovls <- lapply(nuc_nms, function(nuc_nms) df[, nuc_nms]))
     nme_nuc <- function(nuc_nms) df[, -which(names(df) %in% nuc_nms)]
     (wfls <- lapply(nuc_nms, nme_nuc))
-  }
+ }
 
 # lovls -------------------------------------------------------------------
 
