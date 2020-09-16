@@ -1,10 +1,10 @@
 # TODO Ordering of Arguments
 
 # Constructor -------------------------------------------------------------
-# new_muscldf(method = "disjoint", df = mtcars)
 
 new_muscldf <- function(x = list(), df = quote(), method = "disjoint",
-                        rit_min = double(), negative_too = FALSE, sclvals = NULL) {
+                        rit_min = double(), negative_too = FALSE,
+                        sclvals = NULL) {
   stopifnot(exprs = {
     is.list(x)
     is.data.frame(df)
@@ -18,13 +18,3 @@ new_muscldf <- function(x = list(), df = quote(), method = "disjoint",
   structure(x, class = "muscldf", method = method, rit_min = rit_min,
             negative_too = negative_too, sclvals = sclvals, df = df)
 }
-
-
-
-
-
-
-
-
-
-
