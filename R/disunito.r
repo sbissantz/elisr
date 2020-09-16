@@ -13,6 +13,7 @@ disunito <- function(df, rit_min = .3, sclvals = NULL, ...) {
 
   if (isFALSE(is.data.frame(df)))
     stop("'df' is not a data frame. Please use one.", call. = FALSE)
+  # TODO: Keep that as a colnames check in the function not in the constructor!
   if (is.null(names(df)))
     stop("No colnames found. Please specify them.", call. = FALSE)
   if (is.null(sclvals))
@@ -23,10 +24,12 @@ disunito <- function(df, rit_min = .3, sclvals = NULL, ...) {
 
 # object class ------------------------------------------------------------
 
-  # list of disjoint scales & attributes
-  lodis <- structure(list(), class = "muscldf", rit_min = rit_min,
-                     sclvals = sclvals, df = match.call()$df,
-                     colnames = !is.null(colnames))
+ # # list of disjoint scales & attributes
+ # lodis <- structure(list(), class = "muscldf", rit_min = rit_min,
+ #                    sclvals = sclvals, df = match.call()$df,
+ #                    colnames = !is.null(colnames))
+
+ lodis <- list()
 
 # build scales ------------------------------------------------------------
 
