@@ -1,4 +1,4 @@
-
+# TODO: FUN has Name is from utils
 # Disjoint Scaling Process Using Positive Items ---------------------------
 
 # disupi takes a data.frame and a lower bound in form of a rit_min value and
@@ -6,25 +6,21 @@
 # na.action(), Hint: One could also set the 'method' argument from cor() but
 # this is not tested yet.
 
+# TODO: Names
+# shouldnt be NA
+# should be non-Null
+# should be unique
+
 disupi <- function(df, rit_min = .3, ...) {
 
 # helpful feedback --------------------------------------------------------
 
-#  if(isFALSE(requireNamespace("stats", quietly = TRUE)))
-#    stop("The 'stats' is required. Please install and load it.", call. = FALSE)
-  if (isFALSE(is.data.frame(df)))
-    stop("'df' is not a data frame. Please use one.", call. = FALSE)
-  if (is.null(names(df)))
-    stop("No colnames found. Please specify them.", call. = FALSE)
+  stopifnot(is.data.frame(df))
+  df_nms <- names(df)
+  if (anyNA(df_nms))
+    stop("`NA` is not a valid name for a column.", call. = FALSE)
 
-# lodis & attrbitues ------------------------------------------------------
-
-  # List of disjoint scales with attributes
-  lodis <- structure(list(), class = "muscldf", rit_min = rit_min,
-                     sclvals = FALSE, df = match.call()$df,
-                     colnames = !is.null(colnames))
-
-# scaling procedure -------------------------------------------------------
+  lodis <- list()
 
   while (ncol(df) >= 2) {
     (uni_len <- length(lodis))
