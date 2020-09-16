@@ -8,7 +8,9 @@
 # TODO: Allow to round()
 # TODO: Expand explore() to explore all scales in a muscldf at the same time
 # -- aim is to forbid only dfs to be read in
-
+# TODO:
+#  if (isFALSE(inherits(msdf, "muscldf")))
+#    stop("'muscldf' must (literally) be a muscldf.", call. = FALSE)
 explore <- function(scldf) {
 
   stopifnot(inherits(scldf))
