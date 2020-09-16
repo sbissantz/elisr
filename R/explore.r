@@ -6,8 +6,12 @@
 # correlation between items at each stage of the development process.
 # TODO: object description 'scldf'
 # TODO: Allow to round()
+# TODO: Expand explore() to explore all scales in a muscldf at the same time
+# -- aim is to forbid only dfs to be read in
 
 explore <- function(scldf) {
+
+  stopifnot(inherits(scldf))
 
 # Exploring procedure -----------------------------------------------------
 
