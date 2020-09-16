@@ -21,7 +21,8 @@ disupi <- function(df, rit_min = .3, ...) {
 
   # List of disjoint scales with attributes
   lodis <- structure(list(), class = "muscldf", rit_min = rit_min,
-                     df = match.call()$df, colnames = !is.null(colnames))
+                     sclvals = FALSE, df = match.call()$df,
+                     colnames = !is.null(colnames))
 
 # scaling procedure -------------------------------------------------------
 
