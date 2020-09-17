@@ -4,8 +4,8 @@ suits <- function(df) {
              #errmsg <- conditionMessage(e)
              errmsg <- "Scaling not possible"
              stop(errmsg, call. = FALSE)
-             }
-  )
+           }
+           )
   }
 
 
