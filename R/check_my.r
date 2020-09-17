@@ -1,7 +1,6 @@
-
-# Suit --------------------------------------------------------------------
-
 # TODO Use "!"for not, is FALSE for conditions
+# TODO Check if there is a linear relationship between the variables?
+# TODO WARNING should be errors?
 
 check_my <- function(x){
   if(!is.data.frame(x)){
@@ -41,5 +40,5 @@ check_my <- function(x){
       message("`x` has no `NA` names.")
     }
   }
-  message("Scaling is possible. Wanings? If so, investigate in wanrnings", "\n")
+  message("Ready to go!")
 }
