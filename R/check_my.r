@@ -22,7 +22,4 @@ check_my <- function(x){
       warning ("`x` has `NA` names.", call. = FALSE)
     }
   }
-  df_nme <- match.call()$x
-  msg <- paste0("`" , df_nme, "`", " fits the bill. Ready to scale! ")
-  message(msg)
 }
