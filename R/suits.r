@@ -16,6 +16,9 @@ suits <- function(df) {
            }
         )
   invisible(structure(df, checks = TRUE))
+  df_nme <- match.call()$df
+  msg <- paste0("`" , df_nme, "`", " fits the bill. Ready to scale! ")
+  message(msg)
   }
 
 #
