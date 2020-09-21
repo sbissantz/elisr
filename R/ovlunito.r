@@ -11,8 +11,6 @@
 
 ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 
-# checks ------------------------------------------------------------------
-
   if (isFALSE(inherits(muscldf, "muscldf")))
     stop("This is not a muscldf. Please build one.", call. = FALSE)
   if (is.null(overlap_with))
@@ -70,10 +68,9 @@ ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 # lovls -------------------------------------------------------------------
 
   # List of overlapping scales
-  lovls <- Map(scl_ovlp, ovls, wfls)
+  # lovls <- Map(scl_ovlp, ovls, wfls)
+  Map(scl_ovlp, ovls, wfls)
 
 # attributes --------------------------------------------------------------
 
-  structure(lovls, class = "muscldf", scl_method = "overlap",
-            rit_min = rit_min, df = match.call()$df)
 }
