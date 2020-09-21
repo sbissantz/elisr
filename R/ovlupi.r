@@ -62,12 +62,6 @@ ovlupi <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
               call. = FALSE)
          )
 
-# lovls -------------------------------------------------------------------
-
-  # List of overlapping scales
-  # lovls <- Map(scl_ovlp, ovls, wfls)
   Map(scl_ovlp, ovls, wfls)
-
-# attributes --------------------------------------------------------------
 
 }
