@@ -9,7 +9,8 @@
 # Ellipsis is set  to allow for any na.action(), Hint: One could also set the
 # 'method' argument from cor() but this is not tested yet.
 
-ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
+ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL,
+                     sclvals = NULL, ...) {
 
   if (isFALSE(inherits(muscldf, "muscldf")))
     stop("This is not a muscldf. Please build one.", call. = FALSE)
@@ -19,12 +20,13 @@ ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 #    stop("No full scale value found. Please specify one.", call. = FALSE)
 # TODO: if overlap with is different from core, full_scale, error
 # units <- match.arg(units, c("secs", "mins", "hours", "days", "weeks"))
+  # stopifnot(attr(muscldf, "colnames"))
 
-  stopifnot(attr(muscldf, "colnames"))
+# TODO, check if everywhere is "..."
 
 # functions ---------------------------------------------------------------
 
-  scl_ovlp <- function(ovls, wfls) {
+  scl_ovlp <- function(ovls, wfls, ...) {
     while (ncol(wfls) >= 1) {
       cormat <- cor(rowSums(ovls), wfls, ...)
       maxcor <- max(abs(cormat[cormat < 1]))
@@ -40,7 +42,9 @@ ovlunito <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
       wfls <- wfls[-fstmaxp]
       }
     return(ovls)
-    }
+  }
+
+    #TODO if someone hasnt disunito() before he hasn't specified a sclvals
 
 # pre-defined values -----------------------------------------------------
 
