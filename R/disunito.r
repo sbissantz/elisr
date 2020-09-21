@@ -8,9 +8,6 @@
 # tested yet.
 
 disunito <- function(df, rit_min = .3, sclvals = NULL, ...) {
-
-  if (is.null(sclvals))
-    stop("No vector of 'sclvals' found. Please specify one.", call. = FALSE)
  lodis <- list()
   while (ncol(df) >= 2) {
     uni_len <- length(lodis)
