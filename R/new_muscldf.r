@@ -1,4 +1,5 @@
 # TODO Ordering of Arguments
+# TODO overlapping method either `cores` or `full_scl`. Use match.arg()
 
 # Constructor -------------------------------------------------------------
 
