@@ -1,7 +1,16 @@
-# TODO Use "!"for not, is FALSE for conditions
-# TODO Check if there is a linear relationship between the variables?
-# TODO WARNING should be errors?
-# use hasName
+# TODO use hasName?
+# shouldnt be NA
+# should be non-Null
+# should be unique
+# TODO: FUN has name is from utils
+#stopifnot(all(hasName(df, names(df))))
+
+
+  #if (is.null(sclvals))
+  #  stop("No 'sclvals' found. Please specify one.", call. = FALSE)
+  # if (sclvals <= 0)
+  #  stop("disunito() can only deal with 'values > 0'. Please recode the scale",
+  #       call. = FALSE)
 
 check_my <- function(x){
   if(!is.data.frame(x))
@@ -22,4 +31,5 @@ check_my <- function(x){
       warning ("`x` has `NA` names.", call. = FALSE)
     }
   }
+  x
 }
