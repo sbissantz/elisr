@@ -36,6 +36,18 @@ ovlupi <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
     return(ovls)
   }
 
+#  ovlp_once <- function(df, rvrs_df) {
+#    while (ncol(rvrs_df) >= 1) {
+#      cormat <- cor(rowSums(df), rvrs_df, ...)
+#      maxcor <- max(cormat[cormat < 1])
+#      if (maxcor < rit_min) break
+#      fstmaxp <- which(cormat == maxcor)
+#      df <- cbind(df, rvrs_df[fstmaxp])
+#      rvrs_df <- rvrs_df[-fstmaxp]
+#      }
+#    return(df)
+#  }
+
 # pre-defined values -----------------------------------------------------
 
   df <- eval(attr(muscldf, "df"))
@@ -61,7 +73,5 @@ ovlupi <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
          stop("Unknown overlapping method. Use either `core` or `full_scale`",
               call. = FALSE)
          )
-
   Map(scl_ovlp, ovls, wfls)
-
 }
