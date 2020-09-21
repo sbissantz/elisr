@@ -15,12 +15,12 @@ ovlupi <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 
   if (isFALSE(inherits(muscldf, "muscldf")))
     stop("This is not a muscldf. Please build on", call. = FALSE)
-  if (isFALSE(attr(muscldf, "colnames")))
-    stop("Colnames seemd to be lost. Please search for them.", call. = FALSE)
   if (is.null(overlap_with))
     stop("No method to 'overlap_with'. Please specify one.", call. = FALSE)
   # TODO: if overlap with is different from core, full_scale, error
   #units <- match.arg(units, c("secs", "mins", "hours", "days", "weeks"))
+  #if (isFALSE(attr(muscldf, "colnames")))
+  #  stop("Colnames seemd to be lost. Please search for them.", call. = FALSE)
 
 # functions ---------------------------------------------------------------
 
@@ -47,16 +47,20 @@ ovlupi <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 
 # options -----------------------------------------------------------------
 
-  if (overlap_with == "full_scale") {
-    ovls <- lapply(scl_nms, function(scl_nms) df[, scl_nms])
-    nme_scl <- function(scl_nms) df[, -which(names(df) %in% scl_nms)]
-    wfls <- lapply(scl_nms, nme_scl)
-    }
-  if (overlap_with == "core") {
-    ovls <- lapply(nuc_nms, function(nuc_nms) df[, nuc_nms])
-    nme_nuc <- function(nuc_nms) df[, -which(names(df) %in% nuc_nms)]
-    wfls <- lapply(nuc_nms, nme_nuc)
-  }
+  switch(overlap_with,
+         full_scale = {
+          ovls <- lapply(scl_nms, function(scl_nms) df[, scl_nms])
+          nme_scl <- function(scl_nms) df[, -which(names(df) %in% scl_nms)]
+          wfls <- lapply(scl_nms, nme_scl)
+         },
+         core = {
+          ovls <- lapply(nuc_nms, function(nuc_nms) df[, nuc_nms])
+          nme_nuc <- function(nuc_nms) df[, -which(names(df) %in% nuc_nms)]
+          wfls <- lapply(nuc_nms, nme_nuc)
+         },
+         stop("Unknown overlapping method. Use either `core` or `full_scale`",
+              call. = FALSE)
+         )
 
 # lovls -------------------------------------------------------------------
 
