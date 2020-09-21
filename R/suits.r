@@ -1,4 +1,7 @@
-suits <- function(df) {
+suits <- function(df, reuse = TRUE) {
+  reuse_logi <- is.logical(reuse)
+  if(isFALSE(reuse_logi))
+    stop("`reuse` must be logical (i.e., either TRUE or FALSE)", call. = FALSE)
   tryCatch(check_my(df),
            error = function(e) {
              cmsg <- conditionMessage(e)
@@ -15,12 +18,15 @@ suits <- function(df) {
               warning(wrnmsg, call. = FALSE)
            }
         )
-  invisible(structure(df, checks = TRUE))
   df_nme <- match.call()$df
   msg <- paste0("`" , df_nme, "`", " fits the bill. Ready to scale! ")
   message(msg)
-  }
 
+  if(reuse){
+    df_str <- structure(df, pre_checked = TRUE)
+    invisible(df_str)
+  }
+}
 #
 # Attaches an Attr  "checks = TRUE" and messages if data.frame is not checked?
 #
