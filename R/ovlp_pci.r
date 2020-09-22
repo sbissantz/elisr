@@ -1,4 +1,6 @@
-
+# TODO muscldf -> muscls
+# TODO check `...`
+# TODO check that all "''" are "``"
 # Overlapping Scaling Process Using Positive Items ------------------------
 
 # ovlupi takes a multiple sclaed data.frame and a lower bound in form of a
@@ -28,7 +30,7 @@ ovlp_pci <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
     rit_min <- attr(muscldf, "rit_min")
   }
   scl_nms <- lapply(muscldf, names)
-  nuc_nms <- lapply(scl_nms, function(scl_nms) scl_nms[c(1, 2)])
+  core_nms <- lapply(scl_nms, function(scl_nms) scl_nms[c(1, 2)])
 
 # options -----------------------------------------------------------------
 
@@ -38,8 +40,8 @@ ovlp_pci <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
           ebscls <- Map(extreb_itms, muscldf, scl_nms)
          },
          core = {
-          scls <- Map(extr_itms, muscldf, nuc_nms)
-          ebscls <- Map(extreb_itms, muscldf, nuc_nms)
+          scls <- Map(extr_itms, muscldf, core_nms)
+          ebscls <- Map(extreb_itms, muscldf, core_nms)
          },
          stop("Unknown overlapping method. Use either `core` or `full_scale`",
               call. = FALSE)
