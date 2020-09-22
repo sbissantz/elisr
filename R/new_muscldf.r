@@ -1,5 +1,8 @@
 # TODO Ordering of Arguments
 # TODO overlapping method either `cores` or `full_scl`. Use match.arg()
+# TODO muscldf -> muscls
+# TODO check `...`
+# TODO check that all "''" are "``"
 
 # Constructor -------------------------------------------------------------
 

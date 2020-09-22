@@ -1,5 +1,9 @@
 #
 # TODO: change wfls in utils to scl or whatsoever
+# TODO: remove return() -- only in fun applicapble to users
+# TODO muscldf -> muscls
+# TODO check `...`
+# TODO check that all "''" are "``"
 #
 
 # calc_alpha ---------------------------------------------------------------

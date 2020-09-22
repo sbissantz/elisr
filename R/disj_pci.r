@@ -1,3 +1,6 @@
+# TODO muscldf -> muscls
+# TODO check `...`
+# TODO check that all "''" are "``"
 
 # Disjoint Scaling Process Using Positive Items ---------------------------
 
