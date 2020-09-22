@@ -1,4 +1,6 @@
-
+# TODO muscldf -> muscls
+# TODO check `...`
+# TODO check that all "''" are "``"
 # One Overlap -- Positive Correlating Items -------------------------------
 
 one_ovlp_pci <- function(scl, ebscl, rit_min, ...) {
@@ -10,7 +12,7 @@ one_ovlp_pci <- function(scl, ebscl, rit_min, ...) {
      scl <- cbind(scl, ebscl[fstmaxp])
      ebscl <- ebscl[-fstmaxp]
      }
-   return(scl)
+   scl
  }
 
  #one_ovlp_pci <- function(ovls, wfls, rit_min, ...) {
