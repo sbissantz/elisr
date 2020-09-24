@@ -2,16 +2,16 @@
 # Reverse Variables -------------------------------------------------------
 # TODO: Ugly error mssage source out or do something with it
 # TODO: Called every time! Could I predetermine the value and
-# ... and then use this method all the time?
+# ... and then use this method all the time? TIME PENALTY?
 # rvrs_var() takes the specified scale values (min & max), and a variable to
 # reverse -- i.e. which is negatively correlating with any other item.
 
 rvrs_var <- function(var, sclvals) {
-  if(isFALSE(length(sclvals) == 2))
-    stop("'sclvals' only takes 2 values (min & max)", call. = FALSE)
-  if(sclvals[1] > sclvals[2])
-    stop("'scalevals' min shouldn't be greater than its max",
-         call. = FALSE)
+#  if(isFALSE(length(sclvals) == 2))
+#    stop("'sclvals' takes a Vector of 2 values (min & max)", call. = FALSE)
+#  if(sclvals[1] > sclvals[2])
+#    stop("'scalevals' min shouldn't be greater than its max",
+#         call. = FALSE)
     # ... -3 -2 -1 0 1 2 3 ...
     if(sclvals[1] < 0) {
       var_rev <- var * -1
