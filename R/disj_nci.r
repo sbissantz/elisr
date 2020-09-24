@@ -37,5 +37,5 @@ disj_nci <- function(df, rit_min = .3, sclvals = NULL, ...) {
       df <- df[-fstmaxp]
     }
   }
-  return(lodis)
+  lodis
 }
