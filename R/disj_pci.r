@@ -1,15 +1,11 @@
-# TODO muscldf -> muscls
-# TODO check `...`
-# TODO check that all "''" are "``"
 
 # Disjoint Scaling Process Using Positive Items ---------------------------
-
-# disupi takes a data.frame and a lower bound in form of a rit_min value and
-# generates a (list of) multiple scaled data.frame(s). Ellipsis is set for any
-# na.action(), Hint: One could also set the 'method' argument from cor() but
-# this is not tested yet.
+# TODO check_df here or somewhere else?
+# TODO check `...`
 
 disj_pci <- function(df, rit_min = .3, ...) {
+  check_df(df)
+  check_rit(rit_min)
   scls <- list()
   while (ncol(df) >= 2) {
     scls_len <- length(scls)
@@ -30,5 +26,5 @@ disj_pci <- function(df, rit_min = .3, ...) {
       df <- df[-fstmaxp]
       }
     }
-  return(scls)
+  scls
 }
