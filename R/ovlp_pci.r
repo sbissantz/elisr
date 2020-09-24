@@ -17,8 +17,9 @@ ovlp_pci <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 
   if (isFALSE(inherits(muscldf, "muscldf")))
     stop("This is not a muscldf. Please build on", call. = FALSE)
+
   if (is.null(overlap_with))
-    stop("No method to 'overlap_with'. Please specify one.", call. = FALSE)
+    stop("No method to `overlap_with`. Please specify one.", call. = FALSE)
   #units <- match.arg(units, c("secs", "mins", "hours", "days", "weeks"))
   #if (isFALSE(attr(muscldf, "colnames")))
   #  stop("Colnames seemd to be lost. Please search for them.", call. = FALSE)
@@ -29,6 +30,7 @@ ovlp_pci <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
   if (is.null(rit_min)) {
     rit_min <- attr(muscldf, "rit_min")
   }
+  check_rit(rit_min)
   scl_nms <- lapply(muscldf, names)
   core_nms <- lapply(scl_nms, function(scl_nms) scl_nms[c(1, 2)])
 
@@ -36,12 +38,12 @@ ovlp_pci <- function(muscldf, rit_min = NULL, overlap_with = NULL, ...) {
 
   switch(overlap_with,
          full_scale = {
-          scls <- Map(extr_itms, muscldf, scl_nms)
-          ebscls <- Map(extreb_itms, muscldf, scl_nms)
+           scls <- lapply(scl_nms, extr_itms, df = df)
+           ebscls <- lapply(scl_nms, extreb_itms, df = df)
          },
          core = {
-          scls <- Map(extr_itms, muscldf, core_nms)
-          ebscls <- Map(extreb_itms, muscldf, core_nms)
+           scls <- lapply(core_nms, extr_itms, df = df)
+           ebscls <- lapply(core_nms, extreb_itms, df = df)
          },
          stop("Unknown overlapping method. Use either `core` or `full_scale`",
               call. = FALSE)
