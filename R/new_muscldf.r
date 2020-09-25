@@ -4,6 +4,7 @@
 # TODO check `...`
 # TODO check that all "''" are "``"
 
+# TODO overlap_with not as Attrb?
 # Constructor -------------------------------------------------------------
 
 new_muscldf <- function(x = list(), method = "disjoint", rit_min = NULL,
