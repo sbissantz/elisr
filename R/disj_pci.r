@@ -1,11 +1,9 @@
 
 # Disjoint Scaling Process Using Positive Items ---------------------------
-# TODO check_df here or somewhere else?
+
 # TODO check `...`
 
 disj_pci <- function(df, rit_min = .3, ...) {
-  check_df(df)
-  check_rit(rit_min)
   scls <- list()
   while (ncol(df) >= 2) {
     scls_len <- length(scls)
