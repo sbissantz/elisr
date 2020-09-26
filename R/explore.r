@@ -3,6 +3,9 @@
 
 # TODO: object description 'scl'
 # TODO: ...
+# TODO COLNAMES
+# Idea: build a vector of scalenames using nme_muscldf and Map or mapply() over
+# it using. Should be an elegant way to assig colnames
 
 explore <- function(muscldf) {
   check_muscldf(muscldf)
@@ -30,3 +33,5 @@ explore <- function(muscldf) {
     }
   lapply(muscldf,explr_once)
 }
+
+
