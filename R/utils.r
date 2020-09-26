@@ -2,23 +2,33 @@
 # TODO: remove return() -- only in fun applicapble to users
 # TODO muscldf -> muscls
 
+# -------------------------------------------------------------------------
+# TODO NAME a muscldf?
+# Integrate into disjoint(), overlap(), explore()
+
+nme_muscldf <- function(x) {
+  scls_len <- length(scls)
+  scls <- muscldf
+  paste0("Scale ", seq(scls_len))
+}
+
 # Calculate Average Correlation -------------------------------------------
 
-  calc_rbar <- function(wfls) {
-    cormat <- cor(wfls)
+  calc_rbar <- function(scl) {
+    cormat <- cor(scl)
     # Calculate: rbar | lower trimat : diag is set FALSE
-    return(mean(cormat[lower.tri(cormat)]))
+    mean(cormat[lower.tri(cormat)])
   }
 
 # Calculate Cronbachs Alpha -----------------------------------------------
 
 # calculate Cronbach's Alpha | given: wfls.
 
-  calc_alpha <- function(wfls) {
-    cormat <- cor(wfls)
+  calc_alpha <- function(scl) {
+    cormat <- cor(scl)
     #lower trimat : diag is set FALSE
     rbar <- mean(cormat[lower.tri(cormat)])
-    m <- length(wfls)
+    m <- length(scl)
     (m * rbar) / (1 + rbar * (m - 1))
   }
 
@@ -26,92 +36,12 @@
 
 # calculates r_it | given: wfls
 
-  calc_rit <- function(wfls) {
-    wf_len <- length(wfls)
-    core <- rowSums(wfls[-wf_len])
-    addtnl <- wfls[wf_len]
-    return(cor(core, addtnl))
+  calc_rit <- function(scl) {
+    scl_len <- length(scl)
+    core <- rowSums(scl[-scl_len])
+    addtnl <- scl[scl_len]
+    cor(core, addtnl)
   }
-
-# Check Data Frame --------------------------------------------------------
-# TODO Integrate a possibility to return df only in suits
-
-check_df <- function(df){
-  if(!is.data.frame(df))
-    stop("`df` is not a data.frame.", call. = FALSE)
-  df_len <- length(df)
-  if(df_len < 2){
-    stop("`df` has less than 2 variables.")
-    }
-  df_nms <- names(df)
-  df_unms <- unique(df_nms)
-  if(is.null(names)){
-    stop("`df` has no (col)names.", call. = FALSE)
-  }else{
-    if(!identical(df_nms, df_unms)) {
-    warning ("`df` names are not unique.", call. = FALSE)
-    }
-    if(anyNA(df_nms)){
-      warning ("`df` has `NA` names.", call. = FALSE)
-    }
-  }
-}
-
-# Check Scaling Values ----------------------------------------------------
-# TODO Name sclvals to scl_ends, scl_ep's, sclrng
-
-# Hint: Since stop() holds execution, no need for if...else... Just make sure
-# the order is okay and that the call to the fun is after sclvals are checked
-
-check_sclvals <- function(sclvals){
-  if(is.null(sclvals))
-    stop("No `sclvals` found. Specify a vector of the form `c(min,max)`",
-         call. = FALSE)
-  if (!is.vector(sclvals))
-    stop("`sclvals` must be a vector of the form `c(min,max)`.",
-         call. = FALSE)
-  sclvals_len <- length(sclvals)
-  if (isFALSE(sclvals_len == 2))
-    stop("'sclvals' takes 2 values a `min` and a `max`, e.g., `c(min, max)`.",
-           call. = FALSE)
-  if(sclvals[1] > sclvals[2])
-    stop("`sclvals` min is is greater than its max. Consider `c(min, max)`.",
-           call. = FALSE)
-}
-
-# Check lower bound -------------------------------------------------------
-
-# Hint: Since stop() holds execution, no need for if...else... Just make sure
-# the order is okay and that the call to the fun is after sclvals are checked
-
-check_rit <- function(rit){
-  if(is.null(rit))
-    stop("No `rit_min` found. Specify a value between `0` and `1`",
-         call. = FALSE)
-  if (1 < rit || rit < 0)
-    stop("`rit_min` must be a positive correlation between `0` and `1`.",
-         call. = FALSE)
-  rit_len <- length(rit)
-  if (rit_len != 1)
-    stop("`rit_min` must be a single value between `0` and `1`.",
-         call. = FALSE)
-}
-
-# Check Overlapping Method ------------------------------------------------
-
-check_ovlp <- function(ovlp) {
-  switch(ovlp,
-
-
-
-
-         )
-
-
-}
-
-
-
 
 # Extract Items -----------------------------------------------------------
 
@@ -130,6 +60,7 @@ extreb_itms <- function(df, itm_nms) {
 }
 
 # Reverse Variables -------------------------------------------------------
+
 # TODO: Called every time! Could I predetermine the value and
 # ... and then use this method all the time? TIME PENALTY?
 # TODO: Check correctness of sclvals befor reversing
@@ -149,5 +80,3 @@ rvrs_var <- function(var, sclvals) {
     }
   var_rev
 }
-
-
