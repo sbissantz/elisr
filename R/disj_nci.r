@@ -1,13 +1,9 @@
+
+# Disjoint Scaling Using Negative Items Too -------------------------------
+
 # TODO muscldf -> muscls
 # TODO check `...`
 # TODO check that all "''" are "``"
-# Disjoint Scaling Using Negative Items Too -------------------------------
-
-# disunito takes a data.frame and a lower bound in form of a rit_min value as
-# well as a 'fullscale value' to allow to reverse the items. It gives back a
-# a (list of) multiple scaled data.frame(s). Ellipsis is set for any na.action()
-# Hint: One could also set the 'method' argument from cor() but this is not
-# tested yet.
 
 disj_nci <- function(df, rit_min = .3, sclvals = NULL, ...) {
  lodis <- list()
