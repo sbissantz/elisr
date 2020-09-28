@@ -75,4 +75,3 @@ check_neg <- function(x) {
   if (isFALSE(is.logical(x) && !is.na(x) && x_len == 1))
     stop("`negative_too` is not a logical vector of length 1.", call. = FALSE)
 }
-
