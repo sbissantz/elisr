@@ -7,9 +7,8 @@
 # Integrate into disjoint(), overlap(), explore()
 
 nme_muscldf <- function(x) {
-  scls_len <- length(scls)
-  scls <- muscldf
-  paste0("Scale ", seq(scls_len))
+  x_len <- length(x)
+  paste0("scl_", seq(x_len))
 }
 
 # Calculate Average Correlation -------------------------------------------
