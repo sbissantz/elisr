@@ -1,8 +1,6 @@
 # -------------------------------------------------------------------------
 
 # TODO check `...`
-# TODO muscldf -> muscls
-# TODO mak overlap_with -> method, olap_method
 # TODO negative_too -> change
 
 overlap <- function(muscldf, rit_min = .3, negative_too = FALSE,
