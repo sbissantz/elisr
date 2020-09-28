@@ -16,7 +16,7 @@ disj_pci <- function(df, rit_min = .3, ...) {
     df <- df[-fstmaxp]
     while (ncol(df) >= 1) {
       scls_len <- length(scls)
-      cormat <- cor(rowSums(scls[[scls_len]]), df)
+      cormat <- cor(rowSums(scls[[scls_len]]), df, ...)
       maxcor <- max(cormat[cormat < 1])
       if (maxcor < rit_min) break
       fstmaxp <- which(cormat == maxcor)
