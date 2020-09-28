@@ -1,11 +1,5 @@
 
-# Explore a Muscldf -------------------------------------------------------
-
-# TODO: object description 'scl'
-# TODO: ...
-# TODO COLNAMES
-# Idea: build a vector of scalenames using nme_muscldf and Map or mapply() over
-# it using. Should be an elegant way to assig colnames
+# Explore A Multiple Scaled Data Frame ------------------------------------
 
 explore <- function(muscldf) {
   check_muscldf(muscldf)
@@ -30,8 +24,8 @@ explore <- function(muscldf) {
     alpha <- lapply(wfls, calc_alpha)
     rbar <- lapply(wfls, calc_rbar)
     cbind(var_nms, rit, rbar, alpha)
-    }
-  lapply(muscldf,explr_once)
+  }
+  scls_nms <- nme_muscldf(muscldf)
+  scls <- lapply(muscldf, explr_once)
+  structure(scls, names = scls_nms)
 }
-
-
