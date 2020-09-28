@@ -3,7 +3,7 @@
 # TODO check that all "''" are "``"
 # One Overlap -- Negative Correlating Items -------------------------------
 
-one_ovlp_nci <- function(scl, ebscl, rit_min, ...) {
+one_ovlp_nci <- function(scl, ebscl, rit_min, sclvals, ...) {
   while (ncol(ebscl) >= 1) {
     cormat <- cor(rowSums(scl), ebscl, ...)
     maxcor <- max(abs(cormat[cormat < 1]))
