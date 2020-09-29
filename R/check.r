@@ -47,10 +47,6 @@ compare_sclvals <- function(x, x_attr){
 
 # Check lower bound -------------------------------------------------------
 
-#  if (is.null(x)){
-#    x <- attr(x, "rit_min")
-#  }
-
 check_rit <- function(x){
   x_len <- length(x)
   if (isFALSE(is.double(x) && x_len == 1))
