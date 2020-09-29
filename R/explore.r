@@ -3,8 +3,6 @@
 
 explore <- function(muscldf) {
   check_muscldf(muscldf)
-  # op <- options(digits = 2)
-  # on.exit(options(op))
   explr_once <- function(scl) {
    scl_len <- length(scl)
     # Trick: retraces the sequential "emergence" of scldf
