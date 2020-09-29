@@ -1,19 +1,17 @@
 
 # Multiple Scaling In An Overlapping Manner -------------------------------
 
-overlap <- function(muscldf, rit_min = .5, negative_too = FALSE,
+overlap <- function(muscldf, rit_min = NULL, negative_too = FALSE,
                     overlap_with = "full_scale", sclvals = NULL,
                     use = "pairwise.complete.obs") {
 
 # Checks ------------------------------------------------------------------
 
-# TODO Implement a check that the sclval attribute and the input are identical
-# Only a match if sclvals are equal?
-# IF an attribute is set, THEN check, if the attribute is equal to the input.
-#
-
   check_neg(negative_too)
   check_muscldf(muscldf)
+  if(is.null(rit_min)){
+    rit_min <- attr(muscldf, "rit_min")
+    }
   check_rit(rit_min)
   check_ovlp(overlap_with)
 

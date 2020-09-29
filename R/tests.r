@@ -3,3 +3,26 @@
 #
 # attr(muscldf, "sclvals")
 #
+
+#
+# Scenario:
+# Someone scales disjointly, so he doesnt have to specify `sclvals`. Then (s)he
+# decides to do an overlap using negative items too, so (s)he does have to specify
+#
+
+#if(is.null(sclvals)){
+#   sclvals <- attr(muscldf, "sclvals")
+#}
+
+#set_sclvals_from(muscldf){
+#  if(is.null(sclvals))
+#  sclvals_attr <- attr(muscldf, "sclvals")
+#}
+#
+
+
+
+
+
+
+
