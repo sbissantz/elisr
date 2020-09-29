@@ -1,13 +1,20 @@
 Package: musclr
 Type: Package
 Title: Multiple Scaling According to the Principle of Crystallization
-Version: 0.1.0
-Author: Steven, Marcel Bißantz 
-Maintainer: Steven, Marcel Bißantz <steven.bissantz@gmail.com>
-Description: More about what it does (maybe more than one line)
+Version: 0.0.0.9000
+Authors@R:c( 
+    person("Steven", "Bißantz", email = "steven.bissantz@gmail.com",
+    role = c("aut", "cre")),
+    person("Thomas", "Müller-Schneider", email = "tms@uni-landau.de",
+    role = "aut"))
+Description: An alternative approach to exploratory factor analysis.
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+URL: https://github.com/sbissantz/musclr
+BugReports: https://github.com/sbissantz/musclr/issues
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports:
-  stats,
+Depends: 
+    R (>= 4.0.2)
+Imports: 
+    stats
