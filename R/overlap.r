@@ -9,7 +9,7 @@ overlap <- function(muscldf, rit_min = NULL, negative_too = FALSE,
 
   check_neg(negative_too)
   check_muscldf(muscldf)
-  if(is.null(rit_min)){
+  if (is.null(rit_min)) {
     rit_min <- attr(muscldf, "rit_min")
     }
   check_rit(rit_min)
@@ -17,10 +17,10 @@ overlap <- function(muscldf, rit_min = NULL, negative_too = FALSE,
 
 # Procedure & Options -----------------------------------------------------
 
-  if(negative_too){
+  if (negative_too) {
     sclvals_attr <- attr(muscldf, "sclvals")
     compare_sclvals(sclvals, sclvals_attr)
-    if(is.null(sclvals)){
+    if (is.null(sclvals)) {
       sclvals <- sclvals_attr
     }
     check_sclvals(sclvals)
