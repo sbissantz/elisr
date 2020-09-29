@@ -45,6 +45,5 @@ switch(overlap_with,
        stop("Unknown overlapping method. Use either `core` or `full_scale`",
             call. = FALSE)
        )
-# Map(one_ovlp_nci, scls, ebscls, rit_min)
 Map(one_ovlp_nci, scls, ebscls, MoreArgs = list(rit_min, sclvals, use))
 }
