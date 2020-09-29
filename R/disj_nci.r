@@ -1,37 +1,33 @@
 
 # Disjoint Scaling Using Negative Items Too -------------------------------
 
-# TODO muscldf -> muscls
-# TODO check `...`
-# TODO check that all "''" are "``"
-
-disj_nci <- function(df, rit_min = .3, sclvals = NULL, ...) {
- lodis <- list()
+disj_nci <- function(df, rit_min, sclvals, use) {
+ scls <- list()
   while (ncol(df) >= 2) {
-    uni_len <- length(lodis)
-    # Specify which values to use "complete","pairwise"
-    cormat <- cor(df, ...)
+    scls_len <- length(scls)
+    # use = use: make sure it's an ARG
+    cormat <- cor(df, use = use)
     maxcor <- max(cormat[cormat < 1])
     if (maxcor < rit_min) break
     # Take the first(!) maximum
     fstmaxp <- which(cormat == maxcor, arr.ind = TRUE)[1, ]
-    lodis[[uni_len + 1]] <- df[fstmaxp]
+    scls[[scls_len + 1]] <- df[fstmaxp]
     df <- df[-fstmaxp]
     while (ncol(df) >= 1) {
-      uni_len <- length(lodis)
-      cormat <- cor(rowSums(lodis[[uni_len]]), df, ...)
+      scls_len <- length(scls)
+      cormat <- cor(rowSums(scls[[scls_len]]), df, use = use)
       maxcor <- max(abs(cormat[cormat < 1]))
       if (maxcor < rit_min) break
       fstmaxp <- which(abs(cormat) == maxcor)
       corsign <- sign(cormat[fstmaxp])
       if (corsign >= 0) {
-        lodis[[uni_len]] <- cbind(lodis[[uni_len]], df[fstmaxp])
+        scls[[scls_len]] <- cbind(scls[[scls_len]], df[fstmaxp])
         }else{
           var_rev <- rvrs_var(var = df[fstmaxp], sclvals)
-          lodis[[uni_len]] <- cbind(lodis[[uni_len]], var_rev)
+          scls[[scls_len]] <- cbind(scls[[scls_len]], var_rev)
           }
       df <- df[-fstmaxp]
     }
   }
-  lodis
+  scls
 }
