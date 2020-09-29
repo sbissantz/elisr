@@ -46,8 +46,8 @@ nme_muscldf <- function(x) {
 
 # Subsets a df | given: itm_nms (e.g. from a muscldf)
 
-extr_itms <- function(df, itm_nms){
-  df[,itm_nms]
+extr_itms <- function(df, itm_nms) {
+  df[, itm_nms]
 }
 
 # Extract Everything But Items --------------------------------------------
@@ -66,15 +66,15 @@ extreb_itms <- function(df, itm_nms) {
 
 rvrs_var <- function(var, sclvals) {
     # ... -3 -2 -1 0 1 2 3 ...
-    if(sclvals[1] < 0) {
+    if (sclvals[1] < 0) {
       var_rev <- var * -1
     }
     # 0 1 2 3 4 5 6 ...
-    if(sclvals[1] == 0 && sclvals[2] > 0){
+    if (sclvals[1] == 0 && sclvals[2] > 0) {
       var_rev <- sclvals[2] - var
     }
     # 1 2 3 4 5 6 7
-    if(sclvals[1] == 1 && sclvals[2] > 0){
+    if (sclvals[1] == 1 && sclvals[2] > 0) {
       var_rev <- (sclvals[2] + 1) - var
     }
   var_rev
