@@ -2,7 +2,7 @@ Package: musclr
 Type: Package
 Title: Multiple Scaling According to the Principle of Crystallization
 Version: 0.0.0.9000
-Authors@R:c( 
+Authors@R: c( 
     person("Steven", "Bißantz", email = "steven.bissantz@gmail.com",
     role = c("aut", "cre")),
     person("Thomas", "Müller-Schneider", email = "tms@uni-landau.de",
@@ -18,3 +18,4 @@ Depends:
     R (>= 4.0.2)
 Imports: 
     stats
+RoxygenNote: 7.1.1
