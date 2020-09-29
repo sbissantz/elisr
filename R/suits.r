@@ -1,6 +1,6 @@
 suits <- function(df, reuse = TRUE) {
   reuse_logi <- is.logical(reuse)
-  if(isFALSE(reuse_logi))
+  if (isFALSE(reuse_logi))
     stop("`reuse` must be logical (i.e., either TRUE or FALSE)", call. = FALSE)
   tryCatch(check_df(df),
            error = function(e) {
@@ -10,7 +10,7 @@ suits <- function(df, reuse = TRUE) {
              errmsg <- paste(advice, cmsg, hint)
              stop(errmsg, call. = FALSE)
            },
-           warning = function(w){
+           warning = function(w) {
              cmsg <- conditionMessage(w)
              advice <- "Scaling not recommended \n"
              hint <- "Hint: Investigate in this warning and retry. \n"
@@ -19,10 +19,10 @@ suits <- function(df, reuse = TRUE) {
            }
   )
   df_nme <- match.call()$df
-  msg <- paste0("`" , df_nme, "`", " fits the bill. Ready to scale! ")
+  msg <- paste0("`", df_nme, "`", " fits the bill. Ready to scale! ")
   message(msg)
 
-  if(reuse){
+  if (reuse) {
     df_str <- structure(df, pre_checked = TRUE)
     invisible(df_str)
   }
