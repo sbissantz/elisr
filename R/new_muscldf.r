@@ -1,14 +1,11 @@
-# TODO Ordering of Arguments
-# TODO overlapping method either `cores` or `full_scl`. Use match.arg()
-# TODO muscldf -> muscls
-# TODO check `...`
-# TODO check that all "''" are "``"
 
-# TODO overlap_with not as Attrb?
 # Constructor -------------------------------------------------------------
+# TODO overlap_with not as Attrb?
 
-new_muscldf <- function(x = list(), method = "disjoint", rit_min = NULL,
-                        negative_too = FALSE, sclvals = NULL, df = NULL) {
+new_muscldf <- function(x = list(), method, rit_min,
+                        # sclvals must be set NULL -- asures
+                        negative_too, sclvals = NULL,
+                        df) {
   stopifnot(exprs = {
     is.list(x)
     is.double(rit_min) || is.null(rit_min)
@@ -17,6 +14,13 @@ new_muscldf <- function(x = list(), method = "disjoint", rit_min = NULL,
     is.data.frame(eval(df, parent.frame()))
   })
   method <- match.arg(method, c("disjoint", "overlap"))
+  # Should do the trick
+  if (is.null(sclvals)) {
+    sclvals <- (attr(sclvals, "sclvals"))
+  if (is.null(sclvals)) {
+    sclvals <- match.call()$sclsvals
+  }
+  }
   structure(x, class = "muscldf", method = method, rit_min = rit_min,
             negative_too = negative_too, sclvals = sclvals, df = df)
 }
