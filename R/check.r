@@ -3,7 +3,6 @@
 # the order is okay and that the call to the fun is after sclvals are checked
 
 # Check Data Frame --------------------------------------------------------
-# TODO Integrate a possibility to return df only in suits
 
 check_df <- function(x) {
   if(!is.data.frame(x))
@@ -26,9 +25,6 @@ check_df <- function(x) {
 # TODO Name sclvals to scl_ends, scl_ep's, sclrng
 
 check_sclvals <- function(x){
-  if(is.null(x)){
-    x <- attr(x, "sclvals")
-  }
   x_len <- length(x)
   if (isFALSE(x_len == 2))
     stop("`sclvals` is not a two element vector.", call. = FALSE)
@@ -36,12 +32,26 @@ check_sclvals <- function(x){
     stop("`sclvals` has not the form `sclvals = c(min,max)`", call. = FALSE)
 }
 
+# Compare Sclaing Value with Attribute ------------------------------------
+
+compare_sclvals <- function(x, x_attr){
+  if(!is.null(x) && !is.null(x_attr)){
+  # Since `:` produces `integer` and `c()` doubles, coerce input.
+  x_dbl <- as.double(x)
+  ident_sclvals <- identical(x_attr, x_dbl)
+  if(isFALSE(ident_sclvals))
+    stop("Specified `sclvals` are not identical to those set before",
+         call. = FALSE)
+  }
+}
+
 # Check lower bound -------------------------------------------------------
 
+#  if (is.null(x)){
+#    x <- attr(x, "rit_min")
+#  }
+
 check_rit <- function(x){
-  if (is.null(x)){
-    x <- attr(x, "rit_min")
-  }
   x_len <- length(x)
   if (isFALSE(is.double(x) && x_len == 1))
     stop("`rit_min` is not a double vector of length 1.", call. = FALSE)
