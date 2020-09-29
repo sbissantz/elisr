@@ -5,41 +5,41 @@
 # Check Data Frame --------------------------------------------------------
 
 check_df <- function(x) {
-  if(!is.data.frame(x))
+  if (!is.data.frame(x))
     stop("`df` is not a data.frame.", call. = FALSE)
   x_len <- length(x)
-  if(isFALSE(x_len > 2))
+  if (isFALSE(x_len > 2))
     stop("`df` has less than 2 variables.")
   x_nms <- names(x)
-  if(is.null(x_nms))
+  if (is.null(x_nms))
     stop("`df` has no (col)names.",
          call. = FALSE)
   x_unms <- unique(x_nms)
-  if(!identical(x_nms, x_unms))
-    warning ("`df` (col)names are not unique.", call. = FALSE)
-  if(anyNA(x_nms))
-    warning ("`df` has (col)names of type `NA`.", call. = FALSE)
+  if (!identical(x_nms, x_unms))
+    warning("`df` (col)names are not unique.", call. = FALSE)
+  if (anyNA(x_nms))
+    warning("`df` has (col)names of type `NA`.", call. = FALSE)
   }
 
 # Check Scaling Values ----------------------------------------------------
 # TODO Name sclvals to scl_ends, scl_ep's, sclrng
 
-check_sclvals <- function(x){
+check_sclvals <- function(x) {
   x_len <- length(x)
   if (isFALSE(x_len == 2))
     stop("`sclvals` is not a two element vector.", call. = FALSE)
-  if(isFALSE(x[1] < x[2]))
+  if (isFALSE(x[1] < x[2]))
     stop("`sclvals` has not the form `sclvals = c(min,max)`", call. = FALSE)
 }
 
 # Compare Sclaing Value with Attribute ------------------------------------
 
-compare_sclvals <- function(x, x_attr){
-  if(!is.null(x) && !is.null(x_attr)){
+compare_sclvals <- function(x, x_attr) {
+  if (!is.null(x) && !is.null(x_attr)) {
   # Since `:` produces `integer` and `c()` doubles, coerce input.
   x_dbl <- as.double(x)
   ident_sclvals <- identical(x_attr, x_dbl)
-  if(isFALSE(ident_sclvals))
+  if (isFALSE(ident_sclvals))
     stop("Specified `sclvals` are not identical to those set before",
          call. = FALSE)
   }
@@ -47,7 +47,7 @@ compare_sclvals <- function(x, x_attr){
 
 # Check lower bound -------------------------------------------------------
 
-check_rit <- function(x){
+check_rit <- function(x) {
   x_len <- length(x)
   if (isFALSE(is.double(x) && x_len == 1))
     stop("`rit_min` is not a double vector of length 1.", call. = FALSE)
