@@ -1,13 +1,12 @@
 
 # Disjoint Scaling Process Using Positive Items ---------------------------
 
-# TODO check `...`
-
-disj_pci <- function(df, rit_min = .3, ...) {
+disj_pci <- function(df, rit_min, use) {
   scls <- list()
   while (ncol(df) >= 2) {
     scls_len <- length(scls)
-    cormat <- cor(df, ...)
+    # use = use: make sure its an ARG
+    cormat <- cor(df, use = use)
     maxcor <- max(cormat[cormat < 1])
     if (maxcor < rit_min) break
     # Take the first(!) maximum
@@ -16,7 +15,7 @@ disj_pci <- function(df, rit_min = .3, ...) {
     df <- df[-fstmaxp]
     while (ncol(df) >= 1) {
       scls_len <- length(scls)
-      cormat <- cor(rowSums(scls[[scls_len]]), df, ...)
+      cormat <- cor(rowSums(scls[[scls_len]]), df, use = use)
       maxcor <- max(cormat[cormat < 1])
       if (maxcor < rit_min) break
       fstmaxp <- which(cormat == maxcor)
