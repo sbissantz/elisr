@@ -1,28 +1,26 @@
-# (muscldf <- disjoint(mtcars, negative_too = TRUE, rit_min = .7, sclvals = c(1,10)))
-# overlap(muscldf, negative_too = TRUE, rit_min = .3)
+
+# Disjoint ----------------------------------------------------------------
+# ...positive items only
+#(msdf_1 <- disjoint(mtcars,
+#                    rit_min = .1))
+#msdf_2 <- disjoint(mtcars,
+#                   rit_min = .1,
+#                   negative_too = TRUE)
+## Error? Korrekt
+#(msdf_2 <- disjoint(mtcars,
+#                    rit_min = .1,
+#                    negative_too = TRUE,
+#                    sclvals = c(1,10)))
 #
-# attr(muscldf, "sclvals")
+## Overlap -----------------------------------------------------------------
 #
-
+#(msdf_3 <- overlap(msdf_1, rit_min = NULL))
 #
-# Scenario:
-# Someone scales disjointly, so he doesnt have to specify `sclvals`. Then (s)he
-# decides to do an overlap using negative items too, so (s)he does have to specify
+# (msdf_4 <- overlap(msdf_1, rit_min = NULL, negative_too = TRUE))
+# Error? Korrect
+# (msdf_4 <- overlap(msdf_2, rit_min = NULL, negative_too = TRUE))
+# Error? Korrekt
+# (msdf_5 <- overlap(msdf_2, rit_min = NULL, negative_too = TRUE , sclvals = c(1,5)))
+# No Error? Check
+# (msdf_5 <- overlap(msdf_2, rit_min = NULL, negative_too = TRUE , sclvals = c(1,10)))
 #
-
-#if(is.null(sclvals)){
-#   sclvals <- attr(muscldf, "sclvals")
-#}
-
-#set_sclvals_from(muscldf){
-#  if(is.null(sclvals))
-#  sclvals_attr <- attr(muscldf, "sclvals")
-#}
-#
-
-
-
-
-
-
-
