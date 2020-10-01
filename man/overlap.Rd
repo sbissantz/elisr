@@ -50,7 +50,7 @@ The \code{use} argument takes control over the treatment of missing
   when an item is considered to be part of this scale.
 }
 \examples{
-# Built a muscldf
+# Build a muscldf
 muscldf <- disjoint(mtcars, rit_min = .4)
 
 # Using positive correlations (and `pairwise.complete.obs`)

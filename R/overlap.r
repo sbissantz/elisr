@@ -38,7 +38,7 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 #'
 #' @examples
-#' # Built a muscldf
+#' # Build a muscldf
 #' muscldf <- disjoint(mtcars, rit_min = .4)
 #'
 #' # Using positive correlations (and `pairwise.complete.obs`)
