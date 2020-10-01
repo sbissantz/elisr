@@ -3,19 +3,23 @@
 #' @description \code{disjoint} returns a multiple, disjoint scaled version of
 #'   the specified data frame. This so called \code{muscldf} is nothing more
 #'   than a list of scales (in this case genuine subsets of that data frame).
+#'
 #' @param df a data frame object.
 #'
 #' @param rit_min a numerical constant to specify the (corrected item total)
-#'   correlation. The value of this lower bound must in the range of 0 to 1.
+#'   correlation. The value of this lower bound must in the range of 0 to 1. The
+#'   default is set to \code{.3}.
 #'
 #' @param negative_too a logical constant indicating whether negatively
-#'   correlating items should be included in the scaling process.
+#'   correlating items should be included in the scaling process. The default is
+#'   set to \code{FALSE}.
 #'
 #' @param sclvals a numerical vector of length 2 indicating the first and the
 #'   full scale value. Consider using the shape \code{c(min,max)}.
 #'
 #' @param use an optional string indicating how to deal with missing values if
-#'   necessary. See \code{use} in \code{stats::cor()} for details.
+#'   necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
+#'   default is set to \code{"pairwise.complete.obs"}.
 #'
 #' @details The \code{use} argument takes control over the treatment of missing
 #'   values when correlation matrices are build. In a scaling process this
