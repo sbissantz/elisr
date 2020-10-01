@@ -1,4 +1,55 @@
-
+#' @title Multiple scaling in a overlapping manner
+#'
+#' @description \code{overlap} returns a multiple, overlapping scaled version of
+#'   the given \code{muscldf} (i.e., a list of scales where in this case
+#'   each of them is a subsets of the data frame specified in
+#'   \code{\link[musclr]{disjoint}}.
+#'
+#' @param muscldf a multiple scaled data frame (built with \code{disjoint}).
+#'
+#' @param rit_min a numerical constant to set the (corrected item total)
+#'   correlation. The value of this lower bound must be in the range of 0 to 1.
+#'   If no value is entered (\code{NULL}, the default) \code{overlap} tries to
+#'   get the one specified in \code{disjoint}, by looking for a \code{rit_min}
+#'   attribute in the given \code{muscldf}.
+#'
+#' @param negative_too a logical constant indicating whether negatively
+#'   correlating items should be included in the scaling process. The default is
+#'   set to \code{FALSE}.
+#'
+#' @param overlap_with a string telling \code{overlap} which items to start the
+#' scaling process with. One can choose to use either the "core" of each scale
+#' or the "full_scale". The default is set to "full_scale".
+#'
+#' @param sclvals a numerical vector of length 2 indicating the first and the
+#'   full scale value. Consider using the shape \code{c(min,max)}.
+#'
+#' @param use an optional string indicating how to deal with missing values if
+#'   necessary. See \code{use} in \code{\link[stats]{cor}} for details.
+#'
+#' @details The \code{use} argument takes control over the treatment of missing
+#'   values when correlation matrices are build. In a scaling process this
+#'   happens at least twice: first when determining the core (the two items of
+#'   the correlation matrix with the highest linear relationship), and second
+#'   when an item is considered to be part of this scale.
+#'
+#' @references Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
+#'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
+#'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
+#'
+#' @examples
+#' # Built a muscldf
+#' muscldf <- disjoint(mtcars, rit_min = .4)
+#'
+#' # Using positive correlations (and `pairwise.complete.obs`)
+#' overlap(muscldf, rit_min = .6, overlap_with = "core")
+#'
+#' # Including negative correlations (and `pairwise.complete.obs`)
+#' overlap(muscldf, rit_min = .7, negative_too = TRUE, sclvals = c(-3,3))
+#'
+#' # Changing the treatment of missing values
+#' overlap(muscldf, rit_min = .6, use = "all.obs")
+#'
 # Multiple Scaling In An Overlapping Manner -------------------------------
 
 overlap <- function(muscldf, rit_min = NULL, negative_too = FALSE,
