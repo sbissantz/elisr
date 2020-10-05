@@ -22,9 +22,9 @@ If no value is entered (\code{NULL}, the default) \code{overlap} tries to
 get the one specified in \code{disjoint}, by looking for a \code{rit_min}
 attribute in the given \code{muscldf}.}
 
-\item{negative_too}{a logical constant indicating whether negatively
-correlating items should be included in the scaling process. The default is
-set to \code{FALSE}.}
+\item{negative_too}{a logical constant indicating whether items with a
+negative correlation should be included in the scaling process. The default
+is set to \code{FALSE}.}
 
 \item{overlap_with}{a string telling \code{overlap} which items to start the
 scaling process with. One can choose to use either the "core" of each scale
@@ -48,6 +48,10 @@ The \code{use} argument takes control over the treatment of missing
   happens at least twice: first when determining the core (the two items of
   the correlation matrix with the highest linear relationship), and second
   when an item is considered to be part of this scale.
+
+  Hint: If there ought to be two items in the scaling process, having an
+  equal correlation, e.g. with the sum score, always the first one is
+  used.
 }
 \examples{
 # Build a muscldf
