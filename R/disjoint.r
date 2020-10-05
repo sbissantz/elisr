@@ -1,4 +1,4 @@
-#' @title Multiple scaling in a disjoint manner
+#' @title Multiple Scaling In A Disjoint Manner
 #'
 #' @description \code{disjoint} returns a multiple, disjoint scaled version of
 #'   the specified data frame. This so called \code{muscldf} is nothing more

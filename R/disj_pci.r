@@ -1,4 +1,4 @@
-#' @title Multiple scaling in a disjoint manner using positive items
+#' @title Multiple Scaling In A Disjoint Manner Using Positive Items
 #'
 #' @description \code{disj_pci} is an internal function. It returns a list of
 #'   data frames. In order to do that, \code{disj_pci} sets up an empty list of

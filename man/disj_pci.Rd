@@ -2,7 +2,7 @@
 % Please edit documentation in R/disj_pci.r
 \name{disj_pci}
 \alias{disj_pci}
-\title{Multiple scaling in a disjoint manner using positive items}
+\title{Multiple Scaling In A Disjoint Manner Using Positive Items}
 \usage{
 disj_pci(df, rit_min, use)
 }

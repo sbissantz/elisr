@@ -1,5 +1,5 @@
 #' @title Multiple Scaling In An Overlapping Manner Using Positive Items
-
+#'
 #' @description \code{ovlp_nci} is an internal function. It returns a list of
 #'   data frames by taking one (\code{muscldf}). In order to do that,
 #'   \code{ovlp_nci} pre-sets the scales by using either the core items of the

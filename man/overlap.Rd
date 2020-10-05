@@ -2,7 +2,7 @@
 % Please edit documentation in R/overlap.r
 \name{overlap}
 \alias{overlap}
-\title{Multiple scaling in a overlapping manner}
+\title{Multiple Scaling In An Overlapping Manner}
 \usage{
 overlap(
   muscldf,

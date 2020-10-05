@@ -1,4 +1,4 @@
-#' @title Multiple scaling in a overlapping manner
+#' @title Multiple Scaling In An Overlapping Manner
 #'
 #' @description \code{overlap} returns a multiple, overlapping scaled version of
 #'   the given \code{muscldf} (i.e., a list of scales where in this case

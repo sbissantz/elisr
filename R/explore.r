@@ -1,5 +1,27 @@
-
-# Explore A Multiple Scaled Data Frame ------------------------------------
+#' @title Explore A Multiple Scaled Data Frame
+#'
+#' @description \code{explore} returns a list of summary statistics. It is
+#'   tailored for the use in the multiple scaling approach and gives back the
+#'   corrected item total correlation (`rit`), Cronbachs Alpha (`alpha`) and
+#'   reports the average correlation (`rbar`) for every scale at each step of
+#'   the scaling process.
+#'
+#' @param muscldf a multiple scaled data frame (built with either
+#'   \code{disjoint} or \code{overlap}).
+#'
+#' @references Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
+#'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
+#'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
+#'
+#' @examples
+#' # Exploring a disjoint scaled data frame (`muscldf`)
+#' muscldf <- disjoint(mtcars, rit_min = .4)
+#' explore(muscldf)
+#'
+#' # Exploring an overlapping scaled data frame (`msdf_ovlp`)
+#' msdf_disj <- disjoint(mtcars, rit_min = .4)
+#' msdf_ovlp <- overlap(msdf_disj, rit_min = .7, overlap_with = "full_scale")
+#' explore(msdf_ovlp)
 
 explore <- function(muscldf) {
   check_muscldf(muscldf)

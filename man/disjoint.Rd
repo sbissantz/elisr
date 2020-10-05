@@ -2,7 +2,7 @@
 % Please edit documentation in R/disjoint.r
 \name{disjoint}
 \alias{disjoint}
-\title{Multiple scaling in a disjoint manner}
+\title{Multiple Scaling In A Disjoint Manner}
 \usage{
 disjoint(
   df,
