@@ -11,8 +11,8 @@
 #'   default is set to \code{.3}.
 #'
 #' @param negative_too a logical constant indicating whether items with a
-#' negative correlation should be included in the scaling process. The default
-#' is set to \code{FALSE}.
+#'   negative correlation should be included in the scaling process. The default
+#'   is set to \code{FALSE}.
 #'
 #' @param sclvals a numerical vector of length 2 indicating the first and the
 #'   full scale value. Consider using the shape \code{c(min,max)}.
@@ -28,8 +28,7 @@
 #'   when an item is considered to be part of this scale.
 #'
 #'   Hint: If there ought to be two items in the scaling process, having an
-#'   equal correlation, e.g. with the sum score, always the first one is
-#'   used.
+#'   equal correlation, e.g. with the sum score, always the first one is used.
 #'
 #' @references Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
