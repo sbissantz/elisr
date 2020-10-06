@@ -1,4 +1,6 @@
-
+#'   This so called \code{muscldf} is nothing more
+#'   than a list of scales (in this case genuine subsets of that data frame).
+#'
 # Constructor -------------------------------------------------------------
 # TODO overlap_with not as Attrb?
 

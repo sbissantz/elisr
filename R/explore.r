@@ -1,7 +1,7 @@
 #' @title Explore A Multiple Scaled Data Frame
 #'
 #' @description \code{explore} returns a list of summary statistics. It is
-#'   tailored for the use in the multiple scaling approach and gives back the
+#'   tailored for the use with the multiple scaling approach and gives back the
 #'   corrected item total correlation (`rit`), Cronbachs Alpha (`alpha`) and
 #'   reports the average correlation (`rbar`) for every scale at each step of
 #'   the scaling process.

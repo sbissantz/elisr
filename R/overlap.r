@@ -1,9 +1,8 @@
 #' @title Multiple Scaling In An Overlapping Manner
 #'
 #' @description \code{overlap} returns a multiple, overlapping scaled version of
-#'   the given \code{muscldf} (i.e., a list of scales where in this case
-#'   each of them is a subsets of the data frame specified in
-#'   \code{\link[musclr]{disjoint}}.
+#'   the specified \code{muscldf}. It is then often explored using the eponymous
+#'   function (\code{\link{explore}}).
 #'
 #' @param muscldf a multiple scaled data frame (built with \code{disjoint}).
 #'
@@ -32,10 +31,6 @@
 #'   happens at least twice: first when determining the core (the two items of
 #'   the correlation matrix with the highest linear relationship), and second
 #'   when an item is considered to be part of this scale.
-#'
-#'   Hint: If there ought to be two items in the scaling process, having an
-#'   equal correlation, e.g. with the sum score, always the first one is
-#'   used.
 #'
 #' @references Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
