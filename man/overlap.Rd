@@ -38,9 +38,8 @@ necessary. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
 \description{
 \code{overlap} returns a multiple, overlapping scaled version of
-  the given \code{muscldf} (i.e., a list of scales where in this case
-  each of them is a subsets of the data frame specified in
-  \code{\link[musclr]{disjoint}}.
+  the specified \code{muscldf}. It is then often explored using the eponymous
+  function (\code{\link{explore}}).
 }
 \details{
 The \code{use} argument takes control over the treatment of missing
@@ -48,10 +47,6 @@ The \code{use} argument takes control over the treatment of missing
   happens at least twice: first when determining the core (the two items of
   the correlation matrix with the highest linear relationship), and second
   when an item is considered to be part of this scale.
-
-  Hint: If there ought to be two items in the scaling process, having an
-  equal correlation, e.g. with the sum score, always the first one is
-  used.
 }
 \examples{
 # Build a muscldf
