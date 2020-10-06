@@ -13,8 +13,8 @@ nme_muscldf <- function(x) {
 
 # Calculate Average Correlation -------------------------------------------
 
-  calc_rbar <- function(scl) {
-    cormat <- cor(scl)
+  calc_rbar <- function(scl, use) {
+    cormat <- cor(scl, use = use)
     # Calculate: rbar | lower trimat : diag is set FALSE
     mean(cormat[lower.tri(cormat)])
   }
@@ -23,8 +23,8 @@ nme_muscldf <- function(x) {
 
 # calculate Cronbach's Alpha | given: wfls.
 
-  calc_alpha <- function(scl) {
-    cormat <- cor(scl)
+  calc_alpha <- function(scl, use) {
+    cormat <- cor(scl, use = use)
     #lower trimat : diag is set FALSE
     rbar <- mean(cormat[lower.tri(cormat)])
     m <- length(scl)
@@ -35,11 +35,11 @@ nme_muscldf <- function(x) {
 
 # calculates r_it | given: wfls
 
-  calc_rit <- function(scl) {
+  calc_rit <- function(scl, use) {
     scl_len <- length(scl)
     core <- rowSums(scl[-scl_len])
     addtnl <- scl[scl_len]
-    cor(core, addtnl)
+    cor(core, addtnl, use = use)
   }
 
 # Extract Items -----------------------------------------------------------
