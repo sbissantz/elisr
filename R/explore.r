@@ -9,6 +9,10 @@
 #' @param muscldf a multiple scaled data frame (built with either
 #'   \code{disjoint} or \code{overlap}).
 #'
+#' @param use an optional string indicating how to deal with missing values if
+#'   necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
+#'   default is set to `pairwise.complete.obs`}.
+#'
 #' @references Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
@@ -23,9 +27,9 @@
 #' msdf_ovlp <- overlap(msdf_disj, rit_min = .7, overlap_with = "full_scale")
 #' explore(msdf_ovlp)
 
-explore <- function(muscldf) {
+explore <- function(muscldf, use = "pairwise.complete.obs") {
   check_muscldf(muscldf)
-  explr_once <- function(scl) {
+  explr_once <- function(scl, use) {
    scl_len <- length(scl)
     # Trick: retraces the sequential "emergence" of scldf
     seqls <- lapply(2:scl_len, seq)
@@ -40,12 +44,12 @@ explore <- function(muscldf) {
     # -- provides: an unambiguous output
     var_nms <- c(paste(col_nms[seq(2)], collapse = ", "),
                  col_nms[seq(3, col_len)])
-    rit <- lapply(wfls, calc_rit)
-    alpha <- lapply(wfls, calc_alpha)
-    rbar <- lapply(wfls, calc_rbar)
+    rit <- lapply(wfls, calc_rit, use)
+    alpha <- lapply(wfls, calc_alpha, use)
+    rbar <- lapply(wfls, calc_rbar, use)
     cbind(var_nms, rit, rbar, alpha)
   }
   scls_nms <- nme_muscldf(muscldf)
-  scls <- lapply(muscldf, explr_once)
+  scls <- lapply(muscldf, explr_once, use)
   structure(scls, names = scls_nms)
 }
