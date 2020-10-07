@@ -42,8 +42,10 @@ explore <- function(muscldf, use = "pairwise.complete.obs") {
     # "-1": 1st two items are thrown together (1 item: can't be a scale)
     # Assemble: names of the 1st two items (building core) into single row
     # -- provides: an unambiguous output
-    var_nms <- c(paste(col_nms[seq(2)], collapse = ", "),
-                 col_nms[seq(3, col_len)])
+    var_nms <- paste(col_nms[seq(2)], collapse = ", ")
+    if (col_len > 2) {
+      var_nms <- c(var_nms, col_nms[seq(3, col_len)])
+    }
     rit <- lapply(wfls, calc_rit, use)
     alpha <- lapply(wfls, calc_alpha, use)
     rbar <- lapply(wfls, calc_rbar, use)
