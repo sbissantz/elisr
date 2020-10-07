@@ -43,8 +43,7 @@
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 
-ovlp_pci <- function(muscldf, rit_min = NULL, overlap_with = NULL,
-                     use) {
+ovlp_pci <- function(muscldf, rit_min, overlap_with, use) {
 
 # Function ----------------------------------------------------------------
 
@@ -73,7 +72,7 @@ switch(overlap_with,
          scls <- lapply(scl_nms, extr_itms, df = df)
          ebscls <- lapply(scl_nms, extreb_itms, df = df)
          },
-       score = {
+       core = {
          scls <- lapply(core_nms, extr_itms, df = df)
          ebscls <- lapply(core_nms, extreb_itms, df = df)
          },
