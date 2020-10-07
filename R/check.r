@@ -1,6 +1,7 @@
-#' @title A Set of Helper Functions For Checking The Appropriateness of Inputs
+#' @title A Set of Checks
 #'
-#' @description
+#' @description A set of helper functions for checking the appropriateness of
+#'   inputs. It is used all around
 #'
 #' @param check_df(x), checks whether \code{x} is a data frame, if it has less
 #'   than two variables (a single item can't set up a core), whether \code{x}
