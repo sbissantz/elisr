@@ -52,7 +52,7 @@
 # Multiple Scaling In An Overlapping Manner -------------------------------
 
 overlap <- function(muscldf, rit_min = NULL, negative_too = FALSE,
-                    overlap_with = "full_scale", sclvals = NULL,
+                    overlap_with = "core", sclvals = NULL,
                     use = "pairwise.complete.obs") {
 
 # Checks ------------------------------------------------------------------
