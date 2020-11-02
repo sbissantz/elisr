@@ -9,6 +9,10 @@ explore(muscldf, use = "pairwise.complete.obs")
 \arguments{
 \item{muscldf}{a multiple scaled data frame (built with either
 \code{disjoint} or \code{overlap}).}
+
+\item{use}{an optional string indicating how to deal with missing values if
+necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
+default is set to `pairwise.complete.obs`.}
 }
 \description{
 \code{explore} returns a list of summary statistics. It is
@@ -16,6 +20,13 @@ explore(muscldf, use = "pairwise.complete.obs")
   corrected item total correlation (`rit`), Cronbachs Alpha (`alpha`) and
   reports the average correlation (`rbar`) for every scale at each step of
   the scaling process.
+}
+\details{
+The \code{use} argument takes control over the treatment of missing
+  values when correlation matrices are built. In a (usual) scaling process
+  this happens at least twice: first when determining the core (the two items
+  of the correlation matrix with the highest linear relationship), and second
+  when an item is considered to be part of this scale.
 }
 \examples{
 # Exploring a disjoint scaled data frame (`muscldf`)
