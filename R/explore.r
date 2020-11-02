@@ -10,8 +10,16 @@
 #'   \code{disjoint} or \code{overlap}).
 #'
 #' @param use an optional string indicating how to deal with missing values if
-#'   necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
-#'   default is set to `pairwise.complete.obs`}.
+#' necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
+#' default is set to `pairwise.complete.obs`.
+#'
+#' @details The \code{use} argument takes control over the treatment of missing
+#'   values when correlation matrices are built. In a (usual) scaling process
+#'   this happens at least twice: first when determining the core (the two items
+#'   of the correlation matrix with the highest linear relationship), and second
+#'   when an item is considered to be part of this scale. Since \code{explore}
+#'   reconstructs the scale building process to get the summary statistics one
+#'   should stay with the options specified before.
 #'
 #' @references Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
