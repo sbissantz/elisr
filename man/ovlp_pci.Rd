@@ -4,7 +4,7 @@
 \alias{ovlp_pci}
 \title{Multiple Scaling In An Overlapping Manner Using Positive Items}
 \usage{
-ovlp_pci(muscldf, rit_min = NULL, overlap_with = NULL, use)
+ovlp_pci(muscldf, rit_min, overlap_with, use)
 }
 \arguments{
 \item{muscldf}{a multiple scaled data frame (built with \code{disjoint}).}
