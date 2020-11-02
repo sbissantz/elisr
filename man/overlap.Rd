@@ -8,7 +8,7 @@ overlap(
   muscldf,
   rit_min = NULL,
   negative_too = FALSE,
-  overlap_with = "full_scale",
+  overlap_with = "core",
   sclvals = NULL,
   use = "pairwise.complete.obs"
 )
