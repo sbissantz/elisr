@@ -67,6 +67,7 @@ one_ovlp_nci <- function(scl, ebscl, rit_min, sclvals, use) {
        scl <- cbind(scl, ebscl[fstmaxp])
        }else{
          var_rev <- rvrs_var(var = ebscl[fstmaxp], sclvals)
+         # message("`", names(ebscl[fstmaxp]), "` was recoded")
          scl <- cbind(scl, var_rev)
          }
     ebscl <- ebscl[-fstmaxp]
