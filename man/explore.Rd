@@ -26,7 +26,9 @@ The \code{use} argument takes control over the treatment of missing
   values when correlation matrices are built. In a (usual) scaling process
   this happens at least twice: first when determining the core (the two items
   of the correlation matrix with the highest linear relationship), and second
-  when an item is considered to be part of this scale.
+  when an item is considered to be part of this scale. Since \code{explore}
+  reconstructs the scale building process to get the summary statistics one
+  should stay with the options specified before.
 }
 \examples{
 # Exploring a disjoint scaled data frame (`muscldf`)
