@@ -1,28 +1,40 @@
-# TODO: change wfls in utils to scl or whatsoever
-# TODO: remove return() -- only in fun applicapble to users
-# TODO muscldf -> muscls
+#' A Set of Urtility Functions
+#'
+#' @details \code{nme_muscldf} names a muscldf. It is used for convenience and
+#'   to replace the common list element indicator, e.g.,`[[1]]`, by assigning a
+#'   name to the scale, e.g., `scl_1`.
+#'
+#'   \code{calc_rbar} calculates the average correlation between the items at a
+#'   certain point of the scaling process.
+#'
+#'   \code{calc_alpha} calculates Cronbachs Alpha of a scale (i.e., the internal
+#'   consistency of the items) at a certain point of the scaling process.
+#'
+#'
+#'
+#' @param x a muscldf
+#' @param scl a scale from a muscldf
+#' @param use an optional string indicating how to deal with missing values if
+#'   necessary. See \code{use} in \code{\link[stats]{cor}} for details.
+#' @param df a data frame object,
+#' @param itm_nms the names of an item from a scale.
+#' @name utils
+NULL
 
-# -------------------------------------------------------------------------
-# TODO NAME a muscldf?
-# Integrate into disjoint(), overlap(), explore()
-
+#' @rdname utils
 nme_muscldf <- function(x) {
   x_len <- length(x)
   paste0("scl_", seq(x_len))
 }
 
-# Calculate Average Correlation -------------------------------------------
-
+#' @rdname utils
   calc_rbar <- function(scl, use) {
     cormat <- cor(scl, use = use)
     # Calculate: rbar | lower trimat : diag is set FALSE
     mean(cormat[lower.tri(cormat)])
   }
 
-# Calculate Cronbachs Alpha -----------------------------------------------
-
-# calculate Cronbach's Alpha | given: wfls.
-
+#' @rdname utils
   calc_alpha <- function(scl, use) {
     cormat <- cor(scl, use = use)
     #lower trimat : diag is set FALSE
@@ -35,6 +47,7 @@ nme_muscldf <- function(x) {
 
 # calculates r_it | given: wfls
 
+#' @rdname utils
   calc_rit <- function(scl, use) {
     scl_len <- length(scl)
     core <- rowSums(scl[-scl_len])
@@ -46,6 +59,7 @@ nme_muscldf <- function(x) {
 
 # Subsets a df | given: itm_nms (e.g. from a muscldf)
 
+#' @rdname utils
 extr_itms <- function(df, itm_nms) {
   df[, itm_nms]
 }
@@ -54,6 +68,7 @@ extr_itms <- function(df, itm_nms) {
 
 # Subsets a df | given: everything but itm_nms (e.g. from a muscldf)
 
+#' @rdname utils
 extreb_itms <- function(df, itm_nms) {
   df[, -which(names(df) %in% itm_nms)]
 }
@@ -62,8 +77,9 @@ extreb_itms <- function(df, itm_nms) {
 
 # TODO: Called every time! Could I predetermine the value and
 # ... and then use this method all the time? TIME PENALTY?
-# TODO: Check correctness of sclvals befor reversing
+# TODO: Check correctness of sclvals before reversing
 
+#' @rdname utils
 rvrs_var <- function(var, sclvals) {
     # ... -3 -2 -1 0 1 2 3 ...
     if (sclvals[1] < 0) {
