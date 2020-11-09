@@ -17,7 +17,7 @@ attribute in the given \code{muscldf}.}
 
 \item{overlap_with}{a string telling \code{overlap} which items to start the
 scaling process with. One can choose to use either the "core" of each scale
-or the "full_scale". The default is set to "full_scale".}
+or a "fragment". The default is set to "fragment".}
 
 \item{sclvals}{a numerical vector of length 2 indicating the first and the
 full scale value. Consider using the shape \code{c(min,max)}.}
