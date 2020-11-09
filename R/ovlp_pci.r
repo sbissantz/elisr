@@ -25,7 +25,7 @@
 #'
 #' @param overlap_with a string telling \code{overlap} which items to start the
 #'   scaling process with. One can choose to use either the "core" of each scale
-#'   or the "full_scale". The default is set to "full_scale".
+#'   or a "fragment". The default is set to "fragment".
 #'
 #' @param use an optional string indicating how to deal with missing values if
 #'   necessary. See \code{use} in \code{\link[stats]{cor}} for details.
@@ -68,7 +68,7 @@ core_nms <- lapply(scl_nms, function(scl_nms) scl_nms[c(1, 2)])
 # Procedure & Options -----------------------------------------------------
 
 switch(overlap_with,
-       full_scale = {
+       fragment = {
          scls <- lapply(scl_nms, extr_itms, df = df)
          ebscls <- lapply(scl_nms, extreb_itms, df = df)
          },
@@ -76,7 +76,7 @@ switch(overlap_with,
          scls <- lapply(core_nms, extr_itms, df = df)
          ebscls <- lapply(core_nms, extreb_itms, df = df)
          },
-       stop("Unknown overlapping method. Use either `core` or `full_scale`",
+       stop("Unknown overlapping method. Use either `fragment` or `core`",
             call. = FALSE)
        )
 Map(one_ovlp_pci, scls, ebscls, MoreArgs = list(rit_min, use))
