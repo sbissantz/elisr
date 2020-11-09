@@ -42,8 +42,31 @@ A Set of Urtility Functions
 }
 \details{
 \code{nme_muscldf} names a muscldf. It is used for convenience and
-replaces the common list element indicator `[[1]]`.
+  to replace the common list element indicator, e.g.,`[[1]]`, by assigning a
+  name to the scale, e.g., `scl_1`.
 
-\code{calc_rbar} calculates the average correlation between the items at a
-certain point of the scaling process.
+  \code{calc_rbar} calculates the average correlation between the items at a
+  certain point of the scaling process.
+
+  \code{calc_alpha} calculates Cronbachs Alpha of a scale (i.e., the internal
+  consistency of the items) at a certain point of the scaling process.
+
+  \code{calc_rit} calculates the Corrected Item-Total Correlation of an item
+  with the sum score of all the other variables of the scale -- at a certain
+  point of the scaling process. It uses a part-whole correction, i.e., the
+  item itself is excluded in the calculation process.
+
+  \code{extr_itms} subsets a data frame given a set of item names from a
+  scale built in the disjoint scaling process (i.e., from a muscldf). It is
+  used to construct one of the `working frames` in the overlapping process.
+  Being more precise, \code{extr_itms} collects (instructed by the
+  `overlap_with` argument) if only the cores or the full_scale should be used
+  as a base to overlap.
+
+  \code{extrb_itms} subsets a data frame containing `everything but` the
+  specified items from a scale built in the disjoint scaling process (i.e.,
+  from a muscldf). It is used to construct the other `working frames` in the
+  overlapping process. Being more precise, this is the set of possible items
+  by which a scale is going to be expanded if `overlap` is the process of
+  choice.
 }
