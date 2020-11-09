@@ -10,7 +10,24 @@
 #'   \code{calc_alpha} calculates Cronbachs Alpha of a scale (i.e., the internal
 #'   consistency of the items) at a certain point of the scaling process.
 #'
+#'   \code{calc_rit} calculates the Corrected Item-Total Correlation of an item
+#'   with the sum score of all the other variables of the scale -- at a certain
+#'   point of the scaling process. It uses a part-whole correction, i.e., the
+#'   item itself is excluded in the calculation process.
 #'
+#'   \code{extr_itms} subsets a data frame given a set of item names from a
+#'   scale built in the disjoint scaling process (i.e., from a muscldf). It is
+#'   used to construct one of the `working frames` in the overlapping process.
+#'   Being more precise, \code{extr_itms} collects (instructed by the
+#'   `overlap_with` argument) if only the cores or the full_scale should be used
+#'   as a base to overlap.
+#'
+#'   \code{extrb_itms} subsets a data frame containing `everything but` the
+#'   specified items from a scale built in the disjoint scaling process (i.e.,
+#'   from a muscldf). It is used to construct the other `working frames` in the
+#'   overlapping process. Being more precise, this is the set of possible items
+#'   by which a scale is going to be expanded if `overlap` is the process of
+#'   choice.
 #'
 #' @param x a muscldf
 #' @param scl a scale from a muscldf
@@ -43,10 +60,6 @@ nme_muscldf <- function(x) {
     (m * rbar) / (1 + rbar * (m - 1))
   }
 
-# Calculate Corrected Item-Total Correlation ------------------------------
-
-# calculates r_it | given: wfls
-
 #' @rdname utils
   calc_rit <- function(scl, use) {
     scl_len <- length(scl)
@@ -55,18 +68,10 @@ nme_muscldf <- function(x) {
     cor(core, addtnl, use = use)
   }
 
-# Extract Items -----------------------------------------------------------
-
-# Subsets a df | given: itm_nms (e.g. from a muscldf)
-
 #' @rdname utils
 extr_itms <- function(df, itm_nms) {
   df[, itm_nms]
 }
-
-# Extract Everything But Items --------------------------------------------
-
-# Subsets a df | given: everything but itm_nms (e.g. from a muscldf)
 
 #' @rdname utils
 extreb_itms <- function(df, itm_nms) {
