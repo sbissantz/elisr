@@ -29,12 +29,21 @@
 #'   by which a scale is going to be expanded if `overlap` is the process of
 #'   choice.
 #'
+#'   \code{rvrs_var} reverses the item given the specified scaling values. It
+#'   can handle the following types of scales:
+#'   \itemize{
+#'   \item  ...-3 -2 -1 0 1 2 3..., e.g., \code{sclvals = c(-3, 3)}
+#'   \item  0 1 2 3 4 5 6..., e.g.,  \code{sclvals = c(0, 7)}
+#'   \item  1 2 3 4 5 6 7..., e.g., \code{sclcals = c(1, 7)}
+#'   }
 #' @param x a muscldf
 #' @param scl a scale from a muscldf
 #' @param use an optional string indicating how to deal with missing values if
 #'   necessary. See \code{use} in \code{\link[stats]{cor}} for details.
 #' @param df a data frame object,
 #' @param itm_nms the names of an item from a scale.
+#' @param var a variable or item (often a column from a data frame)
+#' @param sclvals the start and end point of a scale (consider \code{c(sp,ep)})
 #' @name utils
 NULL
 
@@ -79,10 +88,6 @@ extreb_itms <- function(df, itm_nms) {
 }
 
 # Reverse Variables -------------------------------------------------------
-
-# TODO: Called every time! Could I predetermine the value and
-# ... and then use this method all the time? TIME PENALTY?
-# TODO: Check correctness of sclvals before reversing
 
 #' @rdname utils
 rvrs_var <- function(var, sclvals) {
