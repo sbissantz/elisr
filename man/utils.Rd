@@ -9,7 +9,7 @@
 \alias{extr_itms}
 \alias{extreb_itms}
 \alias{rvrs_var}
-\title{A Set of Urtility Functions}
+\title{A Set of Utility Functions}
 \usage{
 nme_muscldf(x)
 
@@ -42,7 +42,7 @@ necessary. See \code{use} in \code{\link[stats]{cor}} for details.}
 \item{sclvals}{the start and end point of a scale (consider \code{c(sp,ep)})}
 }
 \description{
-A Set of Urtility Functions
+A Set of Utility Functions
 }
 \details{
 \code{nme_muscldf} names a muscldf. It is used for convenience and
