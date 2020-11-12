@@ -1,4 +1,4 @@
-#' A Set of Urtility Functions
+#' @title A Set of Utility Functions
 #'
 #' @details \code{nme_muscldf} names a muscldf. It is used for convenience and
 #'   to replace the common list element indicator, e.g.,`[[1]]`, by assigning a
