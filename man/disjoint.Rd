@@ -26,6 +26,10 @@ is set to \code{FALSE}.}
 
 \item{sclvals}{a numerical vector of length 2 indicating the first and the
 full scale value. Consider using the shape \code{c(min,max)}.}
+
+\item{use}{an optional string indicating how to deal with missing values if
+necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
+default is set to `pairwise.complete.obs`.}
 }
 \description{
 \code{disjoint} returns a multiple, disjoint scaled version of
