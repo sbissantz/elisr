@@ -7,8 +7,16 @@ Authors@R: c(
     role = c("aut", "cre")),
     person("Thomas", "Müller-Schneider", email = "tms@uni-landau.de",
     role = "aut"))
-Description: An alternative approach to exploratory factor analysis.
-    Use four spaces when indenting paragraphs within the Description.
+Description: The musclr package implements the multiple scaling approach 
+    according to the principle of crystallization in R. It thus supports the 
+    user when exploring multi-dimensional data structures. In common
+    research practice one generally considers explorative factor analysis in 
+    this case -- often accepting rigid model assumptions (e.g., pre-determining 
+    the number of dimensions, one actually tries to "post explore"). By 
+    dissolving model proposed requirments musclr provides a plattform to maximize 
+    (a) the identification of theoretically relevant dimensions (to their full 
+    extent), (b) enabling the scales to correlate with eachother that they can 
+    reflect the actual conditions.
 URL: https://github.com/sbissantz/musclr
 BugReports: https://github.com/sbissantz/musclr/issues
 License: GPL-3
