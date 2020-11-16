@@ -21,7 +21,7 @@
 #'
 #' @param use an optional string indicating how to deal with missing values if
 #'   necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
-#'   default is set to `pairwise.complete.obs`}.
+#'   default is set to `pairwise.complete.obs`.
 #'
 #' @details The \code{use} argument takes control over the treatment of missing
 #'   values when correlation matrices are built. In a (usual) scaling process
