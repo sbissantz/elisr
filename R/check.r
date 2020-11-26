@@ -47,7 +47,7 @@ check_df <- function(x) {
   if (!is.data.frame(x))
     stop("`df` is not a data.frame.", call. = FALSE)
   x_len <- length(x)
-  if (isFALSE(x_len > 2))
+  if (isFALSE(x_len >= 2))
     stop("`df` has less than 2 variables.")
   x_nms <- names(x)
   if (is.null(x_nms))
@@ -59,7 +59,6 @@ check_df <- function(x) {
   if (anyNA(x_nms))
     warning("`df` has (col)names of type `NA`.", call. = FALSE)
   }
-
 #' @rdname checks
 check_sclvals <- function(x) {
   x_len <- length(x)
