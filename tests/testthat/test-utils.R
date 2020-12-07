@@ -26,12 +26,12 @@ test_that("calculate corrected item total correlation", {
 
 test_that("extracting specified items", {
   res_extr <- extr_itms(iris, "Sepal.Length")
-  expect_identical(iris[,"Sepal.Length"], res_extr)
+  expect_equal(iris[,"Sepal.Length"], res_extr)
 })
 
 test_that("extracting everyting but specified items", {
   res_extreb <- extreb_itms(iris, "Sepal.Length")
-  expect_identical(iris[,-1], res_extreb)
+  expect_equal(iris[,-1], res_extreb)
 })
 
 test_that("reversing variables", {
