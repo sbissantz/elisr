@@ -51,6 +51,7 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 
 
+#'   @importFrom stats cor
 ovlp_nci <- function(muscldf, rit_min, overlap_with, sclvals, use) {
 
 # Function ----------------------------------------------------------------

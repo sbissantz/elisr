@@ -61,4 +61,5 @@ is set to \code{FALSE}.}
 
   Hint: If there ought to be two items in the scaling process, having an
   equal correlation, e.g. with the sum score, always the first one is used.
+  @importFrom stats cor
 }
