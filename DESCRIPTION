@@ -22,7 +22,7 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 4.0.2),
+    R (>= 4.0.2)
 Imports: 
     stats
 RoxygenNote: 7.1.1
