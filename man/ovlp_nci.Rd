@@ -59,4 +59,5 @@ The \code{use} argument takes control over the treatment of missing
 Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
   Kristallisationsprinzip / Multiple Scaling According to the Principle of
   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
+  @importFrom stats cor
 }
