@@ -49,6 +49,7 @@
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 
+#' @importFrom stats cor
 disj_pci <- function(df, rit_min, use) {
   scls <- list()
   while (ncol(df) >= 2) {
