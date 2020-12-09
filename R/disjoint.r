@@ -43,6 +43,7 @@
 #' # Changing the treatment of missing values
 #' disjoint(mtcars, rit_min = .4, use = "all.obs")
 
+#' @export
 disjoint <- function(df, rit_min = .3, negative_too = FALSE,
                      sclvals = NULL, use = "pairwise.complete.obs") {
 

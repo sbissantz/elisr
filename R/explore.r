@@ -35,6 +35,7 @@
 #' msdf_ovlp <- overlap(msdf_disj, rit_min = .7, overlap_with = "full_scale")
 #' explore(msdf_ovlp)
 
+#' @export
 explore <- function(muscldf, use = "pairwise.complete.obs") {
   check_muscldf(muscldf)
   explr_once <- function(scl, use) {

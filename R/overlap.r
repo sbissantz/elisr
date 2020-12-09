@@ -49,8 +49,8 @@
 #' # Changing the treatment of missing values
 #' overlap(muscldf, rit_min = .6, use = "all.obs")
 #'
-# Multiple Scaling In An Overlapping Manner -------------------------------
 
+#' @export
 overlap <- function(muscldf, rit_min = NULL, negative_too = FALSE,
                     overlap_with = "fragment", sclvals = NULL,
                     use = "pairwise.complete.obs") {
