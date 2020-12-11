@@ -58,7 +58,10 @@ explore <- function(muscldf, use = "pairwise.complete.obs") {
     rit <- lapply(wfls, calc_rit, use)
     alpha <- lapply(wfls, calc_alpha, use)
     rbar <- lapply(wfls, calc_rbar, use)
-    cbind(var_nms, rit, rbar, alpha)
+    # cbind(var_nms, rit, rbar, alpha)
+    mat <- cbind(rit, rbar, alpha)
+    row.names(mat) <- var_nms
+    mat
   }
   scls_nms <- nme_muscldf(muscldf)
   scls <- lapply(muscldf, explr_once, use)
