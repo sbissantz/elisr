@@ -5,11 +5,11 @@
 \alias{trust}
 \title{German General Social Survey's Trust Items}
 \format{
-A subset of the German General Social Survey (ALLBUS) 2018 containing
-  its `trust items` (F018). Participants were asked about the trust they
-  place in public institutions and organizations. `1` means they have
-  absolutely no trust at all, whereas `7` represents a great deal of trust.
-  The data frame has 3477 rows and 13 variables: \describe{
+Participants were asked about the trust they place in public
+  institutions and organizations. `1` means they have absolutely no trust at
+  all, whereas `7` represents a great deal of trust. The data frame has 3477
+  rows and 13 variables:
+  \describe{
   \item{healserv}{Health service}
   \item{fccourt}{German constitutional court}
   \item{bundtag}{German Parliament}
@@ -18,23 +18,24 @@ A subset of the German General Social Survey (ALLBUS) 2018 containing
   \item{tv}{Television}
   \item{newsppr}{Newspapers}
   \item{uni}{Universities and other institutes of higher education}
-  \item{fedgovt}{}
-  \item{police}{}
-  \item{polpati}{}
-  \item{eucomisn}{}
-  \item{eupalmnt}{}
-}
-Note: Participant order has randomly rearranged to ensure their anonymity.
+  \item{fedgovt}{German government}
+  \item{police}{Police}
+  \item{polpati}{Political parties}
+  \item{eucomisn}{European Comission}
+  \item{eupalmnt}{Europen Parliament}
+  }
 }
 \usage{
 trust
 }
 \description{
-German General Social Survey's Trust Items
+A subset of the German General Social Survey (ALLBUS) 2018
+  containing its `trust items` (F018). Note: Participant order has
+  randomly rearranged to further ensure their anonymity.
 }
 \references{
-{ GESIS - Leibniz-Institut für Sozialwissenschaften (2019).
-German General Social Survey - ALLBUS 2018. GESIS Datenarchiv, Köln. ZA5272
+{ GESIS - Leibniz-Institut für Sozialwissenschaften (2019). German
+General Social Survey - ALLBUS 2018. GESIS Datenarchiv, Köln. ZA5272
 Datenfile Version 1.0.0, https://doi.org/10.4232/1.13325.}
 }
 \keyword{datasets}
