@@ -36,7 +36,7 @@
 #' explore(msdf_ovlp)
 
 #' @export
-explore <- function(muscldf, use = "pairwise.complete.obs") {
+explore <- function(muscldf, digits = 2, use = "pairwise.complete.obs") {
   check_muscldf(muscldf)
   explr_once <- function(scl, use) {
    scl_len <- length(scl)
@@ -55,13 +55,13 @@ explore <- function(muscldf, use = "pairwise.complete.obs") {
     if (col_len > 2) {
       var_nms <- c(var_nms, col_nms[seq(3, col_len)])
     }
-    rit <- lapply(wfls, calc_rit, use)
-    alpha <- lapply(wfls, calc_alpha, use)
-    rbar <- lapply(wfls, calc_rbar, use)
+    rit <- vapply(wfls, calc_rit, use, FUN.VALUE = double(1))
+    alpha <- vapply(wfls, calc_alpha, use, FUN.VALUE = double(1))
+    rbar <- vapply(wfls, calc_rbar, use, FUN.VALUE = double(1))
     # cbind(var_nms, rit, rbar, alpha)
     mat <- cbind(rit, rbar, alpha)
     row.names(mat) <- var_nms
-    mat
+    round(mat, digits = digits)
   }
   scls_nms <- nme_muscldf(muscldf)
   scls <- lapply(muscldf, explr_once, use)
