@@ -85,8 +85,10 @@ check_rit <- function(x) {
   x_len <- length(x)
   if (isFALSE(is.double(x) && x_len == 1))
     stop("`rit_min` is not a double vector of length 1.", call. = FALSE)
-  if (isFALSE(0 < x && x < 1))
-     stop("`rit_min`is not in the range of `0` and `1`.", call. = FALSE)
+  if (isFALSE(0 <= x && x < 1))
+     stop("`rit_min` is not in the range of `0` and `1`.", call. = FALSE)
+  if (x == 0)
+     message("`rit_min = 0`: You predetermined the values of disjoint(). print() is currently nonsensical. Consider overlap() next.")
 }
 
 #' @rdname checks
