@@ -54,9 +54,6 @@
 overlap <- function(muscldf, rit_min = NULL, negative_too = FALSE,
                     overlap_with = "fragment", sclvals = NULL,
                     use = "pairwise.complete.obs") {
-
-# Checks ------------------------------------------------------------------
-
   check_neg(negative_too)
   check_muscldf(muscldf)
   if (is.null(rit_min)) {
@@ -64,9 +61,6 @@ overlap <- function(muscldf, rit_min = NULL, negative_too = FALSE,
     }
   check_rit(rit_min)
   check_ovlp(overlap_with)
-
-# Procedure & Options -----------------------------------------------------
-
   if (negative_too) {
     sclvals_attr <- attr(muscldf, "sclvals")
     compare_sclvals(sclvals, sclvals_attr)
