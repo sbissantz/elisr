@@ -30,8 +30,17 @@ trust
 }
 \description{
 A subset of the German General Social Survey (ALLBUS) 2018
-  containing its `trust items` (F018). Note: Participant order has
-  randomly rearranged to further ensure their anonymity.
+  containing its `trust items` (F018).
+}
+\details{
+Please note that, in comparison to the original data set,
+participant order has been randomly rearranged to further ensure their
+anonymity. This might lead to differences when trying to reproduce the
+results of the analysis with the original data set, mentioned below.
+}
+\examples{
+#
+disjoint(mtcars, rit_min = .4)
 }
 \references{
 { GESIS - Leibniz-Institut für Sozialwissenschaften (2019). German
