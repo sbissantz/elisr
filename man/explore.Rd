@@ -4,7 +4,7 @@
 \alias{explore}
 \title{Explore A Multiple Scaled Data Frame}
 \usage{
-explore(muscldf, use = "pairwise.complete.obs")
+explore(muscldf, digits = 2, use = "pairwise.complete.obs")
 }
 \arguments{
 \item{muscldf}{a multiple scaled data frame (built with either
