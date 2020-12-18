@@ -62,12 +62,9 @@ print.muscldf <- function(muscldf, digits = 2, use = "pairwise.complete.obs") {
     mrit <- vapply(wfls, calc_rit, use, FUN.VALUE = double(1))
     alpha <- vapply(wfls, calc_alpha, use, FUN.VALUE = double(1))
     rbar <- vapply(wfls, calc_rbar, use, FUN.VALUE = double(1))
-    # cbind(var_nms, rit, rbar, alpha)
     mat <- cbind(mrit, rbar, alpha)
     row.names(mat) <- var_nms
     round(mat, digits = digits)
   }
-  scls_nms <- nme_muscldf(muscldf)
-  scls <- lapply(muscldf, explr_once, use)
-  structure(scls, names = scls_nms)
+  print(lapply(muscldf, explr_once, use))
 }
