@@ -5,13 +5,13 @@
 #'   scales (\code{scls}) and scaling can begin: When a first scale is set up in
 #'   there (1) \code{disj_pci} tries to find the two items with the highest
 #'   positive correlation in the data frame. (2) If this correlation is greater
-#'   than the pre-specified lower bound (\code{rit_min}), the two items are
+#'   than the pre-specified lower bound (\code{mrit_mit}), the two items are
 #'   summed up to build the core of the upcoming scale. Therefore the core is
 #'   nothing more than the sum score of these two items. After the building
 #'   process the core items are excluded from the data frame. They are now part
 #'   of the first scale. (4) While the (positive) correlation of any other of
 #'   the remaining items in the data frame (with that sum score) is greater than
-#'   the pre-specified lower bound (\code{rit_min}) \code{disj_pci} enlarges the
+#'   the pre-specified lower bound (\code{mrit_mit}) \code{disj_pci} enlarges the
 #'   scale with the appropriate item. (5 = 1) If there are at least two items
 #'   left in the data frame, yielding a correlation coefficient greater than the
 #'   set lower bound, \code{disj_pci} restart the scaling process with a new
@@ -19,7 +19,7 @@
 #'
 #' @param df a data frame object.
 #'
-#' @param rit_min a numerical constant to specify the (corrected item total)
+#' @param mrit_mit a numerical constant to specify the (corrected item total)
 #'   correlation. The value of this lower bound must in the range of 0 to 1. The
 #'   default is set to \code{.3}.
 #'
@@ -50,14 +50,14 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 
 #' @importFrom stats cor
-disj_pci <- function(df, rit_min, use) {
+disj_pci <- function(df, mrit_mit, use) {
   scls <- list()
   while (ncol(df) >= 2) {
     scls_len <- length(scls)
     # use = use: make sure its an ARG
     cormat <- cor(df, use = use)
     maxcor <- max(cormat[cormat < 1])
-    if (maxcor < rit_min) break
+    if (maxcor < mrit_mit) break
     # Take the first(!) maximum
     fstmaxp <- which(cormat == maxcor, arr.ind = TRUE)[1, ]
     scls[[scls_len + 1]] <- df[fstmaxp]
@@ -66,7 +66,7 @@ disj_pci <- function(df, rit_min, use) {
       scls_len <- length(scls)
       cormat <- cor(rowSums(scls[[scls_len]]), df, use = use)
       maxcor <- max(cormat[cormat < 1])
-      if (maxcor < rit_min) break
+      if (maxcor < mrit_mit) break
       fstmaxp <- which(cormat == maxcor)
       scls[[scls_len]] <- cbind(scls[[scls_len]], df[fstmaxp])
       df <- df[-fstmaxp]

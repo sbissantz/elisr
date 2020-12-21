@@ -55,7 +55,7 @@ explore <- function(muscldf, digits = 2, use = "pairwise.complete.obs") {
     if (col_len > 2) {
       var_nms <- c(var_nms, col_nms[seq(3, col_len)])
     }
-    mrit <- vapply(wfls, calc_rit, use, FUN.VALUE = double(1))
+    mrit <- vapply(wfls, calc_mrit, use, FUN.VALUE = double(1))
     alpha <- vapply(wfls, calc_alpha, use, FUN.VALUE = double(1))
     rbar <- vapply(wfls, calc_rbar, use, FUN.VALUE = double(1))
     # cbind(var_nms, rit, rbar, alpha)

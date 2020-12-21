@@ -5,7 +5,7 @@
 #'   analyzed with \code{\link{overlap}}.
 #' @param df a data frame (with more than two items and unique, non-\code{NA}
 #'   column names).
-#' @param rit_min a numerical constant to specify the (corrected item total)
+#' @param mrit_min a numerical constant to specify the (corrected item total)
 #'   correlation. The value of this lower bound must in the range of 0 to 1. The
 #'   default is set to \code{.3}.
 #' @param negative_too a logical constant indicating whether items with a
@@ -26,28 +26,28 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 #' @examples
 #' # Using positive correlations (and `pairwise.complete.obs`)
-#' disjoint(mtcars, rit_min = .4)
+#' disjoint(mtcars, mrit_min = .4)
 #'
 #' # Including negative correlations (and `pairwise.complete.obs`)
-#' disjoint(mtcars, rit_min = .4, negative_too = TRUE, sclvals = c(1,7))
+#' disjoint(mtcars, mrit_min = .4, negative_too = TRUE, sclvals = c(1,7))
 #'
 #' # Changing the treatment of missing values
-#' disjoint(mtcars, rit_min = .4, use = "all.obs")
+#' disjoint(mtcars, mrit_min = .4, use = "all.obs")
 
 #' @export
-disjoint <- function(df, rit_min = .3, negative_too = FALSE,
+disjoint <- function(df, mrit_min = .3, negative_too = FALSE,
                      sclvals = NULL, use = "pairwise.complete.obs") {
   check_df(df)
-  check_rit(rit_min)
+  check_rit(mrit_min)
   check_neg(negative_too)
   if (negative_too) {
     check_sclvals(sclvals)
-    scls <- disj_nci(df, rit_min, sclvals, use)
+    scls <- disj_nci(df, mrit_min, sclvals, use)
     new_muscldf(scls, df = match.call()$df, method = "disjoint",
-                rit_min = rit_min, negative_too = TRUE, sclvals = sclvals)
+                mrit_min = mrit_min, negative_too = TRUE, sclvals = sclvals)
     }else{
-      scls <- disj_pci(df, rit_min, use)
+      scls <- disj_pci(df, mrit_min, use)
       new_muscldf(scls, df = match.call()$df, method = "disjoint",
-               rit_min = rit_min, negative_too = FALSE)
+               mrit_min = mrit_min, negative_too = FALSE)
     }
 }
