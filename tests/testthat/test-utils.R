@@ -22,7 +22,7 @@ test_that("calculate cronbach's alpha", {
 
 test_that("calculate corrected item total correlation", {
   msdf_disj <- disjoint(iris[,-5])
-  res_rit <- calc_rit(msdf_disj[[1]], use = "pairwise.complete.obs")
+  res_rit <- calc_mrit(msdf_disj[[1]], use = "pairwise.complete.obs")
   expect_equal(round(res_rit[[1]], digits = 2), 0.86)
 })
 
@@ -44,6 +44,3 @@ test_that("reversing variables", {
   two_two <- -2:2 ; res_two_two <- rvrs_var(two_two, c(-2, 2))
   expect_equal(res_two_two, 2:-2)
 })
-
-
-

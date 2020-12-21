@@ -1,4 +1,4 @@
-context("Testing checks")
+context("Test checks")
 
 test_that("df is a data frame", {
   mat <- as.matrix(iris[, -5])
