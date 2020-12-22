@@ -1,0 +1,59 @@
+---
+title: "`musclr` -- Multiple Scaling According to the Principle of Crystallization in R"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{musclr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(musclr)
+```
+
+# An opener 
+
+The vignette is a step by step approach to teach, first and foremost, how to 
+use the `musclr` package. In doing so one will automatically encounter a couple 
+of benefits benefits of this procedure which lead to the development of this 
+package. Let's start with the most important features.
+
+## Aims, goals and expectations
+
+* `musclr` implement the multiple scaling approach according to the principle 
+    of crystallization for _metrical_ data in R.
+    
+* It supports the user when exploring multidimensional data structures. 
+ 
+   Note: In common research practice one generally considers 
+   explorative factor analysis in this case -- often accepting rigid model 
+   assumptions (e.g., orthogonality). 
+    
+* The packages, or rather its underlying algorithm, tries to bypass 
+  inflexible assumptions. 
+    
+ * As a result `musclr` provides a platform to maximize (a) the identification 
+   of relevant dimensions, (b) allowing the scales to naturally correlate with 
+   one another to meet the actual conditions. I made a suggestion ... advice
+ 
+## Concluding note 
+  
+ After exploratorily analyzing the data set with `disjoint()` 
+ and `overlap()` one need to further process the result. Additional packages, 
+ i.e., further analysis is mandatory. 
+  
+ 
+ 
+ 
+ 
+Note: devalere the mjmisc (?) package in /Description since otherwise the package
+doesnt run on CRAN 
+
+
