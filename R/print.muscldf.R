@@ -64,7 +64,7 @@ print.muscldf <- function(muscldf, digits = 2, use = "pairwise.complete.obs") {
     rbar <- vapply(wfls, calc_rbar, use, FUN.VALUE = double(1))
     mat <- cbind(mrit, rbar, alpha)
     row.names(mat) <- var_nms
-    round(mat, digits = digits)
+    mat
   }
-  print(lapply(muscldf, explr_once, use))
+  print(lapply(muscldf, explr_once, use), digits = digits)
 }
