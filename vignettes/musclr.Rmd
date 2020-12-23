@@ -1,5 +1,5 @@
 ---
-title: "`musclr` -- Multiple Scaling According to the Principle of Crystallization in R"
+title: "Introduction to `musclr`" 
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{musclr}
@@ -18,37 +18,66 @@ knitr::opts_chunk$set(
 library(musclr)
 ```
 
-# An opener 
+`musclr` is a shortcut for "multiple scaling according to the principle of 
+crystallization in R". The vignette is a step by step approach to teach, first 
+and foremost, how to use `musclr`. In doing so (i.e., following the examples 
+below) you will implicitly encounter some benefits of this exploratory 
+procedure which primary lead to the development of this package. But if one
+is ought for the full range of advantages, he or she might have a second look in 
+the referenced paper. Let's summarize the introduction with the most important 
+features.
 
-The vignette is a step by step approach to teach, first and foremost, how to 
-use the `musclr` package. In doing so one will automatically encounter a couple 
-of benefits benefits of this procedure which lead to the development of this 
-package. Let's start with the most important features.
+#### Most important features 
 
-## Aims, goals and expectations
+* `musclr` offers a multiple scaling approach according to the principle 
+  of crystallization for (quasi-)metrical data in R.
 
-* `musclr` implement the multiple scaling approach according to the principle 
-    of crystallization for _metrical_ data in R.
-    
-* It supports the user when exploring multidimensional data structures. 
+* It thus supports you in exploring multidimensional data structures. 
+
+  Note: In common research practice one generally considers explorative factor
+  analysis in this case often accepting rigid model assumptions (e.g.,
+  orthogonality). 
+
+* `musclr`, or rather its underlying algorithm, tries to bypass such inflexible 
+  assumptions. 
+
+* As a result the package provides a platform to maximize (a) the identification 
+  of relevant dimensions, (b) allowing the scales to naturally correlate with 
+  one another to accurately meet the actual conditions. 
+
+ Hint: After exploratorily analyzing the data set with `disjoint()` and 
+ `overlap()` you need to further process the result. Additional analysis in 
+ mandatory. A solution on how to proceed is mentioned in the upcoming sections. 
  
-   Note: In common research practice one generally considers 
-   explorative factor analysis in this case -- often accepting rigid model 
-   assumptions (e.g., orthogonality). 
-    
-* The packages, or rather its underlying algorithm, tries to bypass 
-  inflexible assumptions. 
-    
- * As a result `musclr` provides a platform to maximize (a) the identification 
-   of relevant dimensions, (b) allowing the scales to naturally correlate with 
-   one another to meet the actual conditions. I made a suggestion ... advice
+# `disjoint()` &  `overlap()`
+
+`musclr` basically consists of two functions: `disjoint()` and  `overlap()`. 
+ With a typical case in mind, the practical difference between them is:
+ (1) You will mainly use `disjoint()` to produce "sharp" but disjoint scale 
+ fragments from your data frame. What that means, is items in this fragment 
+ share a strong linear relationship but any of them belongs only to a single 
+ fragment. (2) Passing these fragments to  `overlap()` accordingly, will "enrich" each of them, by trying to attach an 
+ item  
  
-## Concluding note 
-  
- After exploratorily analyzing the data set with `disjoint()` 
- and `overlap()` one need to further process the result. Additional packages, 
- i.e., further analysis is mandatory. 
-  
+That reveal the key vorgehensweise of any analysis: Anleiten disjoint to produce
+a high number of "sharp" disjoint scale fragments from your data frame and let
+overlap collect an
+
+
+a high value in order to get
+sharp scale fragments and th
+ 
+
+
+
+##
+
+Mokken 
+ 
+ 
+Mokken, R. J., 1971: A Theory and Procedure of Scale
+Analysis. With Applications in Political Research. The
+Hague/New York: Mouton.
  
  
  
