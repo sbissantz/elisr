@@ -49,7 +49,7 @@ features.
  `overlap()` you need to further process the result. Additional analysis in 
  mandatory. A solution on how to proceed is mentioned in the upcoming sections. 
  
-# `disjoint()` &  `overlap()`
+## `disjoint()` &  `overlap()`
 
 `musclr` basically consists of two functions: `disjoint()` and  `overlap()`. 
  With a typical case in mind, the practical difference between them is:
