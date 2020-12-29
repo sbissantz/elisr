@@ -51,17 +51,34 @@ features.
  
 ## `disjoint()` &  `overlap()`
 
-`musclr` basically consists of two functions: `disjoint()` and  `overlap()`. 
- With a typical case in mind, the practical difference between them is:
- (1) You will mainly use `disjoint()` to produce "sharp" but disjoint scale 
- fragments from your data frame. What that means, is items in this fragment 
- share a strong linear relationship but any of them belongs only to a single 
- fragment. (2) Passing these fragments to  `overlap()` accordingly, will "enrich" each of them, by trying to attach an 
- item  
- 
-That reveal the key vorgehensweise of any analysis: Anleiten disjoint to produce
-a high number of "sharp" disjoint scale fragments from your data frame and let
-overlap collect an
+`musclr` basically consists of two functions: `disjoint()` and `overlap()`. With
+a typical case in mind, the practical difference between them is: (1) You will
+mainly use `disjoint()` to produce "sharp & disjoint" scale fragments. "Sharp &
+disjoint" are those fragments that include items that (a) share a strong linear
+relationship but (b) any of them "is tied" to a single fragment. That's (2)
+where `overlap()` comes into play. Passing fragments to `overlap()` the
+functions underlying algorithm tries to enrich each fragment, by considering the
+inclusion of every item (from your specified data frame) but those in the given
+fragment. Making a long story short: Using `overlap()` an item can appear in
+more than one of the enriched fragments. In doing so, one overcomes the
+fragmentation of the data frame induced by `disjoint()`.
+
+Note, that this reveals the key strategy of any exploratory analysis using
+`musclr`: (1) Instruct `disjoint()` to produce a couple of "sharp", disjoint
+scale fragments from your specified data frame. (2) Let `overlap()` "pick up the
+pieces"; i.e. enrich the disjoint fragments considering those items that are
+highly correlating (with the sumscore of the given) fragment. A "how to" will be
+presented right away.
+
+### Analyzing the trust items
+
+
+
+```{r}
+
+
+```
+
 
 
 a high value in order to get
