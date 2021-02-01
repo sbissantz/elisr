@@ -32,11 +32,15 @@
 #'   muscldf necessary. A data frame is only scaled when it has names see:
 #'   \code{check_df}. Since (1) \code{disjoint} and \code{overlap} do not
 #'   manipulate the `colnames` attribute and the user cant specify an
-#'   alternative `df`, names must  be valid.
+#'   alternative \code{df}`, names must  be valid.
 #'
 #'   \code{check_neg(x)} checks the negative_too input is a logical constant of
-#'   length 1. Since any \code{NA} value is a logical constant of length `0` one
-#'   must additionally assure that the input is not a \code{NA}.
+#'   length 1. Because any \code{NA} value is a logical constant of length `0`
+#'   one must additionally assure that the input is not a \code{NA}.
+#'
+#'   \code{check_comp} checks the compatibility of the specified \code{mrit_min}
+#'   value and any pair of correlations in the given data frame. If the value of
+#'   \code{mrit_min} is smallr it throws an error.
 #'
 #' @param x some arbitrary input to be checked
 #' @name checks
@@ -81,7 +85,7 @@ compare_sclvals <- function(x, x_attr) {
 }
 
 #' @rdname checks
-check_rit <- function(x) {
+check_mrit <- function(x) {
   x_len <- length(x)
   if (isFALSE(is.double(x) && x_len == 1))
     stop("`mrit_min` is not a double vector of length 1.", call. = FALSE)
@@ -97,7 +101,8 @@ Ignore the output and consider overlap() next.", call. = FALSE)
 check_ovlp <- function(x) {
   x_len <- length(x)
   if (isFALSE(is.character(x) && x_len == 1))
-    stop("`overlap_with` is not a character vector of length 1.", call. = FALSE)
+    stop("`overlap_with` is not a character vector of length 1.",
+         call. = FALSE)
 }
 
 #' @rdname checks
@@ -111,4 +116,13 @@ check_neg <- function(x) {
   x_len <- length(x)
   if (isFALSE(is.logical(x) && !is.na(x) && x_len == 1))
     stop("`negative_too` is not a logical vector of length 1.", call. = FALSE)
+}
+
+#' @rdname checks
+check_comp <- function(x, mrit_min, use) {
+  cormat <- cor(x, use = use)
+  maxcor <- max(cormat[cormat < 1])
+  if (maxcor < mrit_min)
+    stop("`mrit_min` is smaller than any correlation found in `df`.",
+         call. = FALSE)
 }
