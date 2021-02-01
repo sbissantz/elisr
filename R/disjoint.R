@@ -38,8 +38,9 @@
 disjoint <- function(df, mrit_min = .3, negative_too = FALSE,
                      sclvals = NULL, use = "pairwise.complete.obs") {
   check_df(df)
-  check_rit(mrit_min)
+  check_mrit(mrit_min)
   check_neg(negative_too)
+  check_comp(df, mrit_min, use)
   if (negative_too) {
     check_sclvals(sclvals)
     scls <- disj_nci(df, mrit_min, sclvals, use)
