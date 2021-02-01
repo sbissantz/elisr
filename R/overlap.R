@@ -59,7 +59,7 @@ overlap <- function(muscldf, mrit_min = NULL, negative_too = FALSE,
   if (is.null(mrit_min)) {
     mrit_min <- attr(muscldf, "mrit_min")
     }
-  check_rit(mrit_min)
+  check_mrit(mrit_min)
   check_ovlp(overlap_with)
   if (negative_too) {
     sclvals_attr <- attr(muscldf, "sclvals")
