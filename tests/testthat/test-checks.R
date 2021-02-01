@@ -61,3 +61,8 @@ test_that("negative_too", {
   expect_error(check_neg(x = 1))
   expect_error(check_neg(x = c(TRUE, FALSE)))
 })
+
+test_that("compatibility of mrit_min and max cor", {
+  df <- iris[, -5]
+  expect_error(check_comp(x = df, mrit_min = 10, use = "pairwise.complete.obs"))
+})
