@@ -52,37 +52,38 @@ features.
 ## `disjoint()` &  `overlap()`
 
 `musclr` basically consists of two functions: `disjoint()` and `overlap()`.
-With a typical case in mind, the practical difference between them is: (1) You
-will mainly use `disjoint()` to produce "sharp and disjoint" scale fragments.
-Sharp and disjoint are those fragments, that include items which (a) share a
-strong linear relationship with one another but (b) any of them "is tied" to a
-single fragment. That's (2) where `overlap()` comes into play. Passing
-fragments to `overlap()` the functions underlying algorithm tries to enrich
-each fragment, by considering the inclusion of every item (from your specified
-data frame) but those in the given fragment. Making a long story short: Using
-`overlap()` an item can appear in more than one of the enriched fragments. In
-doing so, one overcomes the splitting effect of the data frame induced by
-`disjoint()`.
+With a typical case in mind, the practical difference between them is: (1)
+`disjoint` is set up to produce "sharp and disjoint" scale fragments.  Sharp
+and disjoint are those fragments, that include items which (a) share a strong
+linear relationship with one another but (b) any of them "is tied" to a single
+fragment. That's (2) where `overlap()` comes into play. Passing fragments to
+`overlap()` the functions underlying algorithm tries to enrich each fragment,
+by considering the inclusion of every item (from your specified data frame) but
+those in the given fragment. Making a long story short: Using `overlap()` an
+item can appear in more than one of the enriched fragments. In doing so, one
+overcomes the splitting effect of the data frame induced by `disjoint()`.
 
-Note, that this reveals the key strategy of any exploratory analysis using
-`musclr`: (1) Instruct `disjoint()` to produce a couple of "sharp", disjoint
-scale fragments from your specified data frame. (2) Let `overlap()` "pick up
-the pieces"; i.e. enrich the disjoint fragments considering those items that
-are highly correlating (with the sum score of the given) fragment. A "how to"
+Note, that this already reveals the key strategy of any exploratory analysis
+using `musclr`: (1) Instruct `disjoint()` to produce a couple of sharp,
+disjoint scale fragments from your specified data frame. (2) Let `overlap()`
+pick up the pieces; i.e. enrich the disjoint fragments considering those
+items that are highly correlating with the (sum score of the given) fragment. A
+detailed explanation on "how each functions works" combined with a "how to use"
 will be presented right away.
 
 ### Analyzing the trust items
 
 `trust` is a subset of the German General Social Survey (ALLBUS) 2018 in which
-participants were asked about the trust they place in public institutions and
-organizations. Use `?trust` for more details. Because the data frame is part of
-`musclr`, we have easy access to them. Assuming you've already loaded the
-package (e.g. using `library(musclr)`), let's instruct `disjoint()` to produce
-a couple of sharp fragments of the trust items data.frame. In order to do that,
-set a relatively high value for the marginal corrected item total correlation:
-`mrit_min`. To cut things short, I'll use `.55` (mostly because this value
-produced satisfactory results in prior analyses; a detailed explanation on how 
-to use this value you'll find below).
+participants made answer some questions on the trust they place in public
+institutions and organizations. Use `?trust` for more details. Because the data
+frame is part of `musclr`, we have easy access to them. Assuming you already
+loaded and attached the package (e.g. with a  `library(musclr)`), let's put
+things into practice intially. In the first snippet we'll instruct `disjoint()`
+to produce a couple of sharp fragments. In order to do that, set a relatively
+high value for the marginal corrected item total correlation: `mrit_min`. To
+cut things short, I'll use `.55` (mostly because this value produced
+satisfactory results in prior analyses (a more detailed explanation on how to
+use this value you'll find below).
 
 ```{r echo=TRUE}
 library(musclr)
@@ -91,38 +92,64 @@ library(musclr)
 ```
 
 What you should see in the output are two scale fragments `$scl_1` and
-`$scl_2`.  Let's move through the output section step by step. First,
-concentrate on `$scl_1`. What you'll notice is, the first line includes two
-variables (`eupalmnt, eucomisn`). I'll call this the core of the fragment. The
-core in this case is really nothing more than the (lineraly) highest
+`$scl_2`. If thats not the case, watch out for typos. A more general approach
+is to read and understand the error message and fix it. Google will be your
+friend. Let's move through the output section step by step. 
+
+First, concentrate on `$scl_1`. What you'll notice is, the first line includes
+two variables (`eupalmnt, eucomisn`). I'll call this the core of the fragment.
+The core in this case is really nothing more than the (lineraly) highest
 correlating pair chosen from an internally built correlation matrix of all
 injected variables (i.e., the given data frame). `disjoint()` does this to
 satisfy the first step of underlying algorithmic procedure of this multiple
 scaling approach: Find the highest correlating pair. 
 
-Note, however that neither `disjoint()` nor `overlap()` does this "at any
-costs". The linear relationship between the core items must be greater than
-your pre-set `mrit_min`. We could crosscheck that, looking in the line of the
-core items focusing on `mrit` in the line of the core items: $mirt = 0.92$.
-Remember: the value we set for the analysis was $mrit = .55$. Keep that in mind
-if 
+Note, however that neither `disjoint()` nor `overlap()` does this at any
+costs. The linear relationship between the core items must be greater than
+your pre-set `mrit_min` (Note: `disjoint()` will let you know, if that isn't the
+case). But you could crosscheck by looking in the line of the core items,
+focus on `mrit`: $mirt = 0.92$. Remember: the set value for the analysis
+was $mrit = .55$. 
 
-```{r}
-mat <- replicate(5, rnorm(100))
-df <- as.data.frame(mat)
-disjoint(df, mrit_min = .2)
-```
+After disjoint has detected the core items it tries to enrich it with one of
+the other variables in `df` (here: `trust`). In this case it picked up
+`polpati`. The reason is straight forward: the correlation between the sum
+score of {`eupalmnt` & `eucomisn`} and `polpati` is still greater than the
+specified marginal corrected item total correlation (`mrit_min`). Therefore the
+item is "melted" into the core. This new fragment is now a bundle of 3 Items:
+`eupalament`, `eucomisn`, and `polpati.` The same applies for `fedgovt` and
+reveals the important second step of the algorithmic procedure: Continue to
+collect new items (and melt them into the fragement), till the correlation
+between the sum score of the items (in the fragment) and any other item is less
+than your pre-specified `mrit_min.` In summary, it additionally collects the
+remaing three items you see in the output namely `bundtag`, `judsyst`,
+`fccourt`.
 
+Moving along the lines in the output one might wonder, why there is another
+scale shows up with a `mrit_min` value greater than the pre-specified one. The
+reason for this is the algorithm tries to build (and enrich) fragments as long as there
+are remaining variables in your variable list (`df`). More specifially, the
+algorithm won't stop to enrich a fragment as long as there is one variable
+left (in `trust`); and it won't interrupt constructing fragments as long as
+there are at least two leftovers (and the correlations are greater than your
+pre-specified minimum value).  That betrays the last unique step of this
+procedure: If there are variables left that meet the requirements, build a new
+fragment and start over again.
 
+To sum up, one could guess why there is no other variable in `$scl_2`. The
+answer: Because there are 13 variables in the data frame, there must be no
+other variable that meets the correlation criteria ($\rho > mrit_min$). As a
+consequence no other variable was considered to be merged with `{eupalmnt,
+eucomisn}`. And that is what we see in the last line of the given output.
 
-
-
-
-To tie in with above, what that means is that each variable
-(`euparlament,...,fccourt`) is present in either `$scl_1` or `$scl_2` exactly
-one time. To put it another way, there is no "intersecting" variable which
-overlaps in these two scale fragments. To assure that that `disjoint()` excludes
-each variable that have been assigned to a scale fragment. 
+Let's tie in with above and concentrate on both fragments now. If we remind
+ourselves on the description of `disjoint()`s task (literally building disjoint
+scale fragments), one can derieve from the previous explanation about its
+construction that it really did its job. In the output each variable
+(`euparlament,...,tv`) is present in either `$scl_1` or `$scl_2` exactly one
+time. To put it another way, there is no "intersecting" variable which overlaps
+in these two fragments. To assure that `disjoint()` excludes each variable that
+have been assigned to a scale fragment afterwards. 
 
 
 
