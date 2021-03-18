@@ -6,7 +6,8 @@
 \alias{calc_rbar}
 \alias{calc_alpha}
 \alias{calc_mrit}
-\alias{extr_itms}
+\alias{extr_core}
+\alias{extr_core_nms}
 \alias{extreb_itms}
 \alias{rvrs_var}
 \title{A Set of Utility Functions}
@@ -19,7 +20,9 @@ calc_alpha(scl, use)
 
 calc_mrit(scl, use)
 
-extr_itms(df, itm_nms)
+extr_core(scl)
+
+extr_core_nms(scl)
 
 extreb_itms(df, itm_nms)
 
@@ -66,13 +69,19 @@ A Set of Utility Functions
   Being more precise, \code{extr_itms} collects (instructed by the
   `overlap_with` argument) if only the cores or the full_scale should be used
   as a base to overlap.
+  DELETE IF TESTED!
 
-  \code{extrb_itms} subsets a data frame containing `everything but` the
-  specified items from a scale built in the disjoint scaling process (i.e.,
-  from a muscldf). It is used to construct the other `working frames` in the
-  overlapping process. Being more precise, this is the set of possible items
-  by which a scale is going to be expanded if `overlap` is the process of
-  choice.
+  \code{extr_core} extracts (multiple) pairs of core items from a given data
+  frame (`scl`), which is often part of a list of data frames nested within a
+  `msdf` object. `overlap()` draws on this helper function when setting the
+  `overlap_with=core` option. Thus, it forms the base for the upcoming
+  overlap procedure.
+
+  \code{extr_core_nms} extracts the name of the core item from a given data
+  frame (`scl`), which is often part of a list of data frames nested within a
+  `msdf` object. `overlap()` draws on this helper function when setting the
+  `overlap_with=core` option. It litterally sets up the counterpart for the
+  upcoming overlap procedure.
 
   \code{rvrs_var} reverses the item given the specified scaling values. It
   can handle the following types of scales:
