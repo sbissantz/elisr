@@ -63,22 +63,29 @@ one_ovlp_pci <- function(scl, ebscl, mrit_min, use) {
 # Pre-Set's ---------------------------------------------------------------
 
 df <- eval(attr(muscldf, "df"))
-scl_nms <- lapply(muscldf, names)
-core_nms <- lapply(scl_nms, function(scl_nms) scl_nms[c(1, 2)])
+# scl_nms <- lapply(muscldf, names)
+# core_nms <- lapply(scl_nms, function(scl_nms) scl_nms[c(1, 2)])
 
 # Procedure & Options -----------------------------------------------------
 
 switch(overlap_with,
        fragment = {
-         scls <- lapply(scl_nms, extr_itms, df = df)
+         # scls <- muscldf
+         # scls <- lapply(scl_nms, extr_itms, df = df)
+         scl_nms <- lapply(muscldf, names)
          ebscls <- lapply(scl_nms, extreb_itms, df = df)
          },
        core = {
-         scls <- lapply(core_nms, extr_itms, df = df)
-         ebscls <- lapply(core_nms, extreb_itms, df = df)
+          muscldf <- lapply(muscldf, extr_core)
+          core_nms <- lapply(muscldf, extr_core_nms)
+          ebscls <- lapply(core_nms, extreb_itms, df = df)
+         # scls <- lapply(core_nms, extr_itms, df = df)
+         # ebscls <- lapply(core_nms, extreb_itms, df = df)
          },
        stop("Unknown overlapping method. Use either `fragment` or `core`",
             call. = FALSE)
        )
-Map(one_ovlp_pci, scls, ebscls, MoreArgs = list(mrit_min, use))
+# if ( ncol(ebscls) == 0) stop ("No items to overlap. Consider lowering mrit_min")
+Map(one_ovlp_pci, muscldf, ebscls, MoreArgs = list(mrit_min, use))
+# Map(one_ovlp_pci, scls, ebscls, MoreArgs = list(mrit_min, use))
 }
