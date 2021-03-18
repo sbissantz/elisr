@@ -12,8 +12,8 @@ test_that("positive scaling", {
 test_that("negative scaling", {
    msdf <- disjoint(trust, mrit_min = .55)
    msdf_new <- disjoint( df = {
-     trust$eupalmnt <- (1 + 7) - trust[,"eupalmnt"]
+     trust$polpati <- (1 + 7) - trust[,"polpati"]
      trust
    }, mrit_min = .55, negative_too = TRUE, sclvals = c(1,7))
-   expect_equal(msdf$scl_1[,"eupalmnt"], msdf_new$scl_1[,"eupalmnt"])
+   expect_equal(msdf$scl_1[,"polpati"], msdf_new$scl_1[,"polpati"])
 })
