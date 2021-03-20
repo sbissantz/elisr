@@ -122,3 +122,17 @@ rvrs_var <- function(var, sclvals) {
     }
   var_rev
 }
+
+#' @rdname utils
+rvrs_note <- function(msg, applicant) {
+  msg_len <- length(msg)
+  if (msg_len == 0) {
+    message(paste0("\n", applicant, "() didn't reverse an item."))
+  } else {
+    message(
+      paste0("\n", applicant, "() reversed the following items internally:\n"),
+      paste0("– ", unique(msg), "\n"))
+  }
+}
+
+
