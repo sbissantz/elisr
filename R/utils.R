@@ -42,6 +42,11 @@
 #'   \item  0 1 2 3 4 5 6..., e.g.,  \code{sclvals = c(0, 7)}
 #'   \item  1 2 3 4 5 6 7..., e.g., \code{sclcals = c(1, 7)}
 #'   }
+#'
+#'   \code{rvrs_note} gets a report of variables `rvrs_var` recoded. Note
+#'   however, that `rvrs_note` presentes this results only in a reduced form. To
+#'   not overload the output it reports only a unique list of its notes.
+#'
 #' @param x a muscldf
 #' @param scl a scale from a muscldf
 #' @param use an optional string indicating how to deal with missing values if
