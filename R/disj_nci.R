@@ -56,6 +56,7 @@
 #'   @importFrom stats cor
 disj_nci <- function(df, mrit_min, sclvals, use) {
  scls <- list()
+ msg <- list() ###
   while (ncol(df) >= 2) {
     scls_len <- length(scls)
     # use = use: make sure it's an ARG
@@ -77,11 +78,12 @@ disj_nci <- function(df, mrit_min, sclvals, use) {
         scls[[scls_len]] <- cbind(scls[[scls_len]], df[fstmaxp])
         }else{
           var_rev <- rvrs_var(var = df[fstmaxp], sclvals)
-          # message("`", names(df[fstmaxp]), "` was recoded")
+          msg <- c(msg, names(df[fstmaxp])) ###
           scls[[scls_len]] <- cbind(scls[[scls_len]], var_rev)
           }
       df <- df[-fstmaxp]
     }
   }
-  scls
+ rvrs_note(msg, applicant = "disjoint")
+ scls
 }
