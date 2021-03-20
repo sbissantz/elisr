@@ -50,9 +50,9 @@
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 
-
 #'   @importFrom stats cor
 ovlp_nci <- function(muscldf, mrit_min, overlap_with, sclvals, use) {
+msg <- list()
 
 # Function ----------------------------------------------------------------
 
@@ -68,6 +68,10 @@ one_ovlp_nci <- function(scl, ebscl, mrit_min, sclvals, use) {
        scl <- cbind(scl, ebscl[fstmaxp])
        }else{
          var_rev <- rvrs_var(var = ebscl[fstmaxp], sclvals)
+         # msg <<- names(df[fstmaxp]) # Works
+         # Try this one
+         assign("msg", c(msg, names(df[fstmaxp])), envir=parent.frame(3))
+         # msg <<- c(msg, names(df[fstmaxp]))
          # message("`", names(df[fstmaxp]), "` was recoded")
          scl <- cbind(scl, var_rev)
          }
@@ -102,6 +106,10 @@ switch(overlap_with,
             call. = FALSE)
        )
 # if ( ncol(ebscls) == 0) stop ("No items to overlap. Consider lowering mrit_min")
-Map(one_ovlp_nci, muscldf, ebscls, MoreArgs = list(mrit_min, sclvals, use))
+# cat("current frame is", sys.nframe(), "\n")
+res <- Map(one_ovlp_nci, muscldf, ebscls,
+           MoreArgs = list(mrit_min, sclvals, use))
+rvrs_note(msg, applicant = "overlap")
+res
 # Map(one_ovlp_nci, scls, ebscls, MoreArgs = list(mrit_min, sclvals, use))
 }
