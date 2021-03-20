@@ -10,6 +10,7 @@
 \alias{extr_core_nms}
 \alias{extreb_itms}
 \alias{rvrs_var}
+\alias{rvrs_note}
 \title{A Set of Utility Functions}
 \usage{
 nme_muscldf(x)
@@ -27,6 +28,8 @@ extr_core_nms(scl)
 extreb_itms(df, itm_nms)
 
 rvrs_var(var, sclvals)
+
+rvrs_note(msg, applicant)
 }
 \arguments{
 \item{x}{a muscldf}
@@ -90,4 +93,8 @@ A Set of Utility Functions
   \item  0 1 2 3 4 5 6..., e.g.,  \code{sclvals = c(0, 7)}
   \item  1 2 3 4 5 6 7..., e.g., \code{sclcals = c(1, 7)}
   }
+
+  \code{rvrs_note} gets a report of variables `rvrs_var` recoded. Note
+  however, that `rvrs_note` presentes this results only in a reduced form. To
+  not overload the output it reports only a unique list of its notes.
 }
