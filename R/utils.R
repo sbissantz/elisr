@@ -88,7 +88,6 @@ nme_muscldf <- function(x) {
     cor(core, addtnl, use = use)
   }
 
-#' @rdname utils
 # extr_itms <- function(df, itm_nms) {
 #  df[itm_nms]
 #  # df[, itm_nms, drop = FALSE]
@@ -139,5 +138,3 @@ rvrs_note <- function(msg, applicant) {
       paste0("– ", unique(msg), "\n"))
   }
 }
-
-
