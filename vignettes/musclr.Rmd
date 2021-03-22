@@ -237,13 +237,8 @@ extend any of them. That's why the default option is called
 choose only the highest positively correalting pair of each scale fragment
 (`overlap_with="core"`). Type `?overlap` for more details. 
 
-#
-#
-#
-#
-
 To let the key insights sink in, we should rework the whole process in a more
-practical example again. Have a look on the result of the previous functions
+practical example once more. Have a look on the result of the previous functions
 call (`mosdf`). What you could see is that there are two fragments `$scl_1`and
 `$scl_2`. At second glance they are pretty similar to the result of `msdf`.
 Let's take $scl_1$ as an example.
@@ -340,98 +335,57 @@ analysis to understand the machinery and then soften the regularations to become
 aware of the gained flexibility. But let's do this in a smoothed pace one step
 at the time. To repeat the result from `disjoint()` we need to kind of
 "re-reverse" `uni`. `disjoint()` does this for you, if you set the appropriate
-options (`negative_too` & `sclvals`). 
+options (`negative_too` & `sclvals`). Because we know from the prior results
+that `uni` is not part of the fragments, it won't be re-reversed using
+`disjoint()`. Usually we don't have this luxury. So setting `negative_too=TRUE`
+here, seems like the right thing to do. Oh yes, for that reasons I made both
+functions act very coperatively. `disjoint()` and `overlap()` will both let you
+know, if they reversed an item (and if so, which one).
 
 ```{r}
-disjoint( ntrust, mrit_min=.55, negative_too=TRUE, sclvals=c(1,7) )
+(d <- disjoint( ntrust, mrit_min=.55, negative_too = TRUE, sclvals = c(1, 7) ))
 ```
-What we could see is that the results are identical to the former analysis
-(using `trust` and `disjoint()`). We could now stick this result into
-`overlap()`. Note however, that you have to tell `overlap()` it should include
-negative correlations (otherwise it'll sticks only with positive ones). To save
-some typing, I made `overlap()` remember the start and endpoint of the scale
-you've passed to `disjoint()`. So no need to specify them twice. Let's use the
-all in one snippet to replicate the prior results.
+The output is as expected. The result is identical to the one of the prior
+analysis (using `trust` and `disjoint()`). We could now simply stick the result
+we just stored in `d` into `overlap()`. Note however, that you have to tell
+`overlap()`as well, that it should consider to use negative correlations. To
+save you some typing, I made `overlap()` remember the start and endpoint of the
+scale you've passed to `disjoint()` (see `attributes(d)$sclvals`). So no need to
+specify them twice. What we should expect `overlap()` to do next, is to apply
+the algortihm to trust therby reverse `uni` internally and second, let you that.
 
 ```{r}
-overlap( 
-        disjoint( ntrust, mrit_min=.55, negative_too = TRUE, sclvals=c(1,7) ),
+overlap(d,
         # Note: overlap() remembers the scaling values from disjoint()
         mrit_min = .4, negative_too=TRUE
 )
 
 ```
+### Another made up (but autodidactic) example
 
-### Counterfactual scenarios
-
-Let's mess arround with some counterfactual scenarios and check the result on
-real data. What would happen if we forbid `overlap()` to soak up negative items
-as well? First of all, there should be no difference in the fragment which is
-passed to `overlap()` because the code did not change. Thus, the basis for
-overlap should stay the same in each case. But when soaking things up,
-`overlap()` should now miss `uni` in both scales, because it has a negative
-correlation. That is, what we'll see in the following result.
-
-
-```{r}
-overlap( 
-        disjoint( ntrust, mrit_min=.55, negative_too = TRUE, sclvals=c(1,7) ),
-        # Note: overlap() remembers the scaling values from disjoint()
-        mrit_min = .4
-)
-```
-The other scenario is, what would happen if we reverse the pattern. That means
-we forbid `disjoint()` to collect negative item but allow `overlap()` to do so.
-Well, now the basis could change. But if we remeber the basis of each fragment
-`uni` weren't part of any of them. Hence, what we would expect is the same
-result as with the complete re-reversing example right at the start. That is
-what we'll see when executing the following lines. Note however, that this
-behavior will change as parts of the basis are affacted (e.g., `tv`). See the
-following chapter for further details.
-
-```{r}
-overlap( 
-        disjoint( ntrust, mrit_min=.55 ),
-        # Note: overlap() remembers the scaling values from disjoint()
-        mrit_min = .4, negative_too = TRUE, sclvals=c(1,7)
-)
-```
-### Differencees between reversing manually and automatically
-
-There is a difference between reversing a variable before (manually) and within
-the analysis (automatically). Let's reinitialize `ntrust` with `tv` to more
-fully understand the machinerie. This is a variable we already know that it will
-be part of the basis, on which `overlap()` expands on. If we follow the strategy
-from the previous chapter, one might expect to replicate the result making
-`disjoint()` and `overlap()` aware of negative items, when using the
-`negative_too=TRUE` option in both cases. But as we could see that is not the
-case.
+Now its time to play around with the algorithm yourself. In the following snippe
+a core item of the second fragment will be reversed. Make predictions of what
+will happen and why. Write them down and than and check the result against the
+actual output. Done? Well, than remove `#` and see if both match.
 
 ```{r}
 ntrust <- within( trust, tv <- 8 - tv )
 
-overlap( 
-        disjoint( ntrust, mrit_min=.55, negative_too = TRUE, sclvals=c(1,7) ),
-        # Note: overlap() remembers the scaling values from disjoint()
-        mrit_min = .4, negative_too = TRUE 
-)
+# overlap( 
+#  disjoint( ntrust, mrit_min=.55, negative_too = TRUE, sclvals=c(1,7) ),
+#        mrit_min = .4, negative_too = TRUE)
 ```
-What have happend? There is a single restriction on building new cores one might
-have probably not noticed yet: A core is the product of the two items with the
-highest /positive/ correlation. Therefore, `tv` and  `newsppr` started a second
-two-item scale in the prior analyises. They had the highest positive correlation
-which fullfills the extension cirterion. The reverse is true for the association
-between both of these variables in `ntrust`. In this case, `tv` and `newsppr`
-share a strong negative relationship, when it comes to initiating another
-two-item scale. As the restriction demands these association to be positive and
-they are not, no further two-item scale is started. Accoridngly, you should be
-aware this phenomenon when considering to manually invert these items. You
-simply undermine this restriction.
-
-Question: Does this assumption make sense? Almost equivalent data frames
-produce different scaling results... This seems like madness.
 
 ### Different types of scales
+
+#
+#
+#
+#
+#
+
+Let's tie in to 
+say stop,here are more scales I came across, what about those? Well, th
 
 There are 3 different types of scales witch `overlap()` can deal with when using
 the `negative_too` option.
@@ -518,8 +472,7 @@ A final note on what `musclr` leaves you with. Well, what you get from applying
 the result indicates how the items you've entered are linearly associated with
 one another given a reasonable termination criterion. It expands
 
-
-
+# Sticking in items you own fragment 
 
 
 extended sorted version of your data frame with a
