@@ -70,7 +70,7 @@ one_ovlp_nci <- function(scl, ebscl, mrit_min, sclvals, use) {
          var_rev <- rvrs_var(var = ebscl[fstmaxp], sclvals)
          # msg <<- names(df[fstmaxp]) # Works
          # Try this one
-         assign("msg", c(msg, names(df[fstmaxp])), envir=parent.frame(3))
+         assign("msg", c(msg, names(var_rev)), envir=parent.frame(3))
          # msg <<- c(msg, names(df[fstmaxp]))
          # message("`", names(df[fstmaxp]), "` was recoded")
          scl <- cbind(scl, var_rev)
