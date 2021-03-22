@@ -131,7 +131,7 @@ rvrs_var <- function(var, sclvals) {
 rvrs_note <- function(msg, applicant) {
   msg_len <- length(msg)
   if (msg_len == 0) {
-    message(paste0("\n", applicant, "() didn't reverse an item."))
+    message(paste0("\n", applicant, "() didn't reverse an item.\n"))
   } else {
     message(
       paste0("\n", applicant, "() reversed the following items internally:\n"),
