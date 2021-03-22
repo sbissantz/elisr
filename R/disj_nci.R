@@ -78,7 +78,7 @@ disj_nci <- function(df, mrit_min, sclvals, use) {
         scls[[scls_len]] <- cbind(scls[[scls_len]], df[fstmaxp])
         }else{
           var_rev <- rvrs_var(var = df[fstmaxp], sclvals)
-          msg <- c(msg, names(df[fstmaxp])) ###
+          msg <- c(msg, names(var_rev)) ###
           scls[[scls_len]] <- cbind(scls[[scls_len]], var_rev)
           }
       df <- df[-fstmaxp]
