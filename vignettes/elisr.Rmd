@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 library(musclr)
 ```
 
-`musclr` is a shortcut for "multiple scaling according to the principle of
+`elisr` is a shortcut for "multiple scaling according to the principle of
 crystallization in R". The vignette is a step by step approach to teach, first
 and foremost, how to use `musclr`. As the title suggest, this is going happen in
 a more technical way. I aim to make you understand what is going on under the
