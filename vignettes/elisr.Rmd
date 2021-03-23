@@ -1,8 +1,8 @@
 ---
-title: "A (more) technical `musclr` companion" 
+title: "A (more) technical `elisr` companion" 
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{musclr}
+  %\VignetteIndexEntry{elisr}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,21 +15,23 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-library(musclr)
+library(elisr)
 ```
 
-`elisr` is a shortcut for "multiple scaling according to the principle of
-crystallization in R". The vignette is a step by step approach to teach, first
-and foremost, how to use `musclr`. As the title suggest, this is going happen in
-a more technical way. I aim to make you understand what is going on under the
-hood. In doing so (i.e., following the examples below), you will further
-encounter some benefits of this exploratory procedure which primary lead to the
-development of this package. But if one is ought for the full range of
-advantages, look at the paper referenced below. There is at least an upcoming
-paper which I can't cite right now. But be sure, I will let you know where and
-how to find it (as soon as possible). Let's summarize the introduction with the
-most important features. After that we dive deeper into the technical details
-to make you maximal comfortable when using `musclr`.
+`elisr` is a shorthand for exploratory likert scaling (ELIS) in R. ELIS builds
+upon the multiple scaling approach and operates on a bottom up selection process
+that integrates characteristic values of the classiscal test theory. This
+technical companion is a step by step approach on how to use ELIS in R. At the
+end of this manual, you'll have gained enough understanding of `elisr` to
+confidently perform analysis in this framework. By working through the following
+examples, you will not only grasp what's going on under the hood, but also
+encounter some benefits of this procedure. Note however, that this is mainly
+thought as a manual. For a more complete view on the heuristic potential that
+lais out with this approach, you might want to take another look in the cited
+paper as well. There is at least one article in prgress which is not mentioned
+right now. I will update the list as soon as possible. Let's summarize the
+introduction with the most important features. After that we dive deeper into
+the technical details to make you maximal comfortable when using `elisr`.
 
 #### Most important features 
 
@@ -42,7 +44,7 @@ to make you maximal comfortable when using `musclr`.
   analysis in this case often accepting rigid model assumptions (e.g.,
   orthogonality). 
 
-* `musclr`, or rather its underlying algorithm, tries to bypass such inflexible 
+* `elisr`, or rather its underlying algorithm, tries to bypass such inflexible 
   assumptions in a bottom up manner. 
 
 * As a result the package provides a platform to maximize (a) the identification 
@@ -55,12 +57,12 @@ to make you maximal comfortable when using `musclr`.
  
 ## `disjoint()` &  `overlap()`
 
-`musclr` basically consists of two user functions `disjoint()` and `overlap()`.
-With a typical case in mind, the practical difference between them is:
-`disjoint()` is set up to produce sharp and disjoint scale fragments.  Sharp and
+`elisr` basically consists of two user functions `disjoint()` and `overlap()`.
+With a typical case in mind, the practical difference between the two is: (1)
+`disjoint()` is set up to produce sharp and disjoint scale fragments. Sharp and
 disjoint are those fragments, that include items which (a) share a strong linear
 relationship with one another but where (b) any of them is tied to a single
-fragment. That's where `overlap()` comes into play. Passing fragments to
+fragment. That's where (2) `overlap()` comes into play. Passing fragments to
 `overlap()` the functions underlying algorithm tries to enrich each fragment, by
 considering the inclusion of every item from your specified data frame but those
 in the given fragment. Making a long story short: Using `overlap()` an item can
@@ -81,19 +83,19 @@ the following examples.
 `trust` is going to be the data base in the upcoming units. `trust` is a subset
 of the German General Social Survey (ALLBUS) 2018 in which participants answered
 some questions on their trust in public institutions and organizations. Use
-`?trust` for more details. Because the data frame is part of `musclr`, we can
+`?trust` for more details. Because the data frame is part of `elisr`, we can
 access it easily. 
 
 ```{r}
-library( musclr ) ; data( trust ) ; head( trust )
+library( elisr ) ; data( trust ) ; head( trust )
 ```
 
-Let's put things into practice intially. In the first snippet, as I already
-said, we will instruct `disjoint()` to produce a couple of sharp fragments. Do
-that by setting a relatively high value for the marginal corrected item total
-correlation `mrit_min`. To cut things short, I'll use `.55` (mostly because this
-value produced satisfactory results in prior analyses -- a more detailed
-explanation on how to use this value you will find below).
+Let's put things into practice. In the first snippet, as I already said, we will
+instruct `disjoint()` to produce a couple of sharp fragments. Do that by setting
+a relatively high value for the marginal corrected item total correlation
+`mrit_min`. To cut things short, I'll use `.55` (mostly because this value
+produced satisfactory results in prior analyses -- a more detailed explanation
+on how to use this value you will find below).
 
 ```{r echo=TRUE}
 # `(foo <- baz)`: assign and print in one step
@@ -363,8 +365,8 @@ overlap(d,
 ```
 ### Another made up (but autodidactic) example
 
-Now its time to play around with the algorithm yourself. In the following snippe
-a core item of the second fragment will be reversed. Make predictions of what
+Now its time to play around with the algorithm yourself. In the following
+snippet I reversed a core item of the second fragment. Make predictions of what
 will happen and why. Write them down and than and check the result against the
 actual output. Done? Well, than remove `#` and see if both match.
 
@@ -381,14 +383,9 @@ ntrust <- within( trust, tv <- 8 - tv )
 #
 #
 #
-#
-#
 
-Let's tie in to 
-say stop,here are more scales I came across, what about those? Well, th
-
-There are 3 different types of scales witch `overlap()` can deal with when using
-the `negative_too` option.
+There are 3 different types of scales which `disjoint()` and `overlap()` can
+handle if you enable the `negative_too` option.
 
 1. An integer scale starting at 1 (e.g., "1 2 3 4 5 6 7"). Both function use the
 formula $(\max sclval + 1) - x$ when setting `scalvals=c(1,7)` in this case.
@@ -408,7 +405,7 @@ without complaining.
 
 ### Dealing with different start- end endpoints of a scale.
 
-A minor issue of `musclr` so far, is that it can't cope with items measured on
+A minor issue of `elisr` so far, is that it can't cope with items measured on
 scales with different start- and endpoints. However, if you insert those,
 `disjoint()` and `overlap()` will silently follow this appeal. They won't
 complain. 
@@ -467,7 +464,7 @@ class(msdf$scl_1)
 
 ## Further anylsis of the results
 
-A final note on what `musclr` leaves you with. Well, what you get from applying
+A final note on what `elisr` leaves you with. Well, what you get from applying
 `disjoint()` and `overlap()` is really an intermediate. Let's be clear on this,
 the result indicates how the items you've entered are linearly associated with
 one another given a reasonable termination criterion. It expands
@@ -483,6 +480,15 @@ result is mandatory. There are several ways to continue, but the `psych` package
 and `sjmisc` by Daniel Lüdecke are good places to start. The first on provides
 the working horse `alpha()` and the second a comprehensive summary using
 `reliab_test()`.
+
+
+```{r}
+core <- trust[c("tv", "bundtag", "fccourt")]
+(msdf <- disjoint(df = core, mrit_min = 0))
+attributes(msdf)$df <- trust
+(msdf_fin <- overlap(msdf, mrit_min = .3))
+```
+
 
 
 
