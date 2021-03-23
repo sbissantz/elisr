@@ -1,23 +1,22 @@
-Package: musclr
+Package: elisr 
 Type: Package
-Title: Multiple Scaling According to the Principle of Crystallization
-Version: 0.0.0.9000
+Title: Exploratory Likert Scaling -- an Alternative to Exploratory Factor Analysis
+Version: 0.1.0
 Authors@R: c( 
     person("Steven", "Bißantz", email = "steven.bissantz@gmail.com",
     role = c("aut", "cre")),
     person("Thomas", "Müller-Schneider", email = "tms@uni-landau.de",
-    role = "aut"))
-Description: The musclr package implements the multiple scaling approach 
-    according to the principle of crystallization for metrical data in R. 
-    It thus supports the user when exploring multi-dimensional data structures. 
+    role = "ctb"))
+Description: The elisr package implements the exploratory likert scaling approach 
+    for metrical data in R. It thus supports the user when exploring multi-dimensional data structures. 
     In common research practice one generally considers explorative factor 
     analysis in this case -- often accepting rigid model assumptions (e.g., 
     orthogonality). By dissolving these assumptions musclr provides a platform 
     to maximize (a) the identification of theoretically relevant dimensions 
     (to their full extent), (b) enabling the scales to correlate with one 
     another that they meet the actual conditions.
-URL: https://github.com/sbissantz/musclr
-BugReports: https://github.com/sbissantz/musclr/issues
+URL: https://github.com/sbissantz/elisr
+BugReports: https://github.com/sbissantz/elisr/issues
 License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
