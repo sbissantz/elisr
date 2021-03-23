@@ -92,9 +92,8 @@ check_mrit <- function(x) {
   if (isFALSE(0 <= x && x < 1))
      stop("`mrit_min` is not in the range of `0` and `1`.", call. = FALSE)
   if (x == 0)
-     warning("`mrit_min = 0`: Fragments are predetermined.
-printing is therefore currently nonsensical.
-Ignore the output and consider overlap() next.", call. = FALSE)
+     warning("`mrit_min = 0`: fragment is predetermined.",
+             call. = FALSE)
 }
 
 #' @rdname checks
