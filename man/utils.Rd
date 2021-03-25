@@ -51,40 +51,33 @@ necessary. See \code{use} in \code{\link[stats]{cor}} for details.}
 A Set of Utility Functions
 }
 \details{
-\code{nme_muscldf} names a muscldf. It is used for convenience and
-  to replace the common list element indicator, e.g.,`[[1]]`, by assigning a
-  name to the scale, e.g., `scl_1`.
+\code{nme_muscldf} designates the components of a muscldf (e.g.,
+  `scl_1`).
 
-  \code{calc_rbar} calculates the average correlation between the items at a
-  certain point of the scaling process.
+  \code{calc_rbar} calculates the average correlation between items from a
+  gradually emerging scale.
 
-  \code{calc_alpha} calculates Cronbachs Alpha of a scale (i.e., the internal
-  consistency of the items) at a certain point of the scaling process.
+  \code{calc_alpha} calculates Cronbachs alpha of a given set of items from
+  the gradually emerging scale.
 
-  \code{calc_mrit} calculates the Corrected Item-Total Correlation of an item
-  with the sum score of all the other variables of the scale -- at a certain
-  point of the scaling process. It uses a part-whole correction, i.e., the
-  item itself is excluded in the calculation process.
+  \code{calc_mrit} calculates the corrected item-total correlation of an item
+  with the sum score of all the other variables of the gradually emerging
+  scale. That's why we call it marginal rit. Note that this procedure uses a
+  part-whole correction. Thus the item itself is excluded in the calculation
+  process.
 
-  \code{extr_itms} subsets a data frame given a set of item names from a
-  scale built in the disjoint scaling process (i.e., from a muscldf). It is
-  used to construct one of the `working frames` in the overlapping process.
-  Being more precise, \code{extr_itms} collects (instructed by the
-  `overlap_with` argument) if only the cores or the full_scale should be used
-  as a base to overlap.
-  DELETE IF TESTED!
+  \code{extreb_itms} build up the counterpart of a fragment using its items
+  names. Therefore the counterpart includes all variables that are not
+  deliverd with the fragment but which are mentioned in the specified data
+  set.
 
-  \code{extr_core} extracts (multiple) pairs of core items from a given data
-  frame (`scl`), which is often part of a list of data frames nested within a
-  `msdf` object. `overlap()` draws on this helper function when setting the
-  `overlap_with=core` option. Thus, it forms the base for the upcoming
-  overlap procedure.
+  \code{extr_core} extracts pairs of core items from a data frame. Those are
+  part of a list of data frames nested within a `msdf` object. `overlap()`
+  draws on this helper function when setting the `overlap_with=core` option.
+  Hence, it forms for the actual overlap.
 
-  \code{extr_core_nms} extracts the name of the core item from a given data
-  frame (`scl`), which is often part of a list of data frames nested within a
-  `msdf` object. `overlap()` draws on this helper function when setting the
-  `overlap_with=core` option. It litterally sets up the counterpart for the
-  upcoming overlap procedure.
+  \code{extr_core_nms} extracts the names of the core items in a given
+  fragment (e.g. `scl_1`).
 
   \code{rvrs_var} reverses the item given the specified scaling values. It
   can handle the following types of scales:
