@@ -92,7 +92,7 @@ check_mrit <- function(x) {
   if (isFALSE(0 <= x && x < 1))
      stop("`mrit_min` is not in the range of `0` and `1`.", call. = FALSE)
   if (x == 0)
-     warning("`mrit_min = 0`: fragment is predetermined.",
+     warning("mrit_min = 0: fragment is predetermined.\n",
              call. = FALSE)
 }
 
