@@ -1,3 +1,3 @@
-.onAttach <- function(libname, musclr) {
- packageStartupMessage("Welcome to musclr!")
+.onAttach <- function(libname, elisr) {
+ packageStartupMessage("Welcome to elisr!")
 }
