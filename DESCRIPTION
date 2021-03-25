@@ -1,4 +1,4 @@
-Package: elisr 
+Package: elisr
 Type: Package
 Title: Exploratory Likert Scaling -- an Alternative to Exploratory Factor Analysis
 Version: 0.1.0
@@ -21,12 +21,13 @@ License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 4.0.2)
+    R (>= 4.0.4)
 Imports: 
     stats
 RoxygenNote: 7.1.1
 Suggests: 
-    testthat,
-    knitr,
-    rmarkdown
+    testthat (>= 3.0.2),
+    knitr (>= 1.31),
+    rmarkdown (>= 2.7),
+    psych (>= 2.0.9)
 VignetteBuilder: knitr
