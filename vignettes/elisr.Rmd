@@ -2,7 +2,7 @@
 title: "A (more) technical `elisr` companion" 
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{elisr}
+  %\VignetteIndexEntry{A (more) technical `elisr` companion}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -12,10 +12,6 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
-
-```{r setup}
-library(elisr)
 ```
 
 `elisr` is a shorthand for exploratory likert scaling (ELIS) in R. ELIS builds
@@ -380,51 +376,54 @@ ntrust <- within( trust, tv <- 8 - tv )
 
 ### Different types of scales
 
-#
-#
-#
-
 There are 3 different types of scales which `disjoint()` and `overlap()` can
-handle if you enable the `negative_too` option.
+handle. They all have in common that the underlying variables are real numeric
+vectors in R (either integers or objects of type `double`, see `typeof(x)`). If
+you enable the `negative_too=TRUE` option `elisr`s wizards process:
 
-1. An integer scale starting at 1 (e.g., "1 2 3 4 5 6 7"). Both function use the
+1. Numeric scales starting at 1 (e.g., "1 2 3 4 5 6 7"). Both function use the
 formula $(\max sclval + 1) - x$ when setting `scalvals=c(1,7)` in this case.
  
 2. An integer scale starting at 0 (e.g., "0 1 2 3 4 5 6 7). The use the formula
 $\max sclval - x$. Set `sclvals=c(0,7)`. 
 
-3. An integer scale starting below 0 ( e.g., "-3 -2 -1 0 -1 -2 -3"). The
+3. An integer scale starting below 0 (e.g., "-3 -2 -1 0 -1 -2 -3"). The
 workhorse here bases simply on the formula `x * (-1)`.
 
-Those 3 option should cover a wide range of application. Despite that, you are
-free to use any quasi-metrical scale you like. Just keep in mind the deviations
-discussed when manually reversing a set of variables.
+Those 3 option should cover a wide range of applications. Keep in mind, however,
+that the various input possibilities do not stop with the abovementioned
+examples. The only thing that might hold you back is defined by the logic of the
+reversing rule itself. But within that range, you are free to enter whatever you
+want.
 
-NOTE: both function reverse variables if necessary when this option is set
-without complaining.
+### Handle items with different start- end endpoints
 
-### Dealing with different start- end endpoints of a scale.
+To be clear, `elisr` offers no way to tackle the start-endpoint issue
+internally. You have to face and overcome this obstacle yourself. But it is
+worth mentioning, that neither `overlap()` nor `disjoint()` will complain. They
+silently obey and apply the algorithm to the given list of variables.
 
-A minor issue of `elisr` so far, is that it can't cope with items measured on
-scales with different start- and endpoints. However, if you insert those,
-`disjoint()` and `overlap()` will silently follow this appeal. They won't
-complain. 
+### Sticking in items you own fragment 
 
-There are a couple of ways to deal with this issue in advance. One might
-consider the least common multiple for that reason. But be aware that in doing
-so you sign off the accordion assumption. That is, one ends up assuming that the
-the space between categories grows from stratching in a linear way. That can be
-a reasonable assumption sometimes but sometimes it is not. You have to check
-such assumptions according to your prior knowledge and the data. Therefore it
-would be nonsensical to link this algorithm to and ad-hoc assumptions without
-any details of the field and the structure of data at hand.
+#
+#
+#
+#
+
+```{r}
+core <- trust[c("tv", "bundtag", "fccourt")]
+pre <- disjoint(df = core, mrit_min = 0)
+# overlap() uses this attribute to build the counterpart
+attributes(pre)$df <- trust
+(msdf <- overlap(msdf, mrit_min = .3))
+```
 
 ## Working with the results
 
-In the previous chapters I mentioned the `print.msdf()` function. To make the
-output luicd I exploited the fact that R wraps `msdf` internally in `print()`.
-When print meets and object of the epynomous type it passes work on to
-`print.msdf()` -- which cleary arranges the results.
+In the previous chapters I mentioned the `print.msdf()` function. Remeber, the
+idea was to exploit the fact, that R internally wraps `msdf` in `print()` and
+intervene in the process. `print()` now passes the work on to the `print.msdf()`
+which presents the result in the following manner:
 
 ```{r}
 msdf <- overlap( 
@@ -432,80 +431,84 @@ msdf <- overlap(
         # Note: overlap() remembers the scaling values from disjoint()
         mrit_min = .4, negative_too = TRUE 
 )
-
-msdf
 ```
-
-But what happend to the actual output? Well, it is not lost, but hidden by this
-internal printing mechanism. But you can break this structure by adressying one
-of `msdf`s elements directly. That reveals the raw data list. So, what you
-should see in the following output are the first six values of the
-algorithmically sorted (and in this case extended) variables of your specified
-item list `df=trust`. The sorting itself is done according to your input of the
-marginal corrected item total correlations `mrit_min=.55` with `disjoint()` and
-`mrit_min=.4` with `overlap()`.
+The question is, why am I telling you all this? Well, because what you see is
+not the actual result of `disjoint()` or `overlp()`, but a processed result by
+`print.muscldf()`. To put it another way, the actual outcome is hidden by this
+internal printing mechanism. But you can break through this process by adressing
+one of `msdf`s elements directly. This reveals the internally sorted (and in
+this case partially reversed, plus extended) data list. To keep things
+organized, the following output shows only the first six values (`head(x)`) of
+its component one: `$scl_1`.
 
 ```{r}
 head(msdf$scl_1)
 ```
+There is one tiny thing I want to point out here, before we dive deeper into the
+topic of this section. Look at `tv`. It is reversed now. Thus, the reversing
+process was successful. If you want to prove that, just compare the outcome to
+prevoius results in this section and you'll see that we could actually
+replicated them (type: `overlap(disjoint(trust, mrit_min=.55), mrit_min=.4`). In
+a nutshell: `disjoint()` and `overlap()` both keep the reversed form of the
+variable. This behavior is thought to make further analysis as convenient as
+possible. Let's move on by discussing why.
 
-An additional look at the result reveals that `tv` is still present in reverse.
-Aiming to make further analysis as convenient as possible, `disjoint()` and
-`overlap()` both keep the reversed form of the variable. If this behaviour is
-undesireable, one could easily re-reverse it. Just stick to the previously
-discussed formulas. Another convenience is that accessing `msdf` using
-`msdf$scl_1` aditionally breaks the breaks the inherent structure of that
-object. It is no longer of type `msdf` but a `data.frame` object. That
-simplifies getting on with the job.
+Because further anaylsis of the result is mandatory, I made the functions
+translate the output into a object type most connecting packages can handle.
+That is a `data.frame`. So, inside the machinery, specifying `scl_1` in `msdf`
+breaks through the inherent structure and transfers the result to a data frame
+object.
 
 ```{r}
 class(msdf$scl_1)
 ```
+To make a final unequivocal statement on `elisr`s results. What you really get
+from applying `disjoint()` and `overlap()` is an intermediate. A good hint is
+`mrit`. `mrit` is again the /marginal/ corrected item total correlation.
+Remember, what that means: The linear relationship between the sum score of the
+items in a fragment at some specific point of the scale development process and
+the item which is considered for admission. Hence, the output represents the
+construction from a bottom-up perspective. To put it another way, we gradually
+build scales from scratch and `mrit` as well as `rbar`, and `alpha` monitor this
+procsess for you. But this result however can differ significantly from a more
+comprehensive (reliability) analysis of a proposed scale. Therefore I'll end the
+manual with a place for you to (re-)start.
 
-## Further anylsis of the results
+# A place to restart 
 
-A final note on what `elisr` leaves you with. Well, what you get from applying
-`disjoint()` and `overlap()` is really an intermediate. Let's be clear on this,
-the result indicates how the items you've entered are linearly associated with
-one another given a reasonable termination criterion. It expands
-
-# Sticking in items you own fragment 
-
-
-extended sorted version of your data frame with a
-decreasing
-
-So postprocessing the
-result is mandatory. There are several ways to continue, but the `psych` package
-and `sjmisc` by Daniel Lüdecke are good places to start. The first on provides
-the working horse `alpha()` and the second a comprehensive summary using
-`reliab_test()`.
-
+There are several options to continue. But the one which I find most appealing,
+is part of the `psych` package. The object of desire is called `alpha()`. This
+neat function provides a bunch of helpful diagnostic information on the proposed
+scale(s). The snippet below checks if psych is present and give advise on how to
+procced. Just copy and run it.
 
 ```{r}
-core <- trust[c("tv", "bundtag", "fccourt")]
-(msdf <- disjoint(df = core, mrit_min = 0))
-attributes(msdf)$df <- trust
-(msdf_fin <- overlap(msdf, mrit_min = .3))
+if (requireNamespace("psych", quietly = TRUE)) {
+  cat("`psych` is present. Ready to go!\n")
+} else {
+  cat("Please install the psych package to continue, type:\n")
+  message("install.packages('psych')")
+}
+```
+Once you have installed and loaded `psych`, there are two things you need to do.
+First, store the result of an analysis into an object. Second, hand the scale
+over to `alpha()` That's basically it. One scale is already available through
+`msdf`. Let's take that. Note: `alpha()`s output is pretty extensive. Therefore,
+I suspressed the result. But if you run the code yourself, you will see the
+result in full length.
+
+```{r echo=T, results='hide'}
+psych::alpha(msdf$scl_1)
 ```
 
-
-
-
-##
-
-Mokken 
+As we've seen throught the manual, an analysis with `elisr` often provides a
+couple of suggestions. We should work out a solution for this scenario, too. I
+usually hack the result of `overlap()` in `lapply()` and let `alpha()` do it's
+job on all components of that modified list. Let's do that. But before we
+start, please note once more, that the full result will be present only if you
+run the code yourself.
  
- 
-Mokken, R. J., 1971: A Theory and Procedure of Scale
-Analysis. With Applications in Political Research. The
-Hague/New York: Mouton.
- 
- 
- 
- 
-Note: devalere the mjmisc (?) package in /Description since otherwise the package
-doesnt run on CRAN 
-
-
-
+```{r echo=T, results='hide'}
+msdf <- overlap(d, mrit_min = .4)
+lapply(msdf, psych::alpha)
+```
