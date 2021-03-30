@@ -1,7 +1,7 @@
 #' @title Multiple Scaling In An Overlapping Manner Using Positive Items
 
 #' @description \code{ovlp_pci} is an internal function. It returns a list of
-#'   data frames by taking one (\code{muscldf}). In order to do that,
+#'   data frames by taking one (\code{msdf}). In order to do that,
 #'   \code{ovlp_pci} pre-sets the scales by using either the core items of the
 #'   given multiple scaled data frame or the full scale, i.e. all items of each
 #'   scale (\code{scls}). Furthermore, \code{ovlp_nci} pre-sets a list of scales
@@ -15,13 +15,13 @@
 #'   (from \code{ebscls}). After one overlap \code{ovlp_pci} moves on to the
 #'   next scale.
 #'
-#' @param muscldf a multiple scaled data frame (built with \code{disjoint}).
+#' @param msdf a multiple scaled data frame (built with \code{disjoint}).
 #'
 #' @param mrit_min a numerical constant to set the (corrected item total)
 #'   correlation. The value of this lower bound must be in the range of 0 to 1.
 #'   If no value is entered (\code{NULL}, the default) \code{overlap} tries to
 #'   get the one specified in \code{disjoint}, by looking for a \code{mrit_min}
-#'   attribute in the given \code{muscldf}.
+#'   attribute in the given \code{msdf}.
 #'
 #' @param overlap_with a string telling \code{overlap} which items to start the
 #'   scaling process with. One can choose to use either the "core" of each scale
@@ -44,7 +44,7 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 
 #'   @importFrom stats cor
-ovlp_pci <- function(muscldf, mrit_min, overlap_with, use) {
+ovlp_pci <- function(msdf, mrit_min, overlap_with, use) {
 
 # Function ----------------------------------------------------------------
 
@@ -62,22 +62,22 @@ one_ovlp_pci <- function(scl, ebscl, mrit_min, use) {
 
 # Pre-Set's ---------------------------------------------------------------
 
-df <- eval(attr(muscldf, "df"))
-# scl_nms <- lapply(muscldf, names)
+df <- eval(attr(msdf, "df"))
+# scl_nms <- lapply(msdf, names)
 # core_nms <- lapply(scl_nms, function(scl_nms) scl_nms[c(1, 2)])
 
 # Procedure & Options -----------------------------------------------------
 
 switch(overlap_with,
        fragment = {
-         # scls <- muscldf
+         # scls <- msdf
          # scls <- lapply(scl_nms, extr_itms, df = df)
-         scl_nms <- lapply(muscldf, names)
+         scl_nms <- lapply(msdf, names)
          ebscls <- lapply(scl_nms, extreb_itms, df = df)
          },
        core = {
-          muscldf <- lapply(muscldf, extr_core)
-          core_nms <- lapply(muscldf, extr_core_nms)
+          msdf <- lapply(msdf, extr_core)
+          core_nms <- lapply(msdf, extr_core_nms)
           ebscls <- lapply(core_nms, extreb_itms, df = df)
          # scls <- lapply(core_nms, extr_itms, df = df)
          # ebscls <- lapply(core_nms, extreb_itms, df = df)
@@ -86,6 +86,6 @@ switch(overlap_with,
             call. = FALSE)
        )
 # if ( ncol(ebscls) == 0) stop ("No items to overlap. Consider lowering mrit_min")
-Map(one_ovlp_pci, muscldf, ebscls, MoreArgs = list(mrit_min, use))
+Map(one_ovlp_pci, msdf, ebscls, MoreArgs = list(mrit_min, use))
 # Map(one_ovlp_pci, scls, ebscls, MoreArgs = list(mrit_min, use))
 }

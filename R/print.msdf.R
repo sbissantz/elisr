@@ -6,7 +6,7 @@
 #'   Cronbachs Alpha (`alpha`) and reports the average correlation (`rbar`) for
 #'   every scale at each step of the scaling process.
 #'
-#' @param muscldf a multiple scaled data frame (built with either
+#' @param msdf a multiple scaled data frame (built with either
 #'   \code{disjoint} or \code{overlap}).
 #'
 #' @param use an optional string indicating how to deal with missing values if
@@ -27,21 +27,18 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 #'
 #' @examples
-#' # Exploring a disjoint scaled data frame (`muscldf`)
-#' muscldf <- disjoint(mtcars, mrit_min = .4)
-#' explore(muscldf)
+#' # Exploring a disjoint scaled data frame (`msdf`)
+#' msdf <- disjoint(mtcars, mrit_min = .4)
+#' explore(msdf)
 #'
 #' # Exploring an overlapping scaled data frame (`msdf_ovlp`)
 #' msdf_disj <- disjoint(mtcars, mrit_min = .4)
 #' msdf_ovlp <- overlap(msdf_disj, mrit_min = .7, overlap_with = "full_scale")
 #' explore(msdf_ovlp)
 
-# https://cran.r-project.org/doc/manuals/r-release/R-exts.html#Registering-S3-methods
-# https://stackoverflow.com/questions/18512528/how-to-export-s3-method-so-it-is-available-in-namespace
-
 #'@export
-print.muscldf <- function(muscldf, digits = 2, use = "pairwise.complete.obs") {
-  check_muscldf(muscldf)
+print.msdf <- function(msdf, digits = 2, use = "pairwise.complete.obs") {
+  check_msdf(msdf)
   explr_once <- function(scl, use) {
    scl_len <- length(scl)
     # Trick: retraces the sequential "emergence" of scldf
@@ -66,5 +63,5 @@ print.muscldf <- function(muscldf, digits = 2, use = "pairwise.complete.obs") {
     row.names(mat) <- var_nms
     mat
   }
-  print(lapply(muscldf, explr_once, use), digits = digits)
+  print(lapply(msdf, explr_once, use), digits = digits)
 }

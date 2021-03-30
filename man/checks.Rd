@@ -7,7 +7,7 @@
 \alias{compare_sclvals}
 \alias{check_mrit}
 \alias{check_ovlp}
-\alias{check_muscldf}
+\alias{check_msdf}
 \alias{check_neg}
 \alias{check_comp}
 \title{A Set of Checks for the Appropriteness of Inputs}
@@ -22,7 +22,7 @@ check_mrit(x)
 
 check_ovlp(x)
 
-check_muscldf(x)
+check_msdf(x)
 
 check_neg(x)
 
@@ -62,9 +62,9 @@ A Set of Checks for the Appropriteness of Inputs
   and \code{overlap}) validates the input strings itself, throwing an error
   message when the given character doesn't match the available options
 
-  \code{check_muscldf(x)} is used in \code{explore} and \code{overlap} to make
-  sure the specified input is of type `muscldf`. Hint: No further checks for
-  muscldf necessary. A data frame is only scaled when it has names see:
+  \code{check_msdf(x)} is used in \code{explore} and \code{overlap} to make
+  sure the specified input is of type `msdf`. Hint: No further checks for
+  msdf necessary. A data frame is only scaled when it has names see:
   \code{check_df}. Since (1) \code{disjoint} and \code{overlap} do not
   manipulate the `colnames` attribute and the user cant specify an
   alternative \code{df}`, names must  be valid.

@@ -5,10 +5,10 @@
 \alias{trust}
 \title{German General Social Survey's Trust Items}
 \format{
-Participants were asked about the trust they place in public
-  institutions and organizations. `1` means they have absolutely no trust at
-  all, whereas `7` represents a great deal of trust. The data frame has 3477
-  rows and 13 variables:
+Participants were asked about their trust in public institutions and
+  organizations. `1` means they have absolutely no trust at all, whereas `7`
+  represents a great deal of trust. The data frame has 3477 rows and 13
+  variables:
   \describe{
   \item{healserv}{Health service}
   \item{fccourt}{German constitutional court}
@@ -34,9 +34,9 @@ A subset of the German General Social Survey (ALLBUS) 2018
 }
 \details{
 Please note that, in comparison to the original data set,
-participant order has been randomly rearranged to further ensure their
-anonymity. This might lead to differences when trying to reproduce the
-results of the analysis with the original data set, mentioned below.
+  participant order has been randomly rearranged to further ensure anonymity.
+  This might lead to differences when trying to reproduce the results of the
+  analysis with the original data set, mentioned below.
 }
 \examples{
 #

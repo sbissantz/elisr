@@ -2,7 +2,7 @@
 % Please edit documentation in R/utils.R
 \name{utils}
 \alias{utils}
-\alias{nme_muscldf}
+\alias{nme_msdf}
 \alias{calc_rbar}
 \alias{calc_alpha}
 \alias{calc_mrit}
@@ -13,7 +13,7 @@
 \alias{rvrs_note}
 \title{A Set of Utility Functions}
 \usage{
-nme_muscldf(x)
+nme_msdf(x)
 
 calc_rbar(scl, use)
 
@@ -32,12 +32,12 @@ rvrs_var(var, sclvals)
 rvrs_note(msg, applicant)
 }
 \arguments{
-\item{x}{a muscldf}
+\item{x}{a msdf}
 
-\item{scl}{a scale from a muscldf}
+\item{scl}{a scale from a msdf}
 
-\item{use}{an optional string indicating how to deal with missing values if
-necessary. See \code{use} in \code{\link[stats]{cor}} for details.}
+\item{use}{an optional string indicating how to deal with missing values, See
+\code{use} in \code{\link[stats]{cor}} for details.}
 
 \item{df}{a data frame object,}
 
@@ -45,49 +45,44 @@ necessary. See \code{use} in \code{\link[stats]{cor}} for details.}
 
 \item{var}{a variable or item (often a column from a data frame)}
 
-\item{sclvals}{the start and end point of a scale (consider \code{c(sp,ep)})}
+\item{sclvals}{the start and end point of a scale (specify: \code{c(sp,ep)})}
 }
 \description{
 A Set of Utility Functions
 }
 \details{
-\code{nme_muscldf} designates the components of a muscldf (e.g.,
+\code{nme_msdf} designates the components of a msdf (e.g.,
   `scl_1`).
 
   \code{calc_rbar} calculates the average correlation between items from a
   gradually emerging scale.
 
-  \code{calc_alpha} calculates Cronbachs alpha of a given set of items from
+  \code{calc_alpha} calculates Cronbach's alpha of a given set of items from
   the gradually emerging scale.
 
   \code{calc_mrit} calculates the corrected item-total correlation of an item
   with the sum score of all the other variables of the gradually emerging
-  scale. That's why we call it marginal rit. Note that this procedure uses a
-  part-whole correction. Thus the item itself is excluded in the calculation
-  process.
+  scale (aka. marginal corrected item-total correlation). Note, that this
+  procedure uses a part-whole correction. Thus, the item itself is excluded
+  in the calculation process.
 
-  \code{extreb_itms} build up the counterpart of a fragment using its items
-  names. Therefore the counterpart includes all variables that are not
-  deliverd with the fragment but which are mentioned in the specified data
-  set.
+  \code{extreb_itms} build up the counterpart of a fragment from the given
+  item names. Therefore, the counterpart includes all variables that are not
+  part of a fragment but which are mentioned in the specified data set.
 
-  \code{extr_core} extracts pairs of core items from a data frame. Those are
-  part of a list of data frames nested within a `msdf` object. `overlap()`
-  draws on this helper function when setting the `overlap_with=core` option.
-  Hence, it forms for the actual overlap.
+  \code{extr_core} extracts all pairs of core items from a fragment.
 
-  \code{extr_core_nms} extracts the names of the core items in a given
-  fragment (e.g. `scl_1`).
+  \code{extr_core_nms} extracts the names of every core items in a given
+  fragment.
 
-  \code{rvrs_var} reverses the item given the specified scaling values. It
-  can handle the following types of scales:
+  \code{rvrs_var} reverses an item using the specified scaling values. It
+  handles the following types of scales:
   \itemize{
   \item  ...-3 -2 -1 0 1 2 3..., e.g., \code{sclvals = c(-3, 3)}
   \item  0 1 2 3 4 5 6..., e.g.,  \code{sclvals = c(0, 7)}
   \item  1 2 3 4 5 6 7..., e.g., \code{sclcals = c(1, 7)}
   }
 
-  \code{rvrs_note} gets a report of variables `rvrs_var` recoded. Note
-  however, that `rvrs_note` presentes this results only in a reduced form. To
-  not overload the output it reports only a unique list of its notes.
+  \code{rvrs_note} gets the full report of reversed variables and reports a
+  unique list of them.
 }

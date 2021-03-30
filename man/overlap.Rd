@@ -5,7 +5,7 @@
 \title{Multiple Scaling In An Overlapping Manner}
 \usage{
 overlap(
-  muscldf,
+  msdf,
   mrit_min = NULL,
   negative_too = FALSE,
   overlap_with = "fragment",
@@ -14,13 +14,13 @@ overlap(
 )
 }
 \arguments{
-\item{muscldf}{a multiple scaled data frame (built with \code{disjoint}).}
+\item{msdf}{a multiple scaled data frame (built with \code{disjoint}).}
 
 \item{mrit_min}{a numerical constant to set the (corrected item total)
 correlation. The value of this lower bound must be in the range of 0 to 1.
 If no value is entered (\code{NULL}, the default) \code{overlap} tries to
 get the one specified in \code{disjoint}, by looking for a \code{mrit_min}
-attribute in the given \code{muscldf}.}
+attribute in the given \code{msdf}.}
 
 \item{negative_too}{a logical constant indicating whether items with a
 negative correlation should be included in the scaling process. The default
@@ -38,7 +38,7 @@ necessary. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
 \description{
 \code{overlap} returns a multiple, overlapping scaled version of
-  the specified \code{muscldf}. It is then often explored using the eponymous
+  the specified \code{msdf}. It is then often explored using the eponymous
   function (\code{\link{explore}}).
 }
 \details{
@@ -49,17 +49,17 @@ The \code{use} argument takes control over the treatment of missing
   when an item is considered to be part of this scale.
 }
 \examples{
-# Build a muscldf
-muscldf <- disjoint(mtcars, mrit_min = .4)
+# Build a msdf
+msdf <- disjoint(mtcars, mrit_min = .4)
 
 # Using positive correlations (and `pairwise.complete.obs`)
-overlap(muscldf, mrit_min = .6, overlap_with = "core")
+overlap(msdf, mrit_min = .6, overlap_with = "core")
 
 # Including negative correlations (and `pairwise.complete.obs`)
-overlap(muscldf, mrit_min = .7, negative_too = TRUE, sclvals = c(-3,3))
+overlap(msdf, mrit_min = .7, negative_too = TRUE, sclvals = c(-3,3))
 
 # Changing the treatment of missing values
-overlap(muscldf, mrit_min = .6, use = "all.obs")
+overlap(msdf, mrit_min = .6, use = "all.obs")
 
 }
 \references{

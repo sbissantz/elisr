@@ -27,9 +27,9 @@
 #'   and \code{overlap}) validates the input strings itself, throwing an error
 #'   message when the given character doesn't match the available options
 #'
-#'   \code{check_muscldf(x)} is used in \code{explore} and \code{overlap} to make
-#'   sure the specified input is of type `muscldf`. Hint: No further checks for
-#'   muscldf necessary. A data frame is only scaled when it has names see:
+#'   \code{check_msdf(x)} is used in \code{explore} and \code{overlap} to make
+#'   sure the specified input is of type `msdf`. Hint: No further checks for
+#'   msdf necessary. A data frame is only scaled when it has names see:
 #'   \code{check_df}. Since (1) \code{disjoint} and \code{overlap} do not
 #'   manipulate the `colnames` attribute and the user cant specify an
 #'   alternative \code{df}`, names must  be valid.
@@ -105,9 +105,9 @@ check_ovlp <- function(x) {
 }
 
 #' @rdname checks
-check_muscldf <- function(x) {
-  if (isFALSE(inherits(x, "muscldf")))
-    stop("Specified object is not of type `muscldf`.", call. = FALSE)
+check_msdf <- function(x) {
+  if (isFALSE(inherits(x, "msdf")))
+    stop("Specified object is not of type `msdf`.", call. = FALSE)
 }
 
 #' @rdname checks

@@ -1,7 +1,7 @@
 context("Test utility functions")
 
-test_that("name muscldf's", {
-  res_nme <- nme_muscldf(2)
+test_that("name msdf's", {
+  res_nme <- nme_msdf(2)
   expect_equal(res_nme, "scl_1")
 })
 

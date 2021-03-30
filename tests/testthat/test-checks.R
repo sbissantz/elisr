@@ -53,8 +53,8 @@ test_that("overlap_with is a character vector of length 1", {
   expect_error(check_ovlp(x = c("a", "b")))
 })
 
-test_that("muscldf is one of its type", {
-  expect_error(check_muscldf(x = as.data.frame(1:10)))
+test_that("msdf is one of its type", {
+  expect_error(check_msdf(x = as.data.frame(1:10)))
 })
 
 test_that("negative_too", {

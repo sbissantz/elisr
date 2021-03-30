@@ -33,7 +33,7 @@ default is set to `pairwise.complete.obs`.}
 }
 \description{
 \code{disjoint} returns a multiple, disjoint scaled version of
-  the specified data frame. This so called `muscldf` can then either be
+  the specified data frame. This so called `msdf` can then either be
   explored using the eponymous function (\code{\link{explore}}) or further
   analyzed with \code{\link{overlap}}.
 }

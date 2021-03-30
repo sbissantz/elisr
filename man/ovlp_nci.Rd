@@ -4,16 +4,16 @@
 \alias{ovlp_nci}
 \title{Multiple Scaling In An Overlapping Manner Using Positive Items}
 \usage{
-ovlp_nci(muscldf, mrit_min, overlap_with, sclvals, use)
+ovlp_nci(msdf, mrit_min, overlap_with, sclvals, use)
 }
 \arguments{
-\item{muscldf}{a multiple scaled data frame (built with \code{disjoint}).}
+\item{msdf}{a multiple scaled data frame (built with \code{disjoint}).}
 
 \item{mrit_min}{a numerical constant to set the (corrected item total)
 correlation. The value of this lower bound must be in the range of 0 to 1.
 If no value is entered (\code{NULL}, the default) \code{overlap} tries to
 get the one specified in \code{disjoint}, by looking for a \code{mrit_min}
-attribute in the given \code{muscldf}.}
+attribute in the given \code{msdf}.}
 
 \item{overlap_with}{a string telling \code{overlap} which items to start the
 scaling process with. One can choose to use either the "core" of each scale
@@ -31,7 +31,7 @@ is set to \code{FALSE}.}
 }
 \description{
 \code{ovlp_nci} is an internal function. It returns a list of
-  data frames by taking one (\code{muscldf}). In order to do that,
+  data frames by taking one (\code{msdf}). In order to do that,
   \code{ovlp_nci} pre-sets the scales by using either the core items of the
   given multiple scaled data frame or the full scale, i.e. all items of each
   scale (\code{scls}). Furthermore, \code{ovlp_nci} pre-sets a list of scales

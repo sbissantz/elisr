@@ -1,16 +1,16 @@
 #' @title Multiple Scaling In An Overlapping Manner
 #'
 #' @description \code{overlap} returns a multiple, overlapping scaled version of
-#'   the specified \code{muscldf}. It is then often explored using the eponymous
+#'   the specified \code{msdf}. It is then often explored using the eponymous
 #'   function (\code{\link{explore}}).
 #'
-#' @param muscldf a multiple scaled data frame (built with \code{disjoint}).
+#' @param msdf a multiple scaled data frame (built with \code{disjoint}).
 #'
 #' @param mrit_min a numerical constant to set the (corrected item total)
 #'   correlation. The value of this lower bound must be in the range of 0 to 1.
 #'   If no value is entered (\code{NULL}, the default) \code{overlap} tries to
 #'   get the one specified in \code{disjoint}, by looking for a \code{mrit_min}
-#'   attribute in the given \code{muscldf}.
+#'   attribute in the given \code{msdf}.
 #'
 #' @param negative_too a logical constant indicating whether items with a
 #'   negative correlation should be included in the scaling process. The default
@@ -37,44 +37,44 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 #'
 #' @examples
-#' # Build a muscldf
-#' muscldf <- disjoint(mtcars, mrit_min = .4)
+#' # Build a msdf
+#' msdf <- disjoint(mtcars, mrit_min = .4)
 #'
 #' # Using positive correlations (and `pairwise.complete.obs`)
-#' overlap(muscldf, mrit_min = .6, overlap_with = "core")
+#' overlap(msdf, mrit_min = .6, overlap_with = "core")
 #'
 #' # Including negative correlations (and `pairwise.complete.obs`)
-#' overlap(muscldf, mrit_min = .7, negative_too = TRUE, sclvals = c(-3,3))
+#' overlap(msdf, mrit_min = .7, negative_too = TRUE, sclvals = c(-3,3))
 #'
 #' # Changing the treatment of missing values
-#' overlap(muscldf, mrit_min = .6, use = "all.obs")
+#' overlap(msdf, mrit_min = .6, use = "all.obs")
 #'
 
 #' @export
-overlap <- function(muscldf, mrit_min = NULL, negative_too = FALSE,
+overlap <- function(msdf, mrit_min = NULL, negative_too = FALSE,
                     overlap_with = "fragment", sclvals = NULL,
                     use = "pairwise.complete.obs") {
   check_neg(negative_too)
-  check_muscldf(muscldf)
+  check_msdf(msdf)
   if (is.null(mrit_min)) {
-    mrit_min <- attr(muscldf, "mrit_min")
+    mrit_min <- attr(msdf, "mrit_min")
     }
   check_mrit(mrit_min)
   check_ovlp(overlap_with)
   if (negative_too) {
-    sclvals_attr <- attr(muscldf, "sclvals")
+    sclvals_attr <- attr(msdf, "sclvals")
     compare_sclvals(sclvals, sclvals_attr)
     if (is.null(sclvals)) {
       sclvals <- sclvals_attr
     }
     check_sclvals(sclvals)
-    scls <- ovlp_nci(muscldf, mrit_min, overlap_with, sclvals, use = use)
-    new_muscldf(scls, df = attr(muscldf, "df"), method = "overlap",
+    scls <- ovlp_nci(msdf, mrit_min, overlap_with, sclvals, use = use)
+    new_msdf(scls, df = attr(msdf, "df"), method = "overlap",
                 mrit_min = mrit_min, negative_too = TRUE,
                 sclvals = sclvals)
   }else{
-    scls <- ovlp_pci(muscldf, mrit_min, overlap_with, use = use)
-    new_muscldf(scls, df = attr(muscldf, "df"), method = "overlap",
+    scls <- ovlp_pci(msdf, mrit_min, overlap_with, use = use)
+    new_msdf(scls, df = attr(msdf, "df"), method = "overlap",
                 mrit_min = mrit_min, negative_too = FALSE)
   }
 }

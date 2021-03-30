@@ -1,6 +1,6 @@
 #' @title Multiple Scaling In A Disjoint Manner
 #' @description \code{disjoint} returns a multiple, disjoint scaled version of
-#'   the specified data frame. This so called `muscldf` can then either be
+#'   the specified data frame. This so called `msdf` can then either be
 #'   explored using the eponymous function (\code{\link{explore}}) or further
 #'   analyzed with \code{\link{overlap}}.
 #' @param df a data frame (with more than two items and unique, non-\code{NA}
@@ -44,11 +44,11 @@ disjoint <- function(df, mrit_min = .3, negative_too = FALSE,
   if (negative_too) {
     check_sclvals(sclvals)
     scls <- disj_nci(df, mrit_min, sclvals, use)
-    new_muscldf(scls, df = match.call()$df, method = "disjoint",
+    new_msdf(scls, df = match.call()$df, method = "disjoint",
                 mrit_min = mrit_min, negative_too = TRUE, sclvals = sclvals)
     }else{
       scls <- disj_pci(df, mrit_min, use)
-      new_muscldf(scls, df = match.call()$df, method = "disjoint",
+      new_msdf(scls, df = match.call()$df, method = "disjoint",
                mrit_min = mrit_min, negative_too = FALSE)
     }
 }

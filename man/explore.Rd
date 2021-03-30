@@ -4,10 +4,10 @@
 \alias{explore}
 \title{Explore A Multiple Scaled Data Frame}
 \usage{
-explore(muscldf, digits = 2, use = "pairwise.complete.obs")
+explore(msdf, digits = 2, use = "pairwise.complete.obs")
 }
 \arguments{
-\item{muscldf}{a multiple scaled data frame (built with either
+\item{msdf}{a multiple scaled data frame (built with either
 \code{disjoint} or \code{overlap}).}
 
 \item{use}{an optional string indicating how to deal with missing values if
@@ -31,9 +31,9 @@ The \code{use} argument takes control over the treatment of missing
   should stay with the options specified before.
 }
 \examples{
-# Exploring a disjoint scaled data frame (`muscldf`)
-muscldf <- disjoint(mtcars, rit_min = .4)
-explore(muscldf)
+# Exploring a disjoint scaled data frame (`msdf`)
+msdf <- disjoint(mtcars, rit_min = .4)
+explore(msdf)
 
 # Exploring an overlapping scaled data frame (`msdf_ovlp`)
 msdf_disj <- disjoint(mtcars, rit_min = .4)

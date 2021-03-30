@@ -6,7 +6,7 @@
 #'   reports the average correlation (`rbar`) for every scale at each step of
 #'   the scaling process.
 #'
-#' @param muscldf a multiple scaled data frame (built with either
+#' @param msdf a multiple scaled data frame (built with either
 #'   \code{disjoint} or \code{overlap}).
 #'
 #' @param use an optional string indicating how to deal with missing values if
@@ -26,9 +26,9 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 #'
 #' @examples
-#' # Exploring a disjoint scaled data frame (`muscldf`)
-#' muscldf <- disjoint(mtcars, rit_min = .4)
-#' explore(muscldf)
+#' # Exploring a disjoint scaled data frame (`msdf`)
+#' msdf <- disjoint(mtcars, rit_min = .4)
+#' explore(msdf)
 #'
 #' # Exploring an overlapping scaled data frame (`msdf_ovlp`)
 #' msdf_disj <- disjoint(mtcars, rit_min = .4)
@@ -36,8 +36,8 @@
 #' explore(msdf_ovlp)
 
 #' @export
-explore <- function(muscldf, digits = 2, use = "pairwise.complete.obs") {
-  check_muscldf(muscldf)
+explore <- function(msdf, digits = 2, use = "pairwise.complete.obs") {
+  check_msdf(msdf)
   explr_once <- function(scl, use) {
    scl_len <- length(scl)
     # Trick: retraces the sequential "emergence" of scldf
@@ -63,7 +63,7 @@ explore <- function(muscldf, digits = 2, use = "pairwise.complete.obs") {
     row.names(mat) <- var_nms
     round(mat, digits = digits)
   }
-  scls_nms <- nme_muscldf(muscldf)
-  scls <- lapply(muscldf, explr_once, use)
+  scls_nms <- nme_msdf(msdf)
+  scls <- lapply(msdf, explr_once, use)
   structure(scls, names = scls_nms)
 }
