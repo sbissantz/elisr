@@ -9,50 +9,37 @@ disj_pci(df, mrit_mit, use)
 \arguments{
 \item{df}{a data frame object.}
 
-\item{mrit_mit}{a numerical constant to specify the (corrected item total)
-correlation. The value of this lower bound must in the range of 0 to 1. The
-default is set to \code{.3}.}
+\item{use}{an optional string to specify how missing values will enter the
+analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 
-\item{use}{an optional string indicating how to deal with missing values if
-necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
-default is set to \code{"pairwise.complete.obs"}.}
+\item{mrit_min}{a numerical constant to specify the marginal corrected item
+total correlation. The value must be in the range of 0-1.}
 }
 \description{
-\code{disj_pci} is an internal function. It returns a list of
-  data frames. In order to do that, \code{disj_pci} sets up an empty list of
-  scales (\code{scls}) and scaling can begin: When a first scale is set up in
-  there (1) \code{disj_pci} tries to find the two items with the highest
-  positive correlation in the data frame. (2) If this correlation is greater
-  than the pre-specified lower bound (\code{mrit_mit}), the two items are
-  summed up to build the core of the upcoming scale. Therefore the core is
-  nothing more than the sum score of these two items. After the building
-  process the core items are excluded from the data frame. They are now part
-  of the first scale. (4) While the (positive) correlation of any other of
-  the remaining items in the data frame (with that sum score) is greater than
-  the pre-specified lower bound (\code{mrit_mit}) \code{disj_pci} enlarges the
-  scale with the appropriate item. (5 = 1) If there are at least two items
-  left in the data frame, yielding a correlation coefficient greater than the
-  set lower bound, \code{disj_pci} restart the scaling process with a new
-  scale.
+\code{disj_pci} is an internal function and returns a list of
+ data frames. In addition, \code{disj_pci} sets up an empty list of scales
+ (\code{scls}) and scaling begins: (1) A (first) scale is set up. (2)
+ \code{disj_pci} tries to find the two items with the highest correlation
+ in the data frame. (3) If the this correlation is greater than the
+ pre-specified lower bound (\code{mrit_min}), \code{disj_pci} adds up the two
+ items to build the core of the scale. After developing the core, both items
+ are excluded from the data frame. They are now part of the first scale. (4)
+ While the correlation between the sum score and a remaining items of the
+ data frame is greater than the pre-specified lower bound, \code{disj_pci}
+ enlarges the scale with the appropriate item. (5 = 1) If there are at least
+ two items left in the data frame, yielding a correlation coefficient greater
+ than the set lower bound, \code{disj_pci} starts over again.
 }
 \details{
-\code{disj_pci} includes only those items in the scaling process
-  yielding a positive correlation, e.g. with the sum  score. It implements
-  the main idea behind the multiple scaling approach and is therefore the
-  basic building block for its expansions -- including disjoint and
-  overlapping scaling processes allowing to take negative correlations into
-  account. \code{disj_pci} is called internally when \code{disjoint} is used.
-  Each data frame in the list of data frames is (once again) a genuine subset
-  of the specified one.
+\code{disj_pci} build scales from items which share a positive
+  linear relationship. Therefore, it tags the building block for the upcoming
+  extensions -- including disjoint and overlapping scaling processes.
 
-  The \code{use} argument takes control over the treatment of missing values
-  when correlation matrices are build. In a scaling process this happens at
-  least twice: first when determining the core (the two items of the
-  correlation matrix with the highest linear relationship), and second when
-  an item is considered to be part of this scale.
-
-  Hint: If there ought to be two items in the scaling process, having an
-  equal correlation, e.g. with the sum score, always the first one is used.
+  \code{use} clarifies how to set up a correlation matrix in the presence
+  of missing values. In a scaling process this happens at least twice. First,
+  when determining the core items (the two items in the correlation matrix
+  with the highest linear relationship). Second, when an item is proposed for
+  an emerging scale.
 }
 \references{
 Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem

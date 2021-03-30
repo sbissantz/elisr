@@ -1,8 +1,8 @@
 #' @title Print method for multiple scaled data frame (msdf) objects
 #'
-#' @description The print mehtod for msdf objects returns a list of summary
+#' @description The print method for msdf objects returns a list of summary
 #'   statistics. It is tailored for the use with the multiple scaling approach
-#'   and returns the marginal corrected item total correlation (`mrit`),
+#'   and returns the marginal corrected item total correlation (\code{mrit}),
 #'   Cronbachs Alpha (`alpha`) and reports the average correlation (`rbar`) for
 #'   every scale at each step of the scaling process.
 #'

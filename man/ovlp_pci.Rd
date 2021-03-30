@@ -9,44 +9,25 @@ ovlp_pci(msdf, mrit_min, overlap_with, use)
 \arguments{
 \item{msdf}{a multiple scaled data frame (built with \code{disjoint}).}
 
-\item{mrit_min}{a numerical constant to set the (corrected item total)
-correlation. The value of this lower bound must be in the range of 0 to 1.
-If no value is entered (\code{NULL}, the default) \code{overlap} tries to
-get the one specified in \code{disjoint}, by looking for a \code{mrit_min}
-attribute in the given \code{msdf}.}
+\item{mrit_min}{a numerical constant of length 1 to specify the marginal
+corrected item-total correlation. It's value is in the range of 0-1.}
 
-\item{overlap_with}{a string telling \code{overlap} which items to start the
-scaling process with. One can choose to use either the "core" of each scale
-or a "fragment". The default is set to "fragment".}
+\item{overlap_with}{a string telling \code{overlap} the items it should
+extend on (in each particular case). To build up on all variables of a
+fragment use \code{fragment}, for the cores-only option type \code{core}.}
 
-\item{use}{an optional string indicating how to deal with missing values if
-necessary. See \code{use} in \code{\link[stats]{cor}} for details.}
+\item{use}{an optional string to specify how missing values will enter the
+analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
 \description{
-\code{ovlp_pci} is an internal function. It returns a list of
-  data frames by taking one (\code{msdf}). In order to do that,
-  \code{ovlp_pci} pre-sets the scales by using either the core items of the
-  given multiple scaled data frame or the full scale, i.e. all items of each
-  scale (\code{scls}). Furthermore, \code{ovlp_nci} pre-sets a list of scales
-  including everything but these items (\code{ebscls}). These steps equal the
-  building process (step 1 to 3) in the disjoint scaling procedure. Thus, the
-  given scale need to be expanded. Therefore, \code{ovlp_pci} uses each
-  component of the second list (\code{ebscls}) on a step by step base. In a
-  particular case this happens as follows: While the correlation coefficient
-  of a remaining item in the scale (with the sum score) is greater than the
-  pre-specified lower bound, the scale is enlarged with the according item
-  (from \code{ebscls}). After one overlap \code{ovlp_pci} moves on to the
-  next scale.
-}
-\details{
-The \code{use} argument takes control over the treatment of missing
-  values when correlation matrices are build. In a scaling process this
-  happens at least twice: first when determining the core (the two items of
-  the correlation matrix with the highest linear relationship), and second
-  when an item is considered to be part of this scale.
-
-  Hint: If there ought to be two items in the scaling process, having an
-  equal correlation, e.g. with the sum score, always the first one is used.
+\code{ovlp_nci} is an internal function and returns a list of
+  data frames. It takes a disjoint (\code{msdf}) and tries to extend it with
+  those items in the data frame which are not yet built into the fragment
+  (aka., counterpart). Despite the default, one can extend on the cores of
+  each fragment. The underlying expansion algorithm remains the same. The
+  only difference is that \code{ovlp_nci} applies this algorithm to each
+  fragment within `msdf`. The overlapping family of functions is thus a
+  multiple extension of the disjoint scaling approach to various fragments.
 }
 \references{
 Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem

@@ -15,9 +15,9 @@ necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
 default is set to `pairwise.complete.obs`.}
 }
 \description{
-The print mehtod for msdf objects returns a list of summary
+The print method for msdf objects returns a list of summary
   statistics. It is tailored for the use with the multiple scaling approach
-  and returns the marginal corrected item total correlation (`mrit`),
+  and returns the marginal corrected item total correlation (\code{mrit}),
   Cronbachs Alpha (`alpha`) and reports the average correlation (`rbar`) for
   every scale at each step of the scaling process.
 }

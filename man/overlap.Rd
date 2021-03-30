@@ -16,37 +16,28 @@ overlap(
 \arguments{
 \item{msdf}{a multiple scaled data frame (built with \code{disjoint}).}
 
-\item{mrit_min}{a numerical constant to set the (corrected item total)
-correlation. The value of this lower bound must be in the range of 0 to 1.
-If no value is entered (\code{NULL}, the default) \code{overlap} tries to
-get the one specified in \code{disjoint}, by looking for a \code{mrit_min}
-attribute in the given \code{msdf}.}
+\item{mrit_min}{a numerical constant of length 1 to specify the marginal
+corrected item-total correlation. It's value is in the range of 0-1. The
+default is set to \code{.3}.}
 
-\item{negative_too}{a logical constant indicating whether items with a
-negative correlation should be included in the scaling process. The default
-is set to \code{FALSE}.}
+\item{negative_too}{a logical constant indicating whether reversed items
+should be included. The default is set to \code{FALSE}.}
 
-\item{overlap_with}{a string telling \code{overlap} which items to start the
-scaling process with. One can choose to use either the "core" of each scale
-or a "fragment". The default is set to "fragment".}
+\item{overlap_with}{a string telling \code{overlap} the items it should
+extend on (in each particular case). To build up on all variables of a
+fragment use \code{fragment}, for the cores-only option type \code{core}.
+The default is set to "fragment".}
 
-\item{sclvals}{a numerical vector of length 2 indicating the first and the
-full scale value. Consider using the shape \code{c(min,max)}.}
+\item{sclvals}{a numerical vector of length 2 indicating the start and
+endpoint of a scale. Use something like \code{c(min,max)}.}
 
-\item{use}{an optional string indicating how to deal with missing values if
-necessary. See \code{use} in \code{\link[stats]{cor}} for details.}
+\item{use}{an optional string to specify how missing values will enter the
+analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
+default is set to \code{pairwise.complete.obs}.}
 }
 \description{
 \code{overlap} returns a multiple, overlapping scaled version of
-  the specified \code{msdf}. It is then often explored using the eponymous
-  function (\code{\link{explore}}).
-}
-\details{
-The \code{use} argument takes control over the treatment of missing
-  values when correlation matrices are build. In a scaling process this
-  happens at least twice: first when determining the core (the two items of
-  the correlation matrix with the highest linear relationship), and second
-  when an item is considered to be part of this scale.
+  the specified \code{msdf}.
 }
 \examples{
 # Build a msdf

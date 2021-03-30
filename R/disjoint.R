@@ -1,29 +1,36 @@
 #' @title Multiple Scaling In A Disjoint Manner
+#'
 #' @description \code{disjoint} returns a multiple, disjoint scaled version of
-#'   the specified data frame. This so called `msdf` can then either be
-#'   explored using the eponymous function (\code{\link{explore}}) or further
-#'   analyzed with \code{\link{overlap}}.
+#'   the specified data frame. This so called \code{msdf} sets up the building
+#'   block for further analysis with \code{overlap} (see \code{?overlap}).
+#'
 #' @param df a data frame (with more than two items and unique, non-\code{NA}
 #'   column names).
-#' @param mrit_min a numerical constant to specify the (corrected item total)
-#'   correlation. The value of this lower bound must in the range of 0 to 1. The
+#'
+#' @param mrit_min a numerical constant of length 1 to specify the marginal
+#'   corrected item-total correlation. It's value is in the range of 0-1. The
 #'   default is set to \code{.3}.
-#' @param negative_too a logical constant indicating whether items with a
-#'   negative correlation should be included in the scaling process. The default
-#'   is set to \code{FALSE}.
-#' @param sclvals a numerical vector of length 2 indicating the first and the
-#'   full scale value. Consider using the shape \code{c(min,max)}.
-#' @param use an optional string indicating how to deal with missing values if
-#'   necessary. See \code{use} in \code{\link[stats]{cor}} for details. The
-#'   default is set to `pairwise.complete.obs`.
-#' @details The \code{use} argument takes control over the treatment of missing
-#'   values when correlation matrices are built. In a (usual) scaling process
-#'   this happens at least twice: first when determining the core (the two items
-#'   of the correlation matrix with the highest linear relationship), and second
-#'   when an item is considered to be part of this scale.
+#'
+#' @param negative_too a logical constant indicating whether reversed items
+#'   should be included. The default is set to \code{FALSE}.
+#'
+#' @param sclvals a numerical vector of length 2 indicating the start and
+#'   endpoint of a scale. Use something like \code{c(min,max)}.
+#'
+#' @param use an optional string to specify how missing values will enter the
+#'   analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
+#'   default is set to \code{pairwise.complete.obs}.
+#'
+#' @detail \code{use} clarifies how to set up a correlation matrix in the
+#'   presence of missing values. In a scaling process this happens at least
+#'   twice. First, when determining the core items (the two items in the
+#'   correlation matrix with the highest linear relationship). Second, when an
+#'   item is proposed for an emerging scale.
+#'
 #' @references Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
+#'
 #' @examples
 #' # Using positive correlations (and `pairwise.complete.obs`)
 #' disjoint(mtcars, mrit_min = .4)
