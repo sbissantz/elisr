@@ -2,7 +2,6 @@
 
 S3method(print,msdf)
 export(disjoint)
-export(explore)
 export(is.msdf)
 export(overlap)
 importFrom(stats,cor)
