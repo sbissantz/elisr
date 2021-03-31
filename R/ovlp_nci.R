@@ -31,7 +31,7 @@
 #' @param use an optional string to specify how missing values will enter the
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details.
 #'
-#' @detail \code{use} clarifies how to set up a correlation matrix in the
+#' @details \code{use} clarifies how to set up a correlation matrix in the
 #'   presence of missing values. In a scaling process this happens at least
 #'   twice. First, when determining the core items (the two items in the
 #'   correlation matrix with the highest linear relationship). Second, when an
