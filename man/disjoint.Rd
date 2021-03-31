@@ -35,6 +35,13 @@ default is set to \code{pairwise.complete.obs}.}
   the specified data frame. This so called \code{msdf} sets up the building
   block for further analysis with \code{overlap} (see \code{?overlap}).
 }
+\details{
+\code{use} clarifies how to set up a correlation matrix in the
+  presence of missing values. In a typical scaling process this happens at
+  least twice. First, when determining the core items (the two items in the
+  correlation matrix with the highest linear relationship). Second, when an
+  item is proposed for an emerging scale.
+}
 \examples{
 # Using positive correlations (and `pairwise.complete.obs`)
 disjoint(mtcars, mrit_min = .4)

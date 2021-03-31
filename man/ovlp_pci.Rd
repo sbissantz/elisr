@@ -29,6 +29,13 @@ analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
   fragment within `msdf`. The overlapping family of functions is thus a
   multiple extension of the disjoint scaling approach to various fragments.
 }
+\details{
+\code{use} clarifies how to set up a correlation matrix in the
+  presence of missing values. In a scaling process this happens at least
+  twice. First, when determining the core items (the two items in the
+  correlation matrix with the highest linear relationship). Second, when an
+  item is proposed for an emerging scale.
+}
 \references{
 Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
   Kristallisationsprinzip / Multiple Scaling According to the Principle of

@@ -2,21 +2,17 @@
 % Please edit documentation in R/new_msdf.R
 \name{new_msdf}
 \alias{new_msdf}
-\title{Creator Function to Build A New \code{msdf}}
+\title{Creator function to build a new \code{msdf}}
 \usage{
 new_msdf(x = list(), method, mrit_min, negative_too, sclvals = NULL, df)
 }
 \description{
-A \code{msdf} is a multiple scaled data frame. A multiple
-scaled data frame is nothing more than a list of scales with attributes. A
-scale is just a subset of the specified data frame (e.g., \code{disjoint}) or
-an extension of the given \code{msdf} (e.g., \code{overlap} -- were each
-scale is built according to the crystallization principle.
+A \code{msdf} is a multiple scaled data frame. An object of that
+  type is nothing more than a list of data frames with some attributes
+  attached to it. The data frame itself is a subset of the given data set --
+  arranged according to the crystallization principle.
 }
 \details{
-The \code{msdf} is only for internal use. A check function
-assures that the argument to \code{overlap} is of that type. Another useful
-feature is that the attributes provide information which settings were used
-in the scaling process -- after scaling has been done. So one can be sure
-that all parameters are set correctly.
+Multiple scaled data frames are only for internal use. A test
+  function ensures that the argument to \code{overlap} is a \code{msdf}.
 }

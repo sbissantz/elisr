@@ -39,6 +39,13 @@ default is set to \code{pairwise.complete.obs}.}
 \code{overlap} returns a multiple, overlapping scaled version of
   the specified \code{msdf}.
 }
+\details{
+\code{use} clarifies how to set up a correlation matrix in the
+  presence of missing values. In a typical scaling process this happens at
+  least twice. First, when determining the core items (the two items in the
+  correlation matrix with the highest linear relationship). Second, when an
+  item is proposed for an emerging scale.
+}
 \examples{
 # Build a msdf
 msdf <- disjoint(mtcars, mrit_min = .4)
