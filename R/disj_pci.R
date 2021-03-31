@@ -26,11 +26,11 @@
 #'   linear relationship. Therefore, it tags the building block for the upcoming
 #'   extensions -- including disjoint and overlapping scaling processes.
 #'
-#'   \code{use} clarifies how to set up a correlation matrix in the presence
-#'   of missing values. In a scaling process this happens at least twice. First,
-#'   when determining the core items (the two items in the correlation matrix
-#'   with the highest linear relationship). Second, when an item is proposed for
-#'   an emerging scale.
+#'   \code{use} clarifies how to set up a correlation matrix in the presence of
+#'   missing values. In a typical scaling process this happens at least twice.
+#'   First, when determining the core items (the two items in the correlation
+#'   matrix with the highest linear relationship). Second, when an item is
+#'   proposed for an emerging scale.
 #'
 #' @references Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of

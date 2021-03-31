@@ -34,11 +34,11 @@
 #'   \code{disj_pci}. {disj_nci} allows the presence of negative items (i.e., a
 #'   negative correlation between item and sum score).
 #'
-#'   \code{use} clarifies how to set up a correlation matrix in the presence
-#'   of missing values. In a scaling process this happens at least twice. First,
-#'   when determining the core items (the two items in the correlation matrix
-#'   with the highest linear relationship). Second, when an item is proposed for
-#'   an emerging scale.
+#'   \code{use} clarifies how to set up a correlation matrix in the presence of
+#'   missing values. In a typical scaling process this happens at least twice.
+#'   First, when determining the core items (the two items in the correlation
+#'   matrix with the highest linear relationship). Second, when an item is
+#'   proposed for an emerging scale.
 
 #'   @importFrom stats cor
 disj_nci <- function(df, mrit_min, sclvals, use) {
