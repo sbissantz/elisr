@@ -24,9 +24,9 @@
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 #'   default is set to \code{pairwise.complete.obs}.
 #'
-#' @detail \code{use} clarifies how to set up a correlation matrix in the
-#'   presence of missing values. In a scaling process this happens at least
-#'   twice. First, when determining the core items (the two items in the
+#' @details \code{use} clarifies how to set up a correlation matrix in the
+#'   presence of missing values. In a typical scaling process this happens at
+#'   least twice. First, when determining the core items (the two items in the
 #'   correlation matrix with the highest linear relationship). Second, when an
 #'   item is proposed for an emerging scale.
 #'
