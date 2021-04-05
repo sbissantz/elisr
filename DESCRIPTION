@@ -1,33 +1,34 @@
 Package: elisr
 Type: Package
-Title: Exploratory Likert Scaling -- an Alternative to Exploratory Factor Analysis
+Title: Exploratory Likert Scaling as an Alternative to Exploratory Factor Analysis
 Version: 0.1.0
+Date: 2021-04-05
 Authors@R: c( 
     person("Steven", "Bißantz", email = "steven.bissantz@gmail.com",
     role = c("aut", "cre")),
     person("Thomas", "Müller-Schneider", email = "tms@uni-landau.de",
     role = "ctb"))
-Description: The elisr package implements the exploratory likert scaling approach 
-    for metrical data in R. It thus supports the user when exploring multi-dimensional data structures. 
-    In common research practice one generally considers explorative factor 
-    analysis in this case -- often accepting rigid model assumptions (e.g., 
-    orthogonality). By dissolving these assumptions musclr provides a platform 
-    to maximize (a) the identification of theoretically relevant dimensions 
-    (to their full extent), (b) enabling the scales to correlate with one 
-    another that they meet the actual conditions.
+Description: elisr implements the Exploratory Likert Scaling approach for 
+    metrical data in R. It thus supports the user when exploring 
+    multidimensional data structures. In common research practice one usually 
+    falls back on Exploratory Factor Analysis. As a side effect researchers 
+    often accept rigid model assumptions. By dissolving conjectures like 
+    orthogonal factors, elisr provides a platform to improve the identification 
+    of relevant dimensions and allows scales to naturally correlate with each 
+    other.
 URL: https://github.com/sbissantz/elisr
 BugReports: https://github.com/sbissantz/elisr/issues
 License: GPL (>=3)
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 4.0.4)
+    R (>= 4.0.0)
 Imports: 
     stats
 RoxygenNote: 7.1.1
 Suggests: 
-    testthat (>= 3.0.2),
+    testthat (>= 3.0.0),
     knitr (>= 1.31),
-    rmarkdown (>= 2.7),
-    psych (>= 2.0.9)
+    rmarkdown (>= 2.7.0),
+    psych (>= 2.0.0)
 VignetteBuilder: knitr
