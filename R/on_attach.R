@@ -1,3 +1,3 @@
-.onAttach <- function(libname, elisr) {
+.onAttach <- function(libname, pkg) {
  packageStartupMessage("Welcome to elisr!")
 }
