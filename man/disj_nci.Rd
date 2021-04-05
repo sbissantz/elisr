@@ -2,7 +2,7 @@
 % Please edit documentation in R/disj_nci.R
 \name{disj_nci}
 \alias{disj_nci}
-\title{Multiple Scaling In A Disjoint Manner Using Negative Items Too}
+\title{Multiple scaling in a disjoint manner using negative items too}
 \usage{
 disj_nci(df, mrit_min, sclvals, use)
 }
@@ -17,9 +17,6 @@ endpoint of a scale.}
 
 \item{use}{an optional string to specify how missing values will enter the
 analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
-
-\item{negative_too}{a logical constant indicating whether reversed items
-should be included.}
 }
 \description{
 \code{disj_nci} is an internal function and returns a list of
