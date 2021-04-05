@@ -3,10 +3,10 @@
 An Alternative to Exploratory Factor Analysis
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/sbissantz/elisr/workflows/R-CMD-check/badge.svg)](https://github.com/sbissantz/elisr/actions)
-[![Travis build status](https://travis-ci.com/sbissantz/elisr.svg?branch=master)](https://travis-ci.com/sbissantz/elisr)
 [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Travis build status](https://travis-ci.com/sbissantz/elisr.svg?branch=master)](https://travis-ci.com/sbissantz/elisr)
+[![R-CMD-check](https://github.com/sbissantz/elisr/workflows/R-CMD-check/badge.svg)](https://github.com/sbissantz/elisr/actions)
 <!-- badges: end -->
 
 ## Description
