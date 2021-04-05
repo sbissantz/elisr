@@ -1,4 +1,4 @@
-#' @title A Set of Utility Functions
+#' @title A set of utility functions
 #'
 #' @details \code{nme_msdf} designates the components of a msdf (e.g.,
 #'   `scl_1`).
@@ -35,14 +35,18 @@
 #'   \code{rvrs_note} gets the full report of reversed variables and reports a
 #'   unique list of them.
 #'
-#' @param x a msdf
-#' @param scl a scale from a msdf
+#' @param x a multiple scaled data frame
+#' @param scl a scale within a multiple scaled data frame
 #' @param use an optional string indicating how to deal with missing values, See
 #'   \code{use} in \code{\link[stats]{cor}} for details.
-#' @param df a data frame object,
-#' @param itm_nms the names of an item from a scale.
+#' @param df a data frame object
+#' @param itm_nms the names of an item from a scale
 #' @param var a variable or item (often a column from a data frame)
 #' @param sclvals the start and end point of a scale (specify: \code{c(sp,ep)})
+#' @param applicant the function which wants to leave messages \code{disjoint}
+#'   or \code{overlap})
+#' @param msg a reverse message sent from either \code{disjoint} or
+#'   \code{overlap}
 #' @name utils
 NULL
 
@@ -114,8 +118,8 @@ nme_msdf <- function(x) {
       message(paste0("\n", applicant, "() didn't reverse an item.\n"))
     } else {
       message(
-        paste0("\n", applicant, "() reversed the following items internally:\n"),
-        paste0("– ", unique(msg), "\n"))
+        paste0("\n", applicant, "() reversed the following item(s) internally:\n"),
+        paste0("- ", unique(msg), "\n"))
     }
   }
 
