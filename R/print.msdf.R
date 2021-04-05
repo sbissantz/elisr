@@ -1,18 +1,22 @@
 #' @title Print method for a multiple scaled data frame
 #'
-#' @description The print method for \code{msdf} objects returns a list of
-#'   summary statistics: the marginal corrected item total correlation
+#' @description The print method for a multiple scaled data frame returns a list
+#'   of summary statistics: the marginal corrected item-total correlation
 #'   (\code{mrit}), Cronbach's alpha (\code{alpha}) and the average correlation
-#'   (\code{rbar}). Note, that every row in the output tags a certain point in
-#'   the development process of each gradually emerging scale. The output is
-#'   thus tailored to the multiple scaling approach.
+#'   (\code{rbar}). Note that every row in the output tags a new stage in the
+#'   development of each gradually emerging scale.
 #'
-#' @param msdf a multiple scaled data frame (built with either
+#' @param x a multiple scaled data frame (built with either
 #'   \code{disjoint} or \code{overlap}).
 #'
-#' @param use an optional string to specify how missing values will enter the
+#' @param digits an integer constant to determine the number of printed digits.
+#' See \code{digits} in \code{\link[base]{options}} for details.
+#'
+#' @param use an optional string to specify how missing values enter the
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 #'   default is set to \code{pairwise.complete.obs}.
+#'
+#' @param ... Additional arguments to the method which will be ignored.
 #'
 #' @details \code{use} clarifies how to set up a correlation matrix in the
 #'   presence of missing values. In a typical scaling process this happens at
@@ -26,8 +30,8 @@
 #'
 
 #'@export
-print.msdf <- function(msdf, digits = 2, use = "pairwise.complete.obs") {
-  check_msdf(msdf)
+print.msdf <- function(x, digits = 2, use = "pairwise.complete.obs", ...) {
+  check_msdf(x)
   explr_once <- function(scl, use) {
    scl_len <- length(scl)
     # Trick: retraces the sequential "emergence" of scldf
@@ -52,5 +56,5 @@ print.msdf <- function(msdf, digits = 2, use = "pairwise.complete.obs") {
     row.names(mat) <- var_nms
     mat
   }
-  print(lapply(msdf, explr_once, use), digits = digits)
+  print(lapply(x, explr_once, use), digits = digits )
 }
