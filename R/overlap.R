@@ -1,26 +1,26 @@
-#' @title Multiple Scaling In An Overlapping Manner
+#' @title Multiple scaling in an overlapping manner
 #'
-#' @description \code{overlap} returns a multiple, overlapping scaled version of
-#'   the specified \code{msdf}.
+#' @description \code{overlap} returns a overlapped version (either extended, or
+#'   reversed, or both) of the specified \code{msdf}.
 #'
 #' @param msdf a multiple scaled data frame (built with \code{disjoint}).
 #'
-#' @param mrit_min a numerical constant of length 1 to specify the marginal
-#'   corrected item-total correlation. It's value is in the range of 0-1. The
+#' @param mrit_min a numeric constant of length 1 to specify the marginal
+#'   corrected item-total correlation. Its value is in the range of 0-1. The
 #'   default is set to \code{.3}.
 #'
-#' @param negative_too a logical constant indicating whether reversed items
-#'   should be included. The default is set to \code{FALSE}.
-
-#' @param overlap_with a string telling \code{overlap} the items it should
-#'   extend on (in each particular case). To build up on all variables of a
-#'   fragment use \code{fragment}, for the cores-only option type \code{core}.
-#'   The default is set to "fragment".
+#' @param negative_too a logical constant indicating whether reversed items are
+#'   included in the analysis. The default is set to \code{FALSE}.
 #'
-#' @param sclvals a numerical vector of length 2 indicating the start and
+#' @param overlap_with a string telling \code{overlap} the set of items for the
+#'   extension. To build up on all variables of a fragment use \code{fragment},
+#'   for the core-only option type \code{core}. The default is set to
+#'   "fragment".
+#'
+#' @param sclvals a numeric vector of length 2 indicating the start- and
 #'   endpoint of a scale. Use something like \code{c(min,max)}.
 #'
-#' @param use an optional string to specify how missing values will enter the
+#' @param use an optional string to specify how missing values enter the
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 #'   default is set to \code{pairwise.complete.obs}.
 #'
@@ -38,13 +38,16 @@
 #' # Build a msdf
 #' msdf <- disjoint(mtcars, mrit_min = .4)
 #'
-#' # Using positive correlations (and `pairwise.complete.obs`)
+#' # Use positive correlations (extend on fragments)
+#' overlap(msdf, mrit_min = .6)
+#'
+#' # Use positive correlations (extend on cores)
 #' overlap(msdf, mrit_min = .6, overlap_with = "core")
 #'
-#' # Including negative correlations (and `pairwise.complete.obs`)
+#' # Include negative correlations
 #' overlap(msdf, mrit_min = .7, negative_too = TRUE, sclvals = c(-3,3))
 #'
-#' # Changing the treatment of missing values
+#' # Change the treatment of missing values
 #' overlap(msdf, mrit_min = .6, use = "all.obs")
 #'
 
