@@ -4,23 +4,27 @@
 \alias{print.msdf}
 \title{Print method for a multiple scaled data frame}
 \usage{
-\method{print}{msdf}(msdf, digits = 2, use = "pairwise.complete.obs")
+\method{print}{msdf}(x, digits = 2, use = "pairwise.complete.obs", ...)
 }
 \arguments{
-\item{msdf}{a multiple scaled data frame (built with either
+\item{x}{a multiple scaled data frame (built with either
 \code{disjoint} or \code{overlap}).}
 
-\item{use}{an optional string to specify how missing values will enter the
+\item{digits}{an integer constant to determine the number of printed digits.
+See \code{digits} in \code{\link[base]{options}} for details.}
+
+\item{use}{an optional string to specify how missing values enter the
 analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 default is set to \code{pairwise.complete.obs}.}
+
+\item{...}{Additional arguments to the method which will be ignored.}
 }
 \description{
-The print method for \code{msdf} objects returns a list of
-  summary statistics: the marginal corrected item total correlation
+The print method for a multiple scaled data frame returns a list
+  of summary statistics: the marginal corrected item-total correlation
   (\code{mrit}), Cronbach's alpha (\code{alpha}) and the average correlation
-  (\code{rbar}). Note, that every row in the output tags a certain point in
-  the development process of each gradually emerging scale. The output is
-  thus tailored to the multiple scaling approach.
+  (\code{rbar}). Note that every row in the output tags a new stage in the
+  development of each gradually emerging scale.
 }
 \details{
 \code{use} clarifies how to set up a correlation matrix in the

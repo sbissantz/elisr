@@ -2,7 +2,7 @@
 % Please edit documentation in R/ovlp_nci.R
 \name{ovlp_nci}
 \alias{ovlp_nci}
-\title{Multiple Scaling In An Overlapping Manner Using Negative Items Too}
+\title{Multiple scaling in an overlapping manner using negative items too}
 \usage{
 ovlp_nci(msdf, mrit_min, overlap_with, sclvals, use)
 }
@@ -21,9 +21,6 @@ endpoint of a scale. Use something like \code{c(min,max)}.}
 
 \item{use}{an optional string to specify how missing values will enter the
 analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
-
-\item{negative_too}{a logical constant indicating whether items with a
-negative correlation should be included in the scaling process.}
 }
 \description{
 \code{ovlp_nci} is an internal function and returns a list of

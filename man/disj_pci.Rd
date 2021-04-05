@@ -2,18 +2,18 @@
 % Please edit documentation in R/disj_pci.R
 \name{disj_pci}
 \alias{disj_pci}
-\title{Multiple Scaling In A Disjoint Manner Using Positive Items}
+\title{Multiple scaling in a disjoint manner using positive items}
 \usage{
-disj_pci(df, mrit_mit, use)
+disj_pci(df, mrit_min, use)
 }
 \arguments{
 \item{df}{a data frame object.}
 
-\item{use}{an optional string to specify how missing values will enter the
-analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
-
 \item{mrit_min}{a numerical constant to specify the marginal corrected item
 total correlation. The value must be in the range of 0-1.}
+
+\item{use}{an optional string to specify how missing values will enter the
+analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
 \description{
 \code{disj_pci} is an internal function and returns a list of

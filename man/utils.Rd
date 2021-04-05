@@ -11,7 +11,7 @@
 \alias{extreb_itms}
 \alias{rvrs_var}
 \alias{rvrs_note}
-\title{A Set of Utility Functions}
+\title{A set of utility functions}
 \usage{
 nme_msdf(x)
 
@@ -32,23 +32,29 @@ rvrs_var(var, sclvals)
 rvrs_note(msg, applicant)
 }
 \arguments{
-\item{x}{a msdf}
+\item{x}{a multiple scaled data frame}
 
-\item{scl}{a scale from a msdf}
+\item{scl}{a scale within a multiple scaled data frame}
 
 \item{use}{an optional string indicating how to deal with missing values, See
 \code{use} in \code{\link[stats]{cor}} for details.}
 
-\item{df}{a data frame object,}
+\item{df}{a data frame object}
 
-\item{itm_nms}{the names of an item from a scale.}
+\item{itm_nms}{the names of an item from a scale}
 
 \item{var}{a variable or item (often a column from a data frame)}
 
 \item{sclvals}{the start and end point of a scale (specify: \code{c(sp,ep)})}
+
+\item{msg}{a reverse message sent from either \code{disjoint} or
+\code{overlap}}
+
+\item{applicant}{the function which wants to leave messages \code{disjoint}
+or \code{overlap})}
 }
 \description{
-A Set of Utility Functions
+A set of utility functions
 }
 \details{
 \code{nme_msdf} designates the components of a msdf (e.g.,

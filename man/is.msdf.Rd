@@ -7,10 +7,11 @@
 is.msdf(x)
 }
 \arguments{
-\item{x}{an arbitrary object}
+\item{x}{an arbitrary object.}
 }
 \description{
-\code{is.msdf} tests if the given object is of type \code{msdf}.
+\code{is.msdf} tests if the given object is a multiple scaled
+  data frame.
 }
 \details{
 \code{is.msdf} returns \code{TRUE} if the given object is of type

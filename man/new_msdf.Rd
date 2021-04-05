@@ -2,17 +2,34 @@
 % Please edit documentation in R/new_msdf.R
 \name{new_msdf}
 \alias{new_msdf}
-\title{Creator function to build a new \code{msdf}}
+\title{Creator function to build a new multiple scaled data frame}
 \usage{
 new_msdf(x = list(), method, mrit_min, negative_too, sclvals = NULL, df)
 }
+\arguments{
+\item{x}{a multiple scaled data frame.}
+
+\item{method}{the method used to produce the multiple scaled data frame
+(either disjoint or overlap).}
+
+\item{mrit_min}{a numeric constant of length 1 to specify the marginal
+corrected item-total correlation. Its value is in the range of 0-1.}
+
+\item{negative_too}{a logical constant indicating whether reversed items are
+included in the analysis. The default is set to \code{FALSE}.}
+
+\item{sclvals}{a numeric vector of length 2 indicating the start- and
+endpoint of a scale.}
+
+\item{df}{the data frame to analyze.}
+}
 \description{
-A \code{msdf} is a multiple scaled data frame. An object of that
-  type is nothing more than a list of data frames with some attributes
-  attached to it. The data frame itself is a subset of the given data set --
+\code{msdf} is a multiple scaled data frame. An object of that
+  type is nothing more than a list of data frames with some additional
+  attributes. The data frame itself is a subset of the given data set --
   arranged according to the crystallization principle.
 }
 \details{
 Multiple scaled data frames are only for internal use. A test
-  function ensures that the argument to \code{overlap} is a \code{msdf}.
+  function ensures that the specified object is a multiple scaled data frame.
 }

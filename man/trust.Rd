@@ -30,17 +30,17 @@ trust
 }
 \description{
 A subset of the German General Social Survey (ALLBUS) 2018
-  containing its `trust items` (F018).
+  containing its trust items (F018).
 }
 \details{
-Please note that, in comparison to the original data set,
-  participant order has been randomly rearranged to further ensure anonymity.
-  This might lead to differences when trying to reproduce the results of the
-  analysis with the original data set, mentioned below.
+Please note that in comparison to the original data set participant
+  order has been randomly rearranged to further ensure anonymity. This might
+  lead to differences when trying to reproduce the results of the analysis
+  with the original data set (mentioned below).
 }
 \examples{
-#
-disjoint(mtcars, mrit_min = .4)
+# Use trust with disjoint
+disjoint(trust, mrit_min = .4)
 }
 \references{
 { GESIS - Leibniz-Institut für Sozialwissenschaften (2019). German
