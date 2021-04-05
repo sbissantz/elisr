@@ -1,4 +1,4 @@
-#' @title Multiple Scaling In An Overlapping Manner Using Negative Items Too
+#' @title Multiple scaling in an overlapping manner using negative items too
 #'
 #' @description \code{ovlp_nci} is an internal function and returns a list of
 #'   data frames. It takes a disjoint (\code{msdf}) and tries to extend it with
@@ -14,12 +14,6 @@
 #
 #' @param mrit_min a numerical constant of length 1 to specify the marginal
 #'   corrected item-total correlation. It's value is in the range of 0-1.
-#'
-#' @param negative_too a logical constant indicating whether reversed items
-#'   should be included.
-#'
-#' @param negative_too a logical constant indicating whether items with a
-#'   negative correlation should be included in the scaling process.
 #'
 #' @param overlap_with a string telling \code{overlap} the items it should
 #'   extend on (in each particular case). To build up on all variables of a
