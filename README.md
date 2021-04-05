@@ -2,6 +2,10 @@
 
 An Alternative to Exploratory Factor Analysis
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/sbissantz/elisr/workflows/R-CMD-check/badge.svg)](https://github.com/sbissantz/elisr/actions)
+<!-- badges: end -->
+
 ## Description
 
 ``elisr`` implements the Exploratory Likert Scaling approach for metrical data
@@ -39,6 +43,3 @@ devtools::install_github("sbissantz/elisr")
 ```
 ### R cmd check
 
-<!-- badges: start -->
-[![R-CMD-check](https://github.com/sbissantz/elisr/workflows/R-CMD-check/badge.svg)](https://github.com/sbissantz/elisr/actions)
-<!-- badges: end -->
