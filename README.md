@@ -44,5 +44,3 @@ then uses ``devtools``' ``install_github()`` function to install ``elisr``.
 if (!require(devtools)) install.packages("devtools")
 devtools::install_github("sbissantz/elisr")
 ```
-### R cmd check
-
