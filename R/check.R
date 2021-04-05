@@ -34,7 +34,14 @@
 #'   complains if no correlation is greater than the specified \code{mrit_min}.
 #'
 #' @param x some arbitrary input to be checked
+#' @param x_attr a numeric vector of length 2 indicating the start- and endpoint
+#'   of a scale.
+#' @param mrit_min a numeric constant of length 1 to specify the marginal
+#'   corrected item-total correlation.
+#' @param use an optional string to specify how missing values enter the
+#'   analysis. See \code{use} in \code{\link[stats]{cor}} for details.
 #' @name checks
+#'
 NULL
 
 #' @rdname checks
@@ -60,7 +67,8 @@ check_sclvals <- function(x) {
   if (isFALSE(x_len == 2))
     stop("`sclvals` is not a two element vector.", call. = FALSE)
   if (isFALSE(x[1] < x[2]))
-    stop("`sclvals` has not the shape `sclvals = c(min,max)`", call. = FALSE)
+    stop("`sclvals` have to be in the following form `sclvals = c(min,max)`",
+         call. = FALSE)
 }
 
 #' @rdname checks
@@ -81,9 +89,9 @@ check_mrit <- function(x) {
   if (isFALSE(is.double(x) && x_len == 1))
     stop("`mrit_min` is not a double vector of length 1.", call. = FALSE)
   if (isFALSE(0 <= x && x < 1))
-     stop("`mrit_min` is not in the range of `0` and `1`.", call. = FALSE)
+     stop("`mrit_min` does not range between `0` and `1`.", call. = FALSE)
   if (x == 0)
-     warning("mrit_min = 0: fragment is predetermined.\n",
+     warning("mrit_min = 0: fragment is pre-determined.\n",
              call. = FALSE)
 }
 
