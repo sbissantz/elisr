@@ -1,4 +1,4 @@
 library(testthat)
-library(musclr)
+library(elisr)
 
-test_check("musclr")
+test_check("elisr")
