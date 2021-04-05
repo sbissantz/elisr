@@ -30,6 +30,15 @@ check_comp(x, mrit_min, use)
 }
 \arguments{
 \item{x}{some arbitrary input to be checked}
+
+\item{x_attr}{a numeric vector of length 2 indicating the start- and endpoint
+of a scale.}
+
+\item{mrit_min}{a numeric constant of length 1 to specify the marginal
+corrected item-total correlation.}
+
+\item{use}{an optional string to specify how missing values enter the
+analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
 \description{
 A Set of Checks for the Appropriateness of Inputs
