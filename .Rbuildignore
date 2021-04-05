@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^R/inprog
 ^data-raw$
+^\.travis\.yml$
+^\.github$
