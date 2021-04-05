@@ -2,6 +2,11 @@
 
 An Alternative to Exploratory Factor Analysis
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/sbissantz/elisr/workflows/R-CMD-check/badge.svg)](https://github.com/sbissantz/elisr/actions)
+[![Travis build status](https://travis-ci.com/sbissantz/elisr.svg?branch=master)](https://travis-ci.com/sbissantz/elisr)
+<!-- badges: end -->
+
 ## Description
 
 ``elisr`` implements the Exploratory Likert Scaling approach for metrical data
