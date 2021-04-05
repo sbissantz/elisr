@@ -1,23 +1,23 @@
-#' @title Multiple Scaling In A Disjoint Manner
+#' @title Multiple scaling in a disjoint manner
 #'
 #' @description \code{disjoint} returns a multiple, disjoint scaled version of
 #'   the specified data frame. This so called \code{msdf} sets up the building
-#'   block for further analysis with \code{overlap} (see \code{?overlap}).
+#'   block for further analysis with \code{overlap} (type \code{?overlap}).
 #'
 #' @param df a data frame (with more than two items and unique, non-\code{NA}
 #'   column names).
 #'
-#' @param mrit_min a numerical constant of length 1 to specify the marginal
-#'   corrected item-total correlation. It's value is in the range of 0-1. The
+#' @param mrit_min a numeric constant of length 1 to specify the marginal
+#'   corrected item-total correlation. Its value is in the range of 0-1. The
 #'   default is set to \code{.3}.
 #'
-#' @param negative_too a logical constant indicating whether reversed items
-#'   should be included. The default is set to \code{FALSE}.
+#' @param negative_too a logical constant indicating whether reversed items are
+#'   included in the analysis. The default is set to \code{FALSE}.
 #'
-#' @param sclvals a numerical vector of length 2 indicating the start and
+#' @param sclvals a numeric vector of length 2 indicating the start- and
 #'   endpoint of a scale. Use something like \code{c(min,max)}.
 #'
-#' @param use an optional string to specify how missing values will enter the
+#' @param use an optional string to specify how missing values enter the
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 #'   default is set to \code{pairwise.complete.obs}.
 #'
@@ -32,13 +32,13 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 #'
 #' @examples
-#' # Using positive correlations (and `pairwise.complete.obs`)
+#' # Use only positive correlations
 #' disjoint(mtcars, mrit_min = .4)
 #'
-#' # Including negative correlations (and `pairwise.complete.obs`)
+#' # Include negative correlations
 #' disjoint(mtcars, mrit_min = .4, negative_too = TRUE, sclvals = c(1,7))
 #'
-#' # Changing the treatment of missing values
+#' # Change the treatment of missing values
 #' disjoint(mtcars, mrit_min = .4, use = "all.obs")
 
 #' @export

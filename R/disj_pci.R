@@ -1,4 +1,4 @@
-#' @title Multiple Scaling In A Disjoint Manner Using Positive Items
+#' @title Multiple scaling in a disjoint manner using positive items
 #'
 #' @description \code{disj_pci} is an internal function and returns a list of
 #'  data frames. In addition, \code{disj_pci} sets up an empty list of scales
@@ -37,14 +37,14 @@
 #'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
 
 #' @importFrom stats cor
-disj_pci <- function(df, mrit_mit, use) {
+disj_pci <- function(df, mrit_min, use) {
   scls <- list()
   while (ncol(df) >= 2) {
     scls_len <- length(scls)
     # use = use: make sure its an ARG
     cormat <- cor(df, use = use)
     maxcor <- max(cormat[cormat < 1])
-    if (maxcor < mrit_mit) break
+    if (maxcor < mrit_min) break
     # Take the first(!) maximum
     fstmaxp <- which(cormat == maxcor, arr.ind = TRUE)[1, ]
     scls[[scls_len + 1]] <- df[fstmaxp]
@@ -53,7 +53,7 @@ disj_pci <- function(df, mrit_mit, use) {
       scls_len <- length(scls)
       cormat <- cor(rowSums(scls[[scls_len]]), df, use = use)
       maxcor <- max(cormat[cormat < 1])
-      if (maxcor < mrit_mit) break
+      if (maxcor < mrit_min) break
       fstmaxp <- which(cormat == maxcor)
       scls[[scls_len]] <- cbind(scls[[scls_len]], df[fstmaxp])
       df <- df[-fstmaxp]

@@ -1,4 +1,4 @@
-#' @title Multiple Scaling In A Disjoint Manner Using Negative Items Too
+#' @title Multiple scaling in a disjoint manner using negative items too
 #'
 #' @description \code{disj_nci} is an internal function and returns a list of
 #'   data frames. In addition, \code{disj_nci} sets up an empty list of
@@ -20,9 +20,6 @@
 #'
 #' @param mrit_min a numerical constant to specify the marginal corrected item
 #'   total correlation. The value must be in the range of 0-1.
-#'
-#' @param negative_too a logical constant indicating whether reversed items
-#'   should be included.
 #'
 #' @param sclvals a numerical vector of length 2 indicating the start and
 #'   endpoint of a scale.
