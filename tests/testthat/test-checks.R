@@ -1,5 +1,3 @@
-context("Test checks")
-
 test_that("df is a data frame", {
   mat <- as.matrix(iris[, -5])
   expect_error(check_df(x = mat))
@@ -66,3 +64,4 @@ test_that("compatibility of mrit_min and max cor", {
   df <- iris[, -5]
   expect_error(check_comp(x = df, mrit_min = 10, use = "pairwise.complete.obs"))
 })
+
