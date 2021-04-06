@@ -1,5 +1,3 @@
-context("Test overlap")
-
 test_that("positive scaling", {
    msdf_d <- disjoint(trust, mrit_min = .55)
    (msdf_o <- overlap(msdf_d, mrit_min = .3))

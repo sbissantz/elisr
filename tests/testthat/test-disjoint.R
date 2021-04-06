@@ -1,5 +1,3 @@
-context("Test disjoint")
-
 test_that("positive scaling", {
    msdf <- disjoint(trust, mrit_min = .55)
    eupalmnt <- trust[,"eupalmnt"]
