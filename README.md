@@ -1,4 +1,6 @@
-# Exploratory Likert Scaling in R An Alternative to Exploratory Factor Analysis
+# elisr
+
+Exploratory Likert Scaling in R An Alternative to Exploratory Factor Analysis
 
 <!-- badges: start -->
 [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
