@@ -118,8 +118,7 @@ nme_msdf <- function(x) {
       message(paste0("\n", applicant, "() didn't reverse an item.\n"))
     } else {
       message(
-        paste0("\n", applicant, "() reversed the following item(s) internally:\n"),
+        paste0("\n", applicant, "() reversed the following item(s):\n"),
         paste0("- ", unique(msg), "\n"))
     }
   }
-
