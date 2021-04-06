@@ -56,5 +56,5 @@ print.msdf <- function(x, digits = 2, use = "pairwise.complete.obs", ...) {
     row.names(mat) <- var_nms
     mat
   }
-  print(lapply(x, explr_once, use), digits = digits )
+  print(lapply(x, explr_once, use), digits = digits)
 }
