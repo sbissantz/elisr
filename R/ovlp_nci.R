@@ -53,11 +53,7 @@ one_ovlp_nci <- function(scl, ebscl, mrit_min, sclvals, use) {
        scl <- cbind(scl, ebscl[fstmaxp])
        }else{
          var_rev <- rvrs_var(var = ebscl[fstmaxp], sclvals)
-         # msg <<- names(df[fstmaxp]) # Works
-         # Try this one
          assign("msg", c(msg, names(var_rev)), envir=parent.frame(3))
-         # msg <<- c(msg, names(df[fstmaxp]))
-         # message("`", names(df[fstmaxp]), "` was recoded")
          scl <- cbind(scl, var_rev)
          }
     ebscl <- ebscl[-fstmaxp]
@@ -68,8 +64,6 @@ one_ovlp_nci <- function(scl, ebscl, mrit_min, sclvals, use) {
 # Pre-Set's ---------------------------------------------------------------
 
 df <- eval(attr(msdf, "df"))
-# scl_nms <- lapply(msdf, names)
-# core_nms <- lapply(scl_nms, function(scl_nms) scl_nms[c(1, 2)])
 
 # Procedure & Options -----------------------------------------------------
 
@@ -77,24 +71,17 @@ switch(overlap_with,
        fragment = {
          scl_nms <- lapply(msdf, names)
          ebscls <- lapply(scl_nms, extreb_itms, df = df)
-         # scls <- lapply(scl_nms, extr_itms, df = df)
-         # ebscls <- lapply(scl_nms, extreb_itms, df = df)
        },
        core = {
          msdf <- lapply(msdf, extr_core)
          core_nms <- lapply(msdf, extr_core_nms)
          ebscls <- lapply(core_nms, extreb_itms, df = df)
-         # scls <- lapply(core_nms, extr_itms, df = df)
-         # ebscls <- lapply(core_nms, extreb_itms, df = df)
        },
        stop("Unknown overlapping method. Use either `fragment` or `core`",
             call. = FALSE)
 )
-# if ( ncol(ebscls) == 0) stop ("No items to overlap. Consider lowering mrit_min")
-# cat("current frame is", sys.nframe(), "\n")
 res <- Map(one_ovlp_nci, msdf, ebscls,
            MoreArgs = list(mrit_min, sclvals, use))
 rvrs_note(msg, applicant = "overlap")
 res
-# Map(one_ovlp_nci, scls, ebscls, MoreArgs = list(mrit_min, sclvals, use))
 }
