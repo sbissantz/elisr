@@ -1,5 +1,3 @@
-context("Test utility functions")
-
 test_that("name msdf's", {
   res_nme <- nme_msdf(2)
   expect_equal(res_nme, "scl_1")
@@ -26,18 +24,11 @@ test_that("calculate corrected item total correlation", {
   expect_equal(round(res_rit[[1]], digits = 2), 0.86)
 })
 
-# test_that("extracting specified items", {
-#  (res_extr <- extr_itms(iris, "Sepal.Length"))
-#  expect_equal(iris[,"Sepal.Length", drop = FALSE], res_extr)
-# })
-# REMOVE AFDTER TESTING
-
 test_that("extracting the core items", {
   msdf_disj <- disjoint(iris[,-5])
   res_extr <- extr_core(msdf_disj$scl_1)
   expect_equal(iris[,c("Petal.Width", "Petal.Length"), drop = FALSE], res_extr)
 })
-
 
 test_that("extracting everyting but specified items", {
   res_extreb <- extreb_itms(iris, "Sepal.Length")
@@ -52,3 +43,4 @@ test_that("reversing variables", {
   two_two <- -2:2 ; res_two_two <- rvrs_var(two_two, c(-2, 2))
   expect_equal(res_two_two, 2:-2)
 })
+
