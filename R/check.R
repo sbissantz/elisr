@@ -49,7 +49,7 @@ check_df <- function(x) {
   if (!is.data.frame(x))
     stop("`df` is not a data.frame.", call. = FALSE)
   x_len <- length(x)
-  if (isFALSE(x_len >= 2))
+  if (!length(x) >= 2)
     stop("`df` has less than 2 variables.")
   x_nms <- names(x)
   if (is.null(x_nms))
@@ -60,11 +60,11 @@ check_df <- function(x) {
     warning("`df` (col)names are not unique.", call. = FALSE)
   if (anyNA(x_nms))
     warning("`df` has (col)names of type `NA`.", call. = FALSE)
-  }
+}
+
 #' @rdname checks
 check_sclvals <- function(x) {
-  x_len <- length(x)
-  if (isFALSE(x_len == 2))
+  if (length(x) != 2)
     stop("`sclvals` is not a two element vector.", call. = FALSE)
   if (isFALSE(x[1] < x[2]))
     stop("`sclvals` have to be in the following form `sclvals = c(min,max)`",
@@ -75,9 +75,7 @@ check_sclvals <- function(x) {
 compare_sclvals <- function(x, x_attr) {
   if (!is.null(x) && !is.null(x_attr)) {
   # Since `:` produces `integer` and `c()` doubles, coerce input.
-  x_dbl <- as.double(x)
-  ident_sclvals <- identical(x_attr, x_dbl)
-  if (isFALSE(ident_sclvals))
+  if (!identical(x_attr, as.double(x)))
     stop("Specified `sclvals` are not identical to those set before",
          call. = FALSE)
   }
@@ -85,10 +83,9 @@ compare_sclvals <- function(x, x_attr) {
 
 #' @rdname checks
 check_mrit <- function(x) {
-  x_len <- length(x)
-  if (isFALSE(is.double(x) && x_len == 1))
+  if (!{is.double(x) && length(x) == 1})
     stop("`mrit_min` is not a double vector of length 1.", call. = FALSE)
-  if (isFALSE(0 <= x && x < 1))
+  if (!{0 <= x && x < 1})
      stop("`mrit_min` does not range between `0` and `1`.", call. = FALSE)
   if (x == 0)
      warning("mrit_min = 0: fragment is pre-determined.\n",
@@ -97,22 +94,20 @@ check_mrit <- function(x) {
 
 #' @rdname checks
 check_ovlp <- function(x) {
-  x_len <- length(x)
-  if (isFALSE(is.character(x) && x_len == 1))
+  if (!{is.character(x) && length(x) == 1})
     stop("`overlap_with` is not a character vector of length 1.",
          call. = FALSE)
 }
 
 #' @rdname checks
 check_msdf <- function(x) {
-  if (isFALSE(inherits(x, "msdf")))
+  if (!inherits(x, "msdf"))
     stop("Specified object is not of type `msdf`.", call. = FALSE)
 }
 
 #' @rdname checks
 check_neg <- function(x) {
-  x_len <- length(x)
-  if (isFALSE(is.logical(x) && !is.na(x) && x_len == 1))
+   if (!{is.logical(x) && !anyNA(x) && length(x) == 1})
     stop("`negative_too` is not a logical vector of length 1.", call. = FALSE)
 }
 
