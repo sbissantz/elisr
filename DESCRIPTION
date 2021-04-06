@@ -4,18 +4,18 @@ Title: Exploratory Likert Scaling as an Alternative to Exploratory Factor Analys
 Version: 0.1.0
 Date: 2021-04-05
 Authors@R: c( 
-    person("Steven", "Bißantz", email = "steven.bissantz@gmail.com",
+    person("Steven", "Bissantz", email = "steven.bissantz@gmail.com",
     role = c("aut", "cre")),
     person("Thomas", "Müller-Schneider", email = "tms@uni-landau.de",
     role = "ctb"))
-Description: elisr implements the Exploratory Likert Scaling approach for 
+Description: This package implements the Exploratory Likert Scaling approach for 
     metrical data in R. It thus supports the user when exploring 
     multidimensional data structures. In common research practice one usually 
     falls back on Exploratory Factor Analysis. As a side effect researchers 
     often accept rigid model assumptions. By dissolving conjectures like 
-    orthogonal factors, elisr provides a platform to improve the identification 
-    of relevant dimensions and allows scales to naturally correlate with each 
-    other.
+    orthogonal factors, the package provides a platform to improve the 
+    identification of relevant dimensions and allows scales to naturally 
+    correlate with each other.
 URL: https://github.com/sbissantz/elisr
 BugReports: https://github.com/sbissantz/elisr/issues
 License: GPL (>=3)
