@@ -2,7 +2,6 @@ Type: Package
 Package: elisr
 Title: Exploratory Likert Scaling
 Version: 0.1
-Date: 2021-04-05
 Authors@R: 
     c(person(given = "Steven",
              family = "Bissantz",
