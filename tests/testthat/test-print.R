@@ -1,3 +1,5 @@
 test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+ msdf <- disjoint(trust)
+ p_msdf <- print.msdf(msdf)
+ expect_equal(round(p_msdf$scl_1[1], 2), 0.92)
 })

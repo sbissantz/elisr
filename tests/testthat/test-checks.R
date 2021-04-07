@@ -65,3 +65,9 @@ test_that("compatibility of mrit_min and max cor", {
   expect_error(check_comp(x = df, mrit_min = 10, use = "pairwise.complete.obs"))
 })
 
+test_that("mrit_min", {
+  expect_error(check_mrit(as.integer(1)))
+  expect_error(check_mrit(c(TRUE, FALSE)))
+  expect_error(check_mrit(1.5))
+  expect_warning(check_mrit(0))
+})

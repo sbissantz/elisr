@@ -48,7 +48,6 @@ NULL
 check_df <- function(x) {
   if (!is.data.frame(x))
     stop("`df` is not a data.frame.", call. = FALSE)
-  x_len <- length(x)
   if (!length(x) >= 2)
     stop("`df` has less than 2 variables.")
   x_nms <- names(x)
@@ -83,9 +82,13 @@ compare_sclvals <- function(x, x_attr) {
 
 #' @rdname checks
 check_mrit <- function(x) {
-  if (!{is.double(x) && length(x) == 1})
+  if (!{
+    is.double(x) && length(x) == 1
+    })
     stop("`mrit_min` is not a double vector of length 1.", call. = FALSE)
-  if (!{0 <= x && x < 1})
+  if (!{
+    0 <= x && x < 1
+    })
      stop("`mrit_min` does not range between `0` and `1`.", call. = FALSE)
   if (x == 0)
      warning("mrit_min = 0: fragment is pre-determined.\n",
@@ -94,7 +97,9 @@ check_mrit <- function(x) {
 
 #' @rdname checks
 check_ovlp <- function(x) {
-  if (!{is.character(x) && length(x) == 1})
+  if (!{
+    is.character(x) && length(x) == 1
+    })
     stop("`overlap_with` is not a character vector of length 1.",
          call. = FALSE)
 }
@@ -107,7 +112,9 @@ check_msdf <- function(x) {
 
 #' @rdname checks
 check_neg <- function(x) {
-   if (!{is.logical(x) && !anyNA(x) && length(x) == 1})
+   if (!{
+     is.logical(x) && !anyNA(x) && length(x) == 1
+     })
     stop("`negative_too` is not a logical vector of length 1.", call. = FALSE)
 }
 

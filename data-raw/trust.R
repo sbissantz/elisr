@@ -1,63 +1,71 @@
-## code to prepare `trust` dataset goes here
-# path <- "~/Downloads/ZA5272_v1-0-0.sav"
+#
+#
+# Code: trust
+#
+#
+dta_ls <- foreign::read.spss(path, use.value.labels = TRUE, use.missings = TRUE)
 
-dta_ls <- foreign::read.spss(path, use.value.labels = TRUE, use.missings = -9)
-
+#
 # Read Metadata
+#
 
 spsdta <- memisc::spss.system.file(path)
 pat <- "pt[1-20]"
 var_pos <- grep(pat, names(dta_ls))
 dta <- spsdta[var_pos]
 
-# Show codebook to see missing values and coding
+#
+# Codebook: missing values & coding
+#
 
-f <- function(var) {
+show_cb <- function(var) {
   memisc::codebook(var)
 }
-lapply(dta, f)
+lapply(dta, show_cb)
 
-# Check min and max to assure that missing values (-9) are NA
+#
+# Check: min & max -- assure missing values (-9) are NA
+#
 
-g <- function(var){
-  c(min(var), max(var))
-}
-lapply(dta, g)
+lapply(dta, range)
 
-# Coerce to integers
+#
+# Coerce: integers
+#
 
-h <- function(col){
+make_int <- function(col) {
   as.integer(col)
 }
-dta_ls <- lapply(dta, h)
-res <- as.data.frame(dta_ls)
-colnames(res) <- c(
-'healserv',
-'fccourt',
-'bundtag',
-'munadmin',
-'judsyst',
-'tv',
-'newsppr',
-'uni',
-'fedgovt',
-'police',
-'polpati',
-'eucomisn',
-'eupalmnt'
-)
 
-# Reorder the 0815 dta to boost anonymity
+#
+# Rename: variables
+#
+
+dta_ls <- lapply(dta, make_int)
+res <- as.data.frame(dta_ls)
+colnames(res) <- c("healserv", "fccourt", "bundtag", "munadmin", "judsyst",
+                   "tv", "newsppr", "uni", "fedgovt", "police", "polpati",
+                   "eucomisn", "eupalmnt")
+
+#
+# Reorder: 0815-Data -- boost anonymity
+#
 
 #set.seed(***)
 rows <- nrow(res)
 new_order <- sample(1:rows, rows, replace = FALSE)
-trust <- res[new_order,]
+trust <- res[new_order, ]
 
+#
 # New rownames
+#
 
 no_rownms <- length(rownames(trust))
-new_rownms <- as.character(seq(1,no_rownms))
+new_rownms <- as.character(seq(1, no_rownms))
 rownames(trust) <- new_rownms
+
+#
+# Send
+#
 
 usethis::use_data(trust, overwrite = TRUE)

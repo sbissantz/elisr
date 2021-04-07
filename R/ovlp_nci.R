@@ -53,7 +53,7 @@ one_ovlp_nci <- function(scl, ebscl, mrit_min, sclvals, use) {
        scl <- cbind(scl, ebscl[fstmaxp])
        }else{
          var_rev <- rvrs_var(var = ebscl[fstmaxp], sclvals)
-         assign("msg", c(msg, names(var_rev)), envir=parent.frame(3))
+         assign("msg", c(msg, names(var_rev)), envir = parent.frame(3))
          scl <- cbind(scl, var_rev)
          }
     ebscl <- ebscl[-fstmaxp]

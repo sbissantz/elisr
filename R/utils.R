@@ -82,12 +82,12 @@ nme_msdf <- function(x) {
 
   #' @rdname utils
   extr_core <- function(scl) {
-    scl[c(1,2)]
+    scl[c(1, 2)]
   }
 
   #' @rdname utils
   extr_core_nms <- function(scl) {
-    names(scl)[c(1,2)]
+    names(scl)[c(1, 2)]
   }
 
   #' @rdname utils
