@@ -3,8 +3,12 @@
 This is a new submission for the package ``elisr`` (0.0.1)
 
 ## Test environments
+Distributor ID:	Ubuntu
+Description:	Ubuntu 16.04.6 LTS
+Release:	16.04
+Codename:	xenial
 
-- local Manjaro Linux install 20.2.1 (Nibia), R 4.0.4
+- Local Manjaro Linux install 20.2.1 (Nibia), R 4.0.4
 - R-hub windows-x86_64-devel (r-devel)
 - R-hub ubuntu-gcc-release (r-release)
 - R-hub fedora-clang-devel (r-devel)
