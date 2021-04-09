@@ -2,7 +2,9 @@
 
 language: R
 cache: packages
-os:
-  - linux
-  - osx
-osx_image: xcode12.2
+-jobs:
+  include:
+    - os: linux
+      dist: focal
+    - os: osx
+      osx_image: xcode12.2
