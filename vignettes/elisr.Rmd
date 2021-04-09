@@ -312,7 +312,7 @@ msdf <- overlap(
 )
 ```
 
-### Further anlysis of the trust items 
+### Further analysis of the trust items 
 
 In everyday research, one will usually stumble upon reversed items. Such
 variables are broadly used to diminish response bias and reveal themselves
