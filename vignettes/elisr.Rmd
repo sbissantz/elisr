@@ -34,6 +34,8 @@ It cannot be stressed often enough, that after exploring your data set with
 analysis is mandatory. You will find a possible way to tie in with a follow-up
 analysis in the last section. Alright, let's ease up and dive deeper into some
 of `elisr`'s fiddly technical details. 
+
+TEST
  
 ## `disjoint()` &  `overlap()`
 
