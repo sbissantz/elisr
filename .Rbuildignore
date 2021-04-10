@@ -5,4 +5,3 @@
 ^\.travis\.yml$
 ^\.github$
 ^cran-comments\.md$
-^codecov\.yml$
