@@ -7,6 +7,7 @@
 [![test-coverage](https://github.com/sbissantz/elisr/workflows/test-coverage/badge.svg)](https://github.com/sbissantz/elisr/actions)
 [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![License](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Codecov test coverage](https://codecov.io/gh/sbissantz/elisr/branch/master/graph/badge.svg)](https://codecov.io/gh/sbissantz/elisr?branch=master)
 <!-- badges: end -->
 
 ### Description
