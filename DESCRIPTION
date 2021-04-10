@@ -19,7 +19,7 @@ Description: An alternative to exploratory factor analysis for metrical
     dissolving conjectures like orthogonal factors, the package provides a
     platform to improve the identification of relevant dimensions and
     allows scales to naturally correlate with each other.
-License: GPL (>=3)
+License: GPL-3
 URL: https://github.com/sbissantz/elisr
 BugReports: https://github.com/sbissantz/elisr/issues
 Depends: 
