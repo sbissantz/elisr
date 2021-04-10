@@ -210,19 +210,20 @@ print(msdf, digits = 3)
 ```
 
 > **Note**: When calling `msdf` R internally wraps the expression in `print()`.
-You can be used interchangeably. Thus, `msdf` is a shortcut for `print(msdf)`.
-But if you want to set printing options (see `?option`) you need to explicitly
-call `print()` with the desired option(s) (e.g., `digits = 3`). Note, however,
-that I wrote custom function to print `msdf` objects. As a consequence,`print()`
-actually passes the work on to `print.msdf()`. To get straight to the point,
-`print()` owns a nice way to print the result to a specified number of digits,
-so I equipped `print.msdf()` with that feature as well. The default is set to
-`2`.  But be aware of the fact that omitting tons of decimal places does not
-mean the result is accurately rounded to the specified ones. Anyway, I decided
-to avoid rounding in the result. The reason therefor is R's (as I find it,
-deeply confusing) rounding standard -- IEC 60559 (see `?round`). So, if you
-stumble upon a situation where you need to report more than two decimal places,
-expand the result using `digits = n` and choose whatever standard you like.
+Thus, `msdf` is a shortcut for `print(msdf)`. Both methods can be used
+interchangeably. But if you want to set printing options (see `?option`) you
+need to explicitly call `print()` with the desired option (e.g., `digits =
+3`). Note, however, that I wrote custom function to print `msdf` objects. As a
+consequence,`print()` actually passes the work on to `print.msdf()`. To get
+straight to the point, `print()` owns a nice way to print the result to a
+specified number of digits, so I equipped `print.msdf()` with that feature as
+well. The default is set to `2`.  But be aware of the fact that omitting tons of
+decimal places does not mean the result is accurately rounded to the specified
+ones. Anyway, I decided to avoid rounding in the result. The reason therefor is
+R's (as I find it, deeply confusing) rounding standard -- IEC 60559 (see
+`?round`). So, if you stumble upon a situation where you need to report more
+than two decimal places, expand the result using `digits = n` and choose
+whatever standard you like.
 
 ### overlap()
 
