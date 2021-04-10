@@ -1,3 +1,5 @@
+# elisr <img src='man/figures/logo.png' align="right" height="139" />
+
 # elisr
 
 #### Exploratory Likert Scaling in R 
