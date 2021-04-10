@@ -35,14 +35,14 @@ analysis is mandatory. You will find a possible way to tie in with a follow-up
 analysis in the last section. Alright, let's ease up and dive deeper into some
 of `elisr`'s fiddly technical details. 
  
-## Welcome `disjoint()` &  `overlap()`
+## Welcome `disjoint()` & `overlap()`
 
 `elisr` basically consists of two user functions `disjoint()` and `overlap()`.
 With a typical case in mind, the practical difference between them is: (1)
 `disjoint()` is set up to produce sharp and disjoint scale fragments. Sharp and
 disjoint are those fragments, that include items which (a) share a strong linear
 relationship with one another but where (b) any of them is tied to a single
-fragment. That's where (2) `overlap()` comes into play. Passing fragments to
+fragment. That is where (2) `overlap()` comes into play. Passing fragments to
 `overlap()`, the functions underlying algorithm tries to enrich each fragment.
 The emerging scales are fortified with items from your specified data frame, but
 the algorithm excludes them when building a fragment. Later on, we will talk
