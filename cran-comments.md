@@ -1,26 +1,28 @@
 ## New submission 
 
-This is a new submission for the package ``elisr`` (0.0.1)
+This is a new submission (elisr 0.0.1).
 
 ## Test environments
-Distributor ID:	Ubuntu
-Description:	Ubuntu 16.04.6 LTS
-Release:	16.04
-Codename:	xenial
 
-- Local Manjaro Linux install 20.2.1 (Nibia), R 4.0.4
-- R-hub windows-x86_64-devel (r-devel)
-- R-hub ubuntu-gcc-release (r-release)
-- R-hub fedora-clang-devel (r-devel)
+- Linux
+  - Manjaro (21.0), R-devel (local machine)
+  - Debian, R-devel and R-release, GCC (on rhub)
+  - Ubuntu (20.04 LTS), R-devel and R-release, GCC (on rhub)
+  - Fedora, R-devel and R-release, clang, gfortran (on rhub)
+- macOS 
+  - 10.13.6 High Sierra, R-release (on rhub)
+- Windows 
+  - Windows Server 2008 R2 SP1, R-devel & R-release, 32/64 bit (on rhub &
+  win-builder)
 
 ## R CMD check results
-  
-0 errors ✓ | 0 warnings ✓ | 1 note x
 
-  Possibly mis-spelled words in DESCRIPTION:
-    Likert (3:20, 12:24)
+The R CMD check ended with a single note.
 
-### Notes 
+> Possibly mis-spelled words in DESCRIPTION: 
+Likert (3:20, 12:24)
 
-We made sure that "Likert" is (1) correctly spelled and (2) the appropriate term
+### Note(s)
+
+I made sure that "Likert" is (1) correctly spelled and (2) the appropriate term
 in this context.
