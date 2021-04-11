@@ -41,5 +41,11 @@ analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
   First, when determining the core items (the two items in the correlation
   matrix with the highest linear relationship). Second, when an item is
   proposed for an emerging scale.
+}
+\references{
+Müller-Schneider, T. (2001). Multiple Skalierung nach dem
+  Kristallisationsprinzip / Multiple Scaling According to the Principle of
+  Crystallization. Zeitschrift für Soziologie, 30(4), 305-315.
+  https://doi.org/10.1515/zfsoz-2001-0404
   @importFrom stats cor
 }
