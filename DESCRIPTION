@@ -4,7 +4,7 @@ Title: Exploratory Likert Scaling
 Version: 0.1
 Authors@R: 
     c(person(given = "Steven",
-             family = "Bissantz",
+             family = "Bißantz",
              role = c("aut", "cre"),
              email = "steven.bissantz@gmail.com"),
       person(given = "Thomas",
@@ -20,17 +20,19 @@ Description: An alternative to exploratory factor analysis for metrical
     platform to improve the identification of relevant dimensions and
     allows scales to naturally correlate with each other.
 License: GPL-3
+Language: en-US
 URL: https://github.com/sbissantz/elisr
 BugReports: https://github.com/sbissantz/elisr/issues
 Depends: 
     R (>= 4.0.0)
 Imports: 
     stats
-Suggests: 
-    knitr (>= 1.31),
-    psych (>= 2.0.0),
-    rmarkdown (>= 2.7.0),
-    testthat (>= 3.0.0)
+Suggests:
+    spelling, 
+    knitr, 
+    psych,
+    rmarkdown,
+    testthat,
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
