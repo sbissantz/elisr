@@ -17,12 +17,6 @@ This is a new submission (elisr 0.0.1).
 
 ## R CMD check results
 
-The R CMD check ended with a single note.
+New submission
 
-> Possibly mis-spelled words in DESCRIPTION: 
-Likert (3:20, 12:24)
-
-### Note(s)
-
-I made sure that "Likert" is (1) correctly spelled and (2) the appropriate term
-in this context.
+0 errors ✓ | 0 warnings ✓ | 1 note x
