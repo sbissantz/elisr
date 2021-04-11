@@ -1,3 +1,4 @@
+
 # elisr <img src='man/figures/elisr.png' align="right" height="139" />
 
 #### Exploratory Likert Scaling in R 
@@ -8,17 +9,18 @@
 [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Last-changedate](https://img.shields.io/badge/last%20change-2021--04--10-yellowgreen.svg)](/commits/master)
 [![License](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Fun](https://img.shields.io/badge/One R-to rule them all-critical)]()
 <!-- badges: end -->
 
 ### Description
 
-An alternative to exploratory factor analysis for metrical data in R. The
+An alternative to Exploratory Factor Analysis (EFA) for metrical data in R. The
 Exploratory Likert Scaling approach supports the user exploring multidimensional
-data structures. In common research practice one usually draws on Exploratory
-Factor Analysis. As a side effect researchers often accept overly rigid model
-assumptions. By dissolving conjectures like orthogonal factors, the package
-provides a platform to improve the identification of relevant dimensions and
-allows scales to naturally correlate with each other.
+data structures. In common research practice one usually draws on EFA. As a side
+effect researchers often accept overly rigid model assumptions. By dissolving
+conjectures like orthogonal factors, the package provides a platform to improve
+the identification of relevant dimensions and allows scales to naturally
+correlate with each other.
 
 ### Welcome `disjoint()` & `overlap()`
 
