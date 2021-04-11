@@ -19,8 +19,8 @@
 #'   \item{fedgovt}{German government}
 #'   \item{police}{Police}
 #'   \item{polpati}{Political parties}
-#'   \item{eucomisn}{European Comission}
-#'   \item{eupalmnt}{Europen Parliament}
+#'   \item{eucomisn}{European Commission}
+#'   \item{eupalmnt}{European Parliament}
 #'   }
 #'
 #' @details Please note that in comparison to the original data set participant
@@ -28,9 +28,9 @@
 #'   lead to differences when trying to reproduce the results of the analysis
 #'   with the original data set (mentioned below).
 #'
-#' @references{ GESIS - Leibniz-Institut für Sozialwissenschaften (2019). German
+#' @references GESIS - Leibniz-Institut für Sozialwissenschaften (2019). German
 #' General Social Survey - ALLBUS 2018. GESIS Datenarchiv, Köln. ZA5272
-#' Datenfile Version 1.0.0, https://doi.org/10.4232/1.13325.}
+#' Datenfile Version 1.0.0, https://doi.org/10.4232/1.13325.
 #'
 #' @examples
 #' # Use trust with disjoint
