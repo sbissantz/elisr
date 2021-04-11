@@ -1,18 +1,15 @@
 #' @title Multiple scaling in a disjoint manner using positive items
 #'
 #' @description \code{disj_pci} is an internal function and returns a list of
-#'  data frames. In addition, \code{disj_pci} sets up an empty list of scales
-#'  (\code{scls}) and scaling begins: (1) A (first) scale is set up. (2)
-#'  \code{disj_pci} tries to find the two items with the highest correlation
-#'  in the data frame. (3) If the this correlation is greater than the
-#'  pre-specified lower bound (\code{mrit_min}), \code{disj_pci} adds up the two
-#'  items to build the core of the scale. After developing the core, both items
-#'  are excluded from the data frame. They are now part of the first scale. (4)
-#'  While the correlation between the sum score and a remaining items of the
-#'  data frame is greater than the pre-specified lower bound, \code{disj_pci}
-#'  enlarges the scale with the appropriate item. (5 = 1) If there are at least
-#'  two items left in the data frame, yielding a correlation coefficient greater
-#'  than the set lower bound, \code{disj_pci} starts over again.
+#'   data frames. It is a loop which runs through the following steps: (1) Set
+#'   up a (first) scale. (2) find the two items with the highest positive
+#'   correlation in the data set. (3) If the absolute value of this correlation
+#'   is greater than the pre-specified lower bound (\code{mrit_min}), add up the
+#'   two items to build the core of the emerging scale. (4) As long as the value
+#'   of the correlation between the sum score and a remaining items in the data
+#'   frame is greater than \code{mrit_min}, flavor the scale with the
+#'   appropriate item. (5) If there are at least two leftovers in the data
+#'   frame, that meet the inclusion criterion, start over again.
 #'
 #' @param df a data frame object.
 #'
