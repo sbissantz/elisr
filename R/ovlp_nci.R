@@ -31,9 +31,10 @@
 #'   correlation matrix with the highest linear relationship). Second, when an
 #'   item is proposed for an emerging scale.
 #'
-#' @references Müller-Schneider, Thomas. (2001). Multiple Skalierung nach dem
+#' @references Müller-Schneider, T. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
-#'   Crystallization. Zeitschrift für Soziologie. 30. 10.1515/zfsoz-2001-0404.
+#'   Crystallization. Zeitschrift für Soziologie, 30(4), 305-315.
+#'   https://doi.org/10.1515/zfsoz-2001-0404
 
 #'   @importFrom stats cor
 ovlp_nci <- function(msdf, mrit_min, overlap_with, sclvals, use) {
