@@ -1,11 +1,13 @@
 ---
-title: "A (more) technical `elisr` companion" 
+title: "elisr"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{A (more) technical `elisr` companion}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+### Exploratory Likert Scaling in R
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
