@@ -1,5 +1,5 @@
 ---
-title: "elisr"
+title: "elisr companion"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{A (more) technical `elisr` companion}
