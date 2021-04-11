@@ -1,4 +1,4 @@
-# elisr <img src='man/figures/logo.png' align="right" height="139" />
+# elisr <img src='man/figures/elisr.png' align="right" height="139" />
 
 #### Exploratory Likert Scaling in R 
 
