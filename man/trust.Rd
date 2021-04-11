@@ -21,8 +21,8 @@ Participants were asked about their trust in public institutions and
   \item{fedgovt}{German government}
   \item{police}{Police}
   \item{polpati}{Political parties}
-  \item{eucomisn}{European Comission}
-  \item{eupalmnt}{Europen Parliament}
+  \item{eucomisn}{European Commission}
+  \item{eupalmnt}{European Parliament}
   }
 }
 \usage{
@@ -43,8 +43,8 @@ Please note that in comparison to the original data set participant
 disjoint(trust, mrit_min = .4)
 }
 \references{
-{ GESIS - Leibniz-Institut für Sozialwissenschaften (2019). German
+GESIS - Leibniz-Institut für Sozialwissenschaften (2019). German
 General Social Survey - ALLBUS 2018. GESIS Datenarchiv, Köln. ZA5272
-Datenfile Version 1.0.0, https://doi.org/10.4232/1.13325.}
+Datenfile Version 1.0.0, https://doi.org/10.4232/1.13325.
 }
 \keyword{datasets}
