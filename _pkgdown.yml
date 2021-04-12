@@ -1,4 +1,3 @@
 template:
   params:
-    noindex: true
-    bootswatch: darkly
+    bootswatch: yeti
