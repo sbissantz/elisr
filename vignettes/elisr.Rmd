@@ -2,7 +2,7 @@
 title: "elisr companion"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{A (more) technical `elisr` companion}
+  %\VignetteIndexEntry{elisr companion}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
