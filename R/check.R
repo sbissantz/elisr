@@ -1,4 +1,4 @@
-#' @title A Set of Checks for the Appropriateness of Inputs
+#' @title A set of checks for the appropriateness of inputs
 #'
 #' @details \code{check_df(x)} guarantees that \code{x} is a data frame. In
 #'   addition, it verifies that \code{x} has less than two variables (a single
