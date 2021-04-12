@@ -1,7 +1,5 @@
 
-# elisr <img src='man/figures/elisr.png' align="right" height="139" />
-
-#### Exploratory Likert Scaling in R 
+# elisr – Exploratory Likert Scaling in R <img src='man/figures/elisr.png' align="right" height="139" />
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/sbissantz/elisr/workflows/R-CMD-check/badge.svg)](https://github.com/sbissantz/elisr/actions)
