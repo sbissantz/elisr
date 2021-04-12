@@ -31,7 +31,8 @@ Suggests:
     psych,
     rmarkdown,
     testthat,
-    pkgdown
+    pkgdown,
+    covr
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
