@@ -5,7 +5,7 @@
 ^\.travis\.yml$
 ^\.github$
 ^cran-comments\.md$
-^_pkgdown\.yml$
 ^docs$
-^pkgdown$
 ^codecov\.yml$
+^pkgdown$
+^_pkgdown\.yml$

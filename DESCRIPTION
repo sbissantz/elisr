@@ -25,14 +25,15 @@ BugReports: https://github.com/sbissantz/elisr/issues
 Depends: 
     R (>= 4.0.0)
 Imports: 
-    stats
+    stats (>= 4.0.0)
 Suggests:
+    covr,
+    devtools,
     knitr,
+    pkgdown,
     psych,
     rmarkdown,
-    testthat,
-    pkgdown,
-    covr
+    testthat
 VignetteBuilder: 
     knitr
 Config/testthat/edition: 3
