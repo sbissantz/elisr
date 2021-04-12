@@ -10,7 +10,7 @@
 \alias{check_msdf}
 \alias{check_neg}
 \alias{check_comp}
-\title{A Set of Checks for the Appropriateness of Inputs}
+\title{A set of checks for the appropriateness of inputs}
 \usage{
 check_df(x)
 
@@ -41,7 +41,7 @@ corrected item-total correlation.}
 analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
 \description{
-A Set of Checks for the Appropriateness of Inputs
+A set of checks for the appropriateness of inputs
 }
 \details{
 \code{check_df(x)} guarantees that \code{x} is a data frame. In
