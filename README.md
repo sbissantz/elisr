@@ -30,11 +30,11 @@ disjoint are those fragments, that include items which (a) share a strong linear
 relationship with one another but where (b) any of them is tied to a single
 fragment. That is where (2) `overlap()` comes into play. Passing fragments to
 `overlap()`, the functions underlying algorithm tries to enrich each fragment.
-The emerging scales are fortified with items from your specified data frame, but
-the algorithm excludes them when building a fragment. Making a long story short:
-Using `overlap()` an item can appear in more than one of the enriched fragments.
-In doing so, we overcome the splitting effect of the data frame induced by
-`disjoint()`.
+The emerging scales are flavored with items from your specified data frame, but
+the algorithm excludes the ones that are already built into anyone of them.
+Making a long story short: Using `overlap()` an item can appear in more than one
+of the enriched fragments. In doing so, we overcome the splitting effect of the
+data frame induced by `disjoint()`.
 
 ### Install from GitHub (development version)
 
