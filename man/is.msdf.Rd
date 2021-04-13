@@ -10,7 +10,7 @@ is.msdf(x)
 \item{x}{an arbitrary object.}
 }
 \description{
-\code{is.msdf} tests if the given object is a multiple scaled
+\code{is.msdf()} tests if the given object is a multiple scaled
   data frame.
 }
 \details{

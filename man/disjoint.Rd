@@ -2,7 +2,7 @@
 % Please edit documentation in R/disjoint.R
 \name{disjoint}
 \alias{disjoint}
-\title{Multiple scaling in a disjoint manner}
+\title{Multiple scaling -- the disjoint way}
 \usage{
 disjoint(
   df,
@@ -31,9 +31,10 @@ analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 default is set to \code{pairwise.complete.obs}.}
 }
 \description{
-\code{disjoint} returns a multiple, disjoint scaled version of
-  the specified data frame. This so called \code{msdf} sets up the building
-  block for further analysis with \code{overlap} (type \code{?overlap}).
+\code{disjoint()} returns a multiple, disjointedly scaled version
+  of the specified data frame. This so called \code{msdf} sets up the
+  building block for further analysis with \code{overlap()} (type
+  \code{?overlap}).
 }
 \details{
 \code{use} clarifies how to set up a correlation matrix in the

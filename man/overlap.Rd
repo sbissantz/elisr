@@ -2,7 +2,7 @@
 % Please edit documentation in R/overlap.R
 \name{overlap}
 \alias{overlap}
-\title{Multiple scaling in an overlapping manner}
+\title{Multiple scaling -- the overlapping way}
 \usage{
 overlap(
   msdf,
@@ -14,7 +14,7 @@ overlap(
 )
 }
 \arguments{
-\item{msdf}{a multiple scaled data frame (built with \code{disjoint}).}
+\item{msdf}{a multiple scaled data frame (built with \code{disjoint()}).}
 
 \item{mrit_min}{a numeric constant of length 1 to specify the marginal
 corrected item-total correlation. Its value is in the range of 0-1. The
@@ -23,10 +23,10 @@ default is set to \code{.3}.}
 \item{negative_too}{a logical constant indicating whether reversed items are
 included in the analysis. The default is set to \code{FALSE}.}
 
-\item{overlap_with}{a string telling \code{overlap} the set of items for the
-extension. To build up on all variables of a fragment use \code{fragment},
-for the core-only option type \code{core}. The default is set to
-"fragment".}
+\item{overlap_with}{a string telling \code{overlap()} the set of items for
+the extension. To build up on all variables of a fragment use
+\code{fragment}, for the core-only option type \code{core}. The default is
+set to "fragment".}
 
 \item{sclvals}{a numeric vector of length 2 indicating the start- and
 endpoint of a scale. Use something like \code{c(min,max)}.}
@@ -36,8 +36,8 @@ analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 default is set to \code{pairwise.complete.obs}.}
 }
 \description{
-\code{overlap} returns a overlapped version (either extended, or
-  reversed, or both) of the specified \code{msdf}.
+\code{overlap()} returns a overlapped version (either extended,
+  or reversed, or both) of the specified \code{msdf}.
 }
 \details{
 \code{use} clarifies how to set up a correlation matrix in the

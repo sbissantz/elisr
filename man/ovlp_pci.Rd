@@ -7,12 +7,12 @@
 ovlp_pci(msdf, mrit_min, overlap_with, use)
 }
 \arguments{
-\item{msdf}{a multiple scaled data frame (built with \code{disjoint}).}
+\item{msdf}{a multiple scaled data frame (built with \code{disjoint()}).}
 
 \item{mrit_min}{a numerical constant of length 1 to specify the marginal
 corrected item-total correlation. It's value is in the range of 0-1.}
 
-\item{overlap_with}{a string telling \code{overlap} the items it should
+\item{overlap_with}{a string telling \code{overlap()} the items it should
 extend on (in each particular case). To build up on all variables of a
 fragment use \code{fragment}, for the cores-only option type \code{core}.}
 
@@ -20,12 +20,12 @@ fragment use \code{fragment}, for the cores-only option type \code{core}.}
 analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
 \description{
-\code{ovlp_nci} is an internal function and returns a list of
+\code{ovlp_nci()} is an internal function and returns a list of
   data frames. It takes a disjoint (\code{msdf}) and tries to extend it with
   those items in the data frame which are not yet built into the fragment
   (aka., counterpart). Despite the default, one can extend on the cores of
   each fragment. The underlying expansion algorithm remains the same. The
-  only difference is that \code{ovlp_nci} applies this algorithm to each
+  only difference is that \code{ovlp_nci()} applies this algorithm to each
   fragment within `msdf`. The overlapping family of functions is thus a
   multiple extension of the disjoint scaling approach to various fragments.
 }
