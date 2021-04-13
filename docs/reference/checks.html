@@ -165,30 +165,30 @@ analysis. See <code>use</code> in <code><a href='https://rdrr.io/r/stats/cor.htm
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>check_df(x)</code> guarantees that <code>x</code> is a data frame. In
+    <p><code>check_df()</code> guarantees that <code>x</code> is a data frame. In
   addition, it verifies that <code>x</code> has less than two variables (a single
   item can't build a core), <code>x</code> has column names (used to pre-build
   <code>scls</code> in the overlapping process), if the column names are unique and
   not of type <code>NA</code>.</p>
-<p><code>check_sclvals(x)</code> checks whether <code>x</code> is a two element vector
+<p><code>check_sclvals()</code> checks whether <code>x</code> is a two element vector
   (Note: implicitly assures that it is not <code>NULL</code>, since <code>NULL</code> is
   a logical constant of length `0`.). Integers are coerced to be of type
   <code>double</code>. Additionally the function makes sure that the first value is
   not greater than the second.</p>
-<p><code>compare_sclvals(x)</code> ensures that the <code>sclvals</code> set with
+<p><code>compare_sclvals()</code> ensures that the <code>sclvals</code> set with
   <code><a href='overlap.html'>overlap()</a></code> are equal to those set with <code><a href='disjoint.html'>disjoint()</a></code>.</p>
-<p><code>check_rit(x)</code> guarantees that the input is a double vector of length
+<p><code>check_rit()</code> guarantees that the input is a double vector of length
   one. Moreover, it secures that the lower bound is unique and ranges between
   `0` and `1`.</p>
-<p><code>check_ovlp(x)</code> safeguards that<code>x</code>, is a character vector of
+<p><code>check_ovlp()</code> safeguards that<code>x</code>, is a character vector of
   length `1`. Within <code><a href='disjoint.html'>disjoint()</a></code> and <code><a href='overlap.html'>overlap()</a></code>) <code><a href='https://rdrr.io/r/base/switch.html'>switch()</a></code>
   validates the input string itself, throwing an error message when the given
   character doesn't match any available option.</p>
-<p><code>check_msdf(x)</code> guards against inputs that are not of type `msdf`.</p>
-<p><code>check_neg(x)</code> verifies that the (<code>negative_too</code> input is a
+<p><code>check_msdf()</code> guards against inputs that are not of type `msdf`.</p>
+<p><code>check_neg()</code> verifies that the (<code>negative_too</code> input is a
   logical constant of length 1 and not a missing value (this is necessary
   because objects of type <code>NA</code> are logical constants of length 1, too).</p>
-<p><code>check_comp</code> examines the correlation matrix, <code><a href='https://rdrr.io/r/stats/cor.html'>cor(df)</a></code>. It
+<p><code>check_comp()</code> examines the correlation matrix, <code><a href='https://rdrr.io/r/stats/cor.html'>cor(df)</a></code>. It
   complains if no correlation is greater than the specified <code>mrit_min</code>.</p>
 
   </div>

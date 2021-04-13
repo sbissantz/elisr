@@ -187,31 +187,31 @@ or <code>overlap</code>)</p></td>
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>nme_msdf</code> designates the components of a msdf (e.g.,
+    <p><code>nme_msdf()</code> designates the components of a msdf (e.g.,
   `scl_1`).</p>
-<p><code>calc_rbar</code> calculates the average correlation between items from a
+<p><code>calc_rbar()</code> calculates the average correlation between items from a
   gradually emerging scale.</p>
-<p><code>calc_alpha</code> calculates Cronbach's alpha of a given set of items from
+<p><code>calc_alpha()</code> calculates Cronbach's alpha of a given set of items from
   the gradually emerging scale.</p>
-<p><code>calc_mrit</code> calculates the corrected item-total correlation of an item
+<p><code>calc_mrit()</code> calculates the corrected item-total correlation of an item
   with the sum score of all the other variables of the gradually emerging
   scale (aka. marginal corrected item-total correlation). Note, that this
   procedure uses a part-whole correction. Thus, the item itself is excluded
   in the calculation process.</p>
-<p><code>extreb_itms</code> build up the counterpart of a fragment from the given
+<p><code>extreb_itms()</code> build up the counterpart of a fragment from the given
   item names. Therefore, the counterpart includes all variables that are not
   part of a fragment but which are mentioned in the specified data set.</p>
-<p><code>extr_core</code> extracts all pairs of core items from a fragment.</p>
-<p><code>extr_core_nms</code> extracts the names of every core items in a given
+<p><code>extr_core()</code> extracts all pairs of core items from a fragment.</p>
+<p><code>extr_core_nms()</code> extracts the names of every core items in a given
   fragment.</p>
-<p><code>rvrs_var</code> reverses an item using the specified scaling values. It
+<p><code>rvrs_var()</code> reverses an item using the specified scaling values. It
   handles the following types of scales:</p><ul>
 <li><p>...-3 -2 -1 0 1 2 3..., e.g., <code>sclvals = c(-3, 3)</code></p></li>
 <li><p>0 1 2 3 4 5 6..., e.g.,  <code>sclvals = c(0, 7)</code></p></li>
 <li><p>1 2 3 4 5 6 7..., e.g., <code>sclcals = c(1, 7)</code></p></li>
 </ul>
 
-<p><code>rvrs_note</code> gets the full report of reversed variables and reports a
+<p><code>rvrs_note()</code> gets the full report of reversed variables and reports a
   unique list of them.</p>
 
   </div>

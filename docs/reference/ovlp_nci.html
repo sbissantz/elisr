@@ -40,7 +40,7 @@
 
 
 <meta property="og:title" content="Multiple scaling in an overlapping manner using negative items too — ovlp_nci" />
-<meta property="og:description" content="ovlp_nci is an internal function and returns a list of
+<meta property="og:description" content="ovlp_nci() is an internal function and returns a list of
   data frames. It takes a disjoint (msdf) and tries to extend it with
   those items in the data frame which are not yet built into the fragment
   (aka., counterpart). Despite the default, one can extend on the cores of
@@ -128,7 +128,7 @@
     </div>
 
     <div class="ref-description">
-    <p><code>ovlp_nci</code> is an internal function and returns a list of
+    <p><code>ovlp_nci()</code> is an internal function and returns a list of
   data frames. It takes a disjoint (<code>msdf</code>) and tries to extend it with
   those items in the data frame which are not yet built into the fragment
   (aka., counterpart). Despite the default, one can extend on the cores of
@@ -146,7 +146,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>msdf</th>
-      <td><p>a multiple scaled data frame (built with <code>disjoint</code>).</p></td>
+      <td><p>a multiple scaled data frame (built with <code><a href='disjoint.html'>disjoint()</a></code>).</p></td>
     </tr>
     <tr>
       <th>mrit_min</th>
@@ -155,7 +155,7 @@ corrected item-total correlation. It's value is in the range of 0-1.</p></td>
     </tr>
     <tr>
       <th>overlap_with</th>
-      <td><p>a string telling <code>overlap</code> the items it should
+      <td><p>a string telling <code><a href='overlap.html'>overlap()</a></code> the items it should
 extend on (in each particular case). To build up on all variables of a
 fragment use <code>fragment</code>, for the cores-only option type <code>core</code>.</p></td>
     </tr>

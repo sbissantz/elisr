@@ -90,19 +90,61 @@
 <a href="#description" class="anchor"></a>Description</h3>
 <p>An alternative to Exploratory Factor Analysis (EFA) for metrical data in R. The Exploratory Likert Scaling approach supports the user exploring multidimensional data structures. In common research practice one usually draws on EFA. As a side effect researchers often accept overly rigid model assumptions. By dissolving conjectures like orthogonal factors, the package provides a platform to improve the identification of relevant dimensions and allows scales to naturally correlate with each other.</p>
 </div>
-<div id="welcome-disjoint--overlap" class="section level3">
+<div id="the-two-workhorses-disjoint--overlap" class="section level3">
 <h3 class="hasAnchor">
-<a href="#welcome-disjoint--overlap" class="anchor"></a>Welcome <code>disjoint()</code> &amp; <code>overlap()</code>
+<a href="#the-two-workhorses-disjoint--overlap" class="anchor"></a>The two workhorses: <code>disjoint()</code> &amp; <code>overlap()</code>
 </h3>
-<p><code>elisr</code> basically consists of two user functions <code><a href="reference/disjoint.html">disjoint()</a></code> and <code><a href="reference/overlap.html">overlap()</a></code>. With a typical case in mind, the practical difference between them is: (1) <code><a href="reference/disjoint.html">disjoint()</a></code> is set up to produce sharp and disjoint scale fragments. Sharp and disjoint are those fragments, that include items which (a) share a strong linear relationship with one another but where (b) any of them is tied to a single fragment. That is where (2) <code><a href="reference/overlap.html">overlap()</a></code> comes into play. Passing fragments to <code><a href="reference/overlap.html">overlap()</a></code>, the functions underlying algorithm tries to enrich each fragment. The emerging scales are flavored with items from your specified data frame, but the algorithm excludes the ones that are already built into anyone of them. Making a long story short: Using <code><a href="reference/overlap.html">overlap()</a></code> an item can appear in more than one of the enriched fragments. In doing so, we overcome the splitting effect of the data frame induced by <code><a href="reference/disjoint.html">disjoint()</a></code>.</p>
+<p><code>elisr</code> comes with two user functions: <code><a href="reference/disjoint.html">disjoint()</a></code> and <code><a href="reference/overlap.html">overlap()</a></code>.</p>
+<ul>
+<li>
+<code><a href="reference/disjoint.html">disjoint()</a></code> “disjointedly disjoints” your list of variables.</li>
+<li>
+<code><a href="reference/overlap.html">overlap()</a></code> processes <code><a href="reference/disjoint.html">disjoint()</a></code>’s result through overlapping.</li>
+</ul>
+<p>With a typical case in mind, the practical difference between them is: (1) <code><a href="reference/disjoint.html">disjoint()</a></code> is set up to produce sharp and disjoint scale fragments. Sharp and disjoint are those fragments, that include items which (a) share a strong linear relationship with one another but where (b) any of them is tied to a single fragment. That is where (2) <code><a href="reference/overlap.html">overlap()</a></code> comes into play. Passing fragments to <code><a href="reference/overlap.html">overlap()</a></code>, the functions underlying algorithm tries to enrich each fragment. The emerging scales are flavored with items from your specified data frame, but the algorithm excludes those that are already built into a fragment. Making a long story short: Using <code><a href="reference/overlap.html">overlap()</a></code> an item can appear in more than one of the enriched fragments. In doing so, we overcome the splitting effect induced by <code><a href="reference/disjoint.html">disjoint()</a></code>. […]</p>
+<blockquote>
+<p><strong>Note</strong>: The last section is part of our vignette. If you are interested, you might read on there.</p>
+</blockquote>
 </div>
 <div id="install-from-github-development-version" class="section level3">
 <h3 class="hasAnchor">
 <a href="#install-from-github-development-version" class="anchor"></a>Install from GitHub (development version)</h3>
-<p>To install the development version, paste the following snippet into your R console. Note that the first line of code installs the <code>devtools</code> package (if not available). The second line then uses <code>devtools</code>’ <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github()</a></code> to install <code>elisr</code>.</p>
+<p>There are multiple ways to get <code>elisr</code>. I’ll show you three, sorted by different levels of R expertise (pro, skilled or novice). If you don’t understand a given installation instruction, hang on.(the level decreases).</p>
+<div id="pro" class="section level4">
+<h4 class="hasAnchor">
+<a href="#pro" class="anchor"></a>Pro</h4>
+<p>If you are an advanced R user simply download <code>elisr</code> from github (e.g., with <code>devtools</code>).</p>
+</div>
+<div id="skilled" class="section level4">
+<h4 class="hasAnchor">
+<a href="#skilled" class="anchor"></a>Skilled</h4>
+<p>I stick with <code>devtools</code> and <code>install_github()</code> to install <code>elisr</code>, but feel free to use whatever you like.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span> 
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"sbissantz/elisr"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="va">sbissantz</span><span class="op">/</span><span class="va">elisr</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="novice" class="section level4">
+<h4 class="hasAnchor">
+<a href="#novice" class="anchor"></a>Novice</h4>
+<p>To install the development version, copy and paste the following snippet into your R console. You will be guided through the installation process. What the snippet does, is (1) to check if the R package <code>devtools</code> is available on your system and if not (2) asks if you want to install it. If so, (3) it installs <code>elisr</code> via <code>devtools</code>’ function <code>install_github()</code>. After the installation you need to load and attach <code>elisr</code>. Simply type <code><a href="https://github.com/sbissantz/elisr">library(elisr)</a></code> and <code>elisr</code> will welcome you.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"devtools"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">msg</span> <span class="op">&lt;-</span> <span class="st">"devtools is not installed, want to install it? Type 'yes' or 'no'."</span>
+  <span class="va">answer</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readline.html">readline</a></span><span class="op">(</span>prompt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/message.html">message</a></span><span class="op">(</span><span class="va">msg</span><span class="op">)</span><span class="op">)</span>
+  <span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span><span class="va">answer</span>,
+         yes <span class="op">=</span> <span class="op">{</span>
+           <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
+           <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"sbissantz/elisr"</span><span class="op">)</span>
+         <span class="op">}</span>,
+         no <span class="op">=</span> <span class="op">{</span>
+           <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"devtools is required to proceed the installation of elisr."</span>,
+                 call. <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+         <span class="op">}</span>,
+         <span class="kw"><a href="https://rdrr.io/r/base/stop.html">stop</a></span><span class="op">(</span><span class="st">"Please answer 'yes' or 'no'."</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
+  <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"sbissantz/elisr"</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+</div>
 </div>
 </div>
   </div>
