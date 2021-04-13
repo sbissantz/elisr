@@ -45,7 +45,7 @@ might read on there.
 
 There are multiple ways to get `elisr`. I'll show you three, sorted by different
 levels of R expertise (pro, skilled or novice). If you don't understand a given
-installation instruction, hang on.(the level decreases).
+installation instruction -- read on. 
 
 #### Pro
 
