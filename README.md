@@ -19,9 +19,13 @@ conjectures like orthogonal factors, the package provides a platform to improve
 the identification of relevant dimensions and allows scales to naturally
 correlate with each other.
 
-### Welcome `disjoint()` & `overlap()`
+### The two workhorses: `disjoint()` & `overlap()`
 
-`elisr` basically consists of two user functions `disjoint()` and `overlap()`.
+`elisr` comes with two user functions: `disjoint()` and `overlap()`. 
+
+- `disjoint()` "disjointedly disjoints" your list of variables.
+- `overlap()` processes `disjoint()`'s result through overlapping.
+
 With a typical case in mind, the practical difference between them is: (1)
 `disjoint()` is set up to produce sharp and disjoint scale fragments. Sharp and
 disjoint are those fragments, that include items which (a) share a strong linear
@@ -29,19 +33,60 @@ relationship with one another but where (b) any of them is tied to a single
 fragment. That is where (2) `overlap()` comes into play. Passing fragments to
 `overlap()`, the functions underlying algorithm tries to enrich each fragment.
 The emerging scales are flavored with items from your specified data frame, but
-the algorithm excludes the ones that are already built into anyone of them.
-Making a long story short: Using `overlap()` an item can appear in more than one
-of the enriched fragments. In doing so, we overcome the splitting effect of the
-data frame induced by `disjoint()`.
+the algorithm excludes those that are already built into a fragment. Making a
+long story short: Using `overlap()` an item can appear in more than one of the
+enriched fragments. In doing so, we overcome the splitting effect induced by
+`disjoint()`. [...] 
+
+> **Note**: The last section is part of our vignette. If you are interested, you
+might read on there.
 
 ### Install from GitHub (development version)
 
-To install the development version, paste the following snippet into your R
-console. Note that the first line of code installs the ``devtools`` package (if
-not available). The second line then uses ``devtools``' ``install_github()`` to
-install ``elisr``.
+There are multiple ways to get `elisr`. I'll show you three, sorted by different
+levels of R expertise (pro, skilled or novice). If you don't understand a given
+installation instruction, hang on.(the level decreases).
+
+#### Pro
+
+If you are an advanced R user simply download `elisr` from github (e.g., with
+`devtools`).
+
+#### Skilled
+
+I stick with `devtools` and `install_github()` to install `elisr`, but feel free
+to use whatever you like.
 
 ```r
-if (!require(devtools)) install.packages("devtools") 
-devtools::install_github("sbissantz/elisr")
+devtools::install_github(sbissantz/elisr)
+```
+
+#### Novice
+
+To install the development version, copy and paste the following snippet into
+your R console. You will be guided through the installation process. What the
+snippet does, is (1) to check if the R package `devtools` is available on your
+system and if not (2) asks if you want to install it. If so, (3) it installs
+`elisr` via `devtools`' function `install_github()`. After the installation you
+need to load and attach `elisr`. Simply type `library(elisr)` and `elisr` will
+welcome you.
+
+```r
+if (!requireNamespace("devtools", quietly = TRUE)) {
+  msg <- "devtools is not installed, want to install it? Type 'yes' or 'no'."
+  answer <- readline(prompt = message(msg))
+  switch(answer,
+         yes = {
+           install.packages("devtools")
+           devtools::install_github("sbissantz/elisr")
+         },
+         no = {
+           stop("devtools is required to proceed the installation of elisr.",
+                 call. = FALSE)
+         },
+         stop("Please answer 'yes' or 'no'.")
+  )
+} else {
+  devtools::install_github("sbissantz/elisr")
+}
 ```
