@@ -12,14 +12,16 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Exploratory Likert Scaling">
-<meta property="og:description" content="An alternative to exploratory factor analysis for metrical
-    data in R. The Exploratory Likert Scaling approach supports the user
-    exploring multidimensional data structures. In common research
-    practice one usually draws on Exploratory Factor Analysis. As a side
-    effect researchers often accept overly rigid model assumptions. By
-    dissolving conjectures like orthogonal factors, the package provides a
-    platform to improve the identification of relevant dimensions and
-    allows scales to naturally correlate with each other.">
+<meta property="og:description" content="An alternative to Exploratory Factor Analysis (EFA) for
+    metrical data in R. Utilizing characteristics of classical test
+    theory, Exploratory Likert Scaling (ELiS) supports the user exploring
+    multiple one-dimensional data structures. In common research practice,
+    however, EFA remains as go-to method to uncover the (underlying)
+    structure of a data set. Orthogonal dimensions and the potential of
+    overextraction are often accepted as side effects. ELiS confronts
+    these problems. As a result, elisr provides the platform to more fully
+    exploit the exploratory potential of the multiple scaling approach
+    itself.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -88,7 +90,7 @@
 <div id="description" class="section level3">
 <h3 class="hasAnchor">
 <a href="#description" class="anchor"></a>Description</h3>
-<p>An alternative to Exploratory Factor Analysis (EFA) for metrical data in R. The Exploratory Likert Scaling approach supports the user exploring multidimensional data structures. In common research practice one usually draws on EFA. As a side effect researchers often accept overly rigid model assumptions. By dissolving conjectures like orthogonal factors, the package provides a platform to improve the identification of relevant dimensions and allows scales to naturally correlate with each other.</p>
+<p>An alternative to Exploratory Factor Analysis (EFA) for metrical data in R. Utilizing characteristics of classical test theory, Exploratory Likert Scaling (ELiS) supports the user exploring multiple one-dimensional data structures. In common research practice, however, EFA remains as go-to method to uncover the (underlying) structure of a data set. Orthogonal dimensions and the potential of overextraction are often accepted as side effects. ELiS confronts these problems. As a result, elisr provides the platform to more fully exploit the exploratory potential of the multiple scaling approach itself.</p>
 </div>
 <div id="the-two-workhorses-disjoint--overlap" class="section level3">
 <h3 class="hasAnchor">
@@ -101,7 +103,7 @@
 <li>
 <code><a href="reference/overlap.html">overlap()</a></code> processes <code><a href="reference/disjoint.html">disjoint()</a></code>’s result through overlapping.</li>
 </ul>
-<p>With a typical case in mind, the practical difference between them is: (1) <code><a href="reference/disjoint.html">disjoint()</a></code> is set up to produce sharp and disjoint scale fragments. Sharp and disjoint are those fragments, that include items which (a) share a strong linear relationship with one another but where (b) any of them is tied to a single fragment. That is where (2) <code><a href="reference/overlap.html">overlap()</a></code> comes into play. Passing fragments to <code><a href="reference/overlap.html">overlap()</a></code>, the functions underlying algorithm tries to enrich each fragment. The emerging scales are flavored with items from your specified data frame, but the algorithm excludes those that are already built into a fragment. Making a long story short: Using <code><a href="reference/overlap.html">overlap()</a></code> an item can appear in more than one of the enriched fragments. In doing so, we overcome the splitting effect induced by <code><a href="reference/disjoint.html">disjoint()</a></code>. […]</p>
+<p><code>elisr</code> basically consists of two user functions <code><a href="reference/disjoint.html">disjoint()</a></code> and <code><a href="reference/overlap.html">overlap()</a></code>. With a typical case in mind, the practical difference between them is: (1) <code><a href="reference/disjoint.html">disjoint()</a></code> is set up to produce sharp and disjoint scale fragments. Sharp and disjoint fragments feature a high internal consistency. Thus, items within such a fragment share a strong linear relationship with one another. The thing with <code><a href="reference/disjoint.html">disjoint()</a></code> is, it allocates any item to a particular fragment. And this is where (2) <code><a href="reference/overlap.html">overlap()</a></code> steps in. Passing fragments to <code><a href="reference/overlap.html">overlap()</a></code>, the function’s underlying algorithm tries to enrich each fragment. The emerging scales are flavored with items from your specified data frame, but the algorithm ignores those that are already built into a fragment. Later on, we will talk about the inclusion criterion in greater detail. To get to the point: Using <code><a href="reference/overlap.html">overlap()</a></code> an item can appear in more than one of the enriched fragments. In doing so, we overcome the splitting effect induced by <code><a href="reference/disjoint.html">disjoint()</a></code>. These basic principles will unfold one step at a time in the companion.</p>
 <blockquote>
 <p><strong>Note</strong>: The last section is part of our vignette. If you are interested, you might read on there.</p>
 </blockquote>
@@ -109,7 +111,7 @@
 <div id="install-from-github-development-version" class="section level3">
 <h3 class="hasAnchor">
 <a href="#install-from-github-development-version" class="anchor"></a>Install from GitHub (development version)</h3>
-<p>There are multiple ways to get <code>elisr</code>. I’ll show you three, sorted by different levels of R expertise (pro, skilled or novice). If you don’t understand a given installation instruction – read on.</p>
+<p>There are multiple ways to get <code>elisr</code>. I’ll show you three, sorted by different levels of R expertise (pro, skilled or novice). If you don’t understand a given installation instruction – move on to the next.</p>
 <div id="pro" class="section level4">
 <h4 class="hasAnchor">
 <a href="#pro" class="anchor"></a>Pro</h4>
