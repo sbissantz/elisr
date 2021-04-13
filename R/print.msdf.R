@@ -7,7 +7,7 @@
 #'   development of each gradually emerging scale.
 #'
 #' @param x a multiple scaled data frame (built with either
-#'   \code{disjoint} or \code{overlap}).
+#'   \code{disjoint()} or \code{overlap()}).
 #'
 #' @param digits an integer constant to determine the number of printed digits.
 #' See \code{digits} in \code{\link[base]{options}} for details.

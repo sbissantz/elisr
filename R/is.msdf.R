@@ -1,6 +1,6 @@
 #' @title Test for a multiple scaled data frame object
 #'
-#' @description \code{is.msdf} tests if the given object is a multiple scaled
+#' @description \code{is.msdf()} tests if the given object is a multiple scaled
 #'   data frame.
 #'
 #' @param x an arbitrary object.

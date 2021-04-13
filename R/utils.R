@@ -1,30 +1,30 @@
 #' @title A set of utility functions
 #'
-#' @details \code{nme_msdf} designates the components of a msdf (e.g.,
+#' @details \code{nme_msdf()} designates the components of a msdf (e.g.,
 #'   `scl_1`).
 #'
-#'   \code{calc_rbar} calculates the average correlation between items from a
+#'   \code{calc_rbar()} calculates the average correlation between items from a
 #'   gradually emerging scale.
 #'
-#'   \code{calc_alpha} calculates Cronbach's alpha of a given set of items from
+#'   \code{calc_alpha()} calculates Cronbach's alpha of a given set of items from
 #'   the gradually emerging scale.
 #'
-#'   \code{calc_mrit} calculates the corrected item-total correlation of an item
+#'   \code{calc_mrit()} calculates the corrected item-total correlation of an item
 #'   with the sum score of all the other variables of the gradually emerging
 #'   scale (aka. marginal corrected item-total correlation). Note, that this
 #'   procedure uses a part-whole correction. Thus, the item itself is excluded
 #'   in the calculation process.
 #'
-#'   \code{extreb_itms} build up the counterpart of a fragment from the given
+#'   \code{extreb_itms()} build up the counterpart of a fragment from the given
 #'   item names. Therefore, the counterpart includes all variables that are not
 #'   part of a fragment but which are mentioned in the specified data set.
 #'
-#'   \code{extr_core} extracts all pairs of core items from a fragment.
+#'   \code{extr_core()} extracts all pairs of core items from a fragment.
 #'
-#'   \code{extr_core_nms} extracts the names of every core items in a given
+#'   \code{extr_core_nms()} extracts the names of every core items in a given
 #'   fragment.
 #'
-#'   \code{rvrs_var} reverses an item using the specified scaling values. It
+#'   \code{rvrs_var()} reverses an item using the specified scaling values. It
 #'   handles the following types of scales:
 #'   \itemize{
 #'   \item  ...-3 -2 -1 0 1 2 3..., e.g., \code{sclvals = c(-3, 3)}
@@ -32,7 +32,7 @@
 #'   \item  1 2 3 4 5 6 7..., e.g., \code{sclcals = c(1, 7)}
 #'   }
 #'
-#'   \code{rvrs_note} gets the full report of reversed variables and reports a
+#'   \code{rvrs_note()} gets the full report of reversed variables and reports a
 #'   unique list of them.
 #'
 #' @param x a multiple scaled data frame

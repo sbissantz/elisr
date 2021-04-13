@@ -1,6 +1,6 @@
 #' @title Multiple scaling in an overlapping manner using negative items too
 #'
-#' @description \code{ovlp_nci} is an internal function and returns a list of
+#' @description \code{ovlp_nci()} is an internal function and returns a list of
 #'   data frames. It takes a disjoint (\code{msdf}) and tries to extend it with
 #'   those items in the data frame which are not yet built into the fragment
 #'   (aka., counterpart). Despite the default, one can extend on the cores of
@@ -10,12 +10,12 @@
 #'   multiple extension of the disjoint scaling approach to various fragments.
 #'   In addition, \code{ovlp_nci} is capable of soaking up reversed items.
 #'
-#' @param msdf a multiple scaled data frame (built with \code{disjoint}).
+#' @param msdf a multiple scaled data frame (built with \code{disjoint()}).
 #
 #' @param mrit_min a numerical constant of length 1 to specify the marginal
 #'   corrected item-total correlation. It's value is in the range of 0-1.
 #'
-#' @param overlap_with a string telling \code{overlap} the items it should
+#' @param overlap_with a string telling \code{overlap()} the items it should
 #'   extend on (in each particular case). To build up on all variables of a
 #'   fragment use \code{fragment}, for the cores-only option type \code{core}.
 #'

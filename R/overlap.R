@@ -1,9 +1,9 @@
-#' @title Multiple scaling in an overlapping manner
+#' @title Multiple scaling -- the overlapping way
 #'
-#' @description \code{overlap} returns a overlapped version (either extended, or
-#'   reversed, or both) of the specified \code{msdf}.
+#' @description \code{overlap()} returns a overlapped version (either extended,
+#'   or reversed, or both) of the specified \code{msdf}.
 #'
-#' @param msdf a multiple scaled data frame (built with \code{disjoint}).
+#' @param msdf a multiple scaled data frame (built with \code{disjoint()}).
 #'
 #' @param mrit_min a numeric constant of length 1 to specify the marginal
 #'   corrected item-total correlation. Its value is in the range of 0-1. The
@@ -12,10 +12,10 @@
 #' @param negative_too a logical constant indicating whether reversed items are
 #'   included in the analysis. The default is set to \code{FALSE}.
 #'
-#' @param overlap_with a string telling \code{overlap} the set of items for the
-#'   extension. To build up on all variables of a fragment use \code{fragment},
-#'   for the core-only option type \code{core}. The default is set to
-#'   "fragment".
+#' @param overlap_with a string telling \code{overlap()} the set of items for
+#'   the extension. To build up on all variables of a fragment use
+#'   \code{fragment}, for the core-only option type \code{core}. The default is
+#'   set to "fragment".
 #'
 #' @param sclvals a numeric vector of length 2 indicating the start- and
 #'   endpoint of a scale. Use something like \code{c(min,max)}.
