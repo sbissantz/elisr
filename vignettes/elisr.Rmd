@@ -47,12 +47,12 @@ relationship with one another but where (b) any of them is tied to a single
 fragment. That is where (2) `overlap()` comes into play. Passing fragments to
 `overlap()`, the functions underlying algorithm tries to enrich each fragment.
 The emerging scales are flavored with items from your specified data frame, but
-the algorithm excludes the ones that are already built into anyone of them.
-Later on, we will talk about this inclusion criterion in greater detail. Making
-a long story short: Using `overlap()` an item can appear in more than one of the
-enriched fragments. In doing so, we overcome the splitting effect of the data
-frame induced by `disjoint()`. These basic principles will unfold one step at a
-time throughout the rest of this companion. So, stay tuned!
+the algorithm excludes those that are already built into a fragment. Later on,
+we will talk about this inclusion criterion in greater detail. Making a long
+story short: Using `overlap()` an item can appear in more than one of the
+enriched fragments. In doing so, we overcome the splitting effect induced by
+`disjoint()`. These basic principles will unfold one step at a time throughout
+the rest of this companion. So, stay tuned!
 
 > **Spoiler alert**: Let me tempt you with this; the last section did already
 reveal the key strategy of an exploratory analysis using `elisr`. If you consult
