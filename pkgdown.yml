@@ -1,0 +1,10 @@
+pandoc: 2.7.3
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  elisr: elisr.html
+last_built: 2021-04-13T07:30Z
+urls:
+  reference: https://sbissantz.github.io/elisr/reference
+  article: https://sbissantz.github.io/elisr/articles
+
