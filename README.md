@@ -11,13 +11,14 @@
 
 ### Description
 
-An alternative to Exploratory Factor Analysis (EFA) for metrical data in R. The
-Exploratory Likert Scaling approach supports the user exploring multidimensional
-data structures. In common research practice one usually draws on EFA. As a side
-effect researchers often accept overly rigid model assumptions. By dissolving
-conjectures like orthogonal factors, the package provides a platform to improve
-the identification of relevant dimensions and allows scales to naturally
-correlate with each other.
+An alternative to Exploratory Factor Analysis (EFA) for metrical data in R.
+Utilizing characteristics of classical test theory, Exploratory Likert Scaling
+(ELiS) supports the user exploring multiple one-dimensional data structures. In
+common research practice, however, EFA remains as go-to method to uncover the
+(underlying) structure of a data set. Orthogonal dimensions and the potential of
+overextraction are often accepted as side effects. ELiS confronts these
+problems. As a result, elisr provides the platform to more fully exploit the
+exploratory potential of the multiple scaling approach itself.
 
 ### The two workhorses: `disjoint()` & `overlap()`
 
@@ -26,17 +27,20 @@ correlate with each other.
 - `disjoint()` "disjointedly disjoints" your list of variables.
 - `overlap()` processes `disjoint()`'s result through overlapping.
 
+`elisr` basically consists of two user functions `disjoint()` and `overlap()`.
 With a typical case in mind, the practical difference between them is: (1)
 `disjoint()` is set up to produce sharp and disjoint scale fragments. Sharp and
-disjoint are those fragments, that include items which (a) share a strong linear
-relationship with one another but where (b) any of them is tied to a single
-fragment. That is where (2) `overlap()` comes into play. Passing fragments to
-`overlap()`, the functions underlying algorithm tries to enrich each fragment.
-The emerging scales are flavored with items from your specified data frame, but
-the algorithm excludes those that are already built into a fragment. Making a
-long story short: Using `overlap()` an item can appear in more than one of the
-enriched fragments. In doing so, we overcome the splitting effect induced by
-`disjoint()`. [...] 
+disjoint fragments feature a high internal consistency. Thus, items within such
+a fragment share a strong linear relationship with one another. The thing with
+`disjoint()` is, it allocates any item to a  particular fragment. And this is
+where (2) `overlap()` steps in. Passing fragments to `overlap()`, the function's
+underlying algorithm tries to enrich each fragment. The emerging scales are
+flavored with items from your specified data frame, but the algorithm ignores
+those that are already built into a fragment. Later on, we will talk about the
+inclusion criterion in greater detail. To get to the point: Using `overlap()` an
+item can appear in more than one of the enriched fragments. In doing so, we
+overcome the splitting effect induced by `disjoint()`. These basic principles
+will unfold one step at a time in the companion. 
 
 > **Note**: The last section is part of our vignette. If you are interested, you
 might read on there.
@@ -45,7 +49,7 @@ might read on there.
 
 There are multiple ways to get `elisr`. I'll show you three, sorted by different
 levels of R expertise (pro, skilled or novice). If you don't understand a given
-installation instruction -- read on. 
+installation instruction -- move on to the next. 
 
 #### Pro
 
