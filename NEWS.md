@@ -2,8 +2,8 @@
 # elisr 0.1.0
 
 - `elisr`'s user functions:
-  - `disjoint()`: Multiple scaling in a disjoint manner
-  - `overlap()`: Multiple scaling in a overlapping manner 
+  - `disjoint()`: Multiple scaling -- the disjoint way 
+  - `overlap()`: Multiple scaling -- the overlapping way 
   - `print.msdf`: Printing method for multiple scaled data frames
 
 ---

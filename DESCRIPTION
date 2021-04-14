@@ -12,7 +12,7 @@ Authors@R:
              role = "ctb",
              email = "tms@uni-landau.de"))
 Description: An alternative to Exploratory Factor Analysis (EFA) for
-    metrical data in R. Utilizing characteristics of classical test
+    metrical data in R. Drawing on characteristics of classical test
     theory, Exploratory Likert Scaling (ELiS) supports the user exploring
     multiple one-dimensional data structures. In common research practice,
     however, EFA remains as go-to method to uncover the (underlying)
