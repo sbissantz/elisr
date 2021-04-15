@@ -61,7 +61,7 @@ yourself following these two steps: (1) Instruct `disjoint()` to produce a
 couple of sharp, disjoint scale fragments. (2) Let `overlap()` pick up (and
 expand) the pieces to complete the scales.
 
-## Analyzing the trust items using disjoint() and overlap()
+## Analyzing the trust items
 
 Let's jump right into practice. `trust` is going to be the data base in the
 upcoming units. `trust` is a subset of the German General Social Survey (ALLBUS)
@@ -79,26 +79,40 @@ the machinery working. First, we inspect `disjoin()`  and then move on to
 
 ### disjoint()
 
-In the following snippet, we use a disjoint scaling procedure to produce a
-couple of sharp fragments. For that reason we consult `disjoint()`. To smash the
-scale (and produce the desired sharp fragments), we set up `disjoint()` with a
-high value for the marginal corrected item-total correlation `mrit_min`. Because
-`0.55` produced satisfactory results in prior analyses I will stick with it for
-now. But feel free to play around with this value. A more detailed explanation
-on how to systematically use `mrit_min` is in the next chapter.
+In the following snippets, we will use a disjoint scaling procedure to produce a
+couple of sharp fragments. For that reason we consult `disjoint()`. Using
+`disjoint()` we will first smash the data set to smithereens. Therefore, we need
+to learn about `mrit_min`. After that, we will talk a little bit about the
+thing you have produced, a `msdf`. Then, we go over some terminology, and
+finally talk a little more about the output itself.
+
+#### mrit_min
+
+To smash the scale (and produce the desired sharp fragments), we set up
+`disjoint()` with a high value for the *marginal corrected item-total
+correlation* `mrit_min`. Think of `mrit_min` as definition of a fragment's lower
+boundary. It comes in the form of a correlation ranging between 0 and 1 (see
+`?disjoint`). So below this value you are not willing to accept an item to be
+integrated into any of the emerging fragments. One could also say, you forbid
+`disjoint()` to incorporate such items. Al rightt, let's put things into
+practice. Because `mrit_min = 0.55` produced satisfactory results in prior
+analyses I will stick with it for now. But feel free to play around with this
+value (to fully understand its behavior).
 
 ```{r echo=TRUE}
 # `(foo <- baz)`: assign and print in one step
 (msdf <-  disjoint(df = trust, mrit_min = 0.55))
 ```
 
-The output shows summary statistics of a multiple scaled data frame (`msdf`).
-Think about `msdf`s generally as named `list`s extended with a couple of
-attributes for internal computational reasons (see `attributes(msdf)`). If you
-cannot see the output I am currently talking about, something went wrong. If
-everything ran smoothly you can skip the **Help & Advice** section.
+#### msdf
 
-> ++Help & Advice**: Something went wrong. Fist of all,`disjoint()` (and
+The above output shows summary statistics of a multiple scaled data frame
+(`msdf`). Think of `msdf`s as named `list`s extended with a couple of attributes
+for internal computational reasons (see `attributes(msdf)`). If you cannot see
+the output I am currently talking about, something went wrong. If everything ran
+smoothly you can skip the **Help & Advice** section to continue.
+
+> **Help & Advice**: Okay, something went wrong. Fist of all,`disjoint()` (and
 `overlap()`) actually complain about quite a number of things. Hopefully, the
 provided messages are sensible enough to let you cope with the particular
 obstacle. So if a brilliant orange advice shines out of your console, read the
@@ -106,23 +120,23 @@ message carefully (and try to follow instructions). My first guess would always
 be a typo. These little goblins are nasty everyday companions in applied
 research. But if you cannot encrypt the error message, hack it into Google.
 
-Done? Alright, then we can go over to the output section and learn something
-more about `disjoint()`'s machinery. Let's put the result back on the desktop
-fisrst.
+Done? Alright, then we can go over to the terminology part and then learn
+something more about `disjoint()`'s machinery.
+
+#### Some terminology
 
 ```{r}
 msdf
 ```
-We start with some terminology. Focus on `$scl_1`. I will refer to objects like
-`scl_1` (read as: scale one) generally as fragments. Now take a closer look at
-`eupalmnt`, `eucomisn` (read as: EU Parliament & Eu Commission). This
-comma-separated pair of two items in the first line is the core of `scl_1`. The
-core highlights the result of the first step of the scaling procedure -- a
-two-item scale. As we can see, the core of `scl_1` contains the two variables
-that share the highest positive linear association in the data frame (`mrit =
-rbar = 0.92`). To find it, `disjoint()` (and `overlap()`) sets up a correlation
-matrix internally and asks for the one (correlation) that is the highest of them
-all. 
+Focus on `$scl_1`. I will refer to objects like `scl_1` (read as: scale one)
+generally as fragments. Now take a closer look at `eupalmnt`, `eucomisn` (read
+as: EU Parliament & EU Commission). This comma-separated pair of two items in
+the first line is the core of `scl_1`. The core highlights the result of the
+first step of the scaling procedure -- a two-item scale. As we can see, the core
+of `scl_1` contains the two variables that share the highest positive linear
+association in the data frame (`mrit = rbar = 0.92`). To find it, `disjoint()`
+(and `overlap()`) sets up a correlation matrix internally and asks for the one
+(correlation) that is the highest of them all.
 
 > **Note**: If multiple pairs share the same positive linear relationship,
 `disjoint()` will always choose the first one in order.
@@ -133,30 +147,45 @@ both functions give up the search, when the data frame lacks a correlation that
 exceeds your pre-set `mrit_min`. For convenience, `disjoint()` owns a test
 function for this purpose. If you want to try it out type `disjoint(trust,
 mrit_min=.95)`
- 
+
+#### Under disjoint()'s hood
+
 In the prior analysis, however, everything ran smoothly. So let's put this
 result back on the screen and refocus on the algorithm again. We were looking
 for the highest correlation which sets up the core. To simplify the forthcoming
 procedure, remember our previous `mrit_min = 0.55`.
 
+> **Note**: If the value of `mrit_min` slipped your mind, read out
+`msdf`'s attributes as a remainder (type `attributes(msdf)`)
+
 ```{r}
 msdf
 ```
 In the first line we can see that the core consists of `eupalmnt` and
-`eucomisn`. As already mentioned above, both variables share the highest
-correlation (which is obviously greater than our pre-specified `mrit_min =
-0.55`): `mrit = 0.92`. But once the core was found, what happened to `$scl_1` ?
-Let's throw a quick glance under `disjoint()`'s hood: First, `disjoint()` added
-up the core items what created a sum-score. Subsequently, `disjoint()` watched
-out for the highest correlation between this sum-score and another `trust`
-variable in the data frame. It found `polpati`. Because `polpati`'s  correlation
-with the sum score is higher than the specified stop criterion (`mrit_min =
-0.55`) it was melted into the core. The new fragment is now a bundle of 3 Items:
+`eucomisn`. As mentioned above, both variables share the highest correlation
+(which is obviously greater than our pre-specified `mrit_min = 0.55`): `mrit =
+0.92`. But once the core was found, what happened to `scl_1` ? Let's throw a
+quick glance under `disjoint()`'s hood:
+
+##### scl_1
+
+```{r}
+msdf
+```
+
+First, `disjoint()` added up the core items what created a sum-score.
+Subsequently, `disjoint()` watched out for the highest correlation between this
+sum-score and another `trust` variable in the data frame. It found `polpati`.
+Because `polpati`'s  correlation with the sum score (its corrected item-total
+correlation) is higher than the specified stop criterion (`mrit_min = 0.55`) it
+was melted into the core. The new fragment is now a bundle of 3 Items:
 `eupalmnt`, `eucomisn`, and `polpati.` The same logic applies to the inclusion
 of the other variables (e.g., `fedgovt` et al.) and reveals the second step of
 the algorithmic procedure: Continue to collect new items from `df = trust`,
 until the correlation between the sum-score of the items in the fragment and any
 other item is less than your pre-specified `mrit_min.`
+
+##### scl_2
 
 ```{r}
 msdf
@@ -185,6 +214,8 @@ meet its specific requirements, it starts over again. Now we know why
 msdf
 ```
 
+#### A quick summary
+
 To sum up, you could test your understanding against the following question: Why
 is there *no* other variable in `scl_2`? Right, although there are 13 variables
 in the data frame, there is no other variable among them that meets the
@@ -195,6 +226,8 @@ merge another variable into `{eupalmnt, eucomisn}`.
 ```{r}
 msdf
 ```
+
+#### Conclusion
 
 To conclude, let's remind ourselves of `disjoint()`'s job description (building
 disjoint scale fragments). If you recap the last steps you will find that
@@ -211,8 +244,8 @@ in mind.
 
 Before we try to overlap the disjointedly built fragments, we should reprint the
 primary output. The following snippet does this though a little different. As
-you can see, I explicitly wrapped the expression in `print()` and set the digits
-argument. In the R side note below I will explain why.
+you can see, I explicitly wrapped the expression in `print()` and set the
+`digits` argument. In the R side note below I will explain why.
 
 ```{r}
 # Pint output to n decimal places (default=2)
@@ -237,18 +270,40 @@ whatever standard you like.
 
 ### overlap()
 
-Let's resume and try to overlap the disjointedly built fragment. To do that, we
+In this chapter we use the overlapping scaling procedure to extend out
+disjointedly built fragments. That is the job ob `overlap()`. Therefore, we
+first need to learn about `mrit_min` (again). This will opens up `overlap()`'s
+hood. After that we will continue with a closer look inside its machinery.
+
+#### mrit_min (again)
+
+Let's resume and try to overlap the disjointedly built fragments. To do that, we
 (re-)consider the inclusion of every item in the data set that is not yet part
 of a given fragment (simply because of `disjoint()`'s nature). As a consequence,
-we resolve `disjoint()`'s disjointedness. The following two paragraphs will lay
-out this idea in much greater detail. But for now, let's jump straight into
-action. Before we start, just a word on the stop criterion: I stick with
+we will overcome `disjoint()`'s disjointedness. The following two paragraphs
+will lay out this idea in much greater detail. But for now, let's jump straight
+into action. But before we start, just a word on the stop criterion.
+
+With `disjoint()` we use a high value for the stop criterion to smash the scale.
+Now we use it an opposite way -- to soak up up additional items from (what we
+will later call) the counterpart. Leave aside the counterpart for now. Remember
+the description of `mrit_min` instead. `mrit_min`is the definition of a
+fragment's lower boundary and ranges between 0 and 1. This is also true for
+`overlap()` (type `?overlap`). What changes for the additional `mrit_min` is, it
+defines the limit under which you are not be willing to accept an item to
+*complete* an emerging *scale*. To make this distinction clear, you can think of
+`overlap()`'s `mrit_min` as an inclusion criterion whereas `disjoint()`s
+`mrit_min` serves you more as a stop criterion. What does that means in
+practical terms? Well, deregulate `mrit_min` -- to allow `overlap()` to soak up
+additional items from your data set. In the following snippet I stick with
 `mrit_min = 0.4` because it produced satisfactory results in prior analyses. But
-feel free to play around with this value, too.
+feel free to noodle around with this value. This helps you to fully understand
+`mrit_min`'s behavior within `overlap()`.
 
 ```{r}
 (mosdf <- overlap(msdf, mrit_min = 0.4))
 ```
+#### Under overlap()'s hood
 
 The output reveals the news: `overlap()` added a couple of variables to
 `disjoint()`'s fragments. But what happened inside the machinery? Well, first
@@ -272,15 +327,18 @@ highest positively correlating pair of each scale fragment (`overlap_with =
 ```{r}
 mosdf
 ```
+##### A small excursion
 
-Let me just cite one additional result in form of a question. Did you realize
-that both fragments (`$scl_1` and `$scl_2`) include exactly the same variables?
-The scales did actually replicate. If you want to know why, consult the paper in
-the reference section.
+Let me cite one additional result in form of a question. Did you realize that
+both fragments (`$scl_1` and `$scl_2`) include exactly the same variables? The
+scales did actually replicate. If you want to know why, consult the paper in the
+reference section.
 
 ```{r}
 lapply(list(msdf = mosdf$scl_1, mosdf = mosdf$scl_2), colnames)
 ```
+
+#### A quick summary
 
 All right, let's pull it all together now. From the last two outputs you might
 have already guessed the bread and butter of `overlap()`'s  operating
@@ -293,6 +351,7 @@ further discuss the emergence of the duplicates across scales.
 ```{r}
 mosdf
 ```
+##### Multiple memberships -- dublicates across scales
 
 Let me present the key idea in a nutshell: Even if a particular item is already
 part of `scl_1` it still meets the pre-set inclusion criterion in `scl_2`. So
@@ -304,13 +363,15 @@ without saying that we use only reasonable items for the extension (i.e., those
 items from the counterpart which meet the inclusion requirements). (2) We
 could actually overcome `disjoint()`'s disjointedness. 
 
-In summary, we came across a real benefit of this approach. The achievement is
-that the scales could actually replicate because the procedure does not require
-the fragments to be different. To put it another way, although `disjoint()`
-smashes the induced list of variables, `elisr` introduces a possible way out of
-the self-induced disjointedness -- `overlap()`. That is why `overlap()` is not
-only a possibility to explore how the scales reunite, but a way to monitor how
-each scale evolved.
+#### Conslusion 
+
+The last last steps made us stumble upon a real benefit of this approach. The
+achievement is best documented in the previous example: The scales replicated.
+The reason is, Exploratory Likert Scaling does *not* induce differences as
+natural part of the procedure itself. To put it another way, although
+`disjoint()` smashes a data set, `elisr` provides a way out of the self-induced
+disjointedness -- `overlap()`. That is why `overlap()` is not only a possibility
+to explore how the scales reunite, but a way to monitor how each scale evolve.
 
 ### An all in one snippet 
 
@@ -318,8 +379,8 @@ What we know so far is that, even though we crushed the list of items using
 `disjoint()`, we permitted `overlap()` to further process it. Note, that if we
 forced the fragments to be different beforehand, we would have masked the
 replication discovery itself. See the references for more on this. Breaking and
-reuniting often goes hand in hand, therefor we should learn how to combine
-their use next.
+reuniting often goes hand in hand, therefor we should learn how to combine the 
+use of `disjoint()` and `overlap()` next.
 
 ```{r}
 msdf <- overlap(
@@ -348,36 +409,40 @@ First, we should try replicate the results from the previous analysis to
 understand the machinery. Then, we can soften the regulations to become aware of
 the gained flexibility. But let's move in a smoothed pace one step at the time.
 
-To repeat the result from `disjoint()` we need to re-reverse `uni`. `disjoint()`
-lends you a hand, if you set the appropriate options (`negative_too` &
-`sclvals`). But as we know from prior analyses, `uni` is not part of
-`disjoint()`'s fragments. So, it will not be re-reversed using `disjoint()`.
-However, usually we do not have the luxury of this knowledge, thus setting
-`negative_too = TRUE` seems like the right thing to do.
+#### negative_too = TRUE & sclvals
+
+To repeat the previous results we need to re-reverse `uni`. `disjoint()` lends
+you a hand with that. There are two arguments you need to manipulate (see
+`args(disjoint)`): Set (1) `negative_too = TRUE` and (2) `sclvals`. `sclvals`
+catches the start- and endpoint of your set of items. For example, the `trust`
+data set ranges between $1$ (no trust at all) and $7$ (great deal of trust). In
+practice, this means: `sclvals = c(1,7)`.
 
 ```{r}
 (d <- disjoint(ntrust, mrit_min = 0.55, negative_too = TRUE, sclvals = c(1, 7)))
+```
+`disjoint()` did not reverse an item? Right, that gambit was a bit unfair. But
+as we know from prior analyses, `uni` is not included in any of `disjoint()`'s
+fragments. So we should actually not expect `disjoint()` to reverse it. However,
+if `uni` is not part a fragment it might be soaked up with `overlap()`. So let's
+move on. Because we stored the `disjoint()`'s result in `d`, we can simply stick
+it into `overlap()`. But do not forget to tell `overlap()` that it has
+permission to include reversed items. For convenience, you don't need to specify
+`sclvals` twice. `overlap()` remembers the start- and endpoint you set  with
+`disjoint()` (see `attributes(d)$sclvals`).
+
+
+```{r}
+overlap(d,
+        # Note: overlap() remembers the scaling values from disjoint()
+        mrit_min = 0.4, negative_too = TRUE, sclvals = c(1, 7)
+)
+
 ```
 
 > **Note**: I tried to design both functions to act very user-friendly.
 `disjoint()` and `overlap()` will both let you know, if they reverse a variable
 (and if so, which one).
-
-The output is as expected (despite the note). Now, we simply stick the result
-(stored in `d`) into `overlap()`. But please tell `overlap()` as well, it should
-take reversed variables into account (`negative_too = TRUE`). For convenience,
-`overlap()` remembers the start- and endpoint you have specified  with
-`disjoint()` (see `attributes(d)$sclvals`). In line with the explanations above,
-we expect `overlap()` to apply the algorithm to `trust`, thereby reverse `uni`
-internally, and send a reverse message.
-
-```{r}
-overlap(d,
-        # Note: overlap() remembers the scaling values from disjoint()
-        mrit_min = 0.4, negative_too = TRUE
-)
-
-```
 
 ## Another made up (but autodidactic) example
 

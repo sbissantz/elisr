@@ -17,7 +17,7 @@ Drawing on characteristics of classical test theory, Exploratory Likert Scaling
 common research practice, however, EFA remains as go-to method to uncover the
 (underlying) structure of a data set. Orthogonal dimensions and the potential of
 overextraction are often accepted as side effects. ELiS confronts these
-problems. As a result, elisr provides the platform to more fully exploit the
+problems. As a result, elisr provides the platform to fully exploit the
 exploratory potential of the multiple scaling approach itself.
 
 ### The two workhorses: `disjoint()` & `overlap()`
