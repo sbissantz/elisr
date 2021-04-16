@@ -24,8 +24,8 @@ exploratory potential of the multiple scaling approach itself.
 
 `elisr` comes with two user functions: `disjoint()` and `overlap()`. 
 
-- `disjoint()` "disjointedly disjoints" your list of variables.
-- `overlap()` expands `disjoint()`'s result through overlapping.
+- `disjoint()` disjointedly blows a list of variables to smithereens.
+- `overlap()` reunites and evolves `disjoint()`'s result through overlapping.
 
 With a typical case in mind, the practical difference between them is: (1)
 `disjoint()` is set up to produce sharp and disjoint scale fragments. Sharp and
