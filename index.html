@@ -99,9 +99,9 @@
 <p><code>elisr</code> comes with two user functions: <code><a href="reference/disjoint.html">disjoint()</a></code> and <code><a href="reference/overlap.html">overlap()</a></code>.</p>
 <ul>
 <li>
-<code><a href="reference/disjoint.html">disjoint()</a></code> “disjointedly disjoints” your list of variables.</li>
+<code><a href="reference/disjoint.html">disjoint()</a></code> disjointedly blows a list of variables to smithereens.</li>
 <li>
-<code><a href="reference/overlap.html">overlap()</a></code> expands <code><a href="reference/disjoint.html">disjoint()</a></code>’s result through overlapping.</li>
+<code><a href="reference/overlap.html">overlap()</a></code> reunites and evolves <code><a href="reference/disjoint.html">disjoint()</a></code>’s result through overlapping.</li>
 </ul>
 <p>With a typical case in mind, the practical difference between them is: (1) <code><a href="reference/disjoint.html">disjoint()</a></code> is set up to produce sharp and disjoint scale fragments. Sharp and disjoint fragments feature a high internal consistency. Thus, items within such a fragment share a strong linear relationship with each another. The thing with <code><a href="reference/disjoint.html">disjoint()</a></code> is, it allocates any item to a particular fragment. This is where</p>
 <p>(2) <code><a href="reference/overlap.html">overlap()</a></code> steps in. Passing fragments to <code><a href="reference/overlap.html">overlap()</a></code>, the function’s underlying algorithm tries to enrich each fragment. The emerging scales are flavored with items from your specified data frame, but the algorithm ignores those that are already built into a fragment. Later on, we will talk about the inclusion criterion in greater detail. To get to the point: Using <code><a href="reference/overlap.html">overlap()</a></code> an item can appear in more than one of the enriched fragments. In doing so, we overcome the splitting effect induced by <code><a href="reference/disjoint.html">disjoint()</a></code>. These basic principles will unfold one step at a time in the companion.</p>
