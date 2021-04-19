@@ -101,6 +101,11 @@
 <blockquote>
 <p><strong>Spoiler alert</strong>: Let me tempt you with this; the last section did already reveal the key strategy of an exploratory scale analysis using <code>elisr</code>. If you consult the bottom-up item-selection procedure for advice, you will often find yourself following these two steps: (1) Instruct <code><a href="../reference/disjoint.html">disjoint()</a></code> to produce a couple of sharp, disjoint scale fragments. (2) Let <code><a href="../reference/overlap.html">overlap()</a></code> pick up (and expand) the pieces to complete the scales.</p>
 </blockquote>
+<div id="a-primer-for-monitoring-the-scale-developement-process" class="section level3">
+<h3 class="hasAnchor">
+<a href="#a-primer-for-monitoring-the-scale-developement-process" class="anchor"></a>A primer for monitoring the scale developement process</h3>
+<p>In preparation for the upcoming analyses, I want to loose a word about how <code>elisr</code> keeps track of the development process of a scale. There are 3 monitoring devices: <code>mrit</code>, <code>alpha</code>, and <code>rbar</code>. <code>mrit</code> stands for “<em>marginal</em> corrected item-total correlation”. <code>mrit</code> displays the linear relationship between the sum score of the items in a fragment <em>at some specific point of the scale development process</em> and an item which is considered for admission. I use a part-whole-correction to compute this value. So, the item (which is considered for admission) is not part of the sum score. If this does not make sense right now, hang on. A lot about this is said in later chapters or in the references. But start with <code><a href="../reference/print.msdf.html">?print.msdf</a></code>. All right, let’s move on. The marginal part (italic) applies for <code>alpha</code> and <code>rbar</code>, too. But “Cronbach’s alpha” (<code>alpha</code>) gauges the internal consistency of a scale whereas <code>rbar</code> tracks the average inter-item correlation. That is basically it. Now, we can start analyzing the <code>trust</code> items.</p>
+</div>
 </div>
 <div id="analyzing-the-trust-items" class="section level2">
 <h2 class="hasAnchor">
@@ -131,7 +136,7 @@
 <div id="mrit_min" class="section level4">
 <h4 class="hasAnchor">
 <a href="#mrit_min" class="anchor"></a>mrit_min</h4>
-<p>To smash the scale (and produce the desired sharp fragments), we set up <code><a href="../reference/disjoint.html">disjoint()</a></code> with a high value for the <em>marginal corrected item-total correlation</em> <code>mrit_min</code>. Think of <code>mrit_min</code> as definition of a fragment’s lower boundary. It comes in the form of a correlation ranging between 0 and 1 (see <code><a href="../reference/disjoint.html">?disjoint</a></code>). So below this value you are not willing to accept an item to be integrated into any of the emerging fragments. One could also say, you forbid <code><a href="../reference/disjoint.html">disjoint()</a></code> to incorporate such items. All right, let’s put things into practice. Because <code>mrit_min = 0.55</code> produced satisfactory results in prior analysis I will stick with it for now. But feel free to play around with this value (to fully understand its behavior).</p>
+<p>To smash the scale (and produce the desired sharp fragments), we set up <code><a href="../reference/disjoint.html">disjoint()</a></code> with a high value for the <em>marginal corrected item-total correlation</em> <code>mrit_min</code>. Think of <code>mrit_min</code> as definition of a fragment’s lower boundary. It comes in the form of a correlation ranging between 0 and 1 (see <code><a href="../reference/disjoint.html">?disjoint</a></code>). So below this value you are not willing to accept an item to be integrated into any of the emerging fragments. One could also say, you forbid <code><a href="../reference/disjoint.html">disjoint()</a></code> to incorporate such items. All right, let’s put things into practice. Because <code>mrit_min = 0.55</code> produced satisfactory results in some of my own prior analyses I will stick with it for now. But feel free to play around with this value (to fully understand its behavior).</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># `(foo &lt;- baz)`: assign and print in one step</span>
 <span class="op">(</span><span class="va">msdf</span> <span class="op">&lt;-</span>  <span class="fu"><a href="../reference/disjoint.html">disjoint</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">trust</span>, mrit_min <span class="op">=</span> <span class="fl">0.55</span><span class="op">)</span><span class="op">)</span>
@@ -238,7 +243,7 @@
 <span class="co">#&gt; $scl_2</span>
 <span class="co">#&gt;             mrit rbar alpha</span>
 <span class="co">#&gt; newsppr, tv 0.67 0.67   0.8</span></code></pre></div>
-<p>Now let’s focus on <code>$scl_2</code>. <code>scl_2</code> should raise the question, why there is another two-item scale. First, it seems as if the stop criterion did fail. The <code>mrit</code> value at the end of <code>scl_1</code> is <code>0.58</code>. But at the beginning of <code>scl_2</code> <code>mrit = 0.67</code>. What is going on here? Well, the algorithm forces <code><a href="../reference/disjoint.html">disjoint()</a></code> to build (and enrich) new fragments, like <code>$scl_1</code>, as long as there are remaining items in your data set. More specifically, the algorithm stops only if (a) there is no variable that meets the inclusion criterion, or (b) it soaked up the last remaining variable in the data frame.</p>
+<p>Now let’s focus on <code>$scl_2</code>. <code>scl_2</code> should raise the question, why another two-item scale emerges. First, it seems as if the stop criterion did fail. The <code>mrit</code> value at the end of <code>scl_1</code> is <code>0.58</code>. But at the beginning of <code>scl_2</code> <code>mrit = 0.67</code>. What is going on here? Well, the algorithm forces <code><a href="../reference/disjoint.html">disjoint()</a></code> to build (and enrich) new fragments, like <code>scl_1</code>, as long as there are remaining items in your data set. More specifically, the algorithm stops only if (a) there is no variable that meets the inclusion criterion, or (b) it soaked up the last remaining variable in the data frame.</p>
 <p>In addition, (a) also holds for the construction process of new fragments. But when the algorithm builds a new fragment in particular, it needs (b) at least two leftovers – because a single variable cannot make up a core. So again, <code><a href="../reference/disjoint.html">disjoint()</a></code> will not build (and enrich) new fragments at any costs. The necessary correlations need to be positive and higher than your prespecefied minimum value. That unmasks the last unique step of the disjoint scaling procedure: If the algorithm detects some remaining items in the data set that meet its specific requirements, it starts over again. Now we know why <code><a href="../reference/disjoint.html">disjoint()</a></code> started another two-item scale – the algorithm demanded it.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">msdf</span>
@@ -304,18 +309,21 @@
 <span class="co">#&gt;              mrit  rbar alpha</span>
 <span class="co">#&gt; newsppr, tv 0.669 0.669 0.802</span></code></pre></div>
 <blockquote>
-<p><strong>Note</strong>: When calling <code>msdf</code> R internally wraps the expression in <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>. Thus, <code>msdf</code> is a shortcut for <code><a href="https://rdrr.io/r/base/print.html">print(msdf)</a></code>. Both methods can be used interchangeably. But if you want to set printing options (see <code><a href="https://rdrr.io/r/base/options.html">?option</a></code>) you need to explicitly call <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> with the desired option (e.g., <code>digits = 3</code>). Note, however, that I wrote custom function to print <code>msdf</code> objects. As a consequence,<code><a href="https://rdrr.io/r/base/print.html">print()</a></code> actually passes the work on to <code><a href="../reference/print.msdf.html">print.msdf()</a></code>. To get straight to the point, <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> owns a nice way to print the result to a specified number of digits, so I equipped <code><a href="../reference/print.msdf.html">print.msdf()</a></code> with that feature as well. The default is set to <code>2</code>. But be aware of the fact that omitting tons of decimal places does not mean the result is accurately rounded to the specified ones. Anyway, I decided to avoid rounding in the result. The reason therefor is R’s (as I find it, deeply confusing) rounding standard – IEC 60559 (see <code><a href="https://rdrr.io/r/base/Round.html">?round</a></code>). So, if you stumble upon a situation where you need to report more than two decimal places, expand the result using <code>digits = n</code> and choose whatever standard you like.</p>
+<p><strong>Note</strong>: When calling <code>msdf</code> R internally wraps the expression in <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>. Thus, <code>msdf</code> is a shortcut for <code><a href="https://rdrr.io/r/base/print.html">print(msdf)</a></code>. Both methods can be used interchangeably. But if you want to set printing options (see <code><a href="https://rdrr.io/r/base/options.html">?option</a></code>) you need to explicitly call <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> with the desired option (e.g., <code>digits = 3</code>). Note, however, that I wrote custom function to print <code>msdf</code> objects. As a consequence,<code><a href="https://rdrr.io/r/base/print.html">print()</a></code> actually passes the work on to <code><a href="../reference/print.msdf.html">print.msdf()</a></code>. To get straight to the point, <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> owns a nice way to print the result to a specified number of digits, so I equipped <code><a href="../reference/print.msdf.html">print.msdf()</a></code> with that feature as well. The default is set to <code>2</code>. But be aware of the fact that omitting tons of decimal places does not mean the result is accurately rounded to the specified ones. Anyway, I decided to avoid rounding in the result. The reason therefor is R’s (as I find it, deeply confusing) rounding standard – IEC 60559 (see <code><a href="https://rdrr.io/r/base/Round.html">?round</a></code>). So, if you get into the situation where you need to report more than two decimal places, expand the result using <code>digits = n</code> and choose whatever standard you like.</p>
 </blockquote>
 </div>
 <div id="overlap" class="section level3">
 <h3 class="hasAnchor">
 <a href="#overlap" class="anchor"></a>overlap()</h3>
 <p>In this chapter we use the overlapping scaling procedure to extend out disjointedly built fragments. That is the job ob <code><a href="../reference/overlap.html">overlap()</a></code>. Therefore, we first need to learn about <code>mrit_min</code> (again). This will open up <code><a href="../reference/overlap.html">overlap()</a></code>’s hood. After that we will continue with a closer look inside its machinery.</p>
+<blockquote>
+<p><strong>Tip</strong>: When you want to know, if a given object is a <code>msdf</code> use <code><a href="../reference/is.msdf.html">is.msdf()</a></code>. Type <code><a href="../reference/is.msdf.html">?is.msdf</a></code> for more details.</p>
+</blockquote>
 <div id="mrit_min-again" class="section level4">
 <h4 class="hasAnchor">
 <a href="#mrit_min-again" class="anchor"></a>mrit_min (again)</h4>
-<p>Let’s resume and try to overlap the disjointedly built fragments. To do that, we (re-)consider the inclusion of every item in the data set that is not yet part of a given fragment (simply because of <code><a href="../reference/disjoint.html">disjoint()</a></code>’s nature). As a consequence, we will overcome <code><a href="../reference/disjoint.html">disjoint()</a></code>’s disjointedness. The following two paragraphs will lay out this idea in much greater detail. But for now, let’s jump straight into action. But before we start, just a word on the stop criterion.</p>
-<p>With <code><a href="../reference/disjoint.html">disjoint()</a></code> we use a high value for the stop criterion to smash the scale. Now we use it an opposite way – to soak up up additional items from (what we will later call) the counterpart. Leave aside the counterpart for now. Remember the description of <code>mrit_min</code> instead. <code>mrit_min</code>is the definition of a fragment’s lower boundary and ranges between 0 and 1. This is also true for <code><a href="../reference/overlap.html">overlap()</a></code> (type <code><a href="../reference/overlap.html">?overlap</a></code>). What changes for the additional <code>mrit_min</code> is, it defines the limit under which you are not be willing to accept an item to <em>complete</em> an emerging <em>scale</em>. To make this distinction clear, you can think of <code><a href="../reference/overlap.html">overlap()</a></code>’s <code>mrit_min</code> as an inclusion criterion whereas <code><a href="../reference/disjoint.html">disjoint()</a></code>s <code>mrit_min</code> serves you more as a dispersion criterion. What does that means in practical terms? Well, deregulate <code><a href="../reference/overlap.html">overlap()</a></code>’s <code>mrit_min</code> – to allow <code><a href="../reference/overlap.html">overlap()</a></code> to soak up additional items from your data set. In the following snippet I stick with <code>mrit_min = 0.4</code> (because it produced satisfactory results in prior analysis). But feel free to noodle around with this value. This helps you to fully understand <code>mrit_min</code>’s behavior within <code><a href="../reference/overlap.html">overlap()</a></code>.</p>
+<p>Let’s resume and try to extend the disjointedly built fragments. To do that, we (re-)consider the inclusion of every item in the data set that is not yet part of a given fragment (simply because of <code><a href="../reference/disjoint.html">disjoint()</a></code>’s nature). As a consequence, we will overcome <code><a href="../reference/disjoint.html">disjoint()</a></code>’s disjointedness. The following two paragraphs will lay out this idea in much greater detail. But for now, let’s jump straight into action. Oh before we start, just a word on the stop criterion.</p>
+<p>With <code><a href="../reference/disjoint.html">disjoint()</a></code> we use a high value for the stop criterion to smash the scale. Now we use it to soak up up additional items from (what we will later call) the counterpart. Leave aside the counterpart for now. Remember the description of <code>mrit_min</code> instead. <code>mrit_min</code>is the definition of a fragment’s lower boundary and ranges between 0 and 1. This is also true for <code><a href="../reference/overlap.html">overlap()</a></code> (type <code><a href="../reference/overlap.html">?overlap</a></code>). What changes for the additional <code>mrit_min</code> is, it defines the limit under which you are not be willing to accept an item to <em>complete</em> an emerging <em>scale</em>. What does that means in practical terms? Well, deregulate <code><a href="../reference/overlap.html">overlap()</a></code>’s <code>mrit_min</code> – to allow <code><a href="../reference/overlap.html">overlap()</a></code> to soak up additional items from your data set. In the following snippet I stick with <code>mrit_min = 0.4</code>. But feel free to noodle around with this value. This helps you to fully understand <code>mrit_min</code>’s behavior within <code><a href="../reference/overlap.html">overlap()</a></code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">mosdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/overlap.html">overlap</a></span><span class="op">(</span><span class="va">msdf</span>, mrit_min <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; $scl_1</span>
@@ -355,42 +363,11 @@
 <blockquote>
 <p><strong>Note</strong>: Additionally, <code><a href="../reference/overlap.html">overlap()</a></code> provides the option to choose only the highest positively correlating pair of each scale fragment (<code>overlap_with = "core"</code>). Type <code><a href="../reference/overlap.html">?overlap</a></code> for more details.</p>
 </blockquote>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mosdf</span>
-<span class="co">#&gt; $scl_1</span>
-<span class="co">#&gt;                    mrit rbar alpha</span>
-<span class="co">#&gt; eupalmnt, eucomisn 0.92 0.92  0.96</span>
-<span class="co">#&gt; polpati            0.64 0.72  0.89</span>
-<span class="co">#&gt; fedgovt            0.68 0.67  0.89</span>
-<span class="co">#&gt; bundtag            0.70 0.64  0.90</span>
-<span class="co">#&gt; judsyst            0.58 0.59  0.90</span>
-<span class="co">#&gt; fccourt            0.58 0.55  0.90</span>
-<span class="co">#&gt; police             0.52 0.52  0.90</span>
-<span class="co">#&gt; newsppr            0.52 0.49  0.90</span>
-<span class="co">#&gt; tv                 0.52 0.47  0.90</span>
-<span class="co">#&gt; uni                0.49 0.45  0.90</span>
-<span class="co">#&gt; munadmin           0.47 0.43  0.90</span>
-<span class="co">#&gt; healserv           0.42 0.40  0.90</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $scl_2</span>
-<span class="co">#&gt;             mrit rbar alpha</span>
-<span class="co">#&gt; newsppr, tv 0.67 0.67  0.80</span>
-<span class="co">#&gt; polpati     0.48 0.51  0.76</span>
-<span class="co">#&gt; eucomisn    0.57 0.49  0.80</span>
-<span class="co">#&gt; eupalmnt    0.73 0.53  0.85</span>
-<span class="co">#&gt; fedgovt     0.67 0.53  0.87</span>
-<span class="co">#&gt; bundtag     0.69 0.53  0.89</span>
-<span class="co">#&gt; judsyst     0.58 0.51  0.89</span>
-<span class="co">#&gt; fccourt     0.57 0.49  0.90</span>
-<span class="co">#&gt; police      0.52 0.47  0.90</span>
-<span class="co">#&gt; uni         0.49 0.45  0.90</span>
-<span class="co">#&gt; munadmin    0.47 0.43  0.90</span>
-<span class="co">#&gt; healserv    0.42 0.40  0.90</span></code></pre></div>
 <div id="a-small-excursion" class="section level5">
 <h5 class="hasAnchor">
 <a href="#a-small-excursion" class="anchor"></a>A small excursion</h5>
-<p>Let me cite one additional result in form of a question. Did you realize that both fragments (<code>$scl_1</code> and <code>$scl_2</code>) include exactly the same variables? The scales did actually replicate. If you want to know why, consult the paper in the reference section.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<p>Let me cite one additional result in form of a question. Did you realize that both fragments (<code>$scl_1</code> and <code>$scl_2</code>) include exactly the same variables? The scales did actually replicate. This hints to unidimensionality. For more on this consult the reference section.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>msdf <span class="op">=</span> <span class="va">mosdf</span><span class="op">$</span><span class="va">scl_1</span>, mosdf <span class="op">=</span> <span class="va">mosdf</span><span class="op">$</span><span class="va">scl_2</span><span class="op">)</span>, <span class="va">colnames</span><span class="op">)</span>
 <span class="co">#&gt; $msdf</span>
 <span class="co">#&gt;  [1] "eupalmnt" "eucomisn" "polpati"  "fedgovt"  "bundtag"  "judsyst" </span>
@@ -407,41 +384,10 @@
 <h4 class="hasAnchor">
 <a href="#a-quick-summary-1" class="anchor"></a>A quick summary</h4>
 <p>All right, let’s pull it all together now. From the last two outputs you might have already guessed the bread and butter of <code><a href="../reference/overlap.html">overlap()</a></code>’s operating principles. The function enhances the disjoint scaling approach by gradually applying its underlying algorithm to multiple disjoint fragments. For the extension itself the function considers only items from the according counterpart. That is what we have seen so far. But now we need to move on and further discuss the emergence of the duplicates across scales.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mosdf</span>
-<span class="co">#&gt; $scl_1</span>
-<span class="co">#&gt;                    mrit rbar alpha</span>
-<span class="co">#&gt; eupalmnt, eucomisn 0.92 0.92  0.96</span>
-<span class="co">#&gt; polpati            0.64 0.72  0.89</span>
-<span class="co">#&gt; fedgovt            0.68 0.67  0.89</span>
-<span class="co">#&gt; bundtag            0.70 0.64  0.90</span>
-<span class="co">#&gt; judsyst            0.58 0.59  0.90</span>
-<span class="co">#&gt; fccourt            0.58 0.55  0.90</span>
-<span class="co">#&gt; police             0.52 0.52  0.90</span>
-<span class="co">#&gt; newsppr            0.52 0.49  0.90</span>
-<span class="co">#&gt; tv                 0.52 0.47  0.90</span>
-<span class="co">#&gt; uni                0.49 0.45  0.90</span>
-<span class="co">#&gt; munadmin           0.47 0.43  0.90</span>
-<span class="co">#&gt; healserv           0.42 0.40  0.90</span>
-<span class="co">#&gt; </span>
-<span class="co">#&gt; $scl_2</span>
-<span class="co">#&gt;             mrit rbar alpha</span>
-<span class="co">#&gt; newsppr, tv 0.67 0.67  0.80</span>
-<span class="co">#&gt; polpati     0.48 0.51  0.76</span>
-<span class="co">#&gt; eucomisn    0.57 0.49  0.80</span>
-<span class="co">#&gt; eupalmnt    0.73 0.53  0.85</span>
-<span class="co">#&gt; fedgovt     0.67 0.53  0.87</span>
-<span class="co">#&gt; bundtag     0.69 0.53  0.89</span>
-<span class="co">#&gt; judsyst     0.58 0.51  0.89</span>
-<span class="co">#&gt; fccourt     0.57 0.49  0.90</span>
-<span class="co">#&gt; police      0.52 0.47  0.90</span>
-<span class="co">#&gt; uni         0.49 0.45  0.90</span>
-<span class="co">#&gt; munadmin    0.47 0.43  0.90</span>
-<span class="co">#&gt; healserv    0.42 0.40  0.90</span></code></pre></div>
 <div id="multiple-memberships-duplicates-across-scales" class="section level5">
 <h5 class="hasAnchor">
 <a href="#multiple-memberships-duplicates-across-scales" class="anchor"></a>Multiple memberships – duplicates across scales</h5>
-<p>Let me present the key idea in a nutshell: Even if a particular item is already part of <code>scl_1</code> it still meets the preset inclusion criterion in <code>scl_2</code>. So why not tagging it relevant for the developing scale, too? Well, that is precisely what <code><a href="../reference/overlap.html">overlap()</a></code> does. This insight is twofold. (1) It points out the key mechanism when setting <code>mrit_min</code>: The more fragments <code><a href="../reference/disjoint.html">disjoint()</a></code> produces the more reason you give <code><a href="../reference/overlap.html">overlap()</a></code> to pick up on those pieces. It now goes without saying that we use only reasonable items for the extension (i.e., those items from the counterpart which meet the inclusion requirements). (2) We could actually overcome <code><a href="../reference/disjoint.html">disjoint()</a></code>’s disjointedness.</p>
+<p>Let me present the key idea in a nutshell: Even if a particular item is already part of <code>scl_1</code> it still meets the preset inclusion criterion in <code>scl_2</code>. So why not tagging it relevant for the developing scale, too? Well, that is precisely what <code><a href="../reference/overlap.html">overlap()</a></code> does. This insight is twofold. (1) It points out the key mechanism when setting <code>mrit_min</code>: The more fragments <code><a href="../reference/disjoint.html">disjoint()</a></code> produces the more reason you give <code><a href="../reference/overlap.html">overlap()</a></code> to pick up on (and expand) those pieces. It now goes without saying that we use only reasonable items for the extension (i.e., those items from the counterpart which meet the inclusion requirements). (2) We could actually overcome <code><a href="../reference/disjoint.html">disjoint()</a></code>’s disjointedness. If this sounds like science-fiction talk visit the references for more background.</p>
 </div>
 </div>
 <div id="conclusion-1" class="section level4">
@@ -454,7 +400,7 @@
 <h3 class="hasAnchor">
 <a href="#an-all-in-one-snippet" class="anchor"></a>An all-in-one snippet</h3>
 <p>What we know so far is that, even though we crushed the list of items using <code><a href="../reference/disjoint.html">disjoint()</a></code>, we permitted <code><a href="../reference/overlap.html">overlap()</a></code> to further process it. Note, that if we forced the fragments to be different beforehand, we would have masked the replication discovery itself. See the references for more on this. Breaking and reuniting often goes hand in hand, therefor we should learn how to combine the use of <code><a href="../reference/disjoint.html">disjoint()</a></code> and <code><a href="../reference/overlap.html">overlap()</a></code> next.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">msdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/overlap.html">overlap</a></span><span class="op">(</span>
   <span class="fu"><a href="../reference/disjoint.html">disjoint</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">trust</span>, mrit_min <span class="op">=</span> <span class="fl">0.55</span><span class="op">)</span>,
   mrit_min <span class="op">=</span> <span class="fl">0.4</span>
@@ -464,15 +410,15 @@
 <div id="further-analysis-of-the-trust-items" class="section level2">
 <h2 class="hasAnchor">
 <a href="#further-analysis-of-the-trust-items" class="anchor"></a>Further analysis of the trust items</h2>
-<p>In everyday research, one will usually stumble upon reversed items. Such variables are broadly used to diminish response bias and reveal themselves generally through a negative correlation in the correlation matrix. Because there are no reversed variables in <code>trust</code> we need to make up an artificial one.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<p>In everyday research, one will usually fall over reversed items. Such variables are broadly used to diminish response bias and reveal themselves generally through a negative correlation in the correlation matrix. Because there are no reversed variables in <code>trust</code> we need to make up an artificial one.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ntrust</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">within</a></span><span class="op">(</span><span class="va">trust</span>, <span class="va">uni</span> <span class="op">&lt;-</span> <span class="fl">8</span> <span class="op">-</span> <span class="va">uni</span><span class="op">)</span></code></pre></div>
 <p>What this code does, is to subtract 8 from each value in <code>uni</code>, reassign it and store the result in a new data frame called <code>ntrust</code>. From here, we can start all over again using our all-in-one snippet. The only thing we need to add is <code>negative_too = TRUE</code> and specify the start- and endpoint of the scale (as a two element vector <code><a href="https://rdrr.io/r/base/c.html">c(1,7)</a></code>). But before we start, a word on the upcoming gambit: First, we should try replicate the results from the previous analysis to understand the machinery. Then, we can soften the regulations to become aware of the gained flexibility. But let’s move in a smoothed pace one step at the time.</p>
 <div id="negative_too-true-sclvals" class="section level4">
 <h4 class="hasAnchor">
 <a href="#negative_too-true-sclvals" class="anchor"></a>negative_too = TRUE &amp; sclvals</h4>
 <p>To repeat the previous results, we need to re-reverse <code>uni</code>. <code><a href="../reference/disjoint.html">disjoint()</a></code> lends you a hand with that. There are two arguments you need to manipulate (see <code><a href="https://rdrr.io/r/base/args.html">args(disjoint)</a></code>): Set (1) <code>negative_too = TRUE</code> and (2) <code>sclvals</code>. <code>sclvals</code> catches the start- and endpoint of your set of items. For example, the <code>trust</code> data set ranges between <span class="math inline">\(1\)</span> (no trust at all) and <span class="math inline">\(7\)</span> (great deal of trust). In practice, this means: <code>sclvals = c(1,7)</code>.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/disjoint.html">disjoint</a></span><span class="op">(</span><span class="va">ntrust</span>, mrit_min <span class="op">=</span> <span class="fl">0.55</span>, negative_too <span class="op">=</span> <span class="cn">TRUE</span>, sclvals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; disjoint() didn't reverse an item.</span>
@@ -488,8 +434,8 @@
 <span class="co">#&gt; $scl_2</span>
 <span class="co">#&gt;             mrit rbar alpha</span>
 <span class="co">#&gt; newsppr, tv 0.67 0.67   0.8</span></code></pre></div>
-<p><code><a href="../reference/disjoint.html">disjoint()</a></code> did not reverse an item? Right, that gambit was a bit unfair. But as we know from prior analyses, <code>uni</code> is not included in any of <code><a href="../reference/disjoint.html">disjoint()</a></code>’s fragments. So we should actually not expect <code><a href="../reference/disjoint.html">disjoint()</a></code> to reverse it. However, if <code>uni</code> is not part a fragment it might be soaked up with <code><a href="../reference/overlap.html">overlap()</a></code>. So let’s move on. Because we stored the <code><a href="../reference/disjoint.html">disjoint()</a></code>’s result in <code>d</code>, we can simply stick it into <code><a href="../reference/overlap.html">overlap()</a></code>. But do not forget to tell <code><a href="../reference/overlap.html">overlap()</a></code> that it has permission to include reversed items. For convenience, you don’t need to specify <code>sclvals</code> twice. <code><a href="../reference/overlap.html">overlap()</a></code> remembers the start- and endpoint you set with <code><a href="../reference/disjoint.html">disjoint()</a></code> (see <code>attributes(d)$sclvals</code>).</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<p><code><a href="../reference/disjoint.html">disjoint()</a></code> did not reverse an item? Right, that move was a bit unfair. But as we know from prior analyses, <code>uni</code> is not included in any of <code><a href="../reference/disjoint.html">disjoint()</a></code>’s fragments. So we should actually not expect <code><a href="../reference/disjoint.html">disjoint()</a></code> to reverse it. However, if <code>uni</code> is not part a fragment it might be soaked up with <code><a href="../reference/overlap.html">overlap()</a></code>. So let’s move on. Because we stored the <code><a href="../reference/disjoint.html">disjoint()</a></code>’s result in <code>d</code>, we can simply stick it into <code><a href="../reference/overlap.html">overlap()</a></code>. But do not forget to tell <code><a href="../reference/overlap.html">overlap()</a></code> that it has permission to include reversed items. For convenience, you don’t need to specify <code>sclvals</code> twice. <code><a href="../reference/overlap.html">overlap()</a></code> remembers the start- and endpoint you set with <code><a href="../reference/disjoint.html">disjoint()</a></code> (see <code>attributes(d)$sclvals</code>).</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/overlap.html">overlap</a></span><span class="op">(</span><span class="va">d</span>,
         <span class="co"># Note: overlap() remembers the scaling values from disjoint()</span>
         mrit_min <span class="op">=</span> <span class="fl">0.4</span>, negative_too <span class="op">=</span> <span class="cn">TRUE</span>, sclvals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span>
@@ -535,7 +481,7 @@
 <h2 class="hasAnchor">
 <a href="#another-made-up-but-auto-didactic-example" class="anchor"></a>Another made up (but auto-didactic) example</h2>
 <p>In the following snippet I reversed a core item of the second fragment. Make predictions of what will happen and why. Keep them in mind and see if they match the following output.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ntrust</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/with.html">within</a></span><span class="op">(</span><span class="va">trust</span>, <span class="va">tv</span> <span class="op">&lt;-</span> <span class="fl">8</span> <span class="op">-</span> <span class="va">tv</span><span class="op">)</span>
 
 <span class="fu"><a href="../reference/overlap.html">overlap</a></span><span class="op">(</span>
@@ -581,7 +527,7 @@
 <h2 class="hasAnchor">
 <a href="#set-up-your-own-fragment" class="anchor"></a>Set up your own fragment</h2>
 <p>Sometimes you will have a concrete idea of how a fragment looks like. In this case you want to predetermine the fragment and let <code><a href="../reference/overlap.html">overlap()</a></code> soak up additional variables afterward. Prespecifying the variables that form your fragment is straight forward. However, the steps you need to perform differ slightly from those used so far. If you want to predetermine a fragment, just pass the reduced version of your data frame to <code><a href="../reference/disjoint.html">disjoint()</a></code> – but now set <code>mrit_min = 0</code>. The second crux is to overwrite <code><a href="../reference/disjoint.html">disjoint()</a></code>’s data frame attribute with the full list of variables you want to do the overlap with. Hand the modified object over to <code><a href="../reference/overlap.html">overlap()</a></code> and that is it. If you are interested in why this additional step is necessary, read the note.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">frag</span> <span class="op">&lt;-</span> <span class="va">trust</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"tv"</span>, <span class="st">"bundtag"</span>, <span class="st">"fccourt"</span><span class="op">)</span><span class="op">]</span>
 <span class="va">pre</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/disjoint.html">disjoint</a></span><span class="op">(</span>df <span class="op">=</span> <span class="va">frag</span>, mrit_min <span class="op">=</span> <span class="fl">0</span><span class="op">)</span>
 <span class="co">#&gt; Warning: mrit_min = 0: fragment is pre-determined.</span>
@@ -615,7 +561,7 @@
 <h2 class="hasAnchor">
 <a href="#working-with-the-results" class="anchor"></a>Working with the results</h2>
 <p>In the previous chapters I mentioned <code><a href="../reference/print.msdf.html">print.msdf()</a></code>. Remember, the idea was to make use of the fact, that R internally wraps <code>msdf</code> in <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> and intervene into this process. <code><a href="https://rdrr.io/r/base/print.html">print()</a></code> now passes the work on to the <code><a href="../reference/print.msdf.html">print.msdf()</a></code>, which presents the result as follows:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="op">(</span><span class="va">msdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/overlap.html">overlap</a></span><span class="op">(</span>
         <span class="fu"><a href="../reference/disjoint.html">disjoint</a></span><span class="op">(</span><span class="va">ntrust</span>, mrit_min <span class="op">=</span> <span class="fl">0.55</span>, negative_too <span class="op">=</span> <span class="cn">TRUE</span>,
                  sclvals <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">7</span><span class="op">)</span><span class="op">)</span>,
@@ -642,7 +588,7 @@
 <span class="co">#&gt; munadmin           0.47 0.43  0.90</span>
 <span class="co">#&gt; healserv           0.42 0.40  0.90</span></code></pre></div>
 <p>The question is, why am I telling you all this? Well, to work with the results you need to understand that what you see is <em>not</em> what you actually get. <code><a href="https://rdrr.io/r/base/print.html">print()</a></code>’s version of <code><a href="../reference/overlap.html">overlap()</a></code>’s and <code><a href="../reference/disjoint.html">disjoint()</a></code>’s output is truly a bunch of summary statistics applied to it (see <code><a href="../reference/print.msdf.html">?print.msdf</a></code>). To put it another way, <code><a href="../reference/disjoint.html">disjoint()</a></code>’s and <code><a href="../reference/overlap.html">overlap()</a></code>’s outcomes are hidden by this internal printing mechanism. But you can break through this process by addressing one of <code>msdf</code>’s elements directly. This procedure will reveal the internally sorted (and in this case partially reversed, plus extended) data list. To keep things organized, the following output shows only the first six values (see <code><a href="https://rdrr.io/r/utils/head.html">?head</a></code>) of <code>msdf</code>’s component one: <code>$scl_1</code>.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">msdf</span><span class="op">$</span><span class="va">scl_1</span><span class="op">)</span>
 <span class="co">#&gt;   eupalmnt eucomisn polpati fedgovt bundtag judsyst fccourt police newsppr tv</span>
 <span class="co">#&gt; 1        4        3       4       5       5       3       7      5       6  7</span>
@@ -662,7 +608,7 @@
 <p><strong>Note</strong>: There is one tiny thing I want to point out in addition. Look at <code>tv</code>. It is reversed now. Hence, the reversing process was successful. If you want to prove that, just compare the outcome to previous results in this section and you will see that they are identical (type: <code>overlap(disjoint(trust, mrit_min = 0.55), mrit_min = 0.4</code>). In a nutshell: <code><a href="../reference/disjoint.html">disjoint()</a></code> and <code><a href="../reference/overlap.html">overlap()</a></code> both keep the reversed form of their variables. This behavior is thought to make further analysis as convenient as possible.</p>
 </blockquote>
 <p>Further analysis of the result is mandatory, remember? That is why I made the functions translate the actual output into an object type most connecting packages can handle. My suggestion is a <code>data.frame</code>. To become aware of the <code>data.frame</code> inside <code>msdf</code>, type <code>msdf$scl_1</code> and we break through its inherent structure.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">msdf</span><span class="op">$</span><span class="va">scl_1</span><span class="op">)</span>
 <span class="co">#&gt; [1] "data.frame"</span></code></pre></div>
 <p>To make a final unequivocal statement on <code>elisr</code>’s results: What you really get from applying <code><a href="../reference/disjoint.html">disjoint()</a></code> and <code><a href="../reference/overlap.html">overlap()</a></code> is an intermediate. A good hint is <code>mrit</code>. <code>mrit</code> is, the <em>marginal</em> corrected item-total correlation. Remember what that means – the linear relationship between the sum score of the items in a fragment at some specific point of the scale development process and the item which is considered for admission. Hence, the output represents the construction from a bottom-up perspective. To put it another way, when building scales from scratch <code>mrit</code>, <code>rbar</code>, and <code>alpha</code> keep track of the development progress, summarizing the gradually emerging scales based on the principles of classical test theory. However, these results can differ significantly from a more comprehensive (reliability) analysis of the proposed scale(s). With this in mind, I will end the manual with a place to (re-)start.</p>
@@ -671,7 +617,7 @@
 <h2 class="hasAnchor">
 <a href="#a-place-to-restart" class="anchor"></a>A place to restart</h2>
 <p>There are several options to continue. But the one which I find most appealing is part of the <code>psych</code> package. The object of desire is called <code>alpha()</code>. This neat function provides a bunch of helpful diagnostic information on the proposed scale(s). The snippet below checks if <code>psych</code> is present and gives advise on how to proceed. Just copy and run the code.</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"psych"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
   <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span><span class="op">(</span><span class="st">"`psych` is present. Ready to go!\n"</span><span class="op">)</span>
 <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
@@ -680,10 +626,10 @@
 <span class="op">}</span>
 <span class="co">#&gt; `psych` is present. Ready to go!</span></code></pre></div>
 <p>Once you have installed and loaded <code>psych</code>, there are two additional things you need to do. First, store the result of the exploratory analysis into an object of your choice. Second, hand the proposed scale over to <code>alpha()</code>. That is basically it. Since <code>msdf</code> already offers a scale to analyze, let’s stick with it. Note that <code>alpha()</code>’s output is pretty extensive. That is why I suppressed the result. But if you run the code yourself, you will see the result in full length.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">psych</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/alpha.html">alpha</a></span><span class="op">(</span><span class="va">msdf</span><span class="op">$</span><span class="va">scl_1</span><span class="op">)</span></code></pre></div>
 <p>As we have seen throughout the manual, an analysis with <code>elisr</code> often provides multiple suggestions (e.g., <code>$scl_1</code> <em>and</em> <code>$scl_2</code>). We should work out a solution for this scenario, too. I usually hack the result of <code><a href="../reference/overlap.html">overlap()</a></code> in <code><a href="https://rdrr.io/r/base/lapply.html">lapply()</a></code> and let <code>alpha()</code> do its job on all components of the modified list. Please note once more, that in the snippet below the full result will be present only if you run the code in your console.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">msdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/overlap.html">overlap</a></span><span class="op">(</span><span class="va">d</span>, mrit_min <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">msdf</span>, <span class="fu">psych</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/psych/man/alpha.html">alpha</a></span><span class="op">)</span></code></pre></div>
 </div>
