@@ -63,7 +63,7 @@ expand) the pieces to complete the scales.
 
 ### A primer for monitoring the scale developement process
 
-In preparation for the upcoming analyses, I want to loose a word about how
+<u>In preparation for the upcoming analyses, I want to loose a word about how
 `elisr` keeps track of the development process of a scale. There are 3
 monitoring devices: `mrit`, `alpha`, and `rbar`. `mrit` stands for "*marginal*
 corrected item-total correlation". `mrit` displays the linear relationship
@@ -76,7 +76,7 @@ But start with `?print.msdf`. All right, let's move on. The marginal part
 (italic) applies for `alpha` and `rbar`, too. But "Cronbach's alpha" (`alpha`)
 gauges the internal consistency of a scale whereas `rbar` tracks the average
 inter-item correlation. That is basically it. Now, we can start analyzing the
-`trust` items.
+`trust` items. </u>
 
 ## Analyzing the trust items
 
@@ -309,13 +309,13 @@ Now we use it to soak up up additional items from (what we will later call) the
 counterpart. Leave aside the counterpart for now. Remember the description of
 `mrit_min` instead. `mrit_min`is the definition of a fragment's lower boundary
 and ranges between 0 and 1. This is also true for `overlap()` (type `?overlap`).
-What changes for the additional `mrit_min` is, it defines the limit under which
+<u>What changes for the additional `mrit_min` is, it defines the limit under which
 you are not be willing to accept an item to *complete* an emerging *scale*. What
 does that means in practical terms? Well, deregulate `overlap()`'s `mrit_min` --
 to allow `overlap()` to soak up additional items from your data set. In the
 following snippet I stick with `mrit_min = 0.4`. But feel free to noodle around
 with this value. This helps you to fully understand `mrit_min`'s behavior within
-`overlap()`.
+`overlap()`. </u>
 
 ```{r}
 (mosdf <- overlap(msdf, mrit_min = 0.4))
@@ -345,8 +345,8 @@ highest positively correlating pair of each scale fragment (`overlap_with =
 
 Let me cite one additional result in form of a question. Did you realize that
 both fragments (`$scl_1` and `$scl_2`) include exactly the same variables? The
-scales did actually replicate. This hints to unidimensionality. For more on this
-consult the reference section.
+scales did actually replicate. <u>This hints to unidimensionality</u>. For more
+on this consult the reference section.
 
 ```{r}
 lapply(list(msdf = mosdf$scl_1, mosdf = mosdf$scl_2), colnames)
