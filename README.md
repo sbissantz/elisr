@@ -72,8 +72,8 @@ your R console. You will be guided through the installation process. What the
 snippet does, is (1) to check if the R package `devtools` is available on your
 system and if not (2) asks if you want to install it. If so, (3) it installs
 `elisr` via `devtools`' function `install_github()`. After the installation you
-need to load and attach `elisr`. Simply type `library(elisr)` and `elisr` will
-welcome you.
+need to load and attach `elisr`. Simply type `library(elisr)` and `elisr` warmly
+welcomes you.
 
 ```r
 if (!requireNamespace("devtools", quietly = TRUE)) {
