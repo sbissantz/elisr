@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   elisr: elisr.html
-last_built: 2021-04-20T09:15Z
+last_built: 2021-04-20T09:52Z
 urls:
   reference: https://sbissantz.github.io/elisr/reference
   article: https://sbissantz.github.io/elisr/articles
