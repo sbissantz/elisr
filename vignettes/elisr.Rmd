@@ -1,6 +1,9 @@
 ---
 title: "elisr companion"
 output: rmarkdown::html_vignette
+bibliography: bibliography.bib
+nocite: | 
+  @tms_2001
 vignette: >
   %\VignetteIndexEntry{elisr companion}
   %\VignetteEngine{knitr::rmarkdown}
@@ -23,9 +26,9 @@ technical companion is a step-by-step approach on how to use `elisr`. At the end
 of this manual, you will have gained enough understanding to confidently perform
 analysis in this framework. By working through the following examples, you will
 not only grasp what is going on under the hood, but also encounter some benefits
-of this approach. Note however, that this is mainly thought as a manual. For a
+of this approach. Note however, that this is mainly thought as a how-to. For a
 more complete view on the heuristic potential that lays out with this approach,
-you might want to take a look in the cited paper, too. There is at least one
+you might want to take a look in the cited paper(s), too. There is at least one
 article [in progress] which is not yet mentioned. I will update the list of
 articles as soon as possible.
 
@@ -643,3 +646,5 @@ only if you run the code in your console.
 msdf <- overlap(d, mrit_min = 0.4)
 lapply(msdf, psych::alpha)
 ```
+
+## References
