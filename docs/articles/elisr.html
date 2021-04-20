@@ -86,7 +86,7 @@
 <div id="exploratory-likert-scaling-in-r" class="section level3">
 <h3 class="hasAnchor">
 <a href="#exploratory-likert-scaling-in-r" class="anchor"></a>Exploratory Likert Scaling in R</h3>
-<p><code>elisr</code> is a shorthand for Exploratory Likert Scaling (ELiS) in R. ELiS is a multiple one-dimensional scaling approach and operates on a bottom-up selection process that integrates characteristic values of classical test theory. This technical companion is a step-by-step approach on how to use <code>elisr</code>. At the end of this manual, you will have gained enough understanding to confidently perform analysis in this framework. By working through the following examples, you will not only grasp what is going on under the hood, but also encounter some benefits of this approach. Note however, that this is mainly thought as a manual. For a more complete view on the heuristic potential that lays out with this approach, you might want to take a look in the cited paper, too. There is at least one article [in progress] which is not yet mentioned. I will update the list of articles as soon as possible.</p>
+<p><code>elisr</code> is a shorthand for Exploratory Likert Scaling (ELiS) in R. ELiS is a multiple one-dimensional scaling approach and operates on a bottom-up selection process that integrates characteristic values of classical test theory. This technical companion is a step-by-step approach on how to use <code>elisr</code>. At the end of this manual, you will have gained enough understanding to confidently perform analysis in this framework. By working through the following examples, you will not only grasp what is going on under the hood, but also encounter some benefits of this approach. Note however, that this is mainly thought as a how-to. For a more complete view on the heuristic potential that lays out with this approach, you might want to take a look in the cited paper(s), too. There is at least one article [in progress] which is not yet mentioned. I will update the list of articles as soon as possible.</p>
 </div>
 <div id="important-note" class="section level3">
 <h3 class="hasAnchor">
@@ -104,7 +104,7 @@
 <div id="a-primer-for-monitoring-the-scale-developement-process" class="section level3">
 <h3 class="hasAnchor">
 <a href="#a-primer-for-monitoring-the-scale-developement-process" class="anchor"></a>A primer for monitoring the scale developement process</h3>
-<p><u>In preparation for the upcoming analyses, I want to loose a word about how <code>elisr</code> keeps track of the development process of a scale. There are 3 monitoring devices: <code>mrit</code>, <code>alpha</code>, and <code>rbar</code>. <code>mrit</code> stands for “<em>marginal</em> corrected item-total correlation”. <code>mrit</code> displays the linear relationship between the sum score of the items in a fragment <em>at some specific point of the scale development process</em> and an item which is considered for admission. I use a part-whole-correction to compute this value. So, the item (which is considered for admission) is not part of the sum score. If this does not make sense right now, hang on. A lot about this is said in later chapters or in the references. But start with <code><a href="../reference/print.msdf.html">?print.msdf</a></code>. All right, let’s move on. The marginal part (italic) applies for <code>alpha</code> and <code>rbar</code>, too. But “Cronbach’s alpha” (<code>alpha</code>) gauges the internal consistency of a scale whereas <code>rbar</code> tracks the average inter-item correlation. That is basically it. Now, we can start analyzing the <code>trust</code> items. </u></p>
+<p><u>In preparation for the upcoming analyses, I want to loose a word about how <code>elisr</code> keeps track of the development process of a scale. There are 3 monitoring devices: <code>mrit</code>, <code>alpha</code>, and <code>rbar</code>. <code>mrit</code> stands for “<em>marginal</em> corrected item-total correlation.” <code>mrit</code> displays the linear relationship between the sum score of the items in a fragment <em>at some specific point of the scale development process</em> and an item which is considered for admission. I use a part-whole-correction to compute this value. So, the item (which is considered for admission) is not part of the sum score. If this does not make sense right now, hang on. A lot about this is said in later chapters or in the references. But start with <code><a href="../reference/print.msdf.html">?print.msdf</a></code>. All right, let’s move on. The marginal part (italic) applies for <code>alpha</code> and <code>rbar</code>, too. But “Cronbach’s alpha” (<code>alpha</code>) gauges the internal consistency of a scale whereas <code>rbar</code> tracks the average inter-item correlation. That is basically it. Now, we can start analyzing the <code>trust</code> items. </u></p>
 </div>
 </div>
 <div id="analyzing-the-trust-items" class="section level2">
@@ -632,6 +632,15 @@
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">msdf</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/overlap.html">overlap</a></span><span class="op">(</span><span class="va">d</span>, mrit_min <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">lapply</a></span><span class="op">(</span><span class="va">msdf</span>, <span class="fu">psych</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/psych/man/alpha.html">alpha</a></span><span class="op">)</span></code></pre></div>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2 class="hasAnchor">
+<a href="#references" class="anchor"></a>References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-tms_2001" class="csl-entry">
+Müller-Schneider, Thomas. 2001. <span>“Multiple Skalierung Nach Dem Kristallisationsprinzip / Multiple Scaling According to the Principle of Crystallization.”</span> <em>Zeitschrift Für Soziologie</em> 30 (4): 305–15. <a href="https://doi.org/doi:10.1515/zfsoz-2001-0404">https://doi.org/doi:10.1515/zfsoz-2001-0404</a>.
+</div>
+</div>
 </div>
   </div>
 
