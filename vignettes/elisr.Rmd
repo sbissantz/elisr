@@ -51,7 +51,7 @@ a fragment share a strong linear relationship with each another. The thing with
 (2) `overlap()` steps in. Passing fragments to `overlap()`, the function's
 underlying algorithm tries to enrich each fragment. The emerging scales are
 flavored with items from your specified data frame, but the algorithm skips 
-those that are already built into a fragment. We will talk about the inclusion
+those that are already built into a fragment (step 1). We will talk about the inclusion
 criterion later in much greater detail. To get to the point: Using `overlap()`
 an item can appear in more than one of the enriched fragments. In doing so, we
 overcome the splitting effect `disjoint()` induces. These basic principles
@@ -69,17 +69,16 @@ expand) the pieces to complete the scales.
 In preparation for the upcoming analyses, I want to loose a word about how
 `elisr` keeps track of the development process of a scale. There are 3
 monitoring devices: `mrit`, `alpha`, and `rbar`. `mrit` stands for "*marginal*
-corrected item-total correlation". `mrit` displays the linear relationship
-between the sum score of the items in a fragment *at some specific point of the
-scale development process* and an item which is considered for admission. I use
-a part-whole-correction to compute this value. So, the item (which is considered
-for admission) is not part of the sum score. If this does not make sense right
-now, hang on. A lot about this is said in later chapters or in the references.
-But start with `?print.msdf`. All right, let's move on. The marginal part
-(italic) applies for `alpha` and `rbar`, too. But "Cronbach's alpha" (`alpha`)
-gauges the internal consistency of a scale whereas `rbar` tracks the average
-inter-item correlation. That is basically it. Now, we can start analyzing the
-`trust` items. 
+corrected item-total correlation". `mrit` displays the relationship between the
+sum-score of the items in a fragment *at some specific point of the scale
+development process* and an item which is considered for admission. I use a
+part-whole-correction to compute this value. So, the item (which is considered
+for admission) is not part of the sum-score. A lot about this is said in later
+chapters, in the references, or if you type `?print.msdf`. All right, let's move
+on. The marginal part (italic) applies for `alpha` and `rbar`, too. But
+"Cronbach's alpha" (`alpha`) gauges the internal consistency of a scale whereas
+`rbar` tracks the average inter-item correlation. That is basically it. Now, we
+can start analyzing the `trust` items.
 
 ## Analyzing the trust items
 
@@ -194,10 +193,10 @@ quick glance under `disjoint()`'s hood:
 msdf
 ```
 
-First, `disjoint()` added up the core items what created a *sum score*.
+First, `disjoint()` added up the core items what created a *sum-score*.
 Subsequently, `disjoint()` watched out for the highest correlation between this
 sum-score and another `trust` variable in the data frame. It found `polpati`.
-Because `polpati`'s  correlation with the sum score (its *corrected item-total
+Because `polpati`'s  correlation with the sum-score (its *corrected item-total
 correlation*) is higher than the specified stop criterion (`mrit_min = 0.55`) it
 was melted into the core. The new fragment is now a bundle of 3 Items:
 `eupalmnt`, `eucomisn`, and `polpati.` The same logic applies to the inclusion
@@ -600,9 +599,9 @@ class(msdf$scl_1)
 I want to be clear on this point: What you really get from applying `disjoint()`
 and `overlap()` is an intermediate. A good hint is `mrit`. `mrit` is, the
 *marginal* corrected item-total correlation. Remember what that means -- the
-linear relationship between the sum score of the items in a fragment at some
-specific point of the scale development process and the item which is considered
-for admission. Hence, the output represents the construction from a bottom-up
+relationship between the sum-score of the items in a fragment at some specific
+point of the scale development process and the item which is considered for
+admission. Hence, the output represents the construction from a bottom-up
 perspective. To put it another way, when building scales from scratch `mrit`,
 `rbar`, and `alpha` keep track of the development progress, summarizing the
 gradually emerging scales based on the principles of classical test theory.

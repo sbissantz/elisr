@@ -24,9 +24,10 @@ exploratory potential of the multiple scaling approach itself.
 
 `elisr` comes with two user functions: `disjoint()` and `overlap()`. 
 
-- `disjoint()` searches highly consistent fragments in the haystack of
+- `disjoint()` searches highly consistent scale fragments in the haystack of
 variables.
-- `overlap()` evolves `disjoint()`'s result through overlapping.
+- `overlap()` enhances `disjoint()`'s fragments -- selecting items so that they
+can overlap across fragments.
 
 With a typical case in mind, the practical difference between them is: (1)
 `disjoint()` is set up to produce sharp and disjoint scale fragments. Sharp and
@@ -36,11 +37,11 @@ a fragment share a strong linear relationship with each another. The thing with
 (2) `overlap()` steps in. Passing fragments to `overlap()`, the function's
 underlying algorithm tries to enrich each fragment. The emerging scales are
 flavored with items from your specified data frame, but the algorithm ignores
-those that are already built into a fragment. Later on, we will talk about the
-inclusion criterion in greater detail. To get to the point: Using `overlap()` an
-item can appear in more than one of the enriched fragments. In doing so, we
-overcome the splitting effect induced by `disjoint()`. These basic principles
-will unfold one step at a time in the companion.
+those that are already built into a fragment (step 1). Later on, we will talk
+about the inclusion criterion in greater detail. To get to the point: Using
+`overlap()` an item can appear in more than one of the enriched fragments. In
+doing so, we overcome the splitting effect induced by `disjoint()`. These basic
+principles will unfold one step at a time in the companion.
 
 > **Note**: The last section is part of `elisr`'s vignette. If you are
 interested, you can read on there.
