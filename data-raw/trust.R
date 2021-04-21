@@ -3,6 +3,7 @@
 # Code: trust
 #
 #
+
 dta_ls <- foreign::read.spss(path, use.value.labels = TRUE, use.missings = TRUE)
 
 #
