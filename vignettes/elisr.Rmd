@@ -19,8 +19,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-TEST
-
 `elisr` is a shorthand for Exploratory Likert Scaling (ELiS) in R. ELiS is a
 multiple one-dimensional scaling approach and operates on a bottom-up selection
 process that integrates characteristic values of classical test theory. This
