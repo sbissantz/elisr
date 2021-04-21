@@ -29,12 +29,12 @@ variables.
 - `overlap()` enhances `disjoint()`'s fragments -- selecting items so that they
 can overlap across fragments.
 
-With a typical case in mind, the practical difference between them is: (1)
+With a typical case in mind, the practical difference between them is:
 `disjoint()` is set up to produce sharp and disjoint scale fragments. Sharp and
 disjoint fragments feature a high internal consistency. Thus, items within such
 a fragment share a strong linear relationship with each another. The thing with
-`disjoint()` is, it allocates any item to a  particular fragment. This is where
-(2) `overlap()` steps in. Passing fragments to `overlap()`, the function's
+`disjoint()` is, it allocates any item to a  particular fragment. This is
+where`overlap()` steps in. Passing fragments to `overlap()`, the function's
 underlying algorithm tries to enrich each fragment. The emerging scales are
 flavored with items from your specified data frame, but the algorithm ignores
 those that are already built into a fragment (step 1). Later on, we will talk

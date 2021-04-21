@@ -40,22 +40,23 @@ is essential. You can find a way to proceed (with a follow-up analysis) in the
 last section. Alright, let's ease up and dive deeper into some of `elisr`'s
 fiddly technical details.
  
-## Welcome `disjoint()` & `overlap()`
+## The two workhorses: `disjoint()` & `overlap()`
 
 `elisr` basically consists of two user functions `disjoint()` and `overlap()`.
-With a typical case in mind, the practical difference between them is: (1)
+With a typical case in mind, the practical difference between them is:
 `disjoint()` is set up to produce sharp and disjoint scale fragments. Sharp and
 disjoint fragments feature a high internal consistency. Thus, items within such
 a fragment share a strong linear relationship with each another. The thing with
 `disjoint()` is, it allocates any item to a particular fragment. This is where
-(2) `overlap()` steps in. Passing fragments to `overlap()`, the function's
+`overlap()` steps in. Passing fragments to `overlap()`, the function's
 underlying algorithm tries to enrich each fragment. The emerging scales are
-flavored with items from your specified data frame, but the algorithm skips 
-those that are already built into a fragment (step 1). We will talk about the inclusion
-criterion later in much greater detail. To get to the point: Using `overlap()`
-an item can appear in more than one of the enriched fragments. In doing so, we
-overcome the splitting effect `disjoint()` induces. These basic principles
-unfold one step at a time throughout the rest of this companion. So, stay tuned!
+flavored with items from your specified data frame, but the algorithm skips
+those that are already built into a fragment (step 1). We will talk about the
+inclusion criterion later in much greater detail. To get to the point: Using
+`overlap()` an item can appear in more than one of the enriched fragments. In
+doing so, we overcome the splitting effect `disjoint()` induces. These basic
+principles unfold one step at a time throughout the rest of this companion. So,
+stay tuned!
 
 > **Spoiler alert**: Let me tempt you with this; the last section did already
 reveal the key strategy of an exploratory scale analysis using `elisr`. If you
@@ -64,9 +65,9 @@ yourself following these two steps: (1) Instruct `disjoint()` to produce a
 couple of sharp, disjoint scale fragments. (2) Let `overlap()` pick up (and
 expand) the pieces to complete the scales.
 
-### A primer for monitoring the scale developement process
+### A primer for monitoring the scale development process 
 
-In preparation for the upcoming analyses, I want to loose a word about how
+In preparation for the upcoming analyses, I want to lose a word about how
 `elisr` keeps track of the development process of a scale. There are 3
 monitoring devices: `mrit`, `alpha`, and `rbar`. `mrit` stands for "*marginal*
 corrected item-total correlation". `mrit` displays the relationship between the
@@ -176,14 +177,14 @@ correlation which sets up the core. To simplify the forthcoming procedure,
 remember our previous `mrit_min = 0.55`.
 
 > **Note**: If the value of `mrit_min` slipped your mind, read out
-`msdf`'s attributes as a remainder (type `attributes(msdf)`)
+`msdf`'s attributes as a reminder (type `attributes(msdf)`)
 
 ```{r}
 msdf
 ```
 In the first line we can see that the core consists of `eupalmnt` and
 `eucomisn`. As mentioned above, both variables share the highest correlation
-(which is obviously greater than our prespecefied `mrit_min = 0.55`): `mrit =
+(which is obviously greater than our prespecified `mrit_min = 0.55`): `mrit =
 0.92`. But once the core was found, what happened to `scl_1` ? Let's throw a
 quick glance under `disjoint()`'s hood:
 
@@ -203,7 +204,7 @@ was melted into the core. The new fragment is now a bundle of 3 Items:
 of the other variables (e.g., `fedgovt` et al.) and reveals the second step of
 the algorithmic procedure: Continue to collect new items from `df = trust`,
 until the correlation between the sum-score of the items in the fragment and any
-other item is less than your prespecefied `mrit_min.`
+other item is less than your prespecified `mrit_min.`
 
 ##### scl_2
 
@@ -224,7 +225,7 @@ In addition, (a) also holds for the construction process of new fragments. But
 when the algorithm builds a new fragment in particular, it needs (b) at least
 two leftovers -- because a single variable cannot make up a core. So again,
 `disjoint()` will not build (and enrich) new fragments at any costs. The
-necessary correlations need to be positive and higher than your prespecefied
+necessary correlations need to be positive and higher than your prespecified
 minimum value. That unmasks the last unique step of the disjoint scaling
 procedure: If the algorithm detects some remaining items in the data set that
 meet its specific requirements, it starts over again. Now we know why
@@ -291,7 +292,7 @@ standard you like.
 ### overlap()
 
 In this chapter we use the overlapping scaling procedure to extend out
-disjointedly built fragments. That is the job ob `overlap()`. Therefore, we
+disjointedly built fragments. That is the job of `overlap()`. Therefore, we
 first need to learn about `mrit_min` (again). This will open up `overlap()`'s
 hood. After that we will continue with a closer look inside its machinery.
 
@@ -323,6 +324,7 @@ with this value. This helps you to fully understand `mrit_min`'s behavior within
 ```{r}
 (mosdf <- overlap(msdf, mrit_min = 0.4))
 ```
+
 #### Under overlap()'s hood
 
 The output reveals the news: `overlap()` added a couple of variables to

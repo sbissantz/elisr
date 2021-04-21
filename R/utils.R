@@ -6,14 +6,14 @@
 #'   \code{calc_rbar()} calculates the average correlation between items from a
 #'   gradually emerging scale.
 #'
-#'   \code{calc_alpha()} calculates Cronbach's alpha of a given set of items from
-#'   the gradually emerging scale.
+#'   \code{calc_alpha()} calculates Cronbach's alpha of a given set of items
+#'   from the gradually emerging scale.
 #'
-#'   \code{calc_mrit()} calculates the corrected item-total correlation of an item
-#'   with the sum score of all the other variables of the gradually emerging
-#'   scale (aka. marginal corrected item-total correlation). Note, that this
-#'   procedure uses a part-whole correction. Thus, the item itself is excluded
-#'   in the calculation process.
+#'   \code{calc_mrit()} calculates the corrected item-total correlation of an
+#'   item with the sum score of all the other variables of the gradually
+#'   emerging scale (aka. marginal corrected item-total correlation). Note, that
+#'   this procedure uses a part-whole correction. Thus, the item itself is
+#'   excluded in the calculation process.
 #'
 #'   \code{extreb_itms()} build up the counterpart of a fragment from the given
 #'   item names. Therefore, the counterpart includes all variables that are not

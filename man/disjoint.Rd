@@ -31,8 +31,8 @@ analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 default is set to \code{pairwise.complete.obs}.}
 }
 \description{
-\code{disjoint()} returns a multiple, disjointedly scaled version
-  of the specified data frame. This so called \code{msdf} sets up the
+\code{disjoint()} returns a multiple, disjointedly scaled
+  version of the specified data frame. This so called \code{msdf} sets up the
   building block for further analysis with \code{overlap()} (type
   \code{?overlap}).
 }

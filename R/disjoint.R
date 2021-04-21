@@ -1,7 +1,7 @@
 #' @title Multiple scaling -- the disjoint way
 #'
-#' @description \code{disjoint()} returns a multiple, disjointedly scaled version
-#'   of the specified data frame. This so called \code{msdf} sets up the
+#' @description \code{disjoint()} returns a multiple, disjointedly scaled
+#'   version of the specified data frame. This so called \code{msdf} sets up the
 #'   building block for further analysis with \code{overlap()} (type
 #'   \code{?overlap}).
 #'
