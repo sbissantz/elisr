@@ -5,7 +5,7 @@ This is a new submission (elisr 0.0.1).
 ## Test environments
 
 - Linux
-  - Manjaro (21.0), R-devel (local machine)
+  - Manjaro (21.0), R-devel and R-release (local machine)
   - Debian, R-devel and R-release, GCC (on rhub)
   - Ubuntu (20.04 LTS), R-devel and R-release, GCC (on rhub)
   - Fedora, R-devel and R-release, clang, gfortran (on rhub)
