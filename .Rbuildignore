@@ -9,3 +9,5 @@
 ^codecov\.yml$
 ^pkgdown$
 ^_pkgdown\.yml$
+^.*\._sync_*
+.owncloudsync.log
