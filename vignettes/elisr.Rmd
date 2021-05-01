@@ -628,28 +628,16 @@ if (requireNamespace("psych", quietly = TRUE)) {
 }
 ```
 
-Once you have installed and loaded `psych`, there are two additional things you
-need to do. First, store the result of the exploratory analysis into an object
-of choice. Second, hand the proposed scale over to `alpha()`. That is basically
-it. Since `msdf` already offers a scale to analyze, let's stick with it. Note
-that `alpha()`'s output is pretty extensive. That is why I suppressed the
-result. But if you run the code yourself, you will see the result in full
-length.
+Once you have installed and loaded `psych`, there are two (well, actually three)
+additional things you need to do. First, store the result of the exploratory
+analysis into an object of choice. Second, hand the proposed scale over to
+`alpha()`. Third, type `?alpha()` and get used to it. Its man page is a good
+place to (re-)start and `alpha()'s` vignette can further equip your
+data-analytic toolbox for the upcoming analysis. Since `msdf` already offers a
+scale to analyze, you can jump right into action. Consider for example `msdf`'s
+`scl_1` to continue. But that is another (data) story and should perhaps be told
+a different time.
 
-```{r echo=T, results='hide'}
-psych::alpha(msdf$scl_1)
-```
-
-As we have seen throughout the manual, an analysis with `elisr` often provides
-multiple suggestions (e.g., `$scl_1` *and* `$scl_2`). We should work out a
-solution for this scenario, too. I usually hack the result of `overlap()` in
-`lapply()` and let `alpha()` do its job on all components of the modified list.
-Please note once more, that in the snippet below the full result will be present
-only if you run the code in your console.
- 
-```{r echo=T, results='hide'}
-msdf <- overlap(d, mrit_min = 0.4)
-lapply(msdf, psych::alpha)
 ```
 
 ## References

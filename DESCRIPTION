@@ -25,9 +25,9 @@ License: GPL (>= 3)
 URL: https://github.com/sbissantz/elisr
 BugReports: https://github.com/sbissantz/elisr/issues
 Depends: 
-    R (>= 4.1.0)
+    R (>= 4.0.0)
 Imports: 
-    stats (>= 4.1.0)
+    stats (>= 4.0.0)
 Suggests:
     covr,
     devtools,
