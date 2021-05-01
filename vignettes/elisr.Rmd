@@ -633,10 +633,16 @@ additional things you need to do. First, store the result of the exploratory
 analysis into an object of choice. Second, hand the proposed scale over to
 `alpha()`. Third, type `?alpha()` and get used to it. Its man page is a good
 place to (re-)start and `alpha()'s` vignette can further equip your
-data-analytic toolbox for the upcoming analysis. Since `msdf` already offers a
+data-analytic toolbox for the upcoming analyses. Since `msdf` already offers a
 scale to analyze, you can jump right into action. Consider for example `msdf`'s
-`scl_1` to continue. But that is another (data) story and should perhaps be told
-a different time...
+`scl_1` to continue. 
+
+This is a perfect place to stop. I am sure, you have gained enough
+understanding, to confidently perform analysis in this framework. By working
+through the examples above, you have grasped what is going on under `elisr`'s
+hood, and did also encounter some benefits of this approach. However, if you
+want to become more acquainted with the heuristic potential that lays out with
+this approach, do not overlook the references below.
 
 ```
 
