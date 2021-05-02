@@ -11,3 +11,4 @@
 ^_pkgdown\.yml$
 ^.*\._sync_*
 .owncloudsync.log
+^CRAN-RELEASE$

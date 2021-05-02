@@ -1,6 +1,8 @@
-## New submission 
+## Resubmission 
 
-This is a new submission (elisr 0.0.1).
+Resubmitting `elisr` (0.0.1). Fixed the invalid file URL in
+README.md ('/commits/master'). It is now a fully specified URLs.
+('https://github.com/sbissantz/elisr/commits/master').
 
 ## Test environments
 
