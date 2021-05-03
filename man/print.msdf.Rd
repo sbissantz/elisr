@@ -19,12 +19,17 @@ default is set to \code{pairwise.complete.obs}.}
 
 \item{...}{Additional arguments to the method which will be ignored.}
 }
+\value{
+A list of summary statistics: the marginal corrected item-total
+  correlation (\code{mrit}), Cronbach's alpha (\code{alpha}), and the average
+  correlation (\code{rbar}).
+}
 \description{
-The print method for a multiple scaled data frame returns a list
-  of summary statistics: the marginal corrected item-total correlation
-  (\code{mrit}), Cronbach's alpha (\code{alpha}) and the average correlation
-  (\code{rbar}). Note that every row in the output tags a new stage in the
-  development of each gradually emerging scale.
+The print method for a multiple scaled data frame. It summarizes
+ the \code{msdf} using values of classical test theory.
+
+ @details Note that every line in the output tags a new stage in the
+   development process of each gradually emerging scale.
 }
 \details{
 \code{use} clarifies how to set up a correlation matrix in the

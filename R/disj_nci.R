@@ -1,16 +1,15 @@
 #' @title Multiple scaling in a disjoint manner using negative items too
 #'
-#' @description \code{disj_nci} is an internal function and returns a list of
-#'   data frames. It is a loop which runs through the following steps: (1) Set
-#'   up a (first) scale. (2) find the two items with the highest positive
-#'   correlation in the data set. (3) If the absolute value of this correlation
-#'   is greater than the pre-specified lower bound (\code{mrit_min}), add up the
-#'   two items to build the core of the emerging scale. (4) While the absolute
-#'   value of the correlation between the sum score and a remaining items in the
-#'   data frame is greater than \code{mrit_min}, flavor the scale with the
-#'   appropriate item. If necessary, reverse the item. (5) If there are at least
-#'   two leftovers in the data frame, that meet the inclusion criterion, start
-#'   over again.
+#' @description \code{disj_nci()} is an internal function. It is a loop which
+#'   runs through the following steps: (1) Set up a (first) scale. (2) find the
+#'   two items with the highest positive correlation in the data set. (3) If the
+#'   absolute value of this correlation is greater than the pre-specified lower
+#'   bound (\code{mrit_min}), add up the two items to build the core of the
+#'   emerging scale. (4) While the absolute value of the correlation between the
+#'   sum score and a remaining items in the data frame is greater than
+#'   \code{mrit_min}, flavor the scale with the appropriate item. If necessary,
+#'   reverse the item. (5) If there are at least two leftovers in the data
+#'   frame, that meet the inclusion criterion, start over again.
 #'
 #' @param df a data frame object.
 #'
@@ -23,15 +22,16 @@
 #' @param use an optional string to specify how missing values will enter the
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details.
 #'
-#' @details \code{disj_nci} is an internal function which extends the scope of
-#'   \code{disj_pci}. {disj_nci} allows the presence of negative items (i.e., a
-#'   negative correlation between item and sum score).
+#' @details \code{disj_nci()} is an internal function which extends the scope of
+#'   \code{disj_pci()}. {disj_nci()} allows to reverse negative items.
 #'
 #'   \code{use} clarifies how to set up a correlation matrix in the presence of
 #'   missing values. In a typical scaling process this happens at least twice.
 #'   First, when determining the core items (the two items in the correlation
 #'   matrix with the highest linear relationship). Second, when an item is
 #'   proposed for an emerging scale.
+#'
+#' @return A list of data frames. It results from applying the above algorithm.
 #'
 #' @references Müller-Schneider, T. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of

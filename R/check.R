@@ -1,22 +1,3 @@
-#' @title A set of checks for the appropriateness of inputs
-#'
-#' @details \code{check_df()} guarantees that \code{x} is a data frame. In
-#'   addition, it verifies that \code{x} has less than two variables (a single
-#'   item can't build a core), \code{x} has column names (used to pre-build
-#'   \code{scls} in the overlapping process), if the column names are unique and
-#'   not of type \code{NA}.
-#'
-#'   \code{check_sclvals()} checks whether \code{x} is a two element vector
-#'   (Note: implicitly assures that it is not \code{NULL}, since \code{NULL} is
-#'   a logical constant of length `0`.). Integers are coerced to be of type
-#'   \code{double}. Additionally the function makes sure that the first value is
-#'   not greater than the second.
-#'
-#'   \code{compare_sclvals()} ensures that the \code{sclvals} set with
-#'   \code{overlap()} are equal to those set with \code{disjoint()}.
-#'
-#'   \code{check_rit()} guarantees that the input is a double vector of length
-#'   one. Moreover, it secures that the lower bound is unique and ranges between
 #'   `0` and `1`.
 #'
 #'   \code{check_ovlp()} safeguards that\code{x}, is a character vector of
@@ -34,6 +15,7 @@
 #'   complains if no correlation is greater than the specified \code{mrit_min}.
 #'
 #' @param x some arbitrary input to be checked
+#'
 #' @param x_attr a numeric vector of length 2 indicating the start- and endpoint
 #'   of a scale.
 #' @param mrit_min a numeric constant of length 1 to specify the marginal

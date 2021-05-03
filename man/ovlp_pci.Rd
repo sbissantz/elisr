@@ -19,6 +19,10 @@ fragment use \code{fragment}, for the cores-only option type \code{core}.}
 \item{use}{an optional string to specify how missing values will enter the
 analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
+\value{
+An extended list of data frames. It results from applying the above
+  algorithm.
+}
 \description{
 \code{ovlp_nci()} is an internal function and returns a list of
   data frames. It takes a disjoint (\code{msdf}) and tries to extend it with

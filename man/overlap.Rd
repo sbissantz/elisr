@@ -35,6 +35,9 @@ endpoint of a scale. Use something like \code{c(min,max)}.}
 analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 default is set to \code{pairwise.complete.obs}.}
 }
+\value{
+A multiple scaled data frame (\¢ode{msdf}).
+}
 \description{
 \code{overlap()} returns a overlapped version (either extended,
   or reversed, or both) of the specified \code{msdf}.

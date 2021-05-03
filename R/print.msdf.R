@@ -1,10 +1,10 @@
 #' @title Print method for a multiple scaled data frame
 #'
-#' @description The print method for a multiple scaled data frame returns a list
-#'   of summary statistics: the marginal corrected item-total correlation
-#'   (\code{mrit}), Cronbach's alpha (\code{alpha}) and the average correlation
-#'   (\code{rbar}). Note that every row in the output tags a new stage in the
-#'   development of each gradually emerging scale.
+#' @description The print method for a multiple scaled data frame. It summarizes
+#'  the \code{msdf} using values of classical test theory.
+#'
+#'  @details Note that every line in the output tags a new stage in the
+#'    development process of each gradually emerging scale.
 #'
 #' @param x a multiple scaled data frame (built with either
 #'   \code{disjoint()} or \code{overlap()}).
@@ -23,6 +23,10 @@
 #'   least twice. First, when determining the core items (the two items in the
 #'   correlation matrix with the highest linear relationship). Second, when an
 #'   item is proposed for an emerging scale.
+#'
+#' @return A list of summary statistics: the marginal corrected item-total
+#'   correlation (\code{mrit}), Cronbach's alpha (\code{alpha}), and the average
+#'   correlation (\code{rbar}).
 #'
 #' @references Müller-Schneider, T. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
@@ -49,7 +53,7 @@ print.msdf <- function(x, digits = 2, use = "pairwise.complete.obs", ...) {
     if (col_len > 2) {
       var_nms <- c(var_nms, col_nms[seq(3, col_len)])
     }
-    mrit <- vapply(wfls, calc_mrit, use, FUN.VALUE = double(1))
+    mrit <- vapply(wfls, calc_rit, use, FUN.VALUE = double(1))
     alpha <- vapply(wfls, calc_alpha, use, FUN.VALUE = double(1))
     rbar <- vapply(wfls, calc_rbar, use, FUN.VALUE = double(1))
     mat <- cbind(mrit, rbar, alpha)

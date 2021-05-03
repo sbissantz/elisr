@@ -18,23 +18,24 @@ endpoint of a scale.}
 \item{use}{an optional string to specify how missing values will enter the
 analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
+\value{
+A list of data frames. It results from applying the above algorithm.
+}
 \description{
-\code{disj_nci} is an internal function and returns a list of
-  data frames. It is a loop which runs through the following steps: (1) Set
-  up a (first) scale. (2) find the two items with the highest positive
-  correlation in the data set. (3) If the absolute value of this correlation
-  is greater than the pre-specified lower bound (\code{mrit_min}), add up the
-  two items to build the core of the emerging scale. (4) While the absolute
-  value of the correlation between the sum score and a remaining items in the
-  data frame is greater than \code{mrit_min}, flavor the scale with the
-  appropriate item. If necessary, reverse the item. (5) If there are at least
-  two leftovers in the data frame, that meet the inclusion criterion, start
-  over again.
+\code{disj_nci()} is an internal function. It is a loop which
+  runs through the following steps: (1) Set up a (first) scale. (2) find the
+  two items with the highest positive correlation in the data set. (3) If the
+  absolute value of this correlation is greater than the pre-specified lower
+  bound (\code{mrit_min}), add up the two items to build the core of the
+  emerging scale. (4) While the absolute value of the correlation between the
+  sum score and a remaining items in the data frame is greater than
+  \code{mrit_min}, flavor the scale with the appropriate item. If necessary,
+  reverse the item. (5) If there are at least two leftovers in the data
+  frame, that meet the inclusion criterion, start over again.
 }
 \details{
-\code{disj_nci} is an internal function which extends the scope of
-  \code{disj_pci}. {disj_nci} allows the presence of negative items (i.e., a
-  negative correlation between item and sum score).
+\code{disj_nci()} is an internal function which extends the scope of
+  \code{disj_pci()}. {disj_nci()} allows to reverse negative items.
 
   \code{use} clarifies how to set up a correlation matrix in the presence of
   missing values. In a typical scaling process this happens at least twice.

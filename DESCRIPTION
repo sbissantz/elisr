@@ -17,10 +17,10 @@ Description: An alternative to Exploratory Factor Analysis (EFA) for
     multiple one-dimensional data structures. In common research practice,
     however, EFA remains as go-to method to uncover the (underlying)
     structure of a data set. Orthogonal dimensions and the potential of
-    overextraction are often accepted as side effects. ELiS confronts
-    these problems. As a result, elisr provides the platform to fully
-    exploit the exploratory potential of the multiple scaling approach
-    itself.
+    overextraction are often accepted as side effects. (Müller-Schneider,
+    2001 <doi:10.1515/zfsoz-2001-0404>) ELiS confronts these problems. As
+    a result, elisr provides the platform to fully exploit the exploratory
+    potential of the multiple scaling approach itself.
 License: GPL (>= 3)
 URL: https://github.com/sbissantz/elisr
 BugReports: https://github.com/sbissantz/elisr/issues

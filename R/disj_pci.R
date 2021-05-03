@@ -29,6 +29,8 @@
 #'   matrix with the highest linear relationship). Second, when an item is
 #'   proposed for an emerging scale.
 #'
+#' @return A list of data frames. It results from applying the above algorithm.
+#'
 #' @references Müller-Schneider, T. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
 #'   Crystallization. Zeitschrift für Soziologie, 30(4), 305-315.

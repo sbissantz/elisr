@@ -15,6 +15,9 @@ total correlation. The value must be in the range of 0-1.}
 \item{use}{an optional string to specify how missing values will enter the
 analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 }
+\value{
+A list of data frames. It results from applying the above algorithm.
+}
 \description{
 \code{disj_pci} is an internal function and returns a list of
   data frames. It is a loop which runs through the following steps: (1) Set

@@ -30,6 +30,9 @@ endpoint of a scale. Use something like \code{c(min,max)}.}
 analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 default is set to \code{pairwise.complete.obs}.}
 }
+\value{
+A multiple scaled data frame (\¢ode{msdf}).
+}
 \description{
 \code{disjoint()} returns a multiple, disjointedly scaled
   version of the specified data frame. This so called \code{msdf} sets up the

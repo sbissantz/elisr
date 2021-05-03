@@ -9,6 +9,10 @@ is.msdf(x)
 \arguments{
 \item{x}{an arbitrary object.}
 }
+\value{
+a logical vector of length one. \code{TRUE} indicates that the object
+  is of type \code{msdf}.
+}
 \description{
 \code{is.msdf()} tests if the given object is a multiple scaled
   data frame.

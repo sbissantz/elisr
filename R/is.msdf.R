@@ -7,6 +7,9 @@
 #'
 #' @details \code{is.msdf} returns \code{TRUE} if the given object is of type
 #'   \code{msdf} and FALSE otherwise.
+#'
+#' @return a logical vector of length one. \code{TRUE} indicates that the object
+#'   is of type \code{msdf}.
 
 #'@export
 is.msdf <- function(x) inherits(x, "msdf")
