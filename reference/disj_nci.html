@@ -40,17 +40,16 @@
 
 
 <meta property="og:title" content="Multiple scaling in a disjoint manner using negative items too — disj_nci" />
-<meta property="og:description" content="disj_nci is an internal function and returns a list of
-  data frames. It is a loop which runs through the following steps: (1) Set
-  up a (first) scale. (2) find the two items with the highest positive
-  correlation in the data set. (3) If the absolute value of this correlation
-  is greater than the pre-specified lower bound (mrit_min), add up the
-  two items to build the core of the emerging scale. (4) While the absolute
-  value of the correlation between the sum score and a remaining items in the
-  data frame is greater than mrit_min, flavor the scale with the
-  appropriate item. If necessary, reverse the item. (5) If there are at least
-  two leftovers in the data frame, that meet the inclusion criterion, start
-  over again." />
+<meta property="og:description" content="disj_nci() is an internal function. It is a loop which
+  runs through the following steps: (1) Set up a (first) scale. (2) find the
+  two items with the highest positive correlation in the data set. (3) If the
+  absolute value of this correlation is greater than the pre-specified lower
+  bound (mrit_min), add up the two items to build the core of the
+  emerging scale. (4) While the absolute value of the correlation between the
+  sum score and a remaining items in the data frame is greater than
+  mrit_min, flavor the scale with the appropriate item. If necessary,
+  reverse the item. (5) If there are at least two leftovers in the data
+  frame, that meet the inclusion criterion, start over again." />
 
 
 
@@ -130,17 +129,16 @@
     </div>
 
     <div class="ref-description">
-    <p><code>disj_nci</code> is an internal function and returns a list of
-  data frames. It is a loop which runs through the following steps: (1) Set
-  up a (first) scale. (2) find the two items with the highest positive
-  correlation in the data set. (3) If the absolute value of this correlation
-  is greater than the pre-specified lower bound (<code>mrit_min</code>), add up the
-  two items to build the core of the emerging scale. (4) While the absolute
-  value of the correlation between the sum score and a remaining items in the
-  data frame is greater than <code>mrit_min</code>, flavor the scale with the
-  appropriate item. If necessary, reverse the item. (5) If there are at least
-  two leftovers in the data frame, that meet the inclusion criterion, start
-  over again.</p>
+    <p><code>disj_nci()</code> is an internal function. It is a loop which
+  runs through the following steps: (1) Set up a (first) scale. (2) find the
+  two items with the highest positive correlation in the data set. (3) If the
+  absolute value of this correlation is greater than the pre-specified lower
+  bound (<code>mrit_min</code>), add up the two items to build the core of the
+  emerging scale. (4) While the absolute value of the correlation between the
+  sum score and a remaining items in the data frame is greater than
+  <code>mrit_min</code>, flavor the scale with the appropriate item. If necessary,
+  reverse the item. (5) If there are at least two leftovers in the data
+  frame, that meet the inclusion criterion, start over again.</p>
     </div>
 
     <pre class="usage"><span class='fu'>disj_nci</span><span class='op'>(</span><span class='va'>df</span>, <span class='va'>mrit_min</span>, <span class='va'>sclvals</span>, <span class='va'>use</span><span class='op'>)</span></pre>
@@ -169,11 +167,13 @@ analysis. See <code>use</code> in <code><a href='https://rdrr.io/r/stats/cor.htm
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A list of data frames. It results from applying the above algorithm.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>disj_nci</code> is an internal function which extends the scope of
-  <code>disj_pci</code>. disj_nci allows the presence of negative items (i.e., a
-  negative correlation between item and sum score).</p>
+    <p><code>disj_nci()</code> is an internal function which extends the scope of
+  <code><a href='disj_pci.html'>disj_pci()</a></code>. disj_nci() allows to reverse negative items.</p>
 <p><code>use</code> clarifies how to set up a correlation matrix in the presence of
   missing values. In a typical scaling process this happens at least twice.
   First, when determining the core items (the two items in the correlation

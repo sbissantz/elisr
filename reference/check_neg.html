@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Print method for a multiple scaled data frame — print.msdf • elisr</title>
+<title>Test the appropriateness of an input — check_neg • elisr</title>
 
 
 <!-- jquery -->
@@ -39,11 +39,10 @@
 
 
 
-<meta property="og:title" content="Print method for a multiple scaled data frame — print.msdf" />
-<meta property="og:description" content="The print method for a multiple scaled data frame. It summarizes
- the msdf using values of classical test theory.
-@details Note that every line in the output tags a new stage in the
-   development process of each gradually emerging scale." />
+<meta property="og:title" content="Test the appropriateness of an input — check_neg" />
+<meta property="og:description" content="check_neg() is an internal function which is called for
+  its side effects. It throws an error if the (negative_too input is
+not a logical constant of length 1 and/or a missing value." />
 
 
 
@@ -117,64 +116,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Print method for a multiple scaled data frame</h1>
-    <small class="dont-index">Source: <a href='https://github.com/sbissantz/elisr/blob/master/R/print.msdf.R'><code>R/print.msdf.R</code></a></small>
-    <div class="hidden name"><code>print.msdf.Rd</code></div>
+    <h1>Test the appropriateness of an input</h1>
+    <small class="dont-index">Source: <a href='https://github.com/sbissantz/elisr/blob/master/R/check_neg.R'><code>R/check_neg.R</code></a></small>
+    <div class="hidden name"><code>check_neg.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>The print method for a multiple scaled data frame. It summarizes
- the <code>msdf</code> using values of classical test theory.</p>
-<p>@details Note that every line in the output tags a new stage in the
-   development process of each gradually emerging scale.</p>
+    <p><code>check_neg()</code> is an internal function which is called for
+  its side effects. It throws an error if the (<code>negative_too</code> input is
+not a logical constant of length 1 and/or a missing value.</p>
     </div>
 
-    <pre class="usage"><span class='co'># S3 method for msdf</span>
-<span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>x</span>, digits <span class='op'>=</span> <span class='fl'>2</span>, use <span class='op'>=</span> <span class='st'>"pairwise.complete.obs"</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>check_neg</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>a multiple scaled data frame (built with either
-<code><a href='disjoint.html'>disjoint()</a></code> or <code><a href='overlap.html'>overlap()</a></code>).</p></td>
-    </tr>
-    <tr>
-      <th>digits</th>
-      <td><p>an integer constant to determine the number of printed digits.
-See <code>digits</code> in <code><a href='https://rdrr.io/r/base/options.html'>options</a></code> for details.</p></td>
-    </tr>
-    <tr>
-      <th>use</th>
-      <td><p>an optional string to specify how missing values enter the
-analysis. See <code>use</code> in <code><a href='https://rdrr.io/r/stats/cor.html'>cor</a></code> for details. The
-default is set to <code>pairwise.complete.obs</code>.</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Additional arguments to the method which will be ignored.</p></td>
+      <td><p>some arbitrary input to be checked.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list of summary statistics: the marginal corrected item-total
-  correlation (<code>mrit</code>), Cronbach's alpha (<code>alpha</code>), and the average
-  correlation (<code>rbar</code>).</p>
+    <p>There is no return value. The function is called for its side
+  effects.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>use</code> clarifies how to set up a correlation matrix in the
-  presence of missing values. In a typical scaling process this happens at
-  least twice. First, when determining the core items (the two items in the
-  correlation matrix with the highest linear relationship). Second, when an
-  item is proposed for an emerging scale.</p>
-    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
-
-    <p>Müller-Schneider, T. (2001). Multiple Skalierung nach dem
-  Kristallisationsprinzip / Multiple Scaling According to the Principle of
-  Crystallization. Zeitschrift für Soziologie, 30(4), 305-315.
-  https://doi.org/10.1515/zfsoz-2001-0404</p>
+    <p>To verify both, that the (<code>negative_too</code> input is a logical
+  constant of length 1 and not a missing value, is necessary because objects
+  of type <code>NA</code> are logical constants of length 1, too.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
