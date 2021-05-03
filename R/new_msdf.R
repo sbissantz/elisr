@@ -24,8 +24,6 @@
 #' @details Multiple scaled data frames are only for internal use. A test
 #'   function ensures that the specified object is a multiple scaled data frame.
 #'
-#' @
-
 new_msdf <- function(x = list(), method, mrit_min,
                         # sclvals must be set NULL -- assures that
                         negative_too, sclvals = NULL,

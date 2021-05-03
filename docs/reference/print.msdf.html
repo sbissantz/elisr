@@ -40,11 +40,10 @@
 
 
 <meta property="og:title" content="Print method for a multiple scaled data frame — print.msdf" />
-<meta property="og:description" content="The print method for a multiple scaled data frame returns a list
-  of summary statistics: the marginal corrected item-total correlation
-  (mrit), Cronbach's alpha (alpha) and the average correlation
-  (rbar). Note that every row in the output tags a new stage in the
-  development of each gradually emerging scale." />
+<meta property="og:description" content="The print method for a multiple scaled data frame. It summarizes
+ the msdf using values of classical test theory.
+@details Note that every line in the output tags a new stage in the
+   development process of each gradually emerging scale." />
 
 
 
@@ -124,11 +123,10 @@
     </div>
 
     <div class="ref-description">
-    <p>The print method for a multiple scaled data frame returns a list
-  of summary statistics: the marginal corrected item-total correlation
-  (<code>mrit</code>), Cronbach's alpha (<code>alpha</code>) and the average correlation
-  (<code>rbar</code>). Note that every row in the output tags a new stage in the
-  development of each gradually emerging scale.</p>
+    <p>The print method for a multiple scaled data frame. It summarizes
+ the <code>msdf</code> using values of classical test theory.</p>
+<p>@details Note that every line in the output tags a new stage in the
+   development process of each gradually emerging scale.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for msdf</span>
@@ -159,6 +157,11 @@ default is set to <code>pairwise.complete.obs</code>.</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A list of summary statistics: the marginal corrected item-total
+  correlation (<code>mrit</code>), Cronbach's alpha (<code>alpha</code>), and the average
+  correlation (<code>rbar</code>).</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p><code>use</code> clarifies how to set up a correlation matrix in the
