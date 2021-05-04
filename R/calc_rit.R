@@ -1,7 +1,7 @@
 #' @title Calculate the corrected item-total correlation
 #'
 #' @description \code{calc_rit()} calculates the corrected item-total
-#'   correlation of the item with the sum score of all the other variables of a
+#'   correlation of the item with the sum score (of all the other variables) of a
 #'   scale or fragment.
 #'
 #' @details Note, that this procedure uses a part-whole correction. Thus, the

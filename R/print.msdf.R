@@ -15,6 +15,7 @@
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 #'   default is set to \code{pairwise.complete.obs}.
 #'
+#'
 #' @param ... Additional arguments to the method which will be ignored.
 #'
 #' @details \code{use} clarifies how to set up a correlation matrix in the
