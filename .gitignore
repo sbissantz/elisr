@@ -5,7 +5,6 @@
 .Rapp.history
 *-Ex.R
 **/inprog
-inst/doc
 /*.tar.gz
 /*.Rcheck/
 .Rproj.user/
@@ -18,5 +17,4 @@ vignettes/*.pdf
 *.knit.md
 .Renviron
 .DS_Store
-docs
 ._sync*
