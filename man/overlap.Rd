@@ -48,6 +48,9 @@ A multiple scaled data frame (\code{msdf}).
   least twice. First, when determining the core items (the two items in the
   correlation matrix with the highest linear relationship). Second, when an
   item is proposed for an emerging scale.
+
+  Note that \code{overlap()} uses \code{\link[stats]{cor}}'s default
+  method \code{pearson}.
 }
 \examples{
 # Build a msdf

@@ -1,7 +1,7 @@
 #' @title Create and test for a multiple scaled data frame
 #'
 #' @param x either a multiple scaled data frame (\code{new_msdf()}) or an
-#'   arbitrary object to test (\code{is_msdf()}.
+#'   arbitrary object to test (\code{is_msdf()}).
 #'
 #' @param method the method used to produce the multiple scaled data frame
 #'   (either \code{disjoint()} or \code{overlap()}).
@@ -59,8 +59,8 @@ new_msdf <- function(x = list(), method, mrit_min,
 #' @description \code{is.msdf()} tests if an object is a multiple scaled data
 #'   frame.
 #'
-#' @returns a logical vector of length one. \code{TRUE} indicates that the
-#'   object is of type \code{msdf}.
+#' @returns \code{is.msdf()} returns a logical vector of length one. \code{TRUE}
+#'   indicates that the object is of type \code{msdf}.
 #'
 #'@export
 is.msdf <- function(x) inherits(x, "msdf")

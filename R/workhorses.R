@@ -22,7 +22,7 @@
 #' @param use an optional string to specify how missing values will enter the
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details.
 #'
-#' @param sclvals a numerical vector of length 2 indicating the start and
+#' @param sclvals a numerical vector of length 2 indicating the start- and
 #'   endpoint of a scale.
 #'
 #' @param use an optional string to specify how missing values will enter the
@@ -36,12 +36,10 @@
 #'   set to "fragment".
 #'
 #' @returns \code{disj_pci()} and \code{disj_nci()} both return a list of data
-#'   frames which results from applying the above-mentioned algorithm.
+#'   frames which result from applying the above-mentioned algorithm.
 #'
 #' @returns \code{ovlp_pci()} and \code{ovlp_nci()} often return an
 #'   \emph{extended} a list of data frames.
-#'
-#' @returns A list of data frames. It results from applying the above algorithm.
 #'
 #' @references Müller-Schneider, T. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
@@ -55,12 +53,12 @@ NULL
 #' @rdname workhorses
 #'
 #' @description \code{disj_pci()} is a loop which runs through the following
-#'   steps: (1) Set up a (first) scale. (2) find the two items with the highest
+#'   steps: (1) Set up a (first) scale. (2) Find the two items with the highest
 #'   positive correlation in the data set. (3) If the absolute value of this
 #'   correlation is greater than the pre-specified lower bound
 #'   (\code{mrit_min}), add up the two items to build the core of the emerging
-#'   scale. (4) As long as the value of the correlation between the sum score
-#'   and a remaining items in the data frame is greater than \code{mrit_min},
+#'   scale. (4) As long as the value of the correlation between the sum-score
+#'   and a remaining item in the data frame is greater than \code{mrit_min},
 #'   flavor the scale with the appropriate item. (5) If there are at least two
 #'   leftovers in the data frame that meet the inclusion criterion, start over
 #'   again.
@@ -94,7 +92,7 @@ disj_pci <- function(df, mrit_min, use) {
 #' @description \code{disj_nci()} is almost identical to \code{disj_pci()},
 #'   though step (4) varies slightly from above. To take negative correlations
 #'   into account, \code{disj_nci()} flavors the scale with appropriate item as
-#'   long as the \emph{absolute} value of the correlation between the sum score
+#'   long as the \emph{absolute} value of the correlation between the sum-score
 #'   and a remaining items in the data frame is greater than \code{mrit_min}.
 #'
 #' @importFrom stats cor
@@ -183,7 +181,7 @@ ovlp_pci <- function(msdf, mrit_min, overlap_with, use) {
 #'   \code{ovlp_nci()} can handle reversed items. The extension algorithm
 #'   remains almost the same; \code{ovlp_nci()} flavors \emph{each} scale
 #'   fragment with appropriate items from its counterpart as long as the
-#'   \emph{absolute} value of the correlation between the sum score and a
+#'   \emph{absolute} value of the correlation between the sum-score and a
 #'   remaining item is greater than \code{mrit_min}. Thus, it is a multiple
 #'   one-dimensional extension of \code{disj_nci()}:
 #'

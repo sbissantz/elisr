@@ -12,7 +12,7 @@ is.msdf(x)
 }
 \arguments{
 \item{x}{either a multiple scaled data frame (\code{new_msdf()}) or an
-arbitrary object to test (\code{is_msdf()}.}
+arbitrary object to test (\code{is_msdf()}).}
 
 \item{method}{the method used to produce the multiple scaled data frame
 (either \code{disjoint()} or \code{overlap()}).}
@@ -32,8 +32,8 @@ endpoint of a scale.}
 \code{new_msdf()} returns a list of data frames with a few
   attributes that partially summarize the scaling process.
 
-a logical vector of length one. \code{TRUE} indicates that the
-  object is of type \code{msdf}.
+\code{is.msdf()} returns a logical vector of length one. \code{TRUE}
+  indicates that the object is of type \code{msdf}.
 }
 \description{
 \code{new_msdf()} creates a multiple scaled data frame
