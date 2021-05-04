@@ -17,6 +17,8 @@
 #' @param use an optional string to specify how missing values enter the
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details.
 #'
+#' @details All functions are internal functions.
+#'
 #' @name checks
 #'
 NULL
@@ -24,7 +26,7 @@ NULL
 #' @rdname checks
 #'
 #' @description \code{check_df()} guarantees that \code{x} is an appropriate
-#'   data frame for the analysis. That mean: It verifies that \code{x} has less
+#'   data frame for the analysis. That means: It verifies that \code{x} has less
 #'   than two variables (a single item can't build a core), \code{x} has column
 #'   names (used to pre-build \code{scls} in the overlapping process), if the
 #'   column names are unique, and not of type \code{NA}. It throws an error if
@@ -53,8 +55,8 @@ check_df <- function(x) {
 #'   vector and throws an error if not. Integers are coerced to be of type
 #'   \code{double}. Additionally, the function ensures that the first value is
 #'   smaller than the second. Remember that checking for a two element vector
-#'   implicitly secures that x is not \code{NULL} (because \code{NULL} is a
-#'   logical constant of length `0`).
+#'   implicitly secures that \code{x} is not \code{NULL} (because \code{NULL} is
+#'   a logical constant of length `0`).
 #'
 check_sclvals <- function(x) {
   if (length(x) != 2)
@@ -84,7 +86,7 @@ compare_sclvals <- function(x, x_attr) {
 #' @description \code{check_mrit()} guarantees that the input is a double vector
 #'   of length one. Moreover, the function secures that the lower bound is
 #'   unique and ranges between `0` and `1` (it throws an error if not). In
-#'   addition, it warns a user pre-determining a fragments.
+#'   addition, it warns a user pre-determining a fragment.
 #'
 check_mrit <- function(x) {
   if (!{
@@ -102,9 +104,9 @@ check_mrit <- function(x) {
 
 #' @rdname checks
 #'
-#' @description \code{check_ovlp()} safeguards that \code{x}, is a character
+#' @description \code{check_ovlp()} safeguards that \code{x} is a character
 #'   vector of length `1`. That means, it throws an error if not. Note that
-#'   \code{switch()} within \code{disjoint()} and \code{overlap()}) takes care
+#'   \code{switch()} within \code{disjoint()} and \code{overlap()} takes care
 #'   of the input string itself. It throws an error when the given character
 #'   doesn't match any available option.
 #'
@@ -129,9 +131,9 @@ check_msdf <- function(x) {
 #' @rdname checks
 #'
 #' @description
-#' \code{check_neg()} verifies that the (\code{negative_too} input is a logical
-#' constant of length 1 and not a missing value (this is necessary because
-#' objects of type \code{NA} are logical constants of length 1, too).
+#' \code{check_neg()} verifies that the input is a logical constant of length 1
+#' and not a missing value (this is necessary because objects of type \code{NA}
+#' are logical constants of length 1, too).
 #'
 check_neg <- function(x) {
    if (!{

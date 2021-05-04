@@ -13,13 +13,14 @@
 #'
 #' @param var a variable or item (often a column from a data frame).
 #'
-#' @param sclvals the start and end point of a scale (specify: \code{c(sp,ep)}).
+#' @param sclvals the start- and end point of a scale (specify:
+#'   \code{c(sp,ep)}).
 #'
-#' @param msg a reverse message sent from either \code{disjoint} or
-#'   \code{overlap}.
+#' @param msg a reverse message sent from either \code{disjoint()} or
+#'   \code{overlap()}.
 #'
-#' @param applicant the function which wants to leave messages \code{disjoint}
-#'   or \code{overlap}).
+#' @param applicant the function which wants to leave messages \code{disjoint()}
+#'   or \code{overlap()}.
 #'
 #' @param df a data frame object.
 #'
@@ -27,11 +28,11 @@
 #'
 #' @param x a multiple scaled data frame.
 #'
-#' @name utils
+#' @name utilities
 #'
 NULL
 
-#' @rdname utils
+#' @rdname utilities
 #'
 #' @description \code{calc_rit()} calculates the corrected item-total
 #'   correlation of a scale or fragment using a part-whole correction. Thus, the
@@ -46,7 +47,7 @@ NULL
     cor(core, addtnl, use = use)
   }
 
-#' @rdname utils
+#' @rdname utilities
 #'
 #' @description \code{calc_rbar()} calculates the average correlation of a
 #'   fragment or scale.
@@ -59,7 +60,7 @@ NULL
     mean(cormat[lower.tri(cormat)])
   }
 
-#' @rdname utils
+#' @rdname utilities
 #'
 #' @description \code{calc_alpha()} calculates the internal consistency of a
 #' scale or fragment using Cronbach's alpha.
@@ -74,7 +75,7 @@ NULL
     (m * rbar) / (1 + rbar * (m - 1))
   }
 
-#' @rdname utils
+#' @rdname utilities
 #'
 #' @description
 #'   \code{rvrs_var()} reverses an item using the specified scaling values. It
@@ -102,7 +103,7 @@ NULL
     }
   }
 
-#' @rdname utils
+#' @rdname utilities
 #'
 #' @description \code{rvrs_note()} gets the full report of reversed variables
 #'   and reports a unique list of them.
@@ -120,7 +121,7 @@ NULL
     }
   }
 
-#' @rdname utils
+#' @rdname utilities
 #'
 #' @description
 #'   \code{extr_core()} is used to extract all pairs of core items from a
@@ -132,7 +133,7 @@ NULL
     scl[c(1, 2)]
   }
 
-#' @rdname utils
+#' @rdname utilities
 #'
 #' @description \code{extr_core_nms()} is used to extract the names of all pairs
 #'   of core items from a given fragment.
@@ -144,7 +145,7 @@ NULL
     names(scl)[c(1, 2)]
   }
 
-#' @rdname utils
+#' @rdname utilities
 #'
 #' @description \code{extreb_itms()} builds the counterpart of a fragment from
 #'   the given item names. Therefore, the counterpart includes all variables
@@ -158,14 +159,14 @@ NULL
     df[-which(names(df) %in% itm_nms)]
   }
 
-#' @rdname utils
+#' @rdname utilities
 #'
 #' @description \code{nme_msdf()} renames the components of a multiple scaled
 #'   data frame. The naming scheme is \code{scl_n}. \code{scl} stands for
 #'   `scale` and \code{n} specifies the number of fragments or scales. For
 #'   example, the first component is called \code{scl_1}.
-#' @returns A character vector that numbers each element of its input according
-#'   to the above naming scheme.
+#' @returns \code{nme_msdf()} returns a character vector that numbers each
+#'   element of its input according to the above naming scheme.
 #'
 nme_msdf <- function(x) {
   x_len <- length(x)
