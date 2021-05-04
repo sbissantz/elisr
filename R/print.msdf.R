@@ -1,10 +1,9 @@
 #' @title Print method for a multiple scaled data frame
 #'
 #' @description The print method for a multiple scaled data frame. It summarizes
-#'  the \code{msdf} using values of classical test theory.
-#'
-#'  @details Note that every line in the output tags a new stage in the
-#'    development process of each gradually emerging scale.
+#'   the \code{msdf} using values of classical test theory. Note that every line
+#'   in the output tags a new stage in the development process of each gradually
+#'   emerging scale.
 #'
 #' @param x a multiple scaled data frame (built with either
 #'   \code{disjoint()} or \code{overlap()}).
