@@ -11,7 +11,7 @@
 #' correlation matrix with the highest linear relationship). Second, when an
 #' item is proposed for an emerging scale.
 #'
-#' Note that all functions rely on \code{\link[stats]{cor}}'s default method
+#' Note that all functions use \code{\link[stats]{cor}}'s default method
 #' \code{pearson}.
 #'
 #' @param df a data frame object.

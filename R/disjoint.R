@@ -28,8 +28,8 @@
 #'   correlation matrix with the highest linear relationship). Second, when an
 #'   item is proposed for an emerging scale.
 #'
-#'   Note that \code{disjoint()} relies on \code{\link[stats]{cor}}'s default
-#'   method \code{pearson}.
+#'   Note that \code{disjoint()} uses \code{\link[stats]{cor}}'s default method
+#'   \code{pearson}.
 #'
 #' @return A multiple scaled data frame (\code{msdf}).
 #'
