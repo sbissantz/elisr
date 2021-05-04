@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • elisr</title>
+<title>Create and test for a multiple scaled data frame — msdf • elisr</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,11 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Create and test for a multiple scaled data frame — msdf" />
+<meta property="og:description" content="new_msdf() creates a multiple scaled data frame
+  (msdf).
+is.msdf() tests if an object is a multiple scaled data
+  frame." />
 
 
 
@@ -58,7 +62,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -111,84 +115,69 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Create and test for a multiple scaled data frame</h1>
+    <small class="dont-index">Source: <a href='https://github.com/sbissantz/elisr/blob/master/R/star_msdf.R'><code>R/star_msdf.R</code></a></small>
+    <div class="hidden name"><code>msdf.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p><code>new_msdf()</code> creates a multiple scaled data frame
+  (<code>msdf</code>).</p>
+<p><code>is.msdf()</code> tests if an object is a multiple scaled data
+  frame.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>new_msdf</span><span class='op'>(</span>x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span>, <span class='va'>method</span>, <span class='va'>mrit_min</span>, <span class='va'>negative_too</span>, sclvals <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>df</span><span class='op'>)</span>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="checks.html">check_df()</a></code> <code><a href="checks.html">check_sclvals()</a></code> <code><a href="checks.html">compare_sclvals()</a></code> <code><a href="checks.html">check_mrit()</a></code> <code><a href="checks.html">check_ovlp()</a></code> <code><a href="checks.html">check_msdf()</a></code> <code><a href="checks.html">check_neg()</a></code> <code><a href="checks.html">check_comp()</a></code> </p>
-        </td>
-        <td><p>Miscellaneous input validation</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="disjoint.html">disjoint()</a></code> </p>
-        </td>
-        <td><p>Multiple scaling -- the disjoint way</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="msdf.html">new_msdf()</a></code> <code><a href="msdf.html">is.msdf()</a></code> </p>
-        </td>
-        <td><p>Create and test for a multiple scaled data frame</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="overlap.html">overlap()</a></code> </p>
-        </td>
-        <td><p>Multiple scaling -- the overlapping way</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="print.msdf.html">print(<i>&lt;msdf&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Print method for a multiple scaled data frame</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="trust.html">trust</a></code> </p>
-        </td>
-        <td><p>German General Social Survey's Trust Items</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="utilities.html">calc_rit()</a></code> <code><a href="utilities.html">calc_rbar()</a></code> <code><a href="utilities.html">calc_alpha()</a></code> <code><a href="utilities.html">rvrs_var()</a></code> <code><a href="utilities.html">rvrs_note()</a></code> <code><a href="utilities.html">extr_core()</a></code> <code><a href="utilities.html">extr_core_nms()</a></code> <code><a href="utilities.html">extreb_itms()</a></code> <code><a href="utilities.html">nme_msdf()</a></code> </p>
-        </td>
-        <td><p>Miscellaneous utility functions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="workhorses.html">disj_pci()</a></code> <code><a href="workhorses.html">disj_nci()</a></code> <code><a href="workhorses.html">ovlp_pci()</a></code> <code><a href="workhorses.html">ovlp_nci()</a></code> </p>
-        </td>
-        <td><p>elisr's quadriga</p></td>
-      </tr>
-    </tbody>
+<span class='fu'>is.msdf</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>either a multiple scaled data frame (<code>new_msdf()</code>) or an
+arbitrary object to test (<code>is_msdf()</code>.</p></td>
+    </tr>
+    <tr>
+      <th>method</th>
+      <td><p>the method used to produce the multiple scaled data frame
+(either <code><a href='disjoint.html'>disjoint()</a></code> or <code><a href='overlap.html'>overlap()</a></code>).</p></td>
+    </tr>
+    <tr>
+      <th>mrit_min</th>
+      <td><p>a numeric constant of length one to specify the marginal
+corrected item-total correlation. Its value is in the range of 0-1.</p></td>
+    </tr>
+    <tr>
+      <th>negative_too</th>
+      <td><p>a logical constant indicating whether reversed items are
+included in the analysis. The default is set to <code>FALSE</code>.</p></td>
+    </tr>
+    <tr>
+      <th>sclvals</th>
+      <td><p>a numeric vector of length two indicating the start- and
+endpoint of a scale.</p></td>
+    </tr>
+    <tr>
+      <th>df</th>
+      <td><p>the data frame to analyze.</p></td>
+    </tr>
     </table>
-  </div>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p><code>new_msdf()</code> returns a list of data frames with a few
+  attributes that partially summarize the scaling process.</p>
+<p>a logical vector of length one. <code>TRUE</code> indicates that the
+  object is of type <code>msdf</code>.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Objects of type `msdf` are for internal use only.</p>
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

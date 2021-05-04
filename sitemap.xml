@@ -7,28 +7,13 @@
     <loc>https://sbissantz.github.io/elisr/reference/checks.html</loc>
   </url>
   <url>
-    <loc>https://sbissantz.github.io/elisr/reference/disj_nci.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/disj_pci.html</loc>
-  </url>
-  <url>
     <loc>https://sbissantz.github.io/elisr/reference/disjoint.html</loc>
   </url>
   <url>
-    <loc>https://sbissantz.github.io/elisr/reference/is.msdf.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/new_msdf.html</loc>
+    <loc>https://sbissantz.github.io/elisr/reference/msdf.html</loc>
   </url>
   <url>
     <loc>https://sbissantz.github.io/elisr/reference/overlap.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/ovlp_nci.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/ovlp_pci.html</loc>
   </url>
   <url>
     <loc>https://sbissantz.github.io/elisr/reference/print.msdf.html</loc>
@@ -37,7 +22,10 @@
     <loc>https://sbissantz.github.io/elisr/reference/trust.html</loc>
   </url>
   <url>
-    <loc>https://sbissantz.github.io/elisr/reference/utils.html</loc>
+    <loc>https://sbissantz.github.io/elisr/reference/utilities.html</loc>
+  </url>
+  <url>
+    <loc>https://sbissantz.github.io/elisr/reference/workhorses.html</loc>
   </url>
   <url>
     <loc>https://sbissantz.github.io/elisr/articles/elisr.html</loc>

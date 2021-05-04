@@ -43,7 +43,7 @@
 <meta property="og:description" content="A set of test functions to ensure valid input and give helpful
   advice if it is not.
 check_df() guarantees that x is an appropriate
-  data frame for the analysis. That mean: It verifies that x has less
+  data frame for the analysis. That means: It verifies that x has less
   than two variables (a single item can't build a core), x has column
   names (used to pre-build scls in the overlapping process), if the
   column names are unique, and not of type NA. It throws an error if
@@ -53,25 +53,25 @@ check_sclvals() tests whether x is a two element
   vector and throws an error if not. Integers are coerced to be of type
   double. Additionally, the function ensures that the first value is
   smaller than the second. Remember that checking for a two element vector
-  implicitly secures that x is not NULL (because NULL is a
-  logical constant of length `0`).
+  implicitly secures that x is not NULL (because NULL is
+  a logical constant of length `0`).
 compare_sclvals() makes sure that the sclvals set
   with overlap() are equal to those set with disjoint(). It
   throws an error if not.
 check_mrit() guarantees that the input is a double vector
   of length one. Moreover, the function secures that the lower bound is
   unique and ranges between `0` and `1` (it throws an error if not). In
-  addition, it warns a user pre-determining a fragments.
-check_ovlp() safeguards that x, is a character
+  addition, it warns a user pre-determining a fragment.
+check_ovlp() safeguards that x is a character
   vector of length `1`. That means, it throws an error if not. Note that
-  switch() within disjoint() and overlap()) takes care
+  switch() within disjoint() and overlap() takes care
   of the input string itself. It throws an error when the given character
   doesn't match any available option.
 check_msdf() guards against inputs that are not of type
   `msdf`. It throws an error if not.
-check_neg() verifies that the (negative_too input is a logical
-constant of length 1 and not a missing value (this is necessary because
-objects of type NA are logical constants of length 1, too).
+check_neg() verifies that the input is a logical constant of length 1
+and not a missing value (this is necessary because objects of type NA
+are logical constants of length 1, too).
 check_comp() examines the correlation matrix,
   cor(df). It complains (throws an error) if no correlation in
   cor(df) is greater than the specified mrit_min." />
@@ -157,7 +157,7 @@ check_comp() examines the correlation matrix,
     <p>A set of test functions to ensure valid input and give helpful
   advice if it is not.</p>
 <p><code>check_df()</code> guarantees that <code>x</code> is an appropriate
-  data frame for the analysis. That mean: It verifies that <code>x</code> has less
+  data frame for the analysis. That means: It verifies that <code>x</code> has less
   than two variables (a single item can't build a core), <code>x</code> has column
   names (used to pre-build <code>scls</code> in the overlapping process), if the
   column names are unique, and not of type <code>NA</code>. It throws an error if
@@ -167,25 +167,25 @@ check_comp() examines the correlation matrix,
   vector and throws an error if not. Integers are coerced to be of type
   <code>double</code>. Additionally, the function ensures that the first value is
   smaller than the second. Remember that checking for a two element vector
-  implicitly secures that x is not <code>NULL</code> (because <code>NULL</code> is a
-  logical constant of length `0`).</p>
+  implicitly secures that <code>x</code> is not <code>NULL</code> (because <code>NULL</code> is
+  a logical constant of length `0`).</p>
 <p><code>compare_sclvals()</code> makes sure that the <code>sclvals</code> set
   with <code><a href='overlap.html'>overlap()</a></code> are equal to those set with <code><a href='disjoint.html'>disjoint()</a></code>. It
   throws an error if not.</p>
 <p><code>check_mrit()</code> guarantees that the input is a double vector
   of length one. Moreover, the function secures that the lower bound is
   unique and ranges between `0` and `1` (it throws an error if not). In
-  addition, it warns a user pre-determining a fragments.</p>
-<p><code>check_ovlp()</code> safeguards that <code>x</code>, is a character
+  addition, it warns a user pre-determining a fragment.</p>
+<p><code>check_ovlp()</code> safeguards that <code>x</code> is a character
   vector of length `1`. That means, it throws an error if not. Note that
-  <code><a href='https://rdrr.io/r/base/switch.html'>switch()</a></code> within <code><a href='disjoint.html'>disjoint()</a></code> and <code><a href='overlap.html'>overlap()</a></code>) takes care
+  <code><a href='https://rdrr.io/r/base/switch.html'>switch()</a></code> within <code><a href='disjoint.html'>disjoint()</a></code> and <code><a href='overlap.html'>overlap()</a></code> takes care
   of the input string itself. It throws an error when the given character
   doesn't match any available option.</p>
 <p><code>check_msdf()</code> guards against inputs that are not of type
   `msdf`. It throws an error if not.</p>
-<p><code>check_neg()</code> verifies that the (<code>negative_too</code> input is a logical
-constant of length 1 and not a missing value (this is necessary because
-objects of type <code>NA</code> are logical constants of length 1, too).</p>
+<p><code>check_neg()</code> verifies that the input is a logical constant of length 1
+and not a missing value (this is necessary because objects of type <code>NA</code>
+are logical constants of length 1, too).</p>
 <p><code>check_comp()</code> examines the correlation matrix,
   <code><a href='https://rdrr.io/r/stats/cor.html'>cor(df)</a></code>. It complains (throws an error) if no correlation in
   <code><a href='https://rdrr.io/r/stats/cor.html'>cor(df)</a></code> is greater than the specified <code>mrit_min</code>.</p>
@@ -235,6 +235,9 @@ analysis. See <code>use</code> in <code><a href='https://rdrr.io/r/stats/cor.htm
 
     <p>All functions are called for their side effects. If there are no
   errors or warnings, no value is returned.</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>All functions are internal functions.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
