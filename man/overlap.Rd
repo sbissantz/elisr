@@ -36,7 +36,7 @@ analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 default is set to \code{pairwise.complete.obs}.}
 }
 \value{
-A multiple scaled data frame (\¢ode{msdf}).
+A multiple scaled data frame (\code{msdf}).
 }
 \description{
 \code{overlap()} returns a overlapped version (either extended,
