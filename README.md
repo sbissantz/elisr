@@ -5,7 +5,6 @@
 [![R-CMD-check](https://github.com/sbissantz/elisr/workflows/R-CMD-check/badge.svg)](https://github.com/sbissantz/elisr/actions)
 [![Codecov test coverage](https://codecov.io/gh/sbissantz/elisr/branch/master/graph/badge.svg)](https://codecov.io/gh/sbissantz/elisr?branch=master)
 [![Project Status](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/badge/last%20change-2021--04--10-yellowgreen.svg)](https://github.com/sbissantz/elisr/commits/master)
 [![License](https://img.shields.io/badge/license-GPL--3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 <!-- badges: end -->
 
