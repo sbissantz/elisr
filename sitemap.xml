@@ -4,37 +4,7 @@
     <loc>https://sbissantz.github.io/elisr/index.html</loc>
   </url>
   <url>
-    <loc>https://sbissantz.github.io/elisr/reference/calc_alpha.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/calc_rbar.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/calc_rit.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/check_comp.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/check_df.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/check_mrit.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/check_msdf.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/check_neg.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/check_ovlp.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/check_sclvals.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/compare_sclvals.html</loc>
+    <loc>https://sbissantz.github.io/elisr/reference/checks.html</loc>
   </url>
   <url>
     <loc>https://sbissantz.github.io/elisr/reference/disj_nci.html</loc>
@@ -46,22 +16,10 @@
     <loc>https://sbissantz.github.io/elisr/reference/disjoint.html</loc>
   </url>
   <url>
-    <loc>https://sbissantz.github.io/elisr/reference/extr_core.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/extr_core_nms.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/extreb_itms.html</loc>
-  </url>
-  <url>
     <loc>https://sbissantz.github.io/elisr/reference/is.msdf.html</loc>
   </url>
   <url>
     <loc>https://sbissantz.github.io/elisr/reference/new_msdf.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/nme_msdf.html</loc>
   </url>
   <url>
     <loc>https://sbissantz.github.io/elisr/reference/overlap.html</loc>
@@ -76,13 +34,10 @@
     <loc>https://sbissantz.github.io/elisr/reference/print.msdf.html</loc>
   </url>
   <url>
-    <loc>https://sbissantz.github.io/elisr/reference/rvrs_note.html</loc>
-  </url>
-  <url>
-    <loc>https://sbissantz.github.io/elisr/reference/rvrs_var.html</loc>
-  </url>
-  <url>
     <loc>https://sbissantz.github.io/elisr/reference/trust.html</loc>
+  </url>
+  <url>
+    <loc>https://sbissantz.github.io/elisr/reference/utils.html</loc>
   </url>
   <url>
     <loc>https://sbissantz.github.io/elisr/articles/elisr.html</loc>
