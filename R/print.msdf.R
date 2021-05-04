@@ -15,7 +15,6 @@
 #'   analysis. See \code{use} in \code{\link[stats]{cor}} for details. The
 #'   default is set to \code{pairwise.complete.obs}.
 #'
-#'
 #' @param ... Additional arguments to the method which will be ignored.
 #'
 #' @details \code{use} clarifies how to set up a correlation matrix in the
@@ -32,7 +31,7 @@
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
 #'   Crystallization. Zeitschrift für Soziologie, 30(4), 305-315.
 #'   https://doi.org/10.1515/zfsoz-2001-0404
-
+#'
 #'@export
 print.msdf <- function(x, digits = 2, use = "pairwise.complete.obs", ...) {
   check_msdf(x)

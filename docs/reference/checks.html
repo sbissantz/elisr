@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A set of checks for the appropriateness of inputs — checks • elisr</title>
+<title>Miscellaneous input validation — checks • elisr</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,42 @@
 
 
 
-<meta property="og:title" content="A set of checks for the appropriateness of inputs — checks" />
-<meta property="og:description" content="A set of checks for the appropriateness of inputs" />
+<meta property="og:title" content="Miscellaneous input validation — checks" />
+<meta property="og:description" content="A set of test functions to ensure valid input and give helpful
+  advice if it is not.
+check_df() guarantees that x is an appropriate
+  data frame for the analysis. That mean: It verifies that x has less
+  than two variables (a single item can't build a core), x has column
+  names (used to pre-build scls in the overlapping process), if the
+  column names are unique, and not of type NA. It throws an error if
+  any of these requirements are not met. Additionally, it warns the user if
+  the provided colnames are not unique or NA.
+check_sclvals() tests whether x is a two element
+  vector and throws an error if not. Integers are coerced to be of type
+  double. Additionally, the function ensures that the first value is
+  smaller than the second. Remember that checking for a two element vector
+  implicitly secures that x is not NULL (because NULL is a
+  logical constant of length `0`).
+compare_sclvals() makes sure that the sclvals set
+  with overlap() are equal to those set with disjoint(). It
+  throws an error if not.
+check_mrit() guarantees that the input is a double vector
+  of length one. Moreover, the function secures that the lower bound is
+  unique and ranges between `0` and `1` (it throws an error if not). In
+  addition, it warns a user pre-determining a fragments.
+check_ovlp() safeguards that x, is a character
+  vector of length `1`. That means, it throws an error if not. Note that
+  switch() within disjoint() and overlap()) takes care
+  of the input string itself. It throws an error when the given character
+  doesn't match any available option.
+check_msdf() guards against inputs that are not of type
+  `msdf`. It throws an error if not.
+check_neg() verifies that the (negative_too input is a logical
+constant of length 1 and not a missing value (this is necessary because
+objects of type NA are logical constants of length 1, too).
+check_comp() examines the correlation matrix,
+  cor(df). It complains (throws an error) if no correlation in
+  cor(df) is greater than the specified mrit_min." />
 
 
 
@@ -114,13 +148,47 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A set of checks for the appropriateness of inputs</h1>
-    <small class="dont-index">Source: <a href='https://github.com/sbissantz/elisr/blob/master/R/check.R'><code>R/check.R</code></a></small>
+    <h1>Miscellaneous input validation</h1>
+    <small class="dont-index">Source: <a href='https://github.com/sbissantz/elisr/blob/master/R/checks.R'><code>R/checks.R</code></a></small>
     <div class="hidden name"><code>checks.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A set of checks for the appropriateness of inputs</p>
+    <p>A set of test functions to ensure valid input and give helpful
+  advice if it is not.</p>
+<p><code>check_df()</code> guarantees that <code>x</code> is an appropriate
+  data frame for the analysis. That mean: It verifies that <code>x</code> has less
+  than two variables (a single item can't build a core), <code>x</code> has column
+  names (used to pre-build <code>scls</code> in the overlapping process), if the
+  column names are unique, and not of type <code>NA</code>. It throws an error if
+  any of these requirements are not met. Additionally, it warns the user if
+  the provided <code>colnames</code> are not unique or <code>NA</code>.</p>
+<p><code>check_sclvals()</code> tests whether <code>x</code> is a two element
+  vector and throws an error if not. Integers are coerced to be of type
+  <code>double</code>. Additionally, the function ensures that the first value is
+  smaller than the second. Remember that checking for a two element vector
+  implicitly secures that x is not <code>NULL</code> (because <code>NULL</code> is a
+  logical constant of length `0`).</p>
+<p><code>compare_sclvals()</code> makes sure that the <code>sclvals</code> set
+  with <code><a href='overlap.html'>overlap()</a></code> are equal to those set with <code><a href='disjoint.html'>disjoint()</a></code>. It
+  throws an error if not.</p>
+<p><code>check_mrit()</code> guarantees that the input is a double vector
+  of length one. Moreover, the function secures that the lower bound is
+  unique and ranges between `0` and `1` (it throws an error if not). In
+  addition, it warns a user pre-determining a fragments.</p>
+<p><code>check_ovlp()</code> safeguards that <code>x</code>, is a character
+  vector of length `1`. That means, it throws an error if not. Note that
+  <code><a href='https://rdrr.io/r/base/switch.html'>switch()</a></code> within <code><a href='disjoint.html'>disjoint()</a></code> and <code><a href='overlap.html'>overlap()</a></code>) takes care
+  of the input string itself. It throws an error when the given character
+  doesn't match any available option.</p>
+<p><code>check_msdf()</code> guards against inputs that are not of type
+  `msdf`. It throws an error if not.</p>
+<p><code>check_neg()</code> verifies that the (<code>negative_too</code> input is a logical
+constant of length 1 and not a missing value (this is necessary because
+objects of type <code>NA</code> are logical constants of length 1, too).</p>
+<p><code>check_comp()</code> examines the correlation matrix,
+  <code><a href='https://rdrr.io/r/stats/cor.html'>cor(df)</a></code>. It complains (throws an error) if no correlation in
+  <code><a href='https://rdrr.io/r/stats/cor.html'>cor(df)</a></code> is greater than the specified <code>mrit_min</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>check_df</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
@@ -144,7 +212,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>some arbitrary input to be checked</p></td>
+      <td><p>some arbitrary input to be checked.</p></td>
     </tr>
     <tr>
       <th>x_attr</th>
@@ -163,33 +231,10 @@ analysis. See <code>use</code> in <code><a href='https://rdrr.io/r/stats/cor.htm
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p><code>check_df()</code> guarantees that <code>x</code> is a data frame. In
-  addition, it verifies that <code>x</code> has less than two variables (a single
-  item can't build a core), <code>x</code> has column names (used to pre-build
-  <code>scls</code> in the overlapping process), if the column names are unique and
-  not of type <code>NA</code>.</p>
-<p><code>check_sclvals()</code> checks whether <code>x</code> is a two element vector
-  (Note: implicitly assures that it is not <code>NULL</code>, since <code>NULL</code> is
-  a logical constant of length `0`.). Integers are coerced to be of type
-  <code>double</code>. Additionally the function makes sure that the first value is
-  not greater than the second.</p>
-<p><code>compare_sclvals()</code> ensures that the <code>sclvals</code> set with
-  <code><a href='overlap.html'>overlap()</a></code> are equal to those set with <code><a href='disjoint.html'>disjoint()</a></code>.</p>
-<p><code>check_rit()</code> guarantees that the input is a double vector of length
-  one. Moreover, it secures that the lower bound is unique and ranges between
-  `0` and `1`.</p>
-<p><code>check_ovlp()</code> safeguards that<code>x</code>, is a character vector of
-  length `1`. Within <code><a href='disjoint.html'>disjoint()</a></code> and <code><a href='overlap.html'>overlap()</a></code>) <code><a href='https://rdrr.io/r/base/switch.html'>switch()</a></code>
-  validates the input string itself, throwing an error message when the given
-  character doesn't match any available option.</p>
-<p><code>check_msdf()</code> guards against inputs that are not of type `msdf`.</p>
-<p><code>check_neg()</code> verifies that the (<code>negative_too</code> input is a
-  logical constant of length 1 and not a missing value (this is necessary
-  because objects of type <code>NA</code> are logical constants of length 1, too).</p>
-<p><code>check_comp()</code> examines the correlation matrix, <code><a href='https://rdrr.io/r/stats/cor.html'>cor(df)</a></code>. It
-  complains if no correlation is greater than the specified <code>mrit_min</code>.</p>
+    <p>All functions are called for their side effects. If there are no
+  errors or warnings, no value is returned.</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
