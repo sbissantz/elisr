@@ -138,7 +138,7 @@ disj_nci <- function(df, mrit_min, sclvals, use) {
 #'   does this for every disjointedly built scale fragment it is a multiple
 #'   one-dimensional extension of \code{disj_pci()}.
 #'
-#'   @importFrom stats cor
+#' @importFrom stats cor
 ovlp_pci <- function(msdf, mrit_min, overlap_with, use) {
 
   # Function ----------------------------------------------------------------
@@ -187,7 +187,7 @@ ovlp_pci <- function(msdf, mrit_min, overlap_with, use) {
 #'   remaining item is greater than \code{mrit_min}. Thus, it is a multiple
 #'   one-dimensional extension of \code{disj_nci()}:
 #'
-#'   @importFrom stats cor
+#' @importFrom stats cor
 ovlp_nci <- function(msdf, mrit_min, overlap_with, sclvals, use) {
   msg <- list()
 

@@ -71,8 +71,6 @@ The four workhorses inside \code{elisr}'s user functions
   does this for every disjointedly built scale fragment it is a multiple
   one-dimensional extension of \code{disj_pci()}.
 
-  @importFrom stats cor
-
 The only difference to \code{ovlp_pci()} is that
   \code{ovlp_nci()} can handle reversed items. The extension algorithm
   remains almost the same; \code{ovlp_nci()} flavors \emph{each} scale
@@ -80,8 +78,6 @@ The only difference to \code{ovlp_pci()} is that
   \emph{absolute} value of the correlation between the sum score and a
   remaining item is greater than \code{mrit_min}. Thus, it is a multiple
   one-dimensional extension of \code{disj_nci()}:
-
-  @importFrom stats cor
 }
 \details{
 All functions are internal functions.
