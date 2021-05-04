@@ -18,7 +18,7 @@ A numeric vector of length one. It is used to examine the coherence
 }
 \description{
 \code{calc_rit()} calculates the corrected item-total
-  correlation of the item with the sum score of all the other variables of a
+  correlation of the item with the sum score (of all the other variables) of a
   scale or fragment.
 }
 \details{
