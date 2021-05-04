@@ -30,7 +30,7 @@
 #'   correlation matrix with the highest linear relationship). Second, when an
 #'   item is proposed for an emerging scale.
 #'
-#' @return A multiple scaled data frame (\¢ode{msdf}).
+#' @return A multiple scaled data frame (\code{msdf}).
 #'
 #' @references Müller-Schneider, T. (2001). Multiple Skalierung nach dem
 #'   Kristallisationsprinzip / Multiple Scaling According to the Principle of
