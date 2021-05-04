@@ -29,6 +29,11 @@ analysis. See \code{use} in \code{\link[stats]{cor}} for details.}
 endpoint of a scale.}
 
 \item{msdf}{a multiple scaled data frame (built with \code{disjoint()}).}
+
+\item{overlap_with}{a string telling \code{overlap()} the set of items for
+the extension. To build up on all variables of a fragment use
+\code{fragment}, for the core-only option type \code{core}. The default is
+set to "fragment".}
 }
 \value{
 \code{disj_pci()} and \code{disj_nci()} both return a list of data
