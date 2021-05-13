@@ -1,11 +1,8 @@
 ## Resubmission 
 
-Resubmitting `elisr` (0.1.0). First of all, thank you for your comments and
-suggestions. I (1) added a reference describing the method in DESCRIPTION:
-`Müller-Schneider (2001) <doi:10.1515/zfsoz-2001-0404>)`; (2) changed `elisr` to
-`'elisr'`; (3) added `\value` to all .Rd files and explained the functions
-results as well as the structure of the output in the documentation.
-Additionally, if a function is only called for its side effects, I mentioned it.
+Resubmitting `elisr` (0.1.1). The problem was a 'noLD' issue. I fully revised
+the test structure to confront it. In addition, fixed some minor typos found
+after submitting `elisr`. All steps are documented in NEWS.md.
 
 ## Test environments
 

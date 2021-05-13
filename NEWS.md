@@ -1,3 +1,7 @@
+# elisr 0.1.1
+
+- Confront the 'noLD' issue
+- Fix minor typos 
 
 # elisr 0.1.0
 
